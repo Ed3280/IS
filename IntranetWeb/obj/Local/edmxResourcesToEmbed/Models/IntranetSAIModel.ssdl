@@ -1,0 +1,2431 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntranetSAIModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ANO_VEHICULO">
+    <Key>
+      <PropertyRef Name="CD_ANO" />
+      <PropertyRef Name="CD_MODELO" />
+    </Key>
+    <Property Name="CD_ANO" Type="int" Nullable="false" />
+    <Property Name="CD_MODELO" Type="int" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="COMPANIA_SEGURO">
+    <Key>
+      <PropertyRef Name="CD_COMPANIA_SEGURO" />
+    </Key>
+    <Property Name="CD_COMPANIA_SEGURO" Type="int" Nullable="false" />
+    <Property Name="NM_COMPANIA_SEGURO" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="NU_TELEFONO_FIJO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DI_COMPANIA_SEGURO" Type="varchar(max)" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISPOSITIVO_CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_DISPOSITIVO" />
+    </Key>
+    <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+    <Property Name="CD_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="CD_VEHICULO" Type="int" />
+    <Property Name="DE_CONTRASENA_DVR" Type="nvarchar" MaxLength="20" />
+    <Property Name="IN_ADMITE_APERTURA_REMOTA" Type="bit" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_CIERRE_VEHICULO">
+    <Key>
+      <PropertyRef Name="TP_CIERRE_VEHICULO" />
+    </Key>
+    <Property Name="TP_CIERRE_VEHICULO" Type="int" Nullable="false" />
+    <Property Name="NM_TIPO_CIERRE_VEHICULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_COMBUSTIBLE">
+    <Key>
+      <PropertyRef Name="TP_COMBUSTIBLE" />
+    </Key>
+    <Property Name="TP_COMBUSTIBLE" Type="int" Nullable="false" />
+    <Property Name="NM_TIPO_COMBUSTIBLE" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_TRANSMISION_VEHICULO">
+    <Key>
+      <PropertyRef Name="TP_TRANSMISION_VEHICULO" />
+    </Key>
+    <Property Name="TP_TRANSMISION_VEHICULO" Type="int" Nullable="false" />
+    <Property Name="NM_TRANSMISION_VEHICULO" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VEHICULO">
+    <Key>
+      <PropertyRef Name="CD_VEHICULO" />
+    </Key>
+    <Property Name="CD_VEHICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="NU_VIN" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="NU_PLACA" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CD_MARCA" Type="int" />
+    <Property Name="CD_MODELO" Type="int" />
+    <Property Name="CD_ANO" Type="int" />
+    <Property Name="NM_COLOR" Type="nvarchar" MaxLength="50" />
+    <Property Name="TP_COMBUSTIBLE" Type="int" />
+    <Property Name="TP_CIERRE_VEHICULO" Type="int" />
+    <Property Name="TP_TRANSMISION_VEHICULO" Type="int" />
+    <Property Name="CD_COMPANIA_SEGURO" Type="int" />
+    <Property Name="FE_SEGURO_VIGENCIA_HASTA" Type="date" />
+  </EntityType>
+  <EntityType Name="CARGO">
+    <Key>
+      <PropertyRef Name="CD_CARGO" />
+    </Key>
+    <Property Name="CD_CARGO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_UNIDAD_ADMINISTRATIVA" Type="int" Nullable="false" />
+    <Property Name="NM_CARGO" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DE_CARGO" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="CD_CARGO_PADRE" Type="int" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CARGO_ROL">
+    <Key>
+      <PropertyRef Name="CD_CARGO" />
+      <PropertyRef Name="CD_ROL" />
+    </Key>
+    <Property Name="CD_CARGO" Type="int" Nullable="false" />
+    <Property Name="CD_ROL" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO_SUPERVISOR" Type="int" />
+    <Property Name="CD_SUCURSAL" Type="int" Nullable="false" />
+    <Property Name="CD_CARGO" Type="int" Nullable="false" />
+    <Property Name="NU_EXTENSION" Type="int" />
+    <Property Name="DI_CORREO" Type="nvarchar" MaxLength="320" Nullable="false" />
+    <Property Name="FE_INGRESO" Type="date" Nullable="false" />
+    <Property Name="FE_RETIRO" Type="date" />
+  </EntityType>
+  <EntityType Name="SUCURSAL">
+    <Key>
+      <PropertyRef Name="CD_SUCURSAL" />
+    </Key>
+    <Property Name="CD_SUCURSAL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_SUCURSAL" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="DE_SUCURSAL" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="NU_TELEFONO" Type="int" />
+    <Property Name="IN_INACTIVA" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UNIDAD_ADMINISTRATIVA">
+    <Key>
+      <PropertyRef Name="CD_UNIDAD_ADMINISTRATIVA" />
+    </Key>
+    <Property Name="CD_UNIDAD_ADMINISTRATIVA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_UNIDAD_ADMINISTRATIVA" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="IMAGEN_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="CD_IMAGEN_NOTIFCACION" />
+    </Key>
+    <Property Name="CD_IMAGEN_NOTIFCACION" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="NU_LATITUD" Type="float" />
+    <Property Name="NU_LONGITUD" Type="float" />
+    <Property Name="DE_LOCALIZACION" Type="nvarchar" MaxLength="800" />
+    <Property Name="DE_LOCALIZACION_IMAGEN" Type="varbinary(max)" />
+    <Property Name="NM_IMAGEN" Type="nvarchar" MaxLength="200" />
+    <Property Name="NM_EXTENSION_IMAGEN" Type="nvarchar" MaxLength="50" />
+    <Property Name="DE_IMAGEN" Type="nvarchar" MaxLength="800" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTIFICACION_GCM">
+    <Key>
+      <PropertyRef Name="CD_NOTIFICACION_GCM" />
+    </Key>
+    <Property Name="CD_NOTIFICACION_GCM" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_USUARIO_GCM" Type="int" Nullable="false" />
+    <Property Name="DE_MENSAJE" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="FE_ENVIO_MENSAJE" Type="datetime" Nullable="false" />
+    <Property Name="IN_ENVIADO" Type="bit" Nullable="false" />
+    <Property Name="DE_RESPUESTA_MENSAJE_GCM" Type="nvarchar" MaxLength="50" />
+    <Property Name="FE_MENSAJE_RESPUESTA_GCM" Type="datetime" />
+  </EntityType>
+  <EntityType Name="USUARIO_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_NOTFICACION" />
+      <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_NOTFICACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="int" />
+    <Property Name="TP_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="IN_GESTIONADA" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CONFIGURACION_KILOMETRAJE">
+    <Key>
+      <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+    </Key>
+    <Property Name="CD_CONFIGURACION_KILOMETRAJE" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_TALLER" Type="int" Nullable="false" />
+    <Property Name="CD_ANO" Type="int" Nullable="false" />
+    <Property Name="CD_MODELO" Type="int" Nullable="false" />
+    <Property Name="MT_KILOMETRAJE" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      <PropertyRef Name="CD_OPERACION" />
+    </Key>
+    <Property Name="CD_CONFIGURACION_KILOMETRAJE" Type="int" Nullable="false" />
+    <Property Name="CD_OPERACION" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="OPERACION_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_OPERACION" />
+    </Key>
+    <Property Name="CD_OPERACION" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DE_ALIAS_OPERACION" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="CD_TALLER" Type="int" Nullable="false" />
+    <Property Name="NM_OPERACION_MANTENIMIENTO" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="MT_MINUTO_DURACION_OPERACION" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_SOLICITUD" />
+    </Key>
+    <Property Name="CD_SOLICITUD" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_TALLER" Type="int" Nullable="false" />
+    <Property Name="CD_CONFIGURACION_KILOMETRAJE" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO_SOLICITANTE" Type="int" Nullable="false" />
+    <Property Name="CD_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="FE_SOLICITUD" Type="datetime" Nullable="false" />
+    <Property Name="DE_ESTATUS_SOLICITUD" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="CD_VEHICULO" Type="int" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="int" />
+    <Property Name="DE_OBSERVACION" Type="nvarchar" MaxLength="800" />
+  </EntityType>
+  <EntityType Name="TALLER">
+    <Key>
+      <PropertyRef Name="CD_TALLER" />
+    </Key>
+    <Property Name="CD_TALLER" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_TALLER" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CD_PAIS" Type="int" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="int" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="int" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="int" />
+    <Property Name="DI_TALLER" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CD_SOCIO_COMERCIAL" Type="int" />
+  </EntityType>
+  <EntityType Name="ARTICULO">
+    <Key>
+      <PropertyRef Name="CD_ARTICULO" />
+    </Key>
+    <Property Name="CD_ARTICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_ARTICULO" Type="nvarchar" MaxLength="600" Nullable="false" />
+    <Property Name="DE_ARTICULO" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="CD_MODELO" Type="int" Nullable="false" />
+    <Property Name="NU_CANTIDAD_DISPONIBLE" Type="bigint" Nullable="false" />
+    <Property Name="MT_PRECIO_COMPRA" Type="money" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_STATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" />
+  </EntityType>
+  <EntityType Name="MARCA">
+    <Key>
+      <PropertyRef Name="CD_MARCA" />
+    </Key>
+    <Property Name="CD_MARCA" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_MARCA" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MODELO">
+    <Key>
+      <PropertyRef Name="CD_MODELO" />
+    </Key>
+    <Property Name="CD_MODELO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_MODELO" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="CD_TIPO_ARTICULO" Type="int" Nullable="false" />
+    <Property Name="CD_MARCA" Type="int" Nullable="false" />
+    <Property Name="CD_UNIDAD_MEDIDA" Type="int" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_STATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_ARTICULO">
+    <Key>
+      <PropertyRef Name="CD_TIPO_ARTICULO" />
+    </Key>
+    <Property Name="CD_TIPO_ARTICULO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_TIPO_ARTICULO" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KILOMETRAJE_TOTAL">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DeviceID" />
+    </Key>
+    <Property Name="UserID" Type="int" Nullable="false" />
+    <Property Name="DeviceID" Type="int" Nullable="false" />
+    <Property Name="MontoKilometrajeInicial" Type="float" Nullable="false" />
+    <Property Name="MontoKilometrajeDispositivo" Type="float" Nullable="false" />
+    <Property Name="MontoKilometrajeTotal" Type="float" StoreGeneratedPattern="Computed" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NOTIFICACION_SIN_GESTION">
+    <Key>
+      <PropertyRef Name="ID_NOTIFICACION" />
+      <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="TP_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="FE_NOTIFICACION" Type="datetime" Nullable="false" />
+    <Property Name="ID_DISTRIBUIDOR" Type="int" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO_MOVIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_CLIENTE" Type="int" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ORIGEN_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="DE_ORIGEN_NOTIFICACION" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="IN_GENERA_ALERTA" Type="bit" Nullable="false" />
+    <Property Name="DE_ICONO" Type="nvarchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="RESPUESTA_OPERADOR_GCM">
+    <Key>
+      <PropertyRef Name="ID_RESPUESTA_OPERADOR" />
+    </Key>
+    <Property Name="ID_RESPUESTA_OPERADOR" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TP_ATENCION" Type="int" Nullable="false" />
+    <Property Name="DE_TITULO" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="DE_CONTENIDO" Type="nvarchar" MaxLength="160" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TICKET">
+    <Key>
+      <PropertyRef Name="ID_TICKET" />
+    </Key>
+    <Property Name="ID_TICKET" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="TP_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="TP_ATENCION" Type="int" />
+    <Property Name="ID_DISTRIBUIDOR" Type="int" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO_MOVIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_CLIENTE" Type="int" />
+    <Property Name="ID_ESTATUS_TICKET" Type="int" Nullable="false" />
+    <Property Name="ID_RESPUESTA_OPERADOR" Type="int" />
+    <Property Name="IN_RESPUESTA_ENVIADA" Type="bit" Nullable="false" />
+    <Property Name="DE_OBSERVACION" Type="nvarchar" MaxLength="800" />
+    <Property Name="DE_OBSERVACION_SUPERVISOR" Type="nvarchar" MaxLength="800" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO_TRANSFERENCIA" Type="int" />
+    <Property Name="FE_NOTIFICACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TICKET_ESTATUS">
+    <Key>
+      <PropertyRef Name="ID_ESTATUS_TICKET" />
+    </Key>
+    <Property Name="ID_ESTATUS_TICKET" Type="int" Nullable="false" />
+    <Property Name="DE_ESTATUS" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TICKET_HISTORICO">
+    <Key>
+      <PropertyRef Name="ID_TICKET_HISTORICO" />
+    </Key>
+    <Property Name="ID_TICKET_HISTORICO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_TICKET" Type="int" Nullable="false" />
+    <Property Name="ID_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="TP_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="TP_ATENCION" Type="int" />
+    <Property Name="ID_DISTRIBUIDOR" Type="int" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+    <Property Name="ID_USUARIO_MOVIL" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_CLIENTE" Type="int" />
+    <Property Name="ID_ESTATUS_TICKET" Type="int" Nullable="false" />
+    <Property Name="ID_RESPUESTA_OPERADOR" Type="int" />
+    <Property Name="IN_RESPUESTA_ENVIADA" Type="bit" Nullable="false" />
+    <Property Name="DE_OBSERVACION" Type="nvarchar" MaxLength="800" />
+    <Property Name="DE_OBSERVACION_SUPERVISOR" Type="nvarchar" MaxLength="800" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO_TRANSFERENCIA" Type="int" />
+    <Property Name="FE_NOTIFICACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_ATENCION">
+    <Key>
+      <PropertyRef Name="TP_ATENCION" />
+    </Key>
+    <Property Name="TP_ATENCION" Type="int" Nullable="false" />
+    <Property Name="DE_TIPO_ATENCION" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="TP_NOTIFICACION" />
+    </Key>
+    <Property Name="TP_NOTIFICACION" Type="int" Nullable="false" />
+    <Property Name="DE_TIPO_NOTIFICACION" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="CD_PRIORIDAD" Type="int" Nullable="false" />
+    <Property Name="DE_COLOR_TITULO" Type="varchar" MaxLength="100" />
+    <Property Name="DE_COLOR_BODY" Type="varchar" MaxLength="100" />
+    <Property Name="DE_COLOR_LABEL" Type="varchar" MaxLength="100" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO_DISPOSITIVO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+      <PropertyRef Name="ID_DISPOSITIVO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MENU_SERVICIO">
+    <Key>
+      <PropertyRef Name="CD_MENU_SERVICIO" />
+    </Key>
+    <Property Name="CD_MENU_SERVICIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_SERVICIO" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DE_SERVICIO" Type="nvarchar" MaxLength="600" />
+    <Property Name="CD_APLICACION" Type="int" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="MENU_SERVICIO_USUARIO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+      <PropertyRef Name="CD_MENU_SERVICIO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="CD_MENU_SERVICIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CD_CLIENTE" />
+    </Key>
+    <Property Name="CD_CLIENTE" Type="int" Nullable="false" />
+    <Property Name="DE_NOMBRE" Type="nvarchar" MaxLength="250" />
+    <Property Name="DE_APELLIDO" Type="nvarchar" MaxLength="250" />
+    <Property Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Type="nvarchar" MaxLength="510" Nullable="false" />
+    <Property Name="FE_NACIMIENTO" Type="date" />
+    <Property Name="CD_PAIS" Type="int" />
+    <Property Name="CD_PROVINCIA" Type="int" />
+    <Property Name="CD_DISTRITO" Type="int" />
+    <Property Name="CD_CORREGIMIENTO" Type="int" />
+    <Property Name="DI_COBRO" Type="nvarchar" MaxLength="800" />
+    <Property Name="NU_TELEFONO_OFICINA" Type="int" />
+    <Property Name="TP_SANGRE" Type="varchar" MaxLength="3" />
+    <Property Name="NM_PERSONA_CONTACTO" Type="nvarchar" MaxLength="510" />
+    <Property Name="NU_TELEFONO_MOVIL_PERSONA_CONTACTO" Type="int" />
+    <Property Name="CD_COMPANIA_SEGURO" Type="int" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_INACTIVO" Type="datetime" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEGMENTO_NEGOCIO">
+    <Key>
+      <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+    </Key>
+    <Property Name="CD_SEGMENTO_NEGOCIO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_SEGMENTO_NEGOCIO" Type="nvarchar" MaxLength="150" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SEGMENTO_NEGOCIO_MENU_SERVICIO">
+    <Key>
+      <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      <PropertyRef Name="CD_MENU_SERVICIO" />
+    </Key>
+    <Property Name="CD_SEGMENTO_NEGOCIO" Type="int" Nullable="false" />
+    <Property Name="CD_MENU_SERVICIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SOCIO_COMERCIAL">
+    <Key>
+      <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+    </Key>
+    <Property Name="CD_SOCIO_COMERCIAL" Type="int" Nullable="false" />
+    <Property Name="NM_SOCIO_COMERCIAL" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="NU_TELEFONO_FIJO" Type="int" />
+    <Property Name="NU_TELEFONO_MOVIL" Type="int" />
+    <Property Name="DI_EMAIL" Type="nvarchar" MaxLength="320" Nullable="false" />
+    <Property Name="CD_PAIS" Type="int" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="int" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="int" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="int" />
+    <Property Name="DI_OFICINA" Type="nvarchar" MaxLength="800" Nullable="false" />
+    <Property Name="ID_DISTRIBUIDOR" Type="int" />
+    <Property Name="CD_SEGMENTO_NEGOCIO" Type="int" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_INACTIVO" Type="datetime" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISPOSITIVO">
+    <Key>
+      <PropertyRef Name="ID_DISPOSITIVO" />
+    </Key>
+    <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+    <Property Name="ID_DISTRIBUIDOR" Type="int" Nullable="false" />
+    <Property Name="NM_DISPOSITIVO" Type="nvarchar" MaxLength="100" />
+    <Property Name="DE_DISPOSITIVO" Type="nvarchar" MaxLength="500" />
+    <Property Name="NU_SERIAL" Type="nvarchar" MaxLength="20" />
+    <Property Name="NU_DVR" Type="nvarchar" MaxLength="50" />
+    <Property Name="NU_SIM_GPS" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_MODELO" Type="int" />
+    <Property Name="IN_ELIMINADO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISTRIBUIDOR">
+    <Key>
+      <PropertyRef Name="ID_DISTRIBUIDOR" />
+    </Key>
+    <Property Name="ID_DISTRIBUIDOR" Type="int" Nullable="false" />
+    <Property Name="NM_DISTRIBUIDOR" Type="nvarchar" MaxLength="255" />
+    <Property Name="NM_USUARIO" Type="nvarchar" MaxLength="255" />
+    <Property Name="DE_CONTRASENA" Type="nvarchar" MaxLength="255" />
+    <Property Name="IN_ELIMINADO" Type="bit" Nullable="false" />
+    <Property Name="ID_DISTRIBUIDOR_PADRE" Type="int" />
+  </EntityType>
+  <EntityType Name="APLICACION">
+    <Key>
+      <PropertyRef Name="CD_APLICACION" />
+    </Key>
+    <Property Name="CD_APLICACION" Type="int" Nullable="false" />
+    <Property Name="NM_APLICACION" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DE_APLICACION" Type="nvarchar" MaxLength="600" />
+    <Property Name="NM_CONTROLADOR" Type="nvarchar" MaxLength="200" />
+    <Property Name="NM_ACCION" Type="nvarchar" MaxLength="200" />
+    <Property Name="DE_PARAMETROS" Type="nvarchar" MaxLength="700" />
+    <Property Name="DE_ALIAS" Type="nvarchar" MaxLength="50" />
+    <Property Name="CD_APLICACION_PADRE" Type="int" />
+    <Property Name="IN_ASIGNABLE" Type="bit" Nullable="false" />
+    <Property Name="IN_APLICACION_INACTIVA" Type="bit" Nullable="false" />
+    <Property Name="NM_ICONO_MENU" Type="nvarchar" MaxLength="100" />
+    <Property Name="NM_ICONO_ACCESO_RAPIDO" Type="nvarchar" MaxLength="100" />
+    <Property Name="IN_ES_DASHBOARD" Type="bit" Nullable="false" />
+    <Property Name="IN_ES_PERFIL_USUARIO" Type="bit" Nullable="false" />
+    <Property Name="NU_ORDEN" Type="int" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="CD_ROL" />
+    </Key>
+    <Property Name="CD_ROL" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_ROL" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DE_ROL" Type="nvarchar" MaxLength="600" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="IN_ROL_ACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ROL_APLICACION">
+    <Key>
+      <PropertyRef Name="CD_ROL" />
+      <PropertyRef Name="CD_APLICACION" />
+    </Key>
+    <Property Name="CD_ROL" Type="int" Nullable="false" />
+    <Property Name="CD_APLICACION" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="NM_USUARIO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DE_NOMBRE_APELLIDO" Type="nvarchar" MaxLength="310" Nullable="false" />
+    <Property Name="DE_CONTRASENA" Type="varbinary" MaxLength="128" Nullable="false" />
+    <Property Name="FE_NACIMIENTO" Type="date" />
+    <Property Name="DI_EMAIL_USUARIO" Type="nvarchar" MaxLength="320" Nullable="false" />
+    <Property Name="NU_TELEFONO_FIJO" Type="int" />
+    <Property Name="NU_TELEFONO_MOVIL" Type="int" />
+    <Property Name="IN_REGISTRO_MOVIL" Type="bit" Nullable="false" />
+    <Property Name="FE_REGISTRO_MOVIL" Type="datetime" />
+    <Property Name="IN_USUARIO_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="IN_USUARIO_BLOQUEADO" Type="bit" Nullable="false" />
+    <Property Name="IN_CORREO_REGISTRO_ENVIADO" Type="bit" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO_APLICACION">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+      <PropertyRef Name="CD_APLICACION" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="CD_APLICACION" Type="int" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="bit" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO_MOVIL_GCM">
+    <Key>
+      <PropertyRef Name="CD_USUARIO_GCM" />
+    </Key>
+    <Property Name="CD_USUARIO_GCM" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="ID_GCM" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="NM_SO_VERSION" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="datetime" Nullable="false" />
+    <Property Name="IN_ACTIVO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO_PADRE">
+    <Key>
+      <PropertyRef Name="CD_USUARIO_PADRE" />
+      <PropertyRef Name="CD_USUARIO" />
+    </Key>
+    <Property Name="CD_USUARIO_PADRE" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="USUARIO_ROL">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+      <PropertyRef Name="CD_ROL" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="CD_ROL" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CORREGIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+      <PropertyRef Name="CD_PROVINCIA" />
+      <PropertyRef Name="CD_DISTRITO" />
+      <PropertyRef Name="CD_CORREGIMIENTO" />
+    </Key>
+    <Property Name="CD_PAIS" Type="int" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="int" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="int" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="int" Nullable="false" />
+    <Property Name="NM_CORREGIMIENTO" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="DISTRITO">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+      <PropertyRef Name="CD_PROVINCIA" />
+      <PropertyRef Name="CD_DISTRITO" />
+    </Key>
+    <Property Name="CD_PAIS" Type="int" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="int" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="int" Nullable="false" />
+    <Property Name="NM_DISTRITO" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="LOG_TRANSACCIONES">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="int" Nullable="false" />
+    <Property Name="FE_OPERACION" Type="datetime" Nullable="false" />
+    <Property Name="NM_THREAD" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="DI_IP" Type="varchar" MaxLength="50" />
+    <Property Name="NM_CONTROLLER" Type="varchar" MaxLength="50" />
+    <Property Name="NM_ACTION" Type="varchar" MaxLength="150" />
+    <Property Name="NM_URL" Type="varchar" MaxLength="2500" />
+    <Property Name="NM_LEVEL" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="NM_LOGGER" Type="varchar" MaxLength="255" Nullable="false" />
+    <Property Name="DE_MESSAGE" Type="varchar" MaxLength="4000" Nullable="false" />
+    <Property Name="DE_EXCEPTION" Type="varchar(max)" />
+  </EntityType>
+  <EntityType Name="PAIS">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+    </Key>
+    <Property Name="CD_PAIS" Type="int" Nullable="false" />
+    <Property Name="NM_PAIS" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PARAMETRO_CONFIGURACION">
+    <Key>
+      <PropertyRef Name="CD_CONFIGURACION" />
+      <PropertyRef Name="NM_PARAMETRO" />
+    </Key>
+    <Property Name="CD_CONFIGURACION" Type="nvarchar" MaxLength="80" Nullable="false" />
+    <Property Name="NM_PARAMETRO" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="DE_CONFIGURACION" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="DE_USO_CONFIGURACION" Type="nvarchar" MaxLength="200" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PLANTILLA_CORREO">
+    <Key>
+      <PropertyRef Name="CD_PLANTILLA_CORREO" />
+    </Key>
+    <Property Name="CD_PLANTILLA_CORREO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_PLANTILLA_CORREO" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="TP_PLANTILLA_CORREO" Type="int" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="int" />
+    <Property Name="DE_TITULO_CORREO" Type="nvarchar" MaxLength="250" Nullable="false" />
+    <Property Name="DE_CONTENIDO_PLANTILLA" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+      <PropertyRef Name="CD_PROVINCIA" />
+    </Key>
+    <Property Name="CD_PAIS" Type="int" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="int" Nullable="false" />
+    <Property Name="NM_PROVINCIA" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_DOCUMENTO_IDENTIDAD">
+    <Key>
+      <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+    </Key>
+    <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="NM_TIPO_DOCUMENTO" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="IN_JURIDICO" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_PLANTILLA_CORREO">
+    <Key>
+      <PropertyRef Name="TP_PLANTILLA_CORREO" />
+    </Key>
+    <Property Name="TP_PLANTILLA_CORREO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NM_TIPO_PLANTILLA" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TIPO_SANGRE">
+    <Key>
+      <PropertyRef Name="TP_SANGRE" />
+    </Key>
+    <Property Name="TP_SANGRE" Type="varchar" MaxLength="3" Nullable="false" />
+    <Property Name="NM_TIPO_SANGRE" Type="varchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="ANO_VEHICULO_FK_MODELO">
+    <End Role="MODELO" Type="Self.MODELO" Multiplicity="1" />
+    <End Role="ANO_VEHICULO" Type="Self.ANO_VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODELO">
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="ANO_VEHICULO">
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ARTICULO_FK_MODELO">
+    <End Role="MODELO" Type="Self.MODELO" Multiplicity="1" />
+    <End Role="ARTICULO" Type="Self.ARTICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODELO">
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="ARTICULO">
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ARTICULO_MODELO_FK_MARCA">
+    <End Role="MARCA" Type="Self.MARCA" Multiplicity="1" />
+    <End Role="MODELO" Type="Self.MODELO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARCA">
+        <PropertyRef Name="CD_MARCA" />
+      </Principal>
+      <Dependent Role="MODELO">
+        <PropertyRef Name="CD_MARCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CARGO_FK_CARGO_PADRE">
+    <End Role="CARGO" Type="Self.CARGO" Multiplicity="0..1" />
+    <End Role="CARGO1" Type="Self.CARGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGO">
+        <PropertyRef Name="CD_CARGO" />
+      </Principal>
+      <Dependent Role="CARGO1">
+        <PropertyRef Name="CD_CARGO_PADRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CARGO_FK_UNIDAD_ADMINISTRATIVA">
+    <End Role="UNIDAD_ADMINISTRATIVA" Type="Self.UNIDAD_ADMINISTRATIVA" Multiplicity="1" />
+    <End Role="CARGO" Type="Self.CARGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UNIDAD_ADMINISTRATIVA">
+        <PropertyRef Name="CD_UNIDAD_ADMINISTRATIVA" />
+      </Principal>
+      <Dependent Role="CARGO">
+        <PropertyRef Name="CD_UNIDAD_ADMINISTRATIVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CARGO_ROL_FK_CARGO">
+    <End Role="CARGO" Type="Self.CARGO" Multiplicity="1" />
+    <End Role="CARGO_ROL" Type="Self.CARGO_ROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGO">
+        <PropertyRef Name="CD_CARGO" />
+      </Principal>
+      <Dependent Role="CARGO_ROL">
+        <PropertyRef Name="CD_CARGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CARGO_ROL_FK_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="CARGO_ROL" Type="Self.CARGO_ROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="CD_ROL" />
+      </Principal>
+      <Dependent Role="CARGO_ROL">
+        <PropertyRef Name="CD_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_COMPANIA_SEGURO">
+    <End Role="COMPANIA_SEGURO" Type="Self.COMPANIA_SEGURO" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANIA_SEGURO">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_CORREGIMIENTO">
+    <End Role="CORREGIMIENTO" Type="Self.CORREGIMIENTO" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_DISTRITO">
+    <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_PAIS">
+    <End Role="PAIS" Type="Self.PAIS" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="CD_PAIS" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_TIPO_SANGRE">
+    <End Role="TIPO_SANGRE" Type="Self.TIPO_SANGRE" Multiplicity="0..1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_SANGRE">
+        <PropertyRef Name="TP_SANGRE" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="TP_SANGRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONFIGURACION_KILOMETRAJE_FK_MODELO">
+    <End Role="ANO_VEHICULO" Type="Self.ANO_VEHICULO" Multiplicity="1" />
+    <End Role="CONFIGURACION_KILOMETRAJE" Type="Self.CONFIGURACION_KILOMETRAJE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANO_VEHICULO">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONFIGURACION_KILOMETRAJE_FK_TALLER">
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="1" />
+    <End Role="CONFIGURACION_KILOMETRAJE" Type="Self.CONFIGURACION_KILOMETRAJE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TALLER">
+        <PropertyRef Name="CD_TALLER" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_TALLER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE">
+    <End Role="CONFIGURACION_KILOMETRAJE" Type="Self.CONFIGURACION_KILOMETRAJE" Multiplicity="1" />
+    <End Role="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" Type="Self.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO">
+        <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO_FK_OPERACION_MANTENIMIENTO">
+    <End Role="OPERACION_MANTENIMIENTO" Type="Self.OPERACION_MANTENIMIENTO" Multiplicity="1" />
+    <End Role="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" Type="Self.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="OPERACION_MANTENIMIENTO">
+        <PropertyRef Name="CD_OPERACION" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO">
+        <PropertyRef Name="CD_OPERACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISPOSITIVO_CLIENTE_FK_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="DISPOSITIVO_CLIENTE" Type="Self.DISPOSITIVO_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISPOSITIVO_CLIENTE_FK_DISPOSITIVO">
+    <End Role="DISPOSITIVO" Type="Self.DISPOSITIVO" Multiplicity="1" />
+    <End Role="DISPOSITIVO_CLIENTE" Type="Self.DISPOSITIVO_CLIENTE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISPOSITIVO_CLIENTE_FK_VEHICULO">
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="0..1" />
+    <End Role="DISPOSITIVO_CLIENTE" Type="Self.DISPOSITIVO_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEHICULO">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISPOSITIVO_FK_DISTRIBUIDOR">
+    <End Role="DISTRIBUIDOR" Type="Self.DISTRIBUIDOR" Multiplicity="1" />
+    <End Role="DISPOSITIVO" Type="Self.DISPOSITIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDOR">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISTRITO_FK_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Principal>
+      <Dependent Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMEPLEADO_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADO_FK_CARGO">
+    <End Role="CARGO" Type="Self.CARGO" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGO">
+        <PropertyRef Name="CD_CARGO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="CD_CARGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADO_FK_EMPLEADO_SUPERVISOR">
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="0..1" />
+    <End Role="EMPLEADO1" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="EMPLEADO1">
+        <PropertyRef Name="CD_USUARIO_SUPERVISOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADO_FK_SUCURSAL">
+    <End Role="SUCURSAL" Type="Self.SUCURSAL" Multiplicity="1" />
+    <End Role="EMPLEADO" Type="Self.EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUCURSAL">
+        <PropertyRef Name="CD_SUCURSAL" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="CD_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_APLICACION_APLICACION1">
+    <End Role="APLICACION" Type="Self.APLICACION" Multiplicity="0..1" />
+    <End Role="APLICACION1" Type="Self.APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="APLICACION1">
+        <PropertyRef Name="CD_APLICACION_PADRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION">
+    <End Role="USUARIO_NOTIFICACION" Type="Self.USUARIO_NOTIFICACION" Multiplicity="1" />
+    <End Role="IMAGEN_NOTIFICACION" Type="Self.IMAGEN_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="ID_NOTFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="IMAGEN_NOTIFICACION">
+        <PropertyRef Name="ID_NOTIFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_TRANSACCIONES_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="LOG_TRANSACCIONES" Type="Self.LOG_TRANSACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="LOG_TRANSACCIONES">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENU_SERVICIO_FK_APLICACION">
+    <End Role="APLICACION" Type="Self.APLICACION" Multiplicity="0..1" />
+    <End Role="MENU_SERVICIO" Type="Self.MENU_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="MENU_SERVICIO">
+        <PropertyRef Name="CD_APLICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENU_SERVICIO_USUARIO_FK_MENU_SERVICIO">
+    <End Role="MENU_SERVICIO" Type="Self.MENU_SERVICIO" Multiplicity="1" />
+    <End Role="MENU_SERVICIO_USUARIO" Type="Self.MENU_SERVICIO_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU_SERVICIO">
+        <PropertyRef Name="CD_MENU_SERVICIO" />
+      </Principal>
+      <Dependent Role="MENU_SERVICIO_USUARIO">
+        <PropertyRef Name="CD_MENU_SERVICIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENU_SERVICIO_USUARIO_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="MENU_SERVICIO_USUARIO" Type="Self.MENU_SERVICIO_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="MENU_SERVICIO_USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MODELO_FK_TIPO_ARTICULO">
+    <End Role="TIPO_ARTICULO" Type="Self.TIPO_ARTICULO" Multiplicity="1" />
+    <End Role="MODELO" Type="Self.MODELO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_ARTICULO">
+        <PropertyRef Name="CD_TIPO_ARTICULO" />
+      </Principal>
+      <Dependent Role="MODELO">
+        <PropertyRef Name="CD_TIPO_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM">
+    <End Role="USUARIO_MOVIL_GCM" Type="Self.USUARIO_MOVIL_GCM" Multiplicity="1" />
+    <End Role="NOTIFICACION_GCM" Type="Self.NOTIFICACION_GCM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO_MOVIL_GCM">
+        <PropertyRef Name="CD_USUARIO_GCM" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_GCM">
+        <PropertyRef Name="CD_USUARIO_GCM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION">
+    <End Role="TIPO_NOTIFICACION" Type="Self.TIPO_NOTIFICACION" Multiplicity="1" />
+    <End Role="NOTIFICACION_SIN_GESTION" Type="Self.NOTIFICACION_SIN_GESTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_SIN_GESTION_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="NOTIFICACION_SIN_GESTION" Type="Self.NOTIFICACION_SIN_GESTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE">
+    <End Role="NOTIFICACION_SIN_GESTION" Type="Self.NOTIFICACION_SIN_GESTION" Multiplicity="1" />
+    <End Role="NOTIFICACION_SIN_GESTION1" Type="Self.NOTIFICACION_SIN_GESTION" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="ID_NOTIFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION1">
+        <PropertyRef Name="ID_NOTIFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OPERACION_MANTENIMIENTO_FK_TALLER">
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="1" />
+    <End Role="OPERACION_MANTENIMIENTO" Type="Self.OPERACION_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TALLER">
+        <PropertyRef Name="CD_TALLER" />
+      </Principal>
+      <Dependent Role="OPERACION_MANTENIMIENTO">
+        <PropertyRef Name="CD_TALLER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO">
+    <End Role="TIPO_PLANTILLA_CORREO" Type="Self.TIPO_PLANTILLA_CORREO" Multiplicity="1" />
+    <End Role="PLANTILLA_CORREO" Type="Self.PLANTILLA_CORREO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PLANTILLA_CORREO">
+        <PropertyRef Name="TP_PLANTILLA_CORREO" />
+      </Principal>
+      <Dependent Role="PLANTILLA_CORREO">
+        <PropertyRef Name="TP_PLANTILLA_CORREO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PLANTILLA_CORREO_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="PLANTILLA_CORREO" Type="Self.PLANTILLA_CORREO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="PLANTILLA_CORREO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PROVINCIA_FK_PAIS">
+    <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="CD_PAIS" />
+      </Principal>
+      <Dependent Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION">
+    <End Role="TIPO_ATENCION" Type="Self.TIPO_ATENCION" Multiplicity="1" />
+    <End Role="RESPUESTA_OPERADOR_GCM" Type="Self.RESPUESTA_OPERADOR_GCM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_ATENCION">
+        <PropertyRef Name="TP_ATENCION" />
+      </Principal>
+      <Dependent Role="RESPUESTA_OPERADOR_GCM">
+        <PropertyRef Name="TP_ATENCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ROL_APLICACION_FK_APLICACION">
+    <End Role="APLICACION" Type="Self.APLICACION" Multiplicity="1" />
+    <End Role="ROL_APLICACION" Type="Self.ROL_APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="ROL_APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ROL_APLICACION_FK_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="ROL_APLICACION" Type="Self.ROL_APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="CD_ROL" />
+      </Principal>
+      <Dependent Role="ROL_APLICACION">
+        <PropertyRef Name="CD_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SEGMENTO_NEGOCIO_MENU_SERVICIO_FK_MENU_SERVICIO">
+    <End Role="MENU_SERVICIO" Type="Self.MENU_SERVICIO" Multiplicity="1" />
+    <End Role="SEGMENTO_NEGOCIO_MENU_SERVICIO" Type="Self.SEGMENTO_NEGOCIO_MENU_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MENU_SERVICIO">
+        <PropertyRef Name="CD_MENU_SERVICIO" />
+      </Principal>
+      <Dependent Role="SEGMENTO_NEGOCIO_MENU_SERVICIO">
+        <PropertyRef Name="CD_MENU_SERVICIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SEGMENTO_NEGOCIO_MENU_SERVICIO_FK_SEGMENTO_NEGOCIO">
+    <End Role="SEGMENTO_NEGOCIO" Type="Self.SEGMENTO_NEGOCIO" Multiplicity="1" />
+    <End Role="SEGMENTO_NEGOCIO_MENU_SERVICIO" Type="Self.SEGMENTO_NEGOCIO_MENU_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEGMENTO_NEGOCIO">
+        <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      </Principal>
+      <Dependent Role="SEGMENTO_NEGOCIO_MENU_SERVICIO">
+        <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_CORREGIMIENTO">
+    <End Role="CORREGIMIENTO" Type="Self.CORREGIMIENTO" Multiplicity="0..1" />
+    <End Role="SOCIO_COMERCIAL" Type="Self.SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_DISTRIBUIDOR">
+    <End Role="DISTRIBUIDOR" Type="Self.DISTRIBUIDOR" Multiplicity="0..1" />
+    <End Role="SOCIO_COMERCIAL" Type="Self.SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDOR">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_DISTRITO">
+    <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="1" />
+    <End Role="SOCIO_COMERCIAL" Type="Self.SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO">
+    <End Role="SEGMENTO_NEGOCIO" Type="Self.SEGMENTO_NEGOCIO" Multiplicity="1" />
+    <End Role="SOCIO_COMERCIAL" Type="Self.SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEGMENTO_NEGOCIO">
+        <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="SOCIO_COMERCIAL" Type="Self.SOCIO_COMERCIAL" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE">
+    <End Role="CONFIGURACION_KILOMETRAJE" Type="Self.CONFIGURACION_KILOMETRAJE" Multiplicity="1" />
+    <End Role="SOLICITUD_MANTENIMIENTO" Type="Self.SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIENTO_FK_TALLER">
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="1" />
+    <End Role="SOLICITUD_MANTENIMIENTO" Type="Self.SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TALLER">
+        <PropertyRef Name="CD_TALLER" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_TALLER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="SOLICITUD_MANTENIMIENTO" Type="Self.SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE">
+    <End Role="DISPOSITIVO_CLIENTE" Type="Self.DISPOSITIVO_CLIENTE" Multiplicity="0..1" />
+    <End Role="SOLICITUD_MANTENIMIENTO" Type="Self.SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="SOLICITUD_MANTENIMIENTO" Type="Self.SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_USUARIO_SOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_VEHICULO">
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="1" />
+    <End Role="SOLICITUD_MANTENIMIENTO" Type="Self.SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEHICULO">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_CORREGIMIENTO">
+    <End Role="CORREGIMIENTO" Type="Self.CORREGIMIENTO" Multiplicity="0..1" />
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_DISTRITO">
+    <End Role="DISTRITO" Type="Self.DISTRITO" Multiplicity="1" />
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_PAIS">
+    <End Role="PAIS" Type="Self.PAIS" Multiplicity="1" />
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="CD_PAIS" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_PROVINCIA">
+    <End Role="PROVINCIA" Type="Self.PROVINCIA" Multiplicity="1" />
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_SOCIO_COMERCIAL">
+    <End Role="SOCIO_COMERCIAL" Type="Self.SOCIO_COMERCIAL" Multiplicity="0..1" />
+    <End Role="TALLER" Type="Self.TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="0..1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_ORIGEN_NOTIFICACION">
+    <End Role="ORIGEN_NOTIFICACION" Type="Self.ORIGEN_NOTIFICACION" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORIGEN_NOTIFICACION">
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_RESPUESTA_OPERADOR_GCM">
+    <End Role="RESPUESTA_OPERADOR_GCM" Type="Self.RESPUESTA_OPERADOR_GCM" Multiplicity="0..1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESPUESTA_OPERADOR_GCM">
+        <PropertyRef Name="ID_RESPUESTA_OPERADOR" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="ID_RESPUESTA_OPERADOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_TICKET_ESTATUS">
+    <End Role="TICKET_ESTATUS" Type="Self.TICKET_ESTATUS" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TICKET_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS_TICKET" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="ID_ESTATUS_TICKET" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_TIPO_ATENCION">
+    <End Role="TIPO_ATENCION" Type="Self.TIPO_ATENCION" Multiplicity="0..1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_ATENCION">
+        <PropertyRef Name="TP_ATENCION" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="TP_ATENCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_TIPO_NOTIFICACION">
+    <End Role="TIPO_NOTIFICACION" Type="Self.TIPO_NOTIFICACION" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_USUARIO_TRANSFERENCIA">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="0..1" />
+    <End Role="TICKET" Type="Self.TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="CD_USUARIO_TRANSFERENCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_APLICACION_FK_APLICACION">
+    <End Role="APLICACION" Type="Self.APLICACION" Multiplicity="1" />
+    <End Role="USUARIO_APLICACION" Type="Self.USUARIO_APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="USUARIO_APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_APLICACION_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_APLICACION" Type="Self.USUARIO_APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_APLICACION">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_DISPOSITIVO_FK_DISPOSITIVO">
+    <End Role="DISPOSITIVO" Type="Self.DISPOSITIVO" Multiplicity="1" />
+    <End Role="USUARIO_DISPOSITIVO" Type="Self.USUARIO_DISPOSITIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="USUARIO_DISPOSITIVO">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_DISPOSITIVO_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_DISPOSITIVO" Type="Self.USUARIO_DISPOSITIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_DISPOSITIVO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD">
+    <End Role="TIPO_DOCUMENTO_IDENTIDAD" Type="Self.TIPO_DOCUMENTO_IDENTIDAD" Multiplicity="1" />
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_DOCUMENTO_IDENTIDAD">
+        <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_MOVIL_GCM_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_MOVIL_GCM" Type="Self.USUARIO_MOVIL_GCM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_MOVIL_GCM">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE">
+    <End Role="DISPOSITIVO_CLIENTE" Type="Self.DISPOSITIVO_CLIENTE" Multiplicity="0..1" />
+    <End Role="USUARIO_NOTIFICACION" Type="Self.USUARIO_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION">
+    <End Role="TIPO_NOTIFICACION" Type="Self.TIPO_NOTIFICACION" Multiplicity="1" />
+    <End Role="USUARIO_NOTIFICACION" Type="Self.USUARIO_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_NOTIFICACION_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_NOTIFICACION" Type="Self.USUARIO_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_PADRE_FK_USUARIO_1">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_PADRE" Type="Self.USUARIO_PADRE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_PADRE">
+        <PropertyRef Name="CD_USUARIO_PADRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_PADRE_FK_USUARIO_2">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_PADRE" Type="Self.USUARIO_PADRE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_PADRE">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_ROL_FK_ROL">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="USUARIO_ROL" Type="Self.USUARIO_ROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="CD_ROL" />
+      </Principal>
+      <Dependent Role="USUARIO_ROL">
+        <PropertyRef Name="CD_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_ROL_FK_USUARIO">
+    <End Role="USUARIO" Type="Self.USUARIO" Multiplicity="1" />
+    <End Role="USUARIO_ROL" Type="Self.USUARIO_ROL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_ROL">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_ANO_VEHICULO">
+    <End Role="ANO_VEHICULO" Type="Self.ANO_VEHICULO" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANO_VEHICULO">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_CLIENTE">
+    <End Role="CLIENTE" Type="Self.CLIENTE" Multiplicity="1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_COMPANIA_SEGURO">
+    <End Role="COMPANIA_SEGURO" Type="Self.COMPANIA_SEGURO" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANIA_SEGURO">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_MARCA">
+    <End Role="MARCA" Type="Self.MARCA" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARCA">
+        <PropertyRef Name="CD_MARCA" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_MARCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_MODELO">
+    <End Role="MODELO" Type="Self.MODELO" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODELO">
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_TIPO_CIERRE_VEHICULO">
+    <End Role="TIPO_CIERRE_VEHICULO" Type="Self.TIPO_CIERRE_VEHICULO" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CIERRE_VEHICULO">
+        <PropertyRef Name="TP_CIERRE_VEHICULO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="TP_CIERRE_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_TIPO_COMBUSTIBLE">
+    <End Role="TIPO_COMBUSTIBLE" Type="Self.TIPO_COMBUSTIBLE" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_COMBUSTIBLE">
+        <PropertyRef Name="TP_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="TP_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_TIPO_TRANSMISION_VEHICULO">
+    <End Role="TIPO_TRANSMISION_VEHICULO" Type="Self.TIPO_TRANSMISION_VEHICULO" Multiplicity="0..1" />
+    <End Role="VEHICULO" Type="Self.VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_TRANSMISION_VEHICULO">
+        <PropertyRef Name="TP_TRANSMISION_VEHICULO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="TP_TRANSMISION_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="FUNC_001_BUSCA_ALERTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="MONITOR">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="DE_ORIGEN_NOTIFICACION" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="DE_ICONO" Type="nvarchar" MaxLength="200" />
+          <Property Name="TP_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="DE_TIPO_NOTIFICACION" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CD_PRIORIDAD_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="DE_COLOR_TITULO" Type="varchar" MaxLength="100" />
+          <Property Name="DE_COLOR_BODY" Type="varchar" MaxLength="100" />
+          <Property Name="DE_COLOR_ETIQUETA" Type="varchar" MaxLength="100" />
+          <Property Name="ID_DISTRIBUIDOR" Type="int" Nullable="false" />
+          <Property Name="NM_DISTRIBUIDOR" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID_DISPOSITIVO" Type="int" Nullable="false" />
+          <Property Name="NM_DISPOSITIVO" Type="nvarchar" MaxLength="100" />
+          <Property Name="NU_DVR" Type="nvarchar" MaxLength="50" />
+          <Property Name="DE_DISPOSITIVO" Type="nvarchar" MaxLength="500" />
+          <Property Name="CD_CLIENTE" Type="int" />
+          <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="varchar" MaxLength="3" />
+          <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Type="nvarchar" MaxLength="100" />
+          <Property Name="NU_TELEFONO_MOVIL" Type="int" />
+          <Property Name="NU_VIN" Type="nvarchar" MaxLength="100" />
+          <Property Name="NU_SIM_GPS" Type="nvarchar" MaxLength="50" />
+          <Property Name="IN_LOCALIZACION" Type="bit" Nullable="false" />
+          <Property Name="NU_LATITUD" Type="float" />
+          <Property Name="NU_LONGITUD" Type="float" />
+          <Property Name="NM_IMAGEN" Type="nvarchar" MaxLength="200" />
+          <Property Name="NM_EXTENSION_IMAGEN" Type="nvarchar" MaxLength="50" />
+          <Property Name="DE_CONTENIDO_IMAGEN" Type="varbinary(max)" />
+          <Property Name="FE_NOTIFICACION" Type="datetime" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_002_BUSCA_TICKET" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="MONITOR">
+    <Parameter Name="P_CD_USUARIO" Type="int" Mode="In" />
+    <Parameter Name="P_TP_ATENCION" Type="int" Mode="In" />
+    <Parameter Name="P_NU_SIM_GPS" Type="nvarchar" Mode="In" />
+    <Parameter Name="P_FE_DESDE" Type="date" Mode="In" />
+    <Parameter Name="P_FE_HASTA" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID_TICKET" Type="int" Nullable="false" />
+          <Property Name="CD_CLIENTE" Type="int" />
+          <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="varchar" MaxLength="3" />
+          <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="DE_NOMBRE_CLIENTE" Type="nvarchar" MaxLength="250" />
+          <Property Name="DE_APELLIDO_CLIENTE" Type="nvarchar" MaxLength="250" />
+          <Property Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Type="nvarchar" MaxLength="510" />
+          <Property Name="CD_TP_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="DE_TIPO_NOTIFICACION" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CD_TP_ATENCION" Type="int" />
+          <Property Name="DE_TIPO_ATENCION" Type="nvarchar" MaxLength="250" />
+          <Property Name="DE_COLOR_TITULO" Type="varchar" MaxLength="100" />
+          <Property Name="NU_DVR" Type="varchar" MaxLength="50" />
+          <Property Name="NU_SIM" Type="varchar" MaxLength="50" />
+          <Property Name="NM_USUARIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="NM_DISTRIBUIDOR" Type="nvarchar" MaxLength="255" />
+          <Property Name="FE_STATUS" Type="datetime" Nullable="false" />
+          <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+          <Property Name="CD_ESTATUS" Type="int" />
+          <Property Name="DE_ESTATUS" Type="nvarchar" MaxLength="250" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_003_BUSCA_GESTION_ALERTAS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="MONITOR">
+    <Parameter Name="P_CD_USUARIO" Type="int" Mode="In" />
+    <Parameter Name="P_TP_NOTIFICACION" Type="int" Mode="In" />
+    <Parameter Name="P_FE_NOTIFICACION_DESDE" Type="date" Mode="In" />
+    <Parameter Name="P_FE_NOTIFICACION_HASTA" Type="date" Mode="In" />
+    <Parameter Name="P_FE_CREACION_DESDE" Type="date" Mode="In" />
+    <Parameter Name="P_FE_CREACION_HASTA" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="ID_ORIGEN_NOTIFICACION" Type="int" />
+          <Property Name="ID_TICKET" Type="int" />
+          <Property Name="CD_CLIENTE" Type="int" />
+          <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="varchar" MaxLength="3" />
+          <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="50" />
+          <Property Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Type="nvarchar" MaxLength="510" />
+          <Property Name="CD_TP_NOTIFICACION" Type="int" Nullable="false" />
+          <Property Name="DE_TIPO_NOTIFICACION" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="NU_DVR" Type="nvarchar" MaxLength="50" />
+          <Property Name="NU_SIM" Type="nvarchar" MaxLength="50" />
+          <Property Name="NM_USUARIO" Type="nvarchar" MaxLength="50" />
+          <Property Name="NM_DISTRIBUIDOR" Type="nvarchar" MaxLength="255" />
+          <Property Name="FE_NOTIFICACION" Type="datetime" Nullable="false" />
+          <Property Name="FE_CREACION" Type="datetime" Nullable="false" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="FUNC_001_BUSCA_CLIENTES" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="NEGOCIO">
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="CD_CLIENTE" Type="int" Nullable="false" />
+          <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="3" Nullable="false" />
+          <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Type="nvarchar" MaxLength="510" Nullable="false" />
+          <Property Name="EMAIL" Type="nvarchar" MaxLength="320" />
+          <Property Name="IN_USUARIO_INACTIVO" Type="bit" Nullable="false" />
+          <Property Name="IN_REGISTRO_MOVIL" Type="bit" Nullable="false" />
+          <Property Name="NU_MOVIL" Type="int" />
+          <Property Name="SIMS_CARDS" Type="nvarchar" MaxLength="1200" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="PROC_001_ES_VALIDA_CADENA_ENCRIPTADA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEGURIDAD">
+    <Parameter Name="P_CONTRASENA_USUARIO" Type="varbinary" Mode="In" />
+    <Parameter Name="P_CONTRASENA_ESCRITA" Type="varchar" Mode="In" />
+    <Parameter Name="P_KEY_CLAVE" Type="nvarchar" Mode="In" />
+    <Parameter Name="P_SALIDA" Type="bit" Mode="InOut" />
+  </Function>
+  <Function Name="PROC_002_OBTENER_CONTRASENA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEGURIDAD">
+    <Parameter Name="P_CONTRASENA_USUARIO" Type="varbinary" Mode="In" />
+    <Parameter Name="P_SALIDA" Type="varbinary" Mode="InOut" />
+  </Function>
+  <Function Name="PROC_003_OBTENER_CADENA_ENCRIPTADA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="SEGURIDAD">
+    <Parameter Name="P_KEY_CLAVE" Type="nvarchar" Mode="In" />
+    <Parameter Name="P_CADENA_A_ENCRIPTAR" Type="varchar" Mode="In" />
+    <Parameter Name="P_SALIDA" Type="varbinary" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="IntranetSAIModelStoreContainer">
+    <EntitySet Name="ANO_VEHICULO" EntityType="Self.ANO_VEHICULO" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="COMPANIA_SEGURO" EntityType="Self.COMPANIA_SEGURO" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="DISPOSITIVO_CLIENTE" EntityType="Self.DISPOSITIVO_CLIENTE" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="TIPO_CIERRE_VEHICULO" EntityType="Self.TIPO_CIERRE_VEHICULO" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="TIPO_COMBUSTIBLE" EntityType="Self.TIPO_COMBUSTIBLE" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="TIPO_TRANSMISION_VEHICULO" EntityType="Self.TIPO_TRANSMISION_VEHICULO" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="VEHICULO" EntityType="Self.VEHICULO" Schema="ASISTENCIA" store:Type="Tables" />
+    <EntitySet Name="CARGO" EntityType="Self.CARGO" Schema="COMPANIA" store:Type="Tables" />
+    <EntitySet Name="CARGO_ROL" EntityType="Self.CARGO_ROL" Schema="COMPANIA" store:Type="Tables" />
+    <EntitySet Name="EMPLEADO" EntityType="Self.EMPLEADO" Schema="COMPANIA" store:Type="Tables" />
+    <EntitySet Name="SUCURSAL" EntityType="Self.SUCURSAL" Schema="COMPANIA" store:Type="Tables" />
+    <EntitySet Name="UNIDAD_ADMINISTRATIVA" EntityType="Self.UNIDAD_ADMINISTRATIVA" Schema="COMPANIA" store:Type="Tables" />
+    <EntitySet Name="IMAGEN_NOTIFICACION" EntityType="Self.IMAGEN_NOTIFICACION" Schema="COMUNICACION" store:Type="Tables" />
+    <EntitySet Name="NOTIFICACION_GCM" EntityType="Self.NOTIFICACION_GCM" Schema="COMUNICACION" store:Type="Tables" />
+    <EntitySet Name="USUARIO_NOTIFICACION" EntityType="Self.USUARIO_NOTIFICACION" Schema="COMUNICACION" store:Type="Tables" />
+    <EntitySet Name="CONFIGURACION_KILOMETRAJE" EntityType="Self.CONFIGURACION_KILOMETRAJE" Schema="DEMO" store:Type="Tables" />
+    <EntitySet Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" EntityType="Self.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" Schema="DEMO" store:Type="Tables" />
+    <EntitySet Name="OPERACION_MANTENIMIENTO" EntityType="Self.OPERACION_MANTENIMIENTO" Schema="DEMO" store:Type="Tables" />
+    <EntitySet Name="SOLICITUD_MANTENIMIENTO" EntityType="Self.SOLICITUD_MANTENIMIENTO" Schema="DEMO" store:Type="Tables" />
+    <EntitySet Name="TALLER" EntityType="Self.TALLER" Schema="DEMO" store:Type="Tables" />
+    <EntitySet Name="ARTICULO" EntityType="Self.ARTICULO" Schema="INVENTARIO" store:Type="Tables" />
+    <EntitySet Name="MARCA" EntityType="Self.MARCA" Schema="INVENTARIO" store:Type="Tables" />
+    <EntitySet Name="MODELO" EntityType="Self.MODELO" Schema="INVENTARIO" store:Type="Tables" />
+    <EntitySet Name="TIPO_ARTICULO" EntityType="Self.TIPO_ARTICULO" Schema="INVENTARIO" store:Type="Tables" />
+    <EntitySet Name="KILOMETRAJE_TOTAL" EntityType="Self.KILOMETRAJE_TOTAL" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="NOTIFICACION_SIN_GESTION" EntityType="Self.NOTIFICACION_SIN_GESTION" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="ORIGEN_NOTIFICACION" EntityType="Self.ORIGEN_NOTIFICACION" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="RESPUESTA_OPERADOR_GCM" EntityType="Self.RESPUESTA_OPERADOR_GCM" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="TICKET" EntityType="Self.TICKET" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="TICKET_ESTATUS" EntityType="Self.TICKET_ESTATUS" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="TICKET_HISTORICO" EntityType="Self.TICKET_HISTORICO" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="TIPO_ATENCION" EntityType="Self.TIPO_ATENCION" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="TIPO_NOTIFICACION" EntityType="Self.TIPO_NOTIFICACION" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="USUARIO_DISPOSITIVO" EntityType="Self.USUARIO_DISPOSITIVO" Schema="MONITOR" store:Type="Tables" />
+    <EntitySet Name="MENU_SERVICIO" EntityType="Self.MENU_SERVICIO" Schema="MOVIL" store:Type="Tables" />
+    <EntitySet Name="MENU_SERVICIO_USUARIO" EntityType="Self.MENU_SERVICIO_USUARIO" Schema="MOVIL" store:Type="Tables" />
+    <EntitySet Name="CLIENTE" EntityType="Self.CLIENTE" Schema="NEGOCIO" store:Type="Tables" />
+    <EntitySet Name="SEGMENTO_NEGOCIO" EntityType="Self.SEGMENTO_NEGOCIO" Schema="NEGOCIO" store:Type="Tables" />
+    <EntitySet Name="SEGMENTO_NEGOCIO_MENU_SERVICIO" EntityType="Self.SEGMENTO_NEGOCIO_MENU_SERVICIO" Schema="NEGOCIO" store:Type="Tables" />
+    <EntitySet Name="SOCIO_COMERCIAL" EntityType="Self.SOCIO_COMERCIAL" Schema="NEGOCIO" store:Type="Tables" />
+    <EntitySet Name="DISPOSITIVO" EntityType="Self.DISPOSITIVO" Schema="PLATAFORMA" store:Type="Tables" />
+    <EntitySet Name="DISTRIBUIDOR" EntityType="Self.DISTRIBUIDOR" Schema="PLATAFORMA" store:Type="Tables" />
+    <EntitySet Name="APLICACION" EntityType="Self.APLICACION" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="ROL_APLICACION" EntityType="Self.ROL_APLICACION" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="USUARIO" EntityType="Self.USUARIO" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="USUARIO_APLICACION" EntityType="Self.USUARIO_APLICACION" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="USUARIO_MOVIL_GCM" EntityType="Self.USUARIO_MOVIL_GCM" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="USUARIO_PADRE" EntityType="Self.USUARIO_PADRE" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="USUARIO_ROL" EntityType="Self.USUARIO_ROL" Schema="SEGURIDAD" store:Type="Tables" />
+    <EntitySet Name="CORREGIMIENTO" EntityType="Self.CORREGIMIENTO" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="DISTRITO" EntityType="Self.DISTRITO" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="LOG_TRANSACCIONES" EntityType="Self.LOG_TRANSACCIONES" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="PAIS" EntityType="Self.PAIS" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="PARAMETRO_CONFIGURACION" EntityType="Self.PARAMETRO_CONFIGURACION" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="PLANTILLA_CORREO" EntityType="Self.PLANTILLA_CORREO" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="PROVINCIA" EntityType="Self.PROVINCIA" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="TIPO_DOCUMENTO_IDENTIDAD" EntityType="Self.TIPO_DOCUMENTO_IDENTIDAD" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="TIPO_PLANTILLA_CORREO" EntityType="Self.TIPO_PLANTILLA_CORREO" Schema="UTILITARIO" store:Type="Tables" />
+    <EntitySet Name="TIPO_SANGRE" EntityType="Self.TIPO_SANGRE" Schema="UTILITARIO" store:Type="Tables" />
+    <AssociationSet Name="ANO_VEHICULO_FK_MODELO" Association="Self.ANO_VEHICULO_FK_MODELO">
+      <End Role="MODELO" EntitySet="MODELO" />
+      <End Role="ANO_VEHICULO" EntitySet="ANO_VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="ARTICULO_FK_MODELO" Association="Self.ARTICULO_FK_MODELO">
+      <End Role="MODELO" EntitySet="MODELO" />
+      <End Role="ARTICULO" EntitySet="ARTICULO" />
+    </AssociationSet>
+    <AssociationSet Name="ARTICULO_MODELO_FK_MARCA" Association="Self.ARTICULO_MODELO_FK_MARCA">
+      <End Role="MARCA" EntitySet="MARCA" />
+      <End Role="MODELO" EntitySet="MODELO" />
+    </AssociationSet>
+    <AssociationSet Name="CARGO_FK_CARGO_PADRE" Association="Self.CARGO_FK_CARGO_PADRE">
+      <End Role="CARGO" EntitySet="CARGO" />
+      <End Role="CARGO1" EntitySet="CARGO" />
+    </AssociationSet>
+    <AssociationSet Name="CARGO_FK_UNIDAD_ADMINISTRATIVA" Association="Self.CARGO_FK_UNIDAD_ADMINISTRATIVA">
+      <End Role="UNIDAD_ADMINISTRATIVA" EntitySet="UNIDAD_ADMINISTRATIVA" />
+      <End Role="CARGO" EntitySet="CARGO" />
+    </AssociationSet>
+    <AssociationSet Name="CARGO_ROL_FK_CARGO" Association="Self.CARGO_ROL_FK_CARGO">
+      <End Role="CARGO" EntitySet="CARGO" />
+      <End Role="CARGO_ROL" EntitySet="CARGO_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="CARGO_ROL_FK_ROL" Association="Self.CARGO_ROL_FK_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="CARGO_ROL" EntitySet="CARGO_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_COMPANIA_SEGURO" Association="Self.CLIENTE_FK_COMPANIA_SEGURO">
+      <End Role="COMPANIA_SEGURO" EntitySet="COMPANIA_SEGURO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_CORREGIMIENTO" Association="Self.CLIENTE_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_DISTRITO" Association="Self.CLIENTE_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_PAIS" Association="Self.CLIENTE_FK_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_PROVINCIA" Association="Self.CLIENTE_FK_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_TIPO_SANGRE" Association="Self.CLIENTE_FK_TIPO_SANGRE">
+      <End Role="TIPO_SANGRE" EntitySet="TIPO_SANGRE" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_USUARIO" Association="Self.CLIENTE_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_FK_MODELO" Association="Self.CONFIGURACION_KILOMETRAJE_FK_MODELO">
+      <End Role="ANO_VEHICULO" EntitySet="ANO_VEHICULO" />
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+    </AssociationSet>
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_FK_TALLER" Association="Self.CONFIGURACION_KILOMETRAJE_FK_TALLER">
+      <End Role="TALLER" EntitySet="TALLER" />
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+    </AssociationSet>
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE" Association="Self.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE">
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+      <End Role="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" EntitySet="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO_FK_OPERACION_MANTENIMIENTO" Association="Self.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO_FK_OPERACION_MANTENIMIENTO">
+      <End Role="OPERACION_MANTENIMIENTO" EntitySet="OPERACION_MANTENIMIENTO" />
+      <End Role="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" EntitySet="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="DISPOSITIVO_CLIENTE_FK_CLIENTE" Association="Self.DISPOSITIVO_CLIENTE_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="DISPOSITIVO_CLIENTE_FK_DISPOSITIVO" Association="Self.DISPOSITIVO_CLIENTE_FK_DISPOSITIVO">
+      <End Role="DISPOSITIVO" EntitySet="DISPOSITIVO" />
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="DISPOSITIVO_CLIENTE_FK_VEHICULO" Association="Self.DISPOSITIVO_CLIENTE_FK_VEHICULO">
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="DISPOSITIVO_FK_DISTRIBUIDOR" Association="Self.DISPOSITIVO_FK_DISTRIBUIDOR">
+      <End Role="DISTRIBUIDOR" EntitySet="DISTRIBUIDOR" />
+      <End Role="DISPOSITIVO" EntitySet="DISPOSITIVO" />
+    </AssociationSet>
+    <AssociationSet Name="DISTRITO_FK_PROVINCIA" Association="Self.DISTRITO_FK_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+    </AssociationSet>
+    <AssociationSet Name="EMEPLEADO_FK_USUARIO" Association="Self.EMEPLEADO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADO_FK_CARGO" Association="Self.EMPLEADO_FK_CARGO">
+      <End Role="CARGO" EntitySet="CARGO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADO_FK_EMPLEADO_SUPERVISOR" Association="Self.EMPLEADO_FK_EMPLEADO_SUPERVISOR">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="EMPLEADO1" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADO_FK_SUCURSAL" Association="Self.EMPLEADO_FK_SUCURSAL">
+      <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_APLICACION_APLICACION1" Association="Self.FK_APLICACION_APLICACION1">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="APLICACION1" EntitySet="APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION" Association="Self.IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION">
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+      <End Role="IMAGEN_NOTIFICACION" EntitySet="IMAGEN_NOTIFICACION" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_TRANSACCIONES_FK_USUARIO" Association="Self.LOG_TRANSACCIONES_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="LOG_TRANSACCIONES" EntitySet="LOG_TRANSACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="MENU_SERVICIO_FK_APLICACION" Association="Self.MENU_SERVICIO_FK_APLICACION">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="MENU_SERVICIO" EntitySet="MENU_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="MENU_SERVICIO_USUARIO_FK_MENU_SERVICIO" Association="Self.MENU_SERVICIO_USUARIO_FK_MENU_SERVICIO">
+      <End Role="MENU_SERVICIO" EntitySet="MENU_SERVICIO" />
+      <End Role="MENU_SERVICIO_USUARIO" EntitySet="MENU_SERVICIO_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="MENU_SERVICIO_USUARIO_FK_USUARIO" Association="Self.MENU_SERVICIO_USUARIO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="MENU_SERVICIO_USUARIO" EntitySet="MENU_SERVICIO_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="MODELO_FK_TIPO_ARTICULO" Association="Self.MODELO_FK_TIPO_ARTICULO">
+      <End Role="TIPO_ARTICULO" EntitySet="TIPO_ARTICULO" />
+      <End Role="MODELO" EntitySet="MODELO" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM" Association="Self.NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM">
+      <End Role="USUARIO_MOVIL_GCM" EntitySet="USUARIO_MOVIL_GCM" />
+      <End Role="NOTIFICACION_GCM" EntitySet="NOTIFICACION_GCM" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION" Association="Self.NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION">
+      <End Role="TIPO_NOTIFICACION" EntitySet="TIPO_NOTIFICACION" />
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_FK_USUARIO" Association="Self.NOTIFICACION_SIN_GESTION_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE" Association="Self.NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE">
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+      <End Role="NOTIFICACION_SIN_GESTION1" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="OPERACION_MANTENIMIENTO_FK_TALLER" Association="Self.OPERACION_MANTENIMIENTO_FK_TALLER">
+      <End Role="TALLER" EntitySet="TALLER" />
+      <End Role="OPERACION_MANTENIMIENTO" EntitySet="OPERACION_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO" Association="Self.PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO">
+      <End Role="TIPO_PLANTILLA_CORREO" EntitySet="TIPO_PLANTILLA_CORREO" />
+      <End Role="PLANTILLA_CORREO" EntitySet="PLANTILLA_CORREO" />
+    </AssociationSet>
+    <AssociationSet Name="PLANTILLA_CORREO_FK_USUARIO" Association="Self.PLANTILLA_CORREO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PLANTILLA_CORREO" EntitySet="PLANTILLA_CORREO" />
+    </AssociationSet>
+    <AssociationSet Name="PROVINCIA_FK_PAIS" Association="Self.PROVINCIA_FK_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+    </AssociationSet>
+    <AssociationSet Name="RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION" Association="Self.RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION">
+      <End Role="TIPO_ATENCION" EntitySet="TIPO_ATENCION" />
+      <End Role="RESPUESTA_OPERADOR_GCM" EntitySet="RESPUESTA_OPERADOR_GCM" />
+    </AssociationSet>
+    <AssociationSet Name="ROL_APLICACION_FK_APLICACION" Association="Self.ROL_APLICACION_FK_APLICACION">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="ROL_APLICACION" EntitySet="ROL_APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="ROL_APLICACION_FK_ROL" Association="Self.ROL_APLICACION_FK_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="ROL_APLICACION" EntitySet="ROL_APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="SEGMENTO_NEGOCIO_MENU_SERVICIO_FK_MENU_SERVICIO" Association="Self.SEGMENTO_NEGOCIO_MENU_SERVICIO_FK_MENU_SERVICIO">
+      <End Role="MENU_SERVICIO" EntitySet="MENU_SERVICIO" />
+      <End Role="SEGMENTO_NEGOCIO_MENU_SERVICIO" EntitySet="SEGMENTO_NEGOCIO_MENU_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="SEGMENTO_NEGOCIO_MENU_SERVICIO_FK_SEGMENTO_NEGOCIO" Association="Self.SEGMENTO_NEGOCIO_MENU_SERVICIO_FK_SEGMENTO_NEGOCIO">
+      <End Role="SEGMENTO_NEGOCIO" EntitySet="SEGMENTO_NEGOCIO" />
+      <End Role="SEGMENTO_NEGOCIO_MENU_SERVICIO" EntitySet="SEGMENTO_NEGOCIO_MENU_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_CORREGIMIENTO" Association="Self.SOCIO_COMERCIAL_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_DISTRIBUIDOR" Association="Self.SOCIO_COMERCIAL_FK_DISTRIBUIDOR">
+      <End Role="DISTRIBUIDOR" EntitySet="DISTRIBUIDOR" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_DISTRITO" Association="Self.SOCIO_COMERCIAL_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO" Association="Self.SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO">
+      <End Role="SEGMENTO_NEGOCIO" EntitySet="SEGMENTO_NEGOCIO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_USUARIO" Association="Self.SOCIO_COMERCIAL_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE" Association="Self.SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE">
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIENTO_FK_TALLER" Association="Self.SOLICITUD_MANTENIMIENTO_FK_TALLER">
+      <End Role="TALLER" EntitySet="TALLER" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_CLIENTE" Association="Self.SOLICITUD_MANTENIMIETO_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE" Association="Self.SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE">
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_USUARIO" Association="Self.SOLICITUD_MANTENIMIETO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_VEHICULO" Association="Self.SOLICITUD_MANTENIMIETO_FK_VEHICULO">
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_CORREGIMIENTO" Association="Self.TALLER_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_DISTRITO" Association="Self.TALLER_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_PAIS" Association="Self.TALLER_FK_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_PROVINCIA" Association="Self.TALLER_FK_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_SOCIO_COMERCIAL" Association="Self.TALLER_FK_SOCIO_COMERCIAL">
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_CLIENTE" Association="Self.TICKET_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_ORIGEN_NOTIFICACION" Association="Self.TICKET_FK_ORIGEN_NOTIFICACION">
+      <End Role="ORIGEN_NOTIFICACION" EntitySet="ORIGEN_NOTIFICACION" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_RESPUESTA_OPERADOR_GCM" Association="Self.TICKET_FK_RESPUESTA_OPERADOR_GCM">
+      <End Role="RESPUESTA_OPERADOR_GCM" EntitySet="RESPUESTA_OPERADOR_GCM" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_TICKET_ESTATUS" Association="Self.TICKET_FK_TICKET_ESTATUS">
+      <End Role="TICKET_ESTATUS" EntitySet="TICKET_ESTATUS" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_TIPO_ATENCION" Association="Self.TICKET_FK_TIPO_ATENCION">
+      <End Role="TIPO_ATENCION" EntitySet="TIPO_ATENCION" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_TIPO_NOTIFICACION" Association="Self.TICKET_FK_TIPO_NOTIFICACION">
+      <End Role="TIPO_NOTIFICACION" EntitySet="TIPO_NOTIFICACION" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_USUARIO" Association="Self.TICKET_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_USUARIO_TRANSFERENCIA" Association="Self.TICKET_FK_USUARIO_TRANSFERENCIA">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_APLICACION_FK_APLICACION" Association="Self.USUARIO_APLICACION_FK_APLICACION">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="USUARIO_APLICACION" EntitySet="USUARIO_APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_APLICACION_FK_USUARIO" Association="Self.USUARIO_APLICACION_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_APLICACION" EntitySet="USUARIO_APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_DISPOSITIVO_FK_DISPOSITIVO" Association="Self.USUARIO_DISPOSITIVO_FK_DISPOSITIVO">
+      <End Role="DISPOSITIVO" EntitySet="DISPOSITIVO" />
+      <End Role="USUARIO_DISPOSITIVO" EntitySet="USUARIO_DISPOSITIVO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_DISPOSITIVO_FK_USUARIO" Association="Self.USUARIO_DISPOSITIVO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_DISPOSITIVO" EntitySet="USUARIO_DISPOSITIVO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD" Association="Self.USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD">
+      <End Role="TIPO_DOCUMENTO_IDENTIDAD" EntitySet="TIPO_DOCUMENTO_IDENTIDAD" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_MOVIL_GCM_FK_USUARIO" Association="Self.USUARIO_MOVIL_GCM_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_MOVIL_GCM" EntitySet="USUARIO_MOVIL_GCM" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE" Association="Self.USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE">
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION" Association="Self.USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION">
+      <End Role="TIPO_NOTIFICACION" EntitySet="TIPO_NOTIFICACION" />
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_NOTIFICACION_FK_USUARIO" Association="Self.USUARIO_NOTIFICACION_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_PADRE_FK_USUARIO_1" Association="Self.USUARIO_PADRE_FK_USUARIO_1">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_PADRE" EntitySet="USUARIO_PADRE" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_PADRE_FK_USUARIO_2" Association="Self.USUARIO_PADRE_FK_USUARIO_2">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_PADRE" EntitySet="USUARIO_PADRE" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_ROL_FK_ROL" Association="Self.USUARIO_ROL_FK_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="USUARIO_ROL" EntitySet="USUARIO_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_ROL_FK_USUARIO" Association="Self.USUARIO_ROL_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_ROL" EntitySet="USUARIO_ROL" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_ANO_VEHICULO" Association="Self.VEHICULO_FK_ANO_VEHICULO">
+      <End Role="ANO_VEHICULO" EntitySet="ANO_VEHICULO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_CLIENTE" Association="Self.VEHICULO_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_COMPANIA_SEGURO" Association="Self.VEHICULO_FK_COMPANIA_SEGURO">
+      <End Role="COMPANIA_SEGURO" EntitySet="COMPANIA_SEGURO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_MARCA" Association="Self.VEHICULO_FK_MARCA">
+      <End Role="MARCA" EntitySet="MARCA" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_MODELO" Association="Self.VEHICULO_FK_MODELO">
+      <End Role="MODELO" EntitySet="MODELO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_TIPO_CIERRE_VEHICULO" Association="Self.VEHICULO_FK_TIPO_CIERRE_VEHICULO">
+      <End Role="TIPO_CIERRE_VEHICULO" EntitySet="TIPO_CIERRE_VEHICULO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_TIPO_COMBUSTIBLE" Association="Self.VEHICULO_FK_TIPO_COMBUSTIBLE">
+      <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_TIPO_TRANSMISION_VEHICULO" Association="Self.VEHICULO_FK_TIPO_TRANSMISION_VEHICULO">
+      <End Role="TIPO_TRANSMISION_VEHICULO" EntitySet="TIPO_TRANSMISION_VEHICULO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

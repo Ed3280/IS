@@ -1,0 +1,76 @@
+﻿@model IntranetWeb.ViewModel.Dashboard.Cumpleano.Cumpleano
+@{
+    Layout = null;
+    int i = 0;
+ }
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 widget-container-col">
+    <div id="widgetCumpleano" class="widget-box transparent">
+        <div class="widget-header">
+            <h4 class="widget-title lighter"> <i class="fa fa-birthday-cake"></i> @Resources.TituloWidget.Cumpleano</h4> 
+
+            <div class="widget-toolbar no-border">
+                <a href="javascript:void(0);" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+                <a href="javascript:void(0);" data-action="fullscreen">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
+                <a href="javascript:void(0);" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body scrollable" data-size="35">
+               <div class="clearfix">
+                    @foreach (var Empleado in Model.Empleado){
+
+                        <div  class="itemdiv memberdiv @(i>5?"hidden":"")">
+                            <div class="user">
+                                <img alt="@Empleado.Nombre avatar" src="@Url.Content("~/Content/images/avatar/avatar.png")" />
+                            </div>
+
+                            <div class="body">
+                                <div class="name">
+                                    <a data-rel="tooltip" data-placement="top" class="tooltip-info" title="@Empleado.Nombre" href="javascript:void(0);">@Html.DisplayFor(m => Empleado.Nombre)</a>
+                                </div>
+
+                                <div class="time">
+                                    <i class="ace-icon fa fa-clock-o"></i>
+                                    <span class="green">@Html.DisplayFor(m=> Empleado.FechaNacimiento)</span>
+                                </div>
+                                @if (Empleado.FechaNacimiento.Month== DateTime.Today.Month&&
+                                    Empleado.FechaNacimiento.Day == DateTime.Today.Day){
+                                <div>
+                                    <span class="label label-danger label-sm">@Resources.EtiquetaResource.Hoy</span>
+                                </div>
+                                }
+                            </div>
+                        </div>
+                        i++;
+                    }
+                </div>
+
+                @if (i > 5)
+                {
+                    <div id="divBotonCumpleanos">
+                        <div class="space-4"></div>
+
+                        <div class="center">
+                            <i class="ace-icon fa fa-users fa-2x green middle"></i>
+
+                            &nbsp;
+                            <a href="javascript:void(0);" id="btnVerCumpleanos" class="btn btn-sm btn-white btn-info">
+                                @Resources.TituloBotonResource.VerTodos &nbsp;
+                                <i class="ace-icon fa fa-arrow-right"></i>
+                            </a>
+                        </div>
+
+                        <div class="hr hr-double hr8"></div>
+                    </div>
+                }
+           
+        </div>        
+    </div>
+</div>

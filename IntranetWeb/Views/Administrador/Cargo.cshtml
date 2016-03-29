@@ -1,0 +1,53 @@
+﻿@model IList<IntranetWeb.ViewModel.Administrador.Cargo>
+@{
+    ViewBag.Title = Resources.TituloPaginaResource.Cargo;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header" data-etiqueta-procesando="@Resources.EtiquetaResource.Procesando"><h1>@ViewBag.Title</h1></div>
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <div id="divCargos" class="col-xs-12 widget-container-col">
+            <div id="widgetCargos" class="widget-box widget-color-blue2"
+                  data-confirm-eliminar = "@Resources.AdvertenciaResource.ConfirmarEliminarCargo"
+                 
+                  data-url        = "@Url.Action("_getConsultarCargo")"
+                  data-url-crear  = "@Url.Action("_getCrearCargo")"
+                  data-url-editar = "@Url.Action("_getEditarCargo")"
+                  data-url-eliminar ="@Url.Action("eliminarCargo")"                 
+                 >
+                <div class="widget-header">
+                    <h4 class="widget-title lighter"><i class="fa fa-list"></i> @ViewBag.Title</h4>
+
+                    <div class="widget-toolbar">
+                        <a href="javascript:void(0);" data-rel="tooltip" data-placement="top" title="@Resources.EtiquetaResource.CrearRegistro" class="tooltip-info icono-crear-registro" data-action="create"> <i id="iCreateWidget" class="ace-icon fa fa-plus white"> </i></a>
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div id="divWigetBodyCargos" class="widget-main padding-4 scrollable" data-size="65">
+                     @{ Html.RenderAction("_getConsultarCargo"); }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryTable")
+    @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/duallistbox")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/nestable")
+    @Scripts.Render("~/bundles/fuelux/wizard")
+    @Scripts.Render("~/bundles/intranetSAI/Administrador/cargo")
+ }
+@section Styles {
+    @Styles.Render("~/Content/css/select2")
+    @Styles.Render("~/Content/css/duallistbox")
+}
+
+

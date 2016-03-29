@@ -1,0 +1,90 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Dispositivo
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.AsociarDispositivo;
+}
+<div class="widget-box transparent" data-titulo="@ViewBag.Title" id="divWidgetBoxAsociarDispositivo">
+    @using (Ajax.BeginForm("crearDispositivoCliente","Cliente", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "clienteSAI.submitSuccess(data)" }, new { @Id = "formCrearDispositivoCliente", role = "form" }))
+    {
+
+
+        <div id="divContenedorFormularioDispositivo" data-url-consultar-dispositivo ="@Url.Action("consultarDatosDispositivos","Cliente")"
+                class="widget-body">
+            <div class="widget-main scrollable" data-size="60">
+                
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        @Html.LabelBoldFor(m => m.Dispositivos)
+                        @Html.DropDownListFor(m => m.Id, new SelectList(Model.Dispositivos, "Value", "Text", Model.Id), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.Dispositivos)), new { @class = "select2 form-control vehiculo" })
+                        @Html.ValidationMessageFor(model => model.Id, "", new { @class = "help-block" })
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.Imei)
+                        @Html.TextBoxFor(m => m.Imei, new { Class = "form-control", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.Imei, "", new { @class = "help-block" })
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.TarjetaSim)
+                        @Html.TextBoxFor(m => m.TarjetaSim, new { @Readonly = "true", Class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.TarjetaSim, "", new { @class = "help-block" })
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.NumeroDVR)
+                        @Html.TextBoxFor(m => m.NumeroDVR, new { Class = "form-control digits", @readonly = "readonly" })
+                        @Html.ValidationMessageFor(m => m.NumeroDVR, "", new { @class = "help-block" })
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.VehiculosSeleccionado)
+                        @Html.DropDownListFor(m => m.VehiculosSeleccionado, new SelectList(Model.Vehiculos, "Value", "Text", Model.VehiculosSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.VehiculosSeleccionado)), new { @class = "select2 form-control vehiculo" })
+                        @Html.ValidationMessageFor(model => model.VehiculosSeleccionado, "", new { @class = "help-block" })
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.ContrasenaDVR)
+                        @Html.TextBoxFor(m => m.ContrasenaDVR, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.ContrasenaDVR, "", new { @class = "help-block" })
+                    </div>
+                    
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.KilometrajeInicial)
+                        @Html.TextBoxFor(m => m.KilometrajeInicial, new { Class = "form-control digits" })
+                        @Html.ValidationMessageFor(m => m.KilometrajeInicial, "", new { @class = "help-block" })
+                    </div>                    
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.IndicadorAperturaRemota)
+                        @Html.CheckBoxAceFor(m => m.IndicadorAperturaRemota)
+                        @Html.ValidationMessageFor(m => m.IndicadorAperturaRemota, "", new { @class = "help-block" })
+                    </div>
+
+                </div>
+                @Html.HiddenFor(m => m.IdCliente)                
+            </div>
+
+            <div class="space-2"></div>
+            <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @IntranetWeb.Core.Constante.Mensaje.Etiqueta.Procesando </strong></div>
+            </div>
+            <div class="space-2"></div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" name="submitButton" id="btnGuardar" class="hidden" value="grabar">@IntranetWeb.Core.Constante.Mensaje.Etiqueta.Guardar</button>
+            <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+        </div>
+
+    }
+</div>

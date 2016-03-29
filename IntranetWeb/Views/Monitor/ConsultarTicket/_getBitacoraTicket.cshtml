@@ -1,0 +1,128 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IEnumerable<IntranetWeb.ViewModel.Monitor.Ticket>
+@{Layout = null;
+    ViewBag.Title = Resources.TituloWidget.Bitacora;
+    DateTime feAnterior = DateTime.Now;
+    DateTime feActual;
+    string observacionActual = null;
+    string observacionSupervisorActual = null;
+    string estatusActual = null;
+    string tipoAtencionActual = null;
+  
+
+    Dictionary<int, string> colorEstatus = new Dictionary<int, string>();
+    colorEstatus.Add(1, "label-info"); //Abierto
+    colorEstatus.Add(2, "label-success"); //Atendido
+    colorEstatus.Add(3, "label-warning"); //transferido
+    colorEstatus.Add(4, "label-danger"); //Descartado
+}
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="glyphicon fa fa-compass"></i> @ViewBag.Title</h4>
+
+        <div class="widget-toolbar no-border">
+            <!--a href="#" data-action="collapse">
+                <i class="ace-icon fa fa-chevron-up"></i>
+            </a-->
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-main">
+
+            <div class="row">
+    @for (int i = 0; i < Model.Count(); i++)
+    {
+        feActual = Model.ElementAt(i).FechaEstatus;
+        observacionActual = Model.ElementAt(i).Observacion;
+        observacionSupervisorActual = Model.ElementAt(i).ObservacionSupervisor;
+        estatusActual = Model.ElementAt(i).DescripcionEstatus;
+        tipoAtencionActual = Model.ElementAt(i).DescripcionTipoAtencion;
+
+        if (i == 0) { feAnterior = feActual;  }
+         <div class="timeline-container timeline-style2">
+                <span class="timeline-label">
+                    <b>@feActual.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson)</b>
+                </span>
+             <div class="timeline-items">
+                 @while (feActual.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson) == feAnterior.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson)&& i < Model.Count())
+                 {
+                     feActual = Model.ElementAt(i).FechaEstatus;
+                     observacionActual = Model.ElementAt(i).Observacion;
+                     observacionSupervisorActual = Model.ElementAt(i).ObservacionSupervisor;
+                     estatusActual = Model.ElementAt(i).DescripcionEstatus;
+                     tipoAtencionActual = Model.ElementAt(i).DescripcionTipoAtencion;
+
+                    <div class="timeline-item clearfix">
+                        <div class="timeline-info">
+                            <span class="timeline-date">@feActual.ToString(IntranetWeb.Core.Constante.AppFormat.hourJson)</span>
+
+                            <i class="timeline-indicator btn btn-info no-hover"></i>
+                        </div>
+
+                        <div class="widget-box transparent">
+                            <div class="widget-body">
+                                <div class="widget-main no-padding">
+                                    <span class="bigger-110">
+                                        <a href="javascript:void(0);" class="blue bolder">@Model.ElementAt(i).NombreUsuarioTicket</a>                                                
+                                    </span>
+                                    <div class="tab-space"></div>
+                                    @if ((i < Model.Count()-1 && estatusActual != Model.ElementAt(i + 1).DescripcionEstatus) || i==Model.Count()-1) {
+                                        <div class="label @colorEstatus[Model.ElementAt(i).EstatusSeleccionado] label-sm">@estatusActual</div>
+                                    }
+
+                                    @if (!String.IsNullOrWhiteSpace(tipoAtencionActual) && ((i < Model.Count()-1&& tipoAtencionActual != Model.ElementAt(i+1).DescripcionTipoAtencion)||i==Model.Count()-1))
+                                    {
+                                        <div class="label label-info label-sm">@tipoAtencionActual</div>
+                                    }
+
+                                    <div class="tab-space"></div>
+                                    @if (!String.IsNullOrWhiteSpace(observacionActual) && ((i < Model.Count() - 1 && observacionActual != Model.ElementAt(i + 1).Observacion) || i == Model.Count() - 1))
+                                    {
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3 bolder">
+                                                @Html.Raw("&nbsp&nbsp&nbsp&nbsp");@Html.DisplayNameFor(m => m.First().Observacion):
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8">
+                                                @observacionActual
+                                            </div>
+                                        </div>
+
+                                    }
+                                    @if (!String.IsNullOrWhiteSpace(observacionSupervisorActual) && ((i < Model.Count() - 1 && observacionSupervisorActual != Model.ElementAt(i + 1).ObservacionSupervisor) || i == Model.Count() - 1))
+                                    {
+                                        <br />
+                                        <div class="row">
+                                            <div class="col-xs-12 col-sm-3 bolder">
+                                                @Html.Raw("&nbsp&nbsp&nbsp&nbsp");@Html.DisplayNameFor(m => m.First().ObservacionSupervisor):
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8">
+                                                @observacionSupervisorActual
+                                            </div>
+                                        </div>
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                     feAnterior = feActual;
+                   
+                     feActual = i + 1<Model.Count()? Model.ElementAt(i+1).FechaEstatus: feActual;
+                     if (feActual.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson) == feAnterior.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson))
+                     {
+                         i++;
+                     }
+                 }
+
+              </div>
+             </div>       
+        feAnterior = feActual;       
+    }
+            </div>
+        </div>
+        </div>
+</div>

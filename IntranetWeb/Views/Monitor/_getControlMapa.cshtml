@@ -1,0 +1,50 @@
+﻿@model IntranetWeb.ViewModel.Monitor.Distribuidor 
+@{Layout = null;  }
+<div id="divColControlMapa" class="col-xs-3 " style="display:none">
+
+    <div id="widgetControlMapa" class="widget-box ">
+        <div class="widget-header">
+            <h6 class="widget-title bolder"><i class="fa fa-signal"></i> @Resources.TituloWidget.Dispositivos </h6>
+
+            <div class="widget-toolbar">
+                
+                <a href="javascript:void(0);" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="javascript:void(0);" data-action="fullscreen" class="orange2">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
+            </div>
+
+            <div class="widget-toolbar">
+
+                <button type="button" id="btnMostrarEnMovimiento" class="btn  btn-light btn-minier active tooltip-info" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EnMovimiento" data-toggle="button"><i class="ace-icon fa fa-car green icon-only"></i></button>
+                <button type="button" id="btnMostrarDetenido" class="btn  btn-light btn-minier active tooltip-info" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.Detenido" data-toggle="button"><i class="ace-icon fa fa-car red  icon-only"></i></button>
+                <button type="button" id="btnMostrarFueraDeLinea" class="btn  btn-light btn-minier active tooltip-info" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.FueraDeLinea" data-toggle="button"><i class="ace-icon fa fa-car black icon-only"></i></button>
+
+            </div>
+
+        </div>
+
+        <div class="widget-body">  
+            
+                   
+                    <div class="input-group">
+                        <input type="text" id="txtQueryDispositivo" class="form-control search-query" placeholder="@Resources.EtiquetaResource.IngreseBusqueda">
+                        <span class="input-group-btn">
+                            <button id="btnBuscarDispositivo" type="button" class="btn btn-inverse btn-white">
+                                <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                            </button>
+                        </span>
+                    </div>
+            <div class="space-2"></div>
+            
+                <div class="widget-main padding-4 scrollable" data-size="50">
+
+                    @{Html.RenderAction(Model.AccionNestedDispositivos,"Monitor");}
+                </div>
+</div>
+            </div>
+        </div>
+

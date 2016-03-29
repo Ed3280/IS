@@ -1,0 +1,81 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Monitor.Ticket
+@{
+    ViewBag.Title = "Ticket";
+    Layout = null;
+}
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="glyphicon fa fa-ticket"></i> @ViewBag.Title</h4>
+
+        <div class="widget-toolbar no-border">
+            <!--a href="#" data-action="collapse">
+                <i class="ace-icon fa fa-chevron-up"></i>
+            </a-->
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-main">
+            <div class="row">
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Id)<br />
+                    @Html.DisplayFor(m => m.Id, new { Class = "form-control" })
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DescripcionOrigenNotificacion)<br />
+                    @Html.DisplayFor(m => m.DescripcionOrigenNotificacion, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DescripcionEstatus)<br />
+                    @Html.DisplayFor(m => m.DescripcionEstatus, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.FechaEstatus)<br />
+                    @Html.DisplayFor(m => m.FechaEstatus, new { Class = "form-control" })
+                </div>
+              <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    <strong>@Html.LabelBoldFor(m => m.DescripcionTipoNotificacion)</strong><br />
+                    @Html.DisplayFor(m => m.DescripcionTipoNotificacion, new { Class = "form-control" })
+                </div>
+
+
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    <strong>@Html.LabelBoldFor(m => m.FechaNotificacion)</strong><br />
+                    @Html.DisplayFor(m => m.FechaNotificacion, new { Class = "form-control" })
+                </div>
+                
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.FechaCreacion)<br />
+                    @Html.DisplayFor(m => m.FechaCreacion, new { Class = "form-control" })
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.UsuarioTransferenciaSeleccionado)
+                    @Html.DropDownListFor(m => m.UsuarioTransferenciaSeleccionado, new SelectList(Model.UsuarioTransferencia, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.UsuarioTransferenciaSeleccionado)), new { @class = "select2 form-control" })
+                    @Html.ValidationMessageFor(model => model.UsuarioTransferenciaSeleccionado, "", new { @class = "help-block" })
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DescripcionTipoAtencion)
+                    @Html.DropDownListFor(m => m.TipoAtencionSeleccionada, new SelectList(Model.TipoAtencion, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.DescripcionTipoAtencion)), new { @class = "select2 form-control tipoAtencionSelect", data_url = Url.Action("getRespuestaOperadorGCM", "Select") })
+                    @Html.ValidationMessageFor(model => model.TipoAtencionSeleccionada, "", new { @class = "help-block" })
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.MensajeAlClienteSeleccionado)
+                    @Html.DropDownListFor(m => m.MensajeAlClienteSeleccionado, new SelectList(Model.MensajeAlCliente, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.MensajeAlClienteSeleccionado)), new { @class = "select2 form-control mensajeAlClienteSelect" })
+                    @Html.ValidationMessageFor(model => model.TipoAtencionSeleccionada, "", new { @class = "help-block" })
+                </div>
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Observacion)&nbsp;&nbsp;<a href="javascript:void(0);" title="Guardar Observación" id="aGrabaObservacion" data-url="@Url.Action("grabarObservacionAgente")"><i class="ace-icon fa fa-floppy-o bigger-120 green"></i> </a>
+                    @Html.TextAreaFor(m => m.Observacion, new { Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Observacion, "", new { @class = "help-block" })
+                </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.OrigenNotificacionSeleccionada)

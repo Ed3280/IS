@@ -1,0 +1,77 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Administrador.LogTransacciones
+
+@{
+    ViewBag.Title = "Log de transacciones";
+}
+
+<div class="page-header"><h1>@ViewBag.Title</h1></div>
+
+
+<div id="divFiltros" class="row">
+    
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        @Html.LabelBoldFor(m => m.UsuarioSeleccionado)
+        @Html.DropDownListFor(m => m.UsuarioSeleccionado, new SelectList(Model.Usuario, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.UsuarioSeleccionado)), new { @id = "UsuarioSeleccionado", @class = "select2 form-control" })
+    </div>
+    
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4 input-daterange">
+        @Html.Label("Fecha Estatus", new { @class = "bolder" })<br />
+        <input type="text" name="FechaBusquedaDesde" id="FechaBusquedaDesde" value="@Model.FechaBusquedaDesde.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson)" /> <span> - </span> <input type="text" name="FechaBusquedaHasta" id="FechaBusquedaHasta" value="@Model.FechaBusquedaHasta.ToString( IntranetWeb.Core.Constante.AppFormat.dateJson)" /> 
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4">
+        @Html.LabelBoldFor(m => m.NivelSeleccionado)
+        @Html.DropDownListFor(m => m.NivelSeleccionado, new SelectList(Model.Nivel, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.NivelSeleccionado)), new { @id = "NivelSeleccionado" , @class = "select2 form-control" })
+    </div>
+</div>
+<div class=" form-group clearfix">
+    <button type="button" id="btnConsultarLog" class="pull-left btn btn-sm btn-success">
+        <span class="bigger-110">Consultar</span>
+    </button>
+</div>
+
+<div class="space"></div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-header">
+            @ViewBag.Title &nbsp;         
+            <!--div class="widget-toolbar">
+                <a href="javascript:void(0);" title="Refrescar" data-action="reload"> <i id="iReloadTablaLog" class="ace-icon fa fa-refresh white"> </i></a>
+            </div-->
+        </div>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+            <table id="tableLog" class="table table-striped table-bordered table-hover dataTable no-footer DTTT_selectable"
+                    data-url="@Url.Action("consultarLog")"
+                    data-url-consulta-detalle="@Url.Action("_getConsultarLog")"
+                    data-url-localization="@Url.Content("~/Scripts/dataTables/localization/"+Resources.ConfiguracionResource.DataTables+ ".json")"
+                    role="grid" aria-describedby="dynamic-table_info">
+                <thead>
+                    <tr role="row">
+                        <th                 tabindex="0" aria-controls="dynamic-table" data-name="EditarRegistro"   rowspan="1" colspan="1" aria-label="Acciones"></th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="NombreUsuario"    rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.NombreUsuario)">@Html.DisplayNameFor(m => m.NombreUsuario)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="FechaOperacion"   rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.FechaOperacion)">@Html.DisplayNameFor(m => m.FechaOperacion)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Ip"               rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Ip)">@Html.DisplayNameFor(m => m.Ip)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Controlador"      rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Controlador)">@Html.DisplayNameFor(m => m.Controlador)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Accion"           rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Accion)">@Html.DisplayNameFor(m => m.Accion)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Url"              rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Url)">@Html.DisplayNameFor(m => m.Url)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="DescripcionNivel" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.DescripcionNivel)">@Html.DisplayNameFor(m => m.DescripcionNivel)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Mensaje"          rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Mensaje)">@Html.DisplayNameFor(m => m.Mensaje)</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryTable")
+    @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/intranetSAI/Administrador/logTransacciones")
+}
+@section Styles {
+    @Styles.Render("~/Content/css/select2")
+}

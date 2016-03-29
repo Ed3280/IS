@@ -1,0 +1,138 @@
+﻿@model IntranetWeb.ViewModel.Interface.IModeloAplicacion
+
+
+@helper getAplicacionesPorRol(int? cdAplicacionPadre)
+{
+
+var opciones = (from x in Model.Aplicaciones
+                where x.IdAplicacionPadre == cdAplicacionPadre
+                orderby x.NumeroSecuencia
+                select x);
+
+int indice;
+
+foreach (var aplicacion in opciones)
+{
+    indice = Model.Aplicaciones.IndexOf(aplicacion);
+
+    var hijos = (from x in Model.Aplicaciones
+                 where x.IdAplicacionPadre == aplicacion.Id
+                 select x);
+
+
+    if (hijos.Count() == 0)
+    {
+            <li class="dd-item dd2-item" data-indice="@indice" data-id="@Model.Aplicaciones[indice].Id" data-roles="@Model.Aplicaciones[indice].RolesAsociados">
+
+                @if (cdAplicacionPadre != null)
+                {
+                    <div class="dd2-content">
+                        @Html.Raw(Model.Aplicaciones[indice].Nombre)
+                    <div class="pull-right">
+                        @if (Model.Aplicaciones[indice].IndicadorDashBoard || Model.Aplicaciones[indice].IndicadorPerfilUsuario || Model.Aplicaciones[indice].IndicadorCheckAsignacionDeshabilitado)
+                        {
+                            @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorActiva)
+                           
+                        }
+                        else
+                        { @Html.CheckBoxAceFor(m => m.Aplicaciones[indice].IndicadorActiva, new { @class = "checkInActiva" }, true)}
+                    </div>
+                </div>
+                }
+                else
+                {
+                    <div class="dd2-handle">@(String.IsNullOrWhiteSpace(Model.Aplicaciones[indice].Icono) ? @Html.Raw("") : @Html.Raw("<i class=\"normal-icon ace-icon " + Model.Aplicaciones[indice].Icono + " blue bigger-130\"></i>"))  </div>
+                    <div class="dd2-content">
+                        @Html.Raw(Model.Aplicaciones[indice].Nombre)
+                        <div class="pull-right">
+                            @if (Model.Aplicaciones[indice].IndicadorDashBoard|| Model.Aplicaciones[indice].IndicadorPerfilUsuario|| Model.Aplicaciones[indice].IndicadorCheckAsignacionDeshabilitado)
+                            {
+                                @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorActiva)
+                               
+                            }
+                            else
+                            { @Html.CheckBoxAceFor(m => m.Aplicaciones[indice].IndicadorActiva, new { @class = "checkInActiva" }, true)}
+
+                        </div>
+                    </div>
+                }
+                @Html.HiddenFor(m => m.Aplicaciones[indice].RolesAsociados)
+                @Html.HiddenFor(m => m.Aplicaciones[indice].Id)
+                @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorPerfilUsuario)
+                @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorDashBoard)
+            </li>
+    }
+    else
+    {
+
+            <li class="dd-item dd2-item" data-indice="@indice" data-id="@Model.Aplicaciones[indice].Id" data-roles="@Model.Aplicaciones[indice].RolesAsociados">
+                <div class=" dd2-handle">@(String.IsNullOrWhiteSpace(Model.Aplicaciones[indice].Icono) ? @Html.Raw("") : @Html.Raw("<i class=\"normal-icon ace-icon " + Model.Aplicaciones[indice].Icono + " blue bigger-130\"></i>"))  </div>
+                <div class="dd2-content">
+                    @Html.Raw(Model.Aplicaciones[indice].Nombre)
+                    <div class="pull-right">
+                        @if (Model.Aplicaciones[indice].IndicadorDashBoard || Model.Aplicaciones[indice].IndicadorPerfilUsuario)
+                        {
+                            @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorActiva)                           
+                        }
+                        else
+                        { @Html.CheckBoxAceFor(m => m.Aplicaciones[indice].IndicadorActiva, new { @class = "checkInActiva" }, true)}
+                    </div>
+                </div>
+
+                @Html.Raw("<ol class=\"dd-list\">")
+
+                @getAplicacionesPorRol(aplicacion.Id)
+
+                @Html.Raw("</ol>")
+                @Html.HiddenFor(m => m.Aplicaciones[indice].RolesAsociados)
+                @Html.HiddenFor(m => m.Aplicaciones[indice].Id)
+                @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorPerfilUsuario)
+                @Html.HiddenFor(m => m.Aplicaciones[indice].IndicadorDashBoard)
+            </li>
+        }
+    }
+}
+
+
+
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <div id="divRolesAsignables" class="col-xs-12 widget-container-col">
+            <div id="widgetRolesAsignables" class="widget-box transparent">
+                <div class="widget-header">
+                    <h4 class="widget-title lighter"><i class="fa fa-laptop"></i> @Resources.TituloWidget.MenuAplicaciones</h4>
+
+
+                    <div class="pull-right">
+                        <small>@Resources.EtiquetaResource.Asginar&nbsp;&nbsp;&nbsp;&nbsp;</small>
+                    </div>
+                    <div class="widget-toolbar">
+                        <!-- Por ahora el toolbar no tiene nada -->
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main padding-4">
+                        <div class="row">
+                            <div id="divAdvertenciaMenu" class="col-xs-12 hidden">
+                                <div class="space-2"></div>
+                                @Html.escribirMensajeAdvertencia("<i class=\"fa fa-exclamation-triangle\"></i> " + Resources.AdvertenciaResource.MenuAplicacionesVacio, false)
+                            </div>
+                           <div class="col-xs-12">
+                                <div id="ddAplicaciones">
+                                    <ol class="dd-list">
+                                        @getAplicacionesPorRol(null)
+                                    </ol>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

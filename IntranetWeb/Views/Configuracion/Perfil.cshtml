@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = Resources.TituloPaginaResource.PerfilUsuario;
+    ViewBag.Description = "Administración del perfil de Usuario";
+}
+
+<div class="page-header"><h1>@ViewBag.Title</h1></div>
+<div class="tabbable">
+    <ul id="ulTabConfiguracion" class="nav nav-tabs tab-space-4">
+        <li id="liPerfil" class="active">
+            <a href="#divTabPerfil" data-toggle="tab">@Resources.TituloWidget.Perfil</a>
+        </li>
+        <li id="liCambioContrasena" data-id-cliente="0" >
+            <a href="#divCambioContrasena" data-toggle="tab">@Resources.TituloWidget.CambiarContrasena</a>
+        </li>
+    </ul>
+
+    <div id="divTabConfiguracion" class="tab-content">
+        <div class="tab-pane in active"  id="divTabPerfil">
+            @{Html.RenderAction("_getEditarPerfil");}
+        </div>
+
+        <div class="tab-pane" id="divCambioContrasena">
+            @{Html.RenderAction("_getCambioContrasena");}
+        </div>
+     </div>
+</div>
+
+@section Scripts{
+        @Scripts.Render("~/bundles/jqueryval")
+        @Scripts.Render("~/bundles/intranetSAI/Cliente/configuracion")
+    }

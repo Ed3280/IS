@@ -1,0 +1,65 @@
+﻿@model IntranetWeb.ViewModel.Administrador.Usuario
+<div class="row">
+
+    <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+        @Html.LabelBoldFor(m => m.NombreUsuario)<br />
+        @Html.DisplayFor(m => m.NombreUsuario, new { Class = "form-control " })
+    </div>
+
+    <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+        @Html.LabelBoldFor(m => m.Documento)<br />
+        @Html.DisplayFor(m => m.Documento, new { Class = "form-control " })
+    </div>
+
+</div>
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.IndicadorActivo) <br />
+        @Html.DisplayFor(m => m.DescripcionEstatus, new { Class = "form-control" })
+        
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.IndicadorBloqueado) <br />
+        @Html.DisplayFor(m => m.DescripcionBloqueado, new { Class = "form-control" })
+    </div>
+
+</div>
+<div class="row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.NombreApellido)<br />
+        @Html.DisplayFor(m => m.NombreApellido, new { Class = "form-control" })
+     </div>
+</div>
+
+
+<div class="row">
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.FechaNacimiento)<br />
+        @Html.DisplayFor(m => m.FechaNacimiento, IntranetWeb.Core.Constante.AppFormat.date, new { Class = "form-control date-picker" })
+        
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.Email)<br />
+        @Html.DisplayFor(m => m.Email, new { Class = "form-control" })
+        
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.TelefonoFijo)<br />
+        @Html.DisplayFor(m => m.TelefonoFijo, new { Class = "form-control" })
+        
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.TelefonoMovil)<br />
+        @Html.DisplayFor(m => m.TelefonoMovil, new { Class = "form-control" })
+     </div>
+</div>
+
+@Html.HiddenFor(m => m.Id)
+
+
+

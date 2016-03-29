@@ -1,0 +1,101 @@
+﻿@model IntranetWeb.ViewModel.Auth.Menu
+@{Layout = null;}
+
+@helper ShowMenuTree(IQueryable<IntranetWeb.ViewModel.Auth.NodoAplicacion> nodos)
+{
+
+foreach (var nodo in nodos)
+{
+        if (nodo.AplicacionesHijas.Count() > 0)
+        {
+                <li class="">
+                    <a href="javascript:void(0);" class="dropdown-toggle">
+                        <i class="menu-icon @nodo.IconoMenu"></i>
+                        <span class="menu-text">
+                            @Html.Raw(nodo.NombreAplicacion)
+                        </span>
+                        <b class="arrow fa fa-angle-down"></b>
+                    </a>
+                    <b class="arrow"></b>
+
+                    <ul class="submenu">
+                        @ShowMenuTree(nodo.AplicacionesHijas)
+                    </ul>
+                </li>
+        }
+        else{
+
+            @Html.MenuLink(nodo.Accion, nodo.Controlador, nodo.getDiccionarioParametros(),nodo.IconoMenu,nodo.NombreAplicacion,nodo.AplicacionPadre==null? false :true)
+        }
+    }
+}
+
+
+<div id="sidebar" class="sidebar responsive">
+
+    <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+        
+    @{ 
+        String[] classButton = { "btn btn-success", "btn btn-info", "btn btn-warning", "btn btn-danger" };
+
+        int cont = 0;
+        bool isSum = true;
+
+        <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+        
+            @foreach (var shortCut in Model.AtajoMenu)
+            {
+                if (cont == 4) { cont--; }
+                <button class="@classButton[cont]" title="@shortCut.NombreAplicacion" onclick="window.location.href='@Url.Action(shortCut.Accion, shortCut.Controlador)'; ">
+                    <i class="ace-icon @shortCut.IconoAccesoRapido"></i>
+                </button>
+
+                if (isSum) { cont++; }
+                else { cont--; }
+
+                if (cont == 0) { isSum = true; }
+                if (cont == 4) { isSum = false; }
+
+            }
+
+        </div>
+      }
+      @{  cont = 0;
+          isSum = true;
+
+        <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+              
+            @foreach (var shortCut in Model.AtajoMenu)
+            {
+                if (cont == 4) { cont--; }
+
+                <span class="@classButton[cont]"></span>
+                
+                if (isSum) { cont++; }
+                else { cont--; }
+
+                if (cont == 0) { isSum = true; }
+                if (cont == 4) { isSum = false; }
+
+            }
+          
+        </div>
+        }
+    </div><!-- /.sidebar-shortcuts -->
+
+    <ul class="nav nav-list">
+        @ShowMenuTree(Model.ArbolMenu)
+    
+    </ul><!-- /.nav-list -->
+
+    <div class="sidebar-toggle sidebar-collapse" id="sidebar-collapse">
+        <i class="ace-icon fa fa-angle-double-left" data-icon1="ace-icon fa fa-angle-double-left" data-icon2="ace-icon fa fa-angle-double-right"></i>
+    </div>
+
+    <script type="text/javascript">
+					try{ace.settings.check('sidebar' , 'collapsed')}catch(e){}
+    </script>
+ 
+</div>
+
+

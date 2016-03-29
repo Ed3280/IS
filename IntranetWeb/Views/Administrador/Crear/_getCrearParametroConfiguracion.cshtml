@@ -1,0 +1,53 @@
+﻿@model IntranetWeb.ViewModel.Administrador.ParametroConfiguracion
+@{Layout = null;
+    ViewBag.Title = "Crear parámetro de sistema";
+}
+
+@using (Ajax.BeginForm("crearParametroConfiguracion", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "parametroConfiguracionSAI.submitSuccess(data)" }, new { @Id = "formCrearRegistro", role = "form" }))
+{
+    <div id="widgetBoxTabla" data-titulo="@ViewBag.Title" class="widget-box transparent">
+        <div class="widget-body scrollable" data-size="60">
+            <div class=" widget-main">
+
+                <div class="row">
+                    <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                        @Html.LabelBoldFor(m => m.NombreParametro)
+                        @Html.TextBoxFor(m => m.NombreParametro, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.NombreParametro, "", new { @class = "help-block" })
+                    </div>
+                    <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                        @Html.LabelBoldFor(m => m.CodigoConfiguracion)
+                        @Html.TextBoxFor(m => m.CodigoConfiguracion, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.CodigoConfiguracion, "", new { @class = "help-block" })
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelBoldFor(m => m.Descripcion)
+                        @Html.TextBoxFor(m => m.Descripcion, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "help-block" })
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelBoldFor(m => m.Uso)<br />
+                        @Html.TextAreaFor(m => m.Uso, new { Class = "form-control", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.Uso, "", new { @class = "help-block" })
+                    </div>
+                </div>
+            </div>
+            <div class="space-2"></div>
+            <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @IntranetWeb.Core.Constante.Mensaje.Etiqueta.Procesando </strong></div>
+            </div>
+            <div class="space-2"></div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" name="submitButton" id="grabar" class="hidden" value="grabar">@IntranetWeb.Core.Constante.Mensaje.Etiqueta.Guardar</button>
+            @Html.HiddenFor(m=> m.CodigoConfiguracionEditar)
+        </div>
+    </div>
+}
+
+
+
+
+
+

@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activo" xml:space="preserve">
+    <value>Activo</value>
+  </data>
+  <data name="Ano" xml:space="preserve">
+    <value>Año</value>
+  </data>
+  <data name="Apellido" xml:space="preserve">
+    <value>Apellido</value>
+  </data>
+  <data name="AperturaRemota" xml:space="preserve">
+    <value>Admite apertura remota</value>
+  </data>
+  <data name="Bloqueado" xml:space="preserve">
+    <value>Bloqueado</value>
+  </data>
+  <data name="Calle" xml:space="preserve">
+    <value>Comunidad / Calle / Casa</value>
+  </data>
+  <data name="CargoPadre" xml:space="preserve">
+    <value>Cargo padre</value>
+  </data>
+  <data name="Cedula" xml:space="preserve">
+    <value>Cédula/Pasaporte</value>
+  </data>
+  <data name="ClienteRegistradoMovil" xml:space="preserve">
+    <value>Cliente registrado (móvil)</value>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+  </data>
+  <data name="CompaniaSeguro" xml:space="preserve">
+    <value>Compañía de seguros</value>
+  </data>
+  <data name="Contrasena" xml:space="preserve">
+    <value>Contraseña</value>
+  </data>
+  <data name="ContrasenaDVR" xml:space="preserve">
+    <value>Contraseña DVR</value>
+  </data>
+  <data name="Corregimiento" xml:space="preserve">
+    <value>Corregimiento</value>
+  </data>
+  <data name="Descripcion" xml:space="preserve">
+    <value>Descripción</value>
+  </data>
+  <data name="DescripcionCargo" xml:space="preserve">
+    <value>Descripción del cargo</value>
+  </data>
+  <data name="Dispositivo" xml:space="preserve">
+    <value>Dispositivo</value>
+  </data>
+  <data name="Distribuidor" xml:space="preserve">
+    <value>Distribuidor</value>
+  </data>
+  <data name="DistribuidorPlataforma" xml:space="preserve">
+    <value>Distribuidor plataforma</value>
+  </data>
+  <data name="Distrito" xml:space="preserve">
+    <value>Distrito</value>
+  </data>
+  <data name="Documento" xml:space="preserve">
+    <value>Documento</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Empleado" xml:space="preserve">
+    <value>Empleado</value>
+  </data>
+  <data name="Estatus" xml:space="preserve">
+    <value>Estatus</value>
+  </data>
+  <data name="Extension" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="FechaApertura" xml:space="preserve">
+    <value>Fecha de apertura</value>
+  </data>
+  <data name="FechaCreacion" xml:space="preserve">
+    <value>Fecha de creación</value>
+  </data>
+  <data name="FechaEstatus" xml:space="preserve">
+    <value>Fecha de estatus</value>
+  </data>
+  <data name="FechaNacimiento" xml:space="preserve">
+    <value>Fecha de nacimiento</value>
+  </data>
+  <data name="FechaNotificacion" xml:space="preserve">
+    <value>Fecha de notificación</value>
+  </data>
+  <data name="FechaRegistro" xml:space="preserve">
+    <value>Fecha de registro</value>
+  </data>
+  <data name="GBHostSpot" xml:space="preserve">
+    <value>GB del host</value>
+  </data>
+  <data name="HoraNotificacion" xml:space="preserve">
+    <value>Hora de notificación</value>
+  </data>
+  <data name="HoraRegistro" xml:space="preserve">
+    <value>Hora de registro</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+  </data>
+  <data name="IndicadorEnviarInvitacion" xml:space="preserve">
+    <value>Enviar invitación de registro</value>
+  </data>
+  <data name="IndicadorEstaActivo" xml:space="preserve">
+    <value>Cliente activo</value>
+  </data>
+  <data name="IndicadorEstaRegistrado" xml:space="preserve">
+    <value>Cliente registrado</value>
+  </data>
+  <data name="KilometrajeInicial" xml:space="preserve">
+    <value>Kilometraje inicial</value>
+  </data>
+  <data name="KilometrajeTotal" xml:space="preserve">
+    <value>Kilometraje</value>
+  </data>
+  <data name="ListaRol" xml:space="preserve">
+    <value>Roles</value>
+  </data>
+  <data name="ListaServiciosApp" xml:space="preserve">
+    <value>Servicios aplicación móvil</value>
+  </data>
+  <data name="LocalizacionBotonSOS" xml:space="preserve">
+    <value>Localización botón SOS</value>
+  </data>
+  <data name="Marca" xml:space="preserve">
+    <value>Marca</value>
+  </data>
+  <data name="Modelo" xml:space="preserve">
+    <value>Modelo</value>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Nombre</value>
+  </data>
+  <data name="NombreApellido" xml:space="preserve">
+    <value>Nombre y apellido</value>
+  </data>
+  <data name="NombreAplicacion" xml:space="preserve">
+    <value>Aplicación</value>
+  </data>
+  <data name="NombreCargo" xml:space="preserve">
+    <value>Cargo</value>
+  </data>
+  <data name="NombreDispositivo" xml:space="preserve">
+    <value>Nombre del dispositivo</value>
+  </data>
+  <data name="NombreUnidadAdministrativa" xml:space="preserve">
+    <value>Unidad administrativa</value>
+  </data>
+  <data name="NombreUsuario" xml:space="preserve">
+    <value>Nombre de usuario</value>
+  </data>
+  <data name="NombreUsuarioCorreo" xml:space="preserve">
+    <value>Nombre de usuario o correo</value>
+  </data>
+  <data name="NombreUsuarioLogin" xml:space="preserve">
+    <value>Introduzca su nombre de usuario o correo</value>
+  </data>
+  <data name="NumeroChasis" xml:space="preserve">
+    <value>Número de chasis / VIN</value>
+  </data>
+  <data name="NumeroDVR" xml:space="preserve">
+    <value>Número de DVR</value>
+  </data>
+  <data name="NumeroMovil" xml:space="preserve">
+    <value>Móvil</value>
+  </data>
+  <data name="NumeroPlaca" xml:space="preserve">
+    <value>Número de placa</value>
+  </data>
+  <data name="NumeroTelefonoFijo" xml:space="preserve">
+    <value>Teléfono fijo</value>
+  </data>
+  <data name="NumeroTelefonoOficina" xml:space="preserve">
+    <value>Teléfono de oficina</value>
+  </data>
+  <data name="NumeroTelefonoPersonaContacto" xml:space="preserve">
+    <value>Teléfono persona de contacto</value>
+  </data>
+  <data name="NumeroTicket" xml:space="preserve">
+    <value>Número de ticket</value>
+  </data>
+  <data name="Pais" xml:space="preserve">
+    <value>País</value>
+  </data>
+  <data name="PersonaContacto" xml:space="preserve">
+    <value>Nombre persona de contacto</value>
+  </data>
+  <data name="Provincia" xml:space="preserve">
+    <value>Provincia</value>
+  </data>
+  <data name="RepetirContrasena" xml:space="preserve">
+    <value>Repetir contraseña</value>
+  </data>
+  <data name="Rol" xml:space="preserve">
+    <value>Rol</value>
+  </data>
+  <data name="SegmentoNegocio" xml:space="preserve">
+    <value>Segmento del negocio</value>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>Serial</value>
+  </data>
+  <data name="Sims" xml:space="preserve">
+    <value>Sims</value>
+  </data>
+  <data name="SocioComercial" xml:space="preserve">
+    <value>Socio comercial</value>
+  </data>
+  <data name="TarjetaSim" xml:space="preserve">
+    <value>Tarjeta sim</value>
+  </data>
+  <data name="TipoApagadoRemoto" xml:space="preserve">
+    <value>Tipo de apagado remoto</value>
+  </data>
+  <data name="TipoCaso" xml:space="preserve">
+    <value>Tipo de caso</value>
+  </data>
+  <data name="TipoCierre" xml:space="preserve">
+    <value>Tipo de cierre</value>
+  </data>
+  <data name="TipoCombustible" xml:space="preserve">
+    <value>Tipo de combustible</value>
+  </data>
+  <data name="TipoDocumento" xml:space="preserve">
+    <value>Tipo documento</value>
+  </data>
+  <data name="TipoNotificacion" xml:space="preserve">
+    <value>Tipo de notificación</value>
+  </data>
+  <data name="TipoSangre" xml:space="preserve">
+    <value>Tipo de sangre</value>
+  </data>
+  <data name="TipoTransmision" xml:space="preserve">
+    <value>Tipo de transmisión</value>
+  </data>
+  <data name="UsuarioAlerta" xml:space="preserve">
+    <value>Usuario alerta</value>
+  </data>
+  <data name="UsuarioTicket" xml:space="preserve">
+    <value>Usuario ticket</value>
+  </data>
+  <data name="Vehiculo" xml:space="preserve">
+    <value>Vehículo</value>
+  </data>
+  <data name="VigenciaPoliza" xml:space="preserve">
+    <value>Vigencia de la póliza</value>
+  </data>
+  <data name="Vin" xml:space="preserve">
+    <value>VIN</value>
+  </data>
+</root>

@@ -1,0 +1,69 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Monitor.Ticket
+@{
+    ViewBag.Title = "Datos Generales";
+}
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="glyphicon glyphicon-user"></i> @ViewBag.Title</h4>
+
+        <div class="widget-toolbar no-border">
+            <!--a href="#" data-action="collapse">
+                <i class="ace-icon fa fa-chevron-up"></i>
+            </a-->
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class=" widget-main">
+            
+            <div class="row">
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Cliente.NumeroDocumento)<br />
+                    @Html.DisplayFor(m => m.Cliente.NumeroDocumento, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Cliente.NombreCompleto)<br />
+                    @Html.DisplayFor(m => m.Cliente.NombreCompleto, new { Class = "form-control" })
+                </div>
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Distribuidor.Nombre)<br />
+                    @Html.DisplayFor(m => m.Distribuidor.Nombre, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Dispositivo.Nombre)<br />
+                    @Html.DisplayFor(m => m.Dispositivo.Nombre, new { Class = "form-control" })
+                </div>
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Dispositivo.SimCard)<br />
+                    @Html.DisplayFor(m => m.Dispositivo.SimCard, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Dispositivo.DVR)<br />
+                    @Html.DisplayFor(m => m.Dispositivo.DVR, new { Class = "form-control" })
+                </div>
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Dispositivo.Vin)<br />
+                    @Html.DisplayFor(m => m.Dispositivo.Vin, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-4  col-span col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Dispositivo.Placa)<br />
+                    @Html.DisplayFor(m => m.Dispositivo.Placa, new { Class = "form-control" })
+                </div>
+                
+                <div class="form-group col-lg-4  col-span col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Cliente.TelefonoMovil)<br />
+                    @Html.DisplayFor(m => m.Cliente.TelefonoMovil, new { Class = "form-control" })
+                </div>
+                
+            </div>     
+        </div>
+    </div>
+</div>
+
+

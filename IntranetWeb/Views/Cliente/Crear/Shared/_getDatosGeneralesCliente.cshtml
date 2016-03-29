@@ -1,0 +1,32 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+@{Layout = null;}
+
+
+    <!--widget datos generales -->
+    <div id="divWidgetDatosGenerales" class="widget-box transparent">
+        <div class="widget-header">
+
+            <h4 class="widget-title lighter"><i class="glyphicon glyphicon-user"></i> @Resources.TituloWidget.DatosGenerales</h4>
+
+            <div class="widget-toolbar no-border"></div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main">
+                @{Html.RenderPartial("Crear/Shared/_getDatosBasicos", Model);}
+            </div>
+        </div>
+    </div>
+
+    <!--widget datos Dirección -->
+    <div class="widget-box transparent">
+        <div class="widget-header">
+
+            <h4 class="widget-title lighter"><i class="fa fa-map-marker"></i> @Resources.TituloWidget.Direccion</h4>
+            <div class="widget-toolbar no-border"></div>
+        </div>
+        <div class="widget-body">
+            <div class="widget-main">
+                @{Html.RenderPartial("Editar/Shared/_getDireccion", Model);}
+            </div>
+        </div>
+    </div>

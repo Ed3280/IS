@@ -1,0 +1,162 @@
+﻿@model IEnumerable<IntranetWeb.ViewModel.Monitor.Notificacion>
+@{
+    ViewBag.Title = "Actualiza Alertas";
+}
+
+<div class="content">
+    @foreach (var item in Model) {
+
+        <div class="widget-box widget-color-@(item.ColorTitulo)">
+            <div class="widget-header"  data-id="@item.Id"
+                                        data-indicador-localizacion="@item.IndicadorLocalizacion"
+                                        data-id-dispositivo="@item.Dispositivo.Id" 
+                                        data-origen-notificacion="@item.IdOrigenNotificacion">
+
+                
+                
+                    <h6 class="widget-title pointer" title="Haga click para asociar un ticket">
+                       
+                            <strong><i class="@(Html.Raw(item.Icono))"></i>  @item.TipoNotificacion:   @(item.IndicadorLocalizacion ? item.Cliente.NombreCompleto : item.Dispositivo.Nombre) </strong>
+                           
+                        
+                    </h6>
+              
+                    <div class="widget-toolbar">
+
+                        <div class="hidden-sm hidden-xs action-buttons">
+                            <a class="tooltip-info aConsultar"  data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.ConsultarRegistro" href="javascript:void(0);">
+                                <span class="white">
+                                    <i class="ace-icon fa fa-search-plus bigger-120 icono-editar"></i>
+                                </span>
+                            </a>
+
+                            <a class="tooltip-error aEliminar" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EliminarRegistro" href="javascript:void(0);">
+                                <span class="white">
+                                    <i class="ace-icon fa fa-trash-o bigger-120 icono-eliminar"></i>
+                                </span>
+                            </a>
+                        </div>
+
+                        <div class="hidden-md hidden-lg">
+                            <div class="inline pos-rel">
+                                <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                                    <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+                                </button>
+                                <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                                    <li>
+                                        <a href="javascript:void(0);" class="tooltip-info aConsultar" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.ConsultarRegistro ">
+                                            <span class="blue">
+                                                <i class="ace-icon fa fa-search-plus bigger-120 icono-editar"></i>
+                                            </span>
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="javascript:void(0);" class="tooltip-error aEliminar" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EliminarRegistro ">
+                                            <span class="red">
+                                                <i class="ace-icon fa fa-trash-o bigger-120 icono-eliminar"></i>
+                                            </span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+              
+
+                </div>
+            <div class="widget-body">
+                <div class="alert @(item.ColorCuerpo) ">
+
+                    <div class="row">
+
+                        @if (item.IndicadorLocalizacion)
+                        {
+                            if (!String.IsNullOrEmpty(item.NombreImagen) && item.Imagen != null)
+                            {
+                                <div class="col-xs-4">
+                                   
+                                        <ul class="ace-thumbnails clearfix">
+                                            <li>
+                                                @{
+                                                    string imageBase64 = Convert.ToBase64String(item.Imagen);
+                                                    string imageSrc = string.Format("data:image/jpg;base64,{0}", imageBase64);
+
+                                                    <a data-rel="colorbox" src="@imageSrc"  title="@item.NombreImagen" href="javascript:void(0);" >
+                                                        <img   src="@imageSrc" width="100" height="70" href="javascript:void(0);"/>
+                                                        <div class="text">
+                                                            <div class="inner">@Resources.EtiquetaResource.Ampliar</div>
+                                                        </div>
+                                                    </a>
+                                                        }
+</li>
+                                        </ul>
+                                </div>
+                           }
+
+                            <div class="col-xs-8">
+                                <div class="row">
+                                    <div class="col-xs-12 text-right">
+                                        <strong class="label @item.ColorEtiqueta "><i class="fa fa-clock-o"></i> @item.FechaNotificacion.ToString(IntranetWeb.Core.Constante.AppFormat.dateHourJson)</strong> <div class="space-4"></div>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <strong>@Html.LabelBoldFor(m => item.Cliente.Id)</strong>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <p>@(item.Cliente.TelefonoMovil == null ? Html.Raw("&nbsp;") : Html.Raw(item.Cliente.Id)) </p>
+                                    </div>
+                                    <div class="col-xs-5">
+                                        <strong>@Html.LabelBoldFor(m => item.Cliente.TelefonoMovil)</strong>
+                                    </div>
+                                    <div class="col-xs-7">
+                                        <p>@(item.Cliente.TelefonoMovil == null ? Html.Raw("&nbsp;") : Html.Raw(item.Cliente.TelefonoMovil)) </p>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-xs-7">
+
+                                <p class="label @item.ColorEtiqueta "><i class="fa fa-user"></i> @(String.IsNullOrEmpty(item.Distribuidor.Nombre) ? Html.Raw("&nbsp;") : Html.Raw(item.Distribuidor.Nombre))</p>
+
+                           </div>
+                           <div class="col-xs-5 text-right">
+                               <p class="label @item.ColorEtiqueta "><i class="fa fa-clock-o"></i> @item.FechaNotificacion.ToString(IntranetWeb.Core.Constante.AppFormat.dateHourJson)</p>                           
+                           </div>
+                            if (!String.IsNullOrEmpty(item.Cliente.NombreCompleto)){
+                            <div class="col-xs-2 ">
+                                <strong>@Html.LabelBoldFor(m => item.Cliente.NombreCompleto)</strong>
+                            </div>
+                            <div class="col-xs-10 ">
+                                <p> @Html.Raw(item.Cliente.NombreCompleto)</p>
+                            </div>
+                            }
+                        <div class="col-xs-2">
+                            <strong>@Html.LabelBoldFor(m => item.Dispositivo.SimCard)</strong>
+                        </div>
+
+                        <div class="col-xs-5">
+                            <p> @(String.IsNullOrWhiteSpace(item.Dispositivo.SimCard)? Html.Raw("&nbsp;") : Html.Raw(item.Dispositivo.SimCard))   </p>
+
+                        </div>
+                        <div class="col-xs-2 text-right">
+                            <strong>@Html.LabelBoldFor(m => item.Dispositivo.DVR)</strong>
+                        </div>
+
+                        <div class="col-xs-3 text-right">
+                            <p>@(String.IsNullOrWhiteSpace(item.Dispositivo.DVR) ? Html.Raw("&nbsp;") : Html.Raw(item.Dispositivo.DVR))</p>
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+                        <div class="space-4"></div>
+    }
+    @if (Model.Count() == 0){
+        <div class="dd-empty bolder center gray"><i class="fa fa-check"></i> @Resources.EtiquetaResource.SinAlertasPendientes</div>
+    }
+
+</div>
+

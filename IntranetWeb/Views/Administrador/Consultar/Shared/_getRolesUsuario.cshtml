@@ -1,0 +1,63 @@
+﻿
+@model IntranetWeb.ViewModel.Administrador.Usuario
+@{  Layout = null;
+    ViewBag.Title = "Roles del usuario";
+    ViewBag.Description = "Consulta de Roles de los roles del usuario";
+    int indice = 0;
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div id="divRolesAsignados" class="col-xs-12 widget-container-col">
+            <div id="widgetRolesAsignados" class="widget-box widget-color-green2">
+                <div class="widget-header">
+                    <h6 class="widget-title"><i class="glyphicon glyphicon-list"></i> @Resources.TituloWidget.RolesAsignados</h6>
+
+                    <div class="widget-toolbar">
+                        <!-- Por ahora el toolbar no tiene nada -->
+                    </div>
+                </div>
+
+                <div class="widget-body">
+                    <div class="widget-main padding-4">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div id="ddRolesAsignados">
+                                    @if ((from x in Model.Roles
+                                         where x.IndicadorSeleccionado == true
+                                         select x).Count() > 0)
+                                    {
+                                        <ol class="dd-list">
+                                            @foreach (var rol in (from x in Model.Roles
+                                                                 where x.IndicadorSeleccionado == true
+                                                                 select x))
+                                            {
+
+                                                indice = @Model.Roles.IndexOf(rol);
+                                                <li class="dd-item" data-id="@Model.Roles[indice].Id" data-indice="@indice">
+                                                    <div class="dd2-handle">
+                                                        <i class="normal-icon ace-icon fa fa-user green bigger-130"></i>
+                                                        <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                                                    </div>
+                                                    <div class="dd2-content">@Model.Roles[indice].Nombre</div>
+                                                    @Html.HiddenFor(m => m.Roles[indice].Id)
+                                                    @Html.HiddenFor(m => m.Roles[indice].IndicadorSeleccionado)
+
+                                                </li>
+                                            }
+                                        </ol>
+                                    }
+                                    else
+                                    {
+                                        <div class="dd-empty"></div>
+                                    }
+                                </div>
+                            </div>                    
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

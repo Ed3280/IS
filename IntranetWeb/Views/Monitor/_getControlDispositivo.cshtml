@@ -1,0 +1,63 @@
+﻿@model IntranetWeb.ViewModel.Monitor.LocalizacionDispositivo
+@{Layout = null;  }
+<div id="divColControlMapaDisp" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 widget-container-col" style="display:none">
+    <div id="widgetControlMapaDisp" class="widget-box">
+        <div class="widget-header">
+            <h6 class="widget-title bolder"><i id="LocalizacionDispositivo_Car" class="@Html.getIconoDispositivo(Model.icon)"></i> <span id="LocalizacionDispositivo_Name"> </span> </h6>
+
+            <div class="widget-toolbar">
+
+                <a href="javascript:void(0);" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="javascript:void(0);" data-action="close" >
+                    <i class="ace-icon fa fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body scrollable" data-size="50">
+            <div class="space-4"></div>
+                        <div class="profile-user-info profile-user-info-striped">
+                            
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.Dealer) + "") </div>
+                                <div class="profile-info-value bolder" id="LocalizacionDispositivo_Dealer"></div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name"> @HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.status) + "") </div>
+                                <div class="profile-info-value bolder" id="LocalizacionDispositivo_status"></div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.speed) + "") </div>
+                                <div class="profile-info-value bolder" id="LocalizacionDispositivo_speed"></div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.deviceUtcDate) + "")  </div>
+                                <div class="profile-info-value bolder" id="LocalizacionDispositivo_deviceUtcDate"></div>
+                            </div>
+
+
+                            <div class="profile-info-row hide">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.stopTimeMinute) + "") </div>
+                                <div class="profile-info-value bolder" id="LocalizacionDispositivo_stopTimeMinute"></div>
+                            </div>
+                            
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.KilometrajeTotal) + "") </div>
+                                <div class="profile-info-value bolder" id="LocalizacionDispositivo_KilometrajeTotal"></div>
+                            </div>
+
+                        </div>
+            <div class="space-4"></div>
+                
+                </div>
+            </div>
+</div>

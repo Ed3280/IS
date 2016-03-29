@@ -1,0 +1,47 @@
+﻿@model IntranetWeb.ViewModel.Monitor.UsuarioMovil
+@{Layout = null;  }
+<div id="divColControlMapaCliente" 
+       data-url-detalle-cliente="@Url.Action("obtenDetalleClienteNotificacion")"
+      class="col-xs-3 col-sm-3 col-md-3 col-lg-3 widget-container-col" style=" display:none">
+    <div id="widgetControlMapaDisp" class="widget-box">
+        <div class="widget-header">
+            <h6 class="widget-title bolder"><i id="LocalizacionCliente" class="fa fa-map-marker red2"></i> <span id="Cliente_NombreCompleto"> </span> </h6>
+
+            <div class="widget-toolbar">
+
+                <a href="javascript:void(0);" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="javascript:void(0);" data-action="close">
+                    <i class="ace-icon fa fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body scrollable" data-size="50">
+            <div class="space-4"></div>
+            <div class="profile-user-info profile-user-info-striped">
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.Id) + "") </div>
+                    <div class="profile-info-value bolder" id="LocalizacionCliente_Id"></div>
+                </div>
+
+
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> @HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.TelefonoMovil) + "") </div>
+                    <div class="profile-info-value bolder" id="LocalizacionCliente_TelefonoMovil"></div>
+                </div>
+                
+                <div class="profile-info-row">
+                    <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.Ubicacion) + "") </div>
+                    <div class="profile-info-value bolder" id="LocalizacionCliente_Ubicacion"></div>
+                </div>
+            </div>
+
+            <div class="space-4"></div>
+
+        </div>
+    </div>
+</div>

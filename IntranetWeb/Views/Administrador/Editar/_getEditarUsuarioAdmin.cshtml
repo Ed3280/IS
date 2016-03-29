@@ -1,0 +1,44 @@
+﻿@model IntranetWeb.ViewModel.Administrador.UsuarioAdmin
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.EditarUsuario;
+}
+<div id="divTabEditarUsuario" class="tabbable" data-titulo="@ViewBag.Title">
+    <ul id="ulTabUsuario" class="nav nav-tabs tab-space-4">
+        <li id="liDatosGenerales" class="active">
+            <a href="#divBloqueDatosGenerales" data-toggle="tab">@Resources.TituloWidget.DatosGenerales</a>
+        </li>
+        <li id="liRoles">
+            <a href="#divBloqueRoles" data-toggle="tab">@Resources.TituloWidget.Roles</a>
+        </li>
+        <li id="liAplicaciones">
+            <a href="#divBloqueAplicaciones" data-toggle="tab">@Resources.TituloWidget.Aplicaciones</a>
+        </li>
+    </ul>
+@using (Ajax.BeginForm("editarUsuarioAdmin", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "usuarioAdminSAI.submitSuccess(data)" }, new { @Id = "formEditarRegistro", role = "form" }))
+{
+    <div id="divTabUsuario" class="tab-content">
+        <div class="tab-pane in active scrollable" id="divBloqueDatosGenerales" data-size="60">
+            @{Html.RenderPartial("Editar/Shared/_getDatosGeneralesUsuarioAdmin", Model);}
+        </div>
+
+        <div class="tab-pane scrollable" id="divBloqueRoles" data-size="60">
+            @{Html.RenderPartial("../Shared/Configuracion/_getRoles", Model);}
+        </div>
+
+        <div class="tab-pane scrollable" id="divBloqueAplicaciones" data-size="60">
+            @{Html.RenderPartial("../Shared/Configuracion/_getAplicaciones", Model);}
+        </div>
+    </div>
+
+    <div class="space-4"></div>
+    <div id="divActualizarLoading" class="form-group" style="display:none !important">
+        <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  @Resources.EtiquetaResource.Procesando</strong></div>
+    </div>
+    <div class="">
+        <div id="resultUpdate"></div>
+    </div>
+    <button type="submit" class="hidden" name="submitButton" id="grabar" value="grabar">@Resources.TituloBotonResource.Guardar</button>
+    <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+
+    }
+</div>

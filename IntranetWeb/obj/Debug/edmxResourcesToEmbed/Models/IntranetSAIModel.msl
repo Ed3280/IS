@@ -1,0 +1,885 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="IntranetSAIModelStoreContainer" CdmEntityContainer="IntranetSAIEntities">
+    <EntitySetMapping Name="PARAMETRO_CONFIGURACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.PARAMETRO_CONFIGURACION">
+        <MappingFragment StoreEntitySet="PARAMETRO_CONFIGURACION">
+          <ScalarProperty Name="DE_USO_CONFIGURACION" ColumnName="DE_USO_CONFIGURACION" />
+          <ScalarProperty Name="DE_CONFIGURACION" ColumnName="DE_CONFIGURACION" />
+          <ScalarProperty Name="NM_PARAMETRO" ColumnName="NM_PARAMETRO" />
+          <ScalarProperty Name="CD_CONFIGURACION" ColumnName="CD_CONFIGURACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="PROC_001_ES_VALIDA_CADENA_ENCRIPTADA" FunctionName="IntranetSAIModel.Store.PROC_001_ES_VALIDA_CADENA_ENCRIPTADA" />
+    <FunctionImportMapping FunctionImportName="PROC_002_OBTENER_CONTRASENA" FunctionName="IntranetSAIModel.Store.PROC_002_OBTENER_CONTRASENA" />
+    <FunctionImportMapping FunctionImportName="PROC_003_OBTENER_CADENA_ENCRIPTADA" FunctionName="IntranetSAIModel.Store.PROC_003_OBTENER_CADENA_ENCRIPTADA" />
+    <EntitySetMapping Name="USUARIO_APLICACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.USUARIO_APLICACION">
+        <MappingFragment StoreEntitySet="USUARIO_APLICACION">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="CD_APLICACION" ColumnName="CD_APLICACION" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TICKET_ESTATUS">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TICKET_ESTATUS">
+        <MappingFragment StoreEntitySet="TICKET_ESTATUS">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="DE_ESTATUS" ColumnName="DE_ESTATUS" />
+          <ScalarProperty Name="ID_ESTATUS_TICKET" ColumnName="ID_ESTATUS_TICKET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_NOTIFICACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_NOTIFICACION">
+        <MappingFragment StoreEntitySet="TIPO_NOTIFICACION">
+          <ScalarProperty Name="DE_COLOR_LABEL" ColumnName="DE_COLOR_LABEL" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="DE_COLOR_BODY" ColumnName="DE_COLOR_BODY" />
+          <ScalarProperty Name="DE_COLOR_TITULO" ColumnName="DE_COLOR_TITULO" />
+          <ScalarProperty Name="CD_PRIORIDAD" ColumnName="CD_PRIORIDAD" />
+          <ScalarProperty Name="DE_TIPO_NOTIFICACION" ColumnName="DE_TIPO_NOTIFICACION" />
+          <ScalarProperty Name="TP_NOTIFICACION" ColumnName="TP_NOTIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_ATENCION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_ATENCION">
+        <MappingFragment StoreEntitySet="TIPO_ATENCION">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="DE_TIPO_ATENCION" ColumnName="DE_TIPO_ATENCION" />
+          <ScalarProperty Name="TP_ATENCION" ColumnName="TP_ATENCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESPUESTA_OPERADOR_GCM">
+      <EntityTypeMapping TypeName="IntranetSAIModel.RESPUESTA_OPERADOR_GCM">
+        <MappingFragment StoreEntitySet="RESPUESTA_OPERADOR_GCM">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="DE_CONTENIDO" ColumnName="DE_CONTENIDO" />
+          <ScalarProperty Name="DE_TITULO" ColumnName="DE_TITULO" />
+          <ScalarProperty Name="TP_ATENCION" ColumnName="TP_ATENCION" />
+          <ScalarProperty Name="ID_RESPUESTA_OPERADOR" ColumnName="ID_RESPUESTA_OPERADOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOG_TRANSACCIONES">
+      <EntityTypeMapping TypeName="IntranetSAIModel.LOG_TRANSACCIONES">
+        <MappingFragment StoreEntitySet="LOG_TRANSACCIONES">
+          <ScalarProperty Name="DE_EXCEPTION" ColumnName="DE_EXCEPTION" />
+          <ScalarProperty Name="DE_MESSAGE" ColumnName="DE_MESSAGE" />
+          <ScalarProperty Name="NM_LOGGER" ColumnName="NM_LOGGER" />
+          <ScalarProperty Name="NM_LEVEL" ColumnName="NM_LEVEL" />
+          <ScalarProperty Name="NM_URL" ColumnName="NM_URL" />
+          <ScalarProperty Name="NM_ACTION" ColumnName="NM_ACTION" />
+          <ScalarProperty Name="NM_CONTROLLER" ColumnName="NM_CONTROLLER" />
+          <ScalarProperty Name="DI_IP" ColumnName="DI_IP" />
+          <ScalarProperty Name="NM_THREAD" ColumnName="NM_THREAD" />
+          <ScalarProperty Name="FE_OPERACION" ColumnName="FE_OPERACION" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="ID_LOG" ColumnName="ID_LOG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EMPLEADO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.EMPLEADO">
+        <MappingFragment StoreEntitySet="EMPLEADO">
+          <ScalarProperty Name="FE_RETIRO" ColumnName="FE_RETIRO" />
+          <ScalarProperty Name="FE_INGRESO" ColumnName="FE_INGRESO" />
+          <ScalarProperty Name="DI_CORREO" ColumnName="DI_CORREO" />
+          <ScalarProperty Name="NU_EXTENSION" ColumnName="NU_EXTENSION" />
+          <ScalarProperty Name="CD_CARGO" ColumnName="CD_CARGO" />
+          <ScalarProperty Name="CD_SUCURSAL" ColumnName="CD_SUCURSAL" />
+          <ScalarProperty Name="CD_USUARIO_SUPERVISOR" ColumnName="CD_USUARIO_SUPERVISOR" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNIDAD_ADMINISTRATIVA">
+      <EntityTypeMapping TypeName="IntranetSAIModel.UNIDAD_ADMINISTRATIVA">
+        <MappingFragment StoreEntitySet="UNIDAD_ADMINISTRATIVA">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_UNIDAD_ADMINISTRATIVA" ColumnName="NM_UNIDAD_ADMINISTRATIVA" />
+          <ScalarProperty Name="CD_UNIDAD_ADMINISTRATIVA" ColumnName="CD_UNIDAD_ADMINISTRATIVA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CARGO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.CARGO">
+        <MappingFragment StoreEntitySet="CARGO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="CD_CARGO_PADRE" ColumnName="CD_CARGO_PADRE" />
+          <ScalarProperty Name="DE_CARGO" ColumnName="DE_CARGO" />
+          <ScalarProperty Name="NM_CARGO" ColumnName="NM_CARGO" />
+          <ScalarProperty Name="CD_UNIDAD_ADMINISTRATIVA" ColumnName="CD_UNIDAD_ADMINISTRATIVA" />
+          <ScalarProperty Name="CD_CARGO" ColumnName="CD_CARGO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_SANGRE">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_SANGRE">
+        <MappingFragment StoreEntitySet="TIPO_SANGRE">
+          <ScalarProperty Name="NM_TIPO_SANGRE" ColumnName="NM_TIPO_SANGRE" />
+          <ScalarProperty Name="TP_SANGRE" ColumnName="TP_SANGRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="APLICACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.APLICACION">
+        <MappingFragment StoreEntitySet="APLICACION">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NU_ORDEN" ColumnName="NU_ORDEN" />
+          <ScalarProperty Name="IN_ES_PERFIL_USUARIO" ColumnName="IN_ES_PERFIL_USUARIO" />
+          <ScalarProperty Name="IN_ES_DASHBOARD" ColumnName="IN_ES_DASHBOARD" />
+          <ScalarProperty Name="NM_ICONO_ACCESO_RAPIDO" ColumnName="NM_ICONO_ACCESO_RAPIDO" />
+          <ScalarProperty Name="NM_ICONO_MENU" ColumnName="NM_ICONO_MENU" />
+          <ScalarProperty Name="IN_ASIGNABLE" ColumnName="IN_ASIGNABLE" />
+          <ScalarProperty Name="IN_APLICACION_INACTIVA" ColumnName="IN_APLICACION_INACTIVA" />
+          <ScalarProperty Name="CD_APLICACION_PADRE" ColumnName="CD_APLICACION_PADRE" />
+          <ScalarProperty Name="DE_ALIAS" ColumnName="DE_ALIAS" />
+          <ScalarProperty Name="DE_PARAMETROS" ColumnName="DE_PARAMETROS" />
+          <ScalarProperty Name="NM_ACCION" ColumnName="NM_ACCION" />
+          <ScalarProperty Name="NM_CONTROLADOR" ColumnName="NM_CONTROLADOR" />
+          <ScalarProperty Name="DE_APLICACION" ColumnName="DE_APLICACION" />
+          <ScalarProperty Name="NM_APLICACION" ColumnName="NM_APLICACION" />
+          <ScalarProperty Name="CD_APLICACION" ColumnName="CD_APLICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROL">
+      <EntityTypeMapping TypeName="IntranetSAIModel.ROL">
+        <MappingFragment StoreEntitySet="ROL">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_ROL_ACTIVO" ColumnName="IN_ROL_ACTIVO" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="DE_ROL" ColumnName="DE_ROL" />
+          <ScalarProperty Name="NM_ROL" ColumnName="NM_ROL" />
+          <ScalarProperty Name="CD_ROL" ColumnName="CD_ROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CARGO_ROL" TypeName="IntranetSAIModel.CARGO_ROL" StoreEntitySet="CARGO_ROL">
+      <EndProperty Name="ROL">
+        <ScalarProperty Name="CD_ROL" ColumnName="CD_ROL" />
+      </EndProperty>
+      <EndProperty Name="CARGO">
+        <ScalarProperty Name="CD_CARGO" ColumnName="CD_CARGO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ROL_APLICACION" TypeName="IntranetSAIModel.ROL_APLICACION" StoreEntitySet="ROL_APLICACION">
+      <EndProperty Name="ROL">
+        <ScalarProperty Name="CD_ROL" ColumnName="CD_ROL" />
+      </EndProperty>
+      <EndProperty Name="APLICACION">
+        <ScalarProperty Name="CD_APLICACION" ColumnName="CD_APLICACION" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="ORIGEN_NOTIFICACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.ORIGEN_NOTIFICACION">
+        <MappingFragment StoreEntitySet="ORIGEN_NOTIFICACION">
+          <ScalarProperty Name="DE_ICONO" ColumnName="DE_ICONO" />
+          <ScalarProperty Name="IN_GENERA_ALERTA" ColumnName="IN_GENERA_ALERTA" />
+          <ScalarProperty Name="DE_ORIGEN_NOTIFICACION" ColumnName="DE_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SUCURSAL">
+      <EntityTypeMapping TypeName="IntranetSAIModel.SUCURSAL">
+        <MappingFragment StoreEntitySet="SUCURSAL">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVA" ColumnName="IN_INACTIVA" />
+          <ScalarProperty Name="NU_TELEFONO" ColumnName="NU_TELEFONO" />
+          <ScalarProperty Name="DE_SUCURSAL" ColumnName="DE_SUCURSAL" />
+          <ScalarProperty Name="NM_SUCURSAL" ColumnName="NM_SUCURSAL" />
+          <ScalarProperty Name="CD_SUCURSAL" ColumnName="CD_SUCURSAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CORREGIMIENTO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.CORREGIMIENTO">
+        <MappingFragment StoreEntitySet="CORREGIMIENTO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_CORREGIMIENTO" ColumnName="NM_CORREGIMIENTO" />
+          <ScalarProperty Name="CD_CORREGIMIENTO" ColumnName="CD_CORREGIMIENTO" />
+          <ScalarProperty Name="CD_DISTRITO" ColumnName="CD_DISTRITO" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PAIS">
+      <EntityTypeMapping TypeName="IntranetSAIModel.PAIS">
+        <MappingFragment StoreEntitySet="PAIS">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_PAIS" ColumnName="NM_PAIS" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVINCIA">
+      <EntityTypeMapping TypeName="IntranetSAIModel.PROVINCIA">
+        <MappingFragment StoreEntitySet="PROVINCIA">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_PROVINCIA" ColumnName="NM_PROVINCIA" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTRITO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.DISTRITO">
+        <MappingFragment StoreEntitySet="DISTRITO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_DISTRITO" ColumnName="NM_DISTRITO" />
+          <ScalarProperty Name="CD_DISTRITO" ColumnName="CD_DISTRITO" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PROVEEDOR">
+      <EntityTypeMapping TypeName="IntranetSAIModel.PROVEEDOR">
+        <MappingFragment StoreEntitySet="PROVEEDOR">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="DI_OFICINA" ColumnName="DI_OFICINA" />
+          <ScalarProperty Name="CD_CORREGIMIENTO" ColumnName="CD_CORREGIMIENTO" />
+          <ScalarProperty Name="CD_DISTRITO" ColumnName="CD_DISTRITO" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+          <ScalarProperty Name="DI_EMAIL" ColumnName="DI_EMAIL" />
+          <ScalarProperty Name="NU_TELEFONO_MOVIL" ColumnName="NU_TELEFONO_MOVIL" />
+          <ScalarProperty Name="NU_TELEFONO_FIJO" ColumnName="NU_TELEFONO_FIJO" />
+          <ScalarProperty Name="NU_DOCUMENTO_IDENTIDAD" ColumnName="NU_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="NM_PROVEEDOR" ColumnName="NM_PROVEEDOR" />
+          <ScalarProperty Name="CD_PROVEEDOR" ColumnName="CD_PROVEEDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COMPANIA_SEGURO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.COMPANIA_SEGURO">
+        <MappingFragment StoreEntitySet="COMPANIA_SEGURO">
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="DI_COMPANIA_SEGURO" ColumnName="DI_COMPANIA_SEGURO" />
+          <ScalarProperty Name="NU_TELEFONO_FIJO" ColumnName="NU_TELEFONO_FIJO" />
+          <ScalarProperty Name="NM_COMPANIA_SEGURO" ColumnName="NM_COMPANIA_SEGURO" />
+          <ScalarProperty Name="CD_COMPANIA_SEGURO" ColumnName="CD_COMPANIA_SEGURO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_CIERRE_VEHICULO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_CIERRE_VEHICULO">
+        <MappingFragment StoreEntitySet="TIPO_CIERRE_VEHICULO">
+          <ScalarProperty Name="NM_TIPO_CIERRE_VEHICULO" ColumnName="NM_TIPO_CIERRE_VEHICULO" />
+          <ScalarProperty Name="TP_CIERRE_VEHICULO" ColumnName="TP_CIERRE_VEHICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_COMBUSTIBLE">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_COMBUSTIBLE">
+        <MappingFragment StoreEntitySet="TIPO_COMBUSTIBLE">
+          <ScalarProperty Name="NM_TIPO_COMBUSTIBLE" ColumnName="NM_TIPO_COMBUSTIBLE" />
+          <ScalarProperty Name="TP_COMBUSTIBLE" ColumnName="TP_COMBUSTIBLE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_TRANSMISION_VEHICULO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_TRANSMISION_VEHICULO">
+        <MappingFragment StoreEntitySet="TIPO_TRANSMISION_VEHICULO">
+          <ScalarProperty Name="NM_TRANSMISION_VEHICULO" ColumnName="NM_TRANSMISION_VEHICULO" />
+          <ScalarProperty Name="TP_TRANSMISION_VEHICULO" ColumnName="TP_TRANSMISION_VEHICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KILOMETRAJE_TOTAL">
+      <EntityTypeMapping TypeName="IntranetSAIModel.KILOMETRAJE_TOTAL">
+        <MappingFragment StoreEntitySet="KILOMETRAJE_TOTAL">
+          <ScalarProperty Name="MontoKilometrajeTotal" ColumnName="MontoKilometrajeTotal" />
+          <ScalarProperty Name="MontoKilometrajeDispositivo" ColumnName="MontoKilometrajeDispositivo" />
+          <ScalarProperty Name="MontoKilometrajeInicial" ColumnName="MontoKilometrajeInicial" />
+          <ScalarProperty Name="DeviceID" ColumnName="DeviceID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NOTIFICACION_GCM">
+      <EntityTypeMapping TypeName="IntranetSAIModel.NOTIFICACION_GCM">
+        <MappingFragment StoreEntitySet="NOTIFICACION_GCM">
+          <ScalarProperty Name="FE_MENSAJE_RESPUESTA_GCM" ColumnName="FE_MENSAJE_RESPUESTA_GCM" />
+          <ScalarProperty Name="DE_RESPUESTA_MENSAJE_GCM" ColumnName="DE_RESPUESTA_MENSAJE_GCM" />
+          <ScalarProperty Name="IN_ENVIADO" ColumnName="IN_ENVIADO" />
+          <ScalarProperty Name="FE_ENVIO_MENSAJE" ColumnName="FE_ENVIO_MENSAJE" />
+          <ScalarProperty Name="DE_MENSAJE" ColumnName="DE_MENSAJE" />
+          <ScalarProperty Name="CD_USUARIO_GCM" ColumnName="CD_USUARIO_GCM" />
+          <ScalarProperty Name="CD_NOTIFICACION_GCM" ColumnName="CD_NOTIFICACION_GCM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MARCA">
+      <EntityTypeMapping TypeName="IntranetSAIModel.MARCA">
+        <MappingFragment StoreEntitySet="MARCA">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="NM_MARCA" ColumnName="NM_MARCA" />
+          <ScalarProperty Name="CD_MARCA" ColumnName="CD_MARCA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MODELO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.MODELO">
+        <MappingFragment StoreEntitySet="MODELO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_STATUS" ColumnName="FE_STATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="CD_UNIDAD_MEDIDA" ColumnName="CD_UNIDAD_MEDIDA" />
+          <ScalarProperty Name="CD_MARCA" ColumnName="CD_MARCA" />
+          <ScalarProperty Name="CD_TIPO_ARTICULO" ColumnName="CD_TIPO_ARTICULO" />
+          <ScalarProperty Name="NM_MODELO" ColumnName="NM_MODELO" />
+          <ScalarProperty Name="CD_MODELO" ColumnName="CD_MODELO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_ARTICULO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_ARTICULO">
+        <MappingFragment StoreEntitySet="TIPO_ARTICULO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="NM_TIPO_ARTICULO" ColumnName="NM_TIPO_ARTICULO" />
+          <ScalarProperty Name="CD_TIPO_ARTICULO" ColumnName="CD_TIPO_ARTICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISTRIBUIDOR">
+      <EntityTypeMapping TypeName="IntranetSAIModel.DISTRIBUIDOR">
+        <MappingFragment StoreEntitySet="DISTRIBUIDOR">
+          <ScalarProperty Name="ID_DISTRIBUIDOR_PADRE" ColumnName="ID_DISTRIBUIDOR_PADRE" />
+          <ScalarProperty Name="IN_ELIMINADO" ColumnName="IN_ELIMINADO" />
+          <ScalarProperty Name="DE_CONTRASENA" ColumnName="DE_CONTRASENA" />
+          <ScalarProperty Name="NM_USUARIO" ColumnName="NM_USUARIO" />
+          <ScalarProperty Name="NM_DISTRIBUIDOR" ColumnName="NM_DISTRIBUIDOR" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO_MOVIL_GCM">
+      <EntityTypeMapping TypeName="IntranetSAIModel.USUARIO_MOVIL_GCM">
+        <MappingFragment StoreEntitySet="USUARIO_MOVIL_GCM">
+          <ScalarProperty Name="IN_ACTIVO" ColumnName="IN_ACTIVO" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_SO_VERSION" ColumnName="NM_SO_VERSION" />
+          <ScalarProperty Name="ID_GCM" ColumnName="ID_GCM" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="CD_USUARIO_GCM" ColumnName="CD_USUARIO_GCM" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO_NOTIFICACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.USUARIO_NOTIFICACION">
+        <MappingFragment StoreEntitySet="USUARIO_NOTIFICACION">
+          <ScalarProperty Name="IN_GESTIONADA" ColumnName="IN_GESTIONADA" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="TP_NOTIFICACION" ColumnName="TP_NOTIFICACION" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_NOTFICACION" ColumnName="ID_NOTFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ANO_VEHICULO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.ANO_VEHICULO">
+        <MappingFragment StoreEntitySet="ANO_VEHICULO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="CD_MODELO" ColumnName="CD_MODELO" />
+          <ScalarProperty Name="CD_ANO" ColumnName="CD_ANO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VEHICULO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.VEHICULO">
+        <MappingFragment StoreEntitySet="VEHICULO">
+          <ScalarProperty Name="FE_SEGURO_VIGENCIA_HASTA" ColumnName="FE_SEGURO_VIGENCIA_HASTA" />
+          <ScalarProperty Name="CD_COMPANIA_SEGURO" ColumnName="CD_COMPANIA_SEGURO" />
+          <ScalarProperty Name="TP_TRANSMISION_VEHICULO" ColumnName="TP_TRANSMISION_VEHICULO" />
+          <ScalarProperty Name="TP_CIERRE_VEHICULO" ColumnName="TP_CIERRE_VEHICULO" />
+          <ScalarProperty Name="TP_COMBUSTIBLE" ColumnName="TP_COMBUSTIBLE" />
+          <ScalarProperty Name="CD_ANO" ColumnName="CD_ANO" />
+          <ScalarProperty Name="NM_COLOR" ColumnName="NM_COLOR" />
+          <ScalarProperty Name="CD_MODELO" ColumnName="CD_MODELO" />
+          <ScalarProperty Name="CD_MARCA" ColumnName="CD_MARCA" />
+          <ScalarProperty Name="NU_PLACA" ColumnName="NU_PLACA" />
+          <ScalarProperty Name="NU_VIN" ColumnName="NU_VIN" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="CD_VEHICULO" ColumnName="CD_VEHICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IMAGEN_NOTIFICACION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.IMAGEN_NOTIFICACION">
+        <MappingFragment StoreEntitySet="IMAGEN_NOTIFICACION">
+          <ScalarProperty Name="DE_IMAGEN" ColumnName="DE_IMAGEN" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="NM_EXTENSION_IMAGEN" ColumnName="NM_EXTENSION_IMAGEN" />
+          <ScalarProperty Name="NM_IMAGEN" ColumnName="NM_IMAGEN" />
+          <ScalarProperty Name="DE_LOCALIZACION_IMAGEN" ColumnName="DE_LOCALIZACION_IMAGEN" />
+          <ScalarProperty Name="DE_LOCALIZACION" ColumnName="DE_LOCALIZACION" />
+          <ScalarProperty Name="NU_LONGITUD" ColumnName="NU_LONGITUD" />
+          <ScalarProperty Name="NU_LATITUD" ColumnName="NU_LATITUD" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_NOTIFICACION" ColumnName="ID_NOTIFICACION" />
+          <ScalarProperty Name="CD_IMAGEN_NOTIFCACION" ColumnName="CD_IMAGEN_NOTIFCACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="FUNC_003_BUSCA_GESTION_ALERTAS" FunctionName="IntranetSAIModel.Store.FUNC_003_BUSCA_GESTION_ALERTAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IntranetSAIModel.FUNC_003_BUSCA_GESTION_ALERTAS_Result">
+          <ScalarProperty Name="ID_NOTIFICACION" ColumnName="ID_NOTIFICACION" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="NU_DOCUMENTO_IDENTIDAD" ColumnName="NU_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" ColumnName="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" />
+          <ScalarProperty Name="CD_TP_NOTIFICACION" ColumnName="CD_TP_NOTIFICACION" />
+          <ScalarProperty Name="DE_TIPO_NOTIFICACION" ColumnName="DE_TIPO_NOTIFICACION" />
+          <ScalarProperty Name="NU_DVR" ColumnName="NU_DVR" />
+          <ScalarProperty Name="NU_SIM" ColumnName="NU_SIM" />
+          <ScalarProperty Name="NM_USUARIO" ColumnName="NM_USUARIO" />
+          <ScalarProperty Name="NM_DISTRIBUIDOR" ColumnName="NM_DISTRIBUIDOR" />
+          <ScalarProperty Name="FE_NOTIFICACION" ColumnName="FE_NOTIFICACION" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="TIPO_DOCUMENTO_IDENTIDAD">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_DOCUMENTO_IDENTIDAD">
+        <MappingFragment StoreEntitySet="TIPO_DOCUMENTO_IDENTIDAD">
+          <ScalarProperty Name="IN_JURIDICO" ColumnName="IN_JURIDICO" />
+          <ScalarProperty Name="NM_TIPO_DOCUMENTO" ColumnName="NM_TIPO_DOCUMENTO" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="FUNC_001_BUSCA_ALERTAS" FunctionName="IntranetSAIModel.Store.FUNC_001_BUSCA_ALERTAS">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IntranetSAIModel.FUNC_001_BUSCA_ALERTAS_Result">
+          <ScalarProperty Name="ID_NOTIFICACION" ColumnName="ID_NOTIFICACION" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="DE_ORIGEN_NOTIFICACION" ColumnName="DE_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="DE_ICONO" ColumnName="DE_ICONO" />
+          <ScalarProperty Name="TP_NOTIFICACION" ColumnName="TP_NOTIFICACION" />
+          <ScalarProperty Name="DE_TIPO_NOTIFICACION" ColumnName="DE_TIPO_NOTIFICACION" />
+          <ScalarProperty Name="CD_PRIORIDAD_NOTIFICACION" ColumnName="CD_PRIORIDAD_NOTIFICACION" />
+          <ScalarProperty Name="DE_COLOR_TITULO" ColumnName="DE_COLOR_TITULO" />
+          <ScalarProperty Name="DE_COLOR_BODY" ColumnName="DE_COLOR_BODY" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+          <ScalarProperty Name="NM_DISTRIBUIDOR" ColumnName="NM_DISTRIBUIDOR" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+          <ScalarProperty Name="NM_DISPOSITIVO" ColumnName="NM_DISPOSITIVO" />
+          <ScalarProperty Name="NU_DVR" ColumnName="NU_DVR" />
+          <ScalarProperty Name="DE_DISPOSITIVO" ColumnName="DE_DISPOSITIVO" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="NU_DOCUMENTO_IDENTIDAD" ColumnName="NU_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" ColumnName="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" />
+          <ScalarProperty Name="NU_TELEFONO_MOVIL" ColumnName="NU_TELEFONO_MOVIL" />
+          <ScalarProperty Name="NU_VIN" ColumnName="NU_VIN" />
+          <ScalarProperty Name="NU_SIM_GPS" ColumnName="NU_SIM_GPS" />
+          <ScalarProperty Name="DE_COLOR_ETIQUETA" ColumnName="DE_COLOR_ETIQUETA" />
+          <ScalarProperty Name="IN_LOCALIZACION" ColumnName="IN_LOCALIZACION" />
+          <ScalarProperty Name="NU_LATITUD" ColumnName="NU_LATITUD" />
+          <ScalarProperty Name="NU_LONGITUD" ColumnName="NU_LONGITUD" />
+          <ScalarProperty Name="NM_IMAGEN" ColumnName="NM_IMAGEN" />
+          <ScalarProperty Name="NM_EXTENSION_IMAGEN" ColumnName="NM_EXTENSION_IMAGEN" />
+          <ScalarProperty Name="DE_CONTENIDO_IMAGEN" ColumnName="DE_CONTENIDO_IMAGEN" />
+          <ScalarProperty Name="FE_NOTIFICACION" ColumnName="FE_NOTIFICACION" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="FUNC_001_BUSCA_CLIENTES" FunctionName="IntranetSAIModel.Store.FUNC_001_BUSCA_CLIENTES">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IntranetSAIModel.FUNC_001_BUSCA_CLIENTES_Result">
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="NU_DOCUMENTO_IDENTIDAD" ColumnName="NU_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" ColumnName="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="IN_USUARIO_INACTIVO" ColumnName="IN_USUARIO_INACTIVO" />
+          <ScalarProperty Name="IN_REGISTRO_MOVIL" ColumnName="IN_REGISTRO_MOVIL" />
+          <ScalarProperty Name="NU_MOVIL" ColumnName="NU_MOVIL" />
+          <ScalarProperty Name="SIMS_CARDS" ColumnName="SIMS_CARDS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="NOTIFICACION_SIN_GESTION">
+      <EntityTypeMapping TypeName="IntranetSAIModel.NOTIFICACION_SIN_GESTION">
+        <MappingFragment StoreEntitySet="NOTIFICACION_SIN_GESTION">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="ID_USUARIO_MOVIL" ColumnName="ID_USUARIO_MOVIL" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+          <ScalarProperty Name="FE_NOTIFICACION" ColumnName="FE_NOTIFICACION" />
+          <ScalarProperty Name="TP_NOTIFICACION" ColumnName="TP_NOTIFICACION" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_NOTIFICACION" ColumnName="ID_NOTIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TICKET">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TICKET">
+        <MappingFragment StoreEntitySet="TICKET">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_NOTIFICACION" ColumnName="FE_NOTIFICACION" />
+          <ScalarProperty Name="CD_USUARIO_TRANSFERENCIA" ColumnName="CD_USUARIO_TRANSFERENCIA" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="DE_OBSERVACION_SUPERVISOR" ColumnName="DE_OBSERVACION_SUPERVISOR" />
+          <ScalarProperty Name="DE_OBSERVACION" ColumnName="DE_OBSERVACION" />
+          <ScalarProperty Name="IN_RESPUESTA_ENVIADA" ColumnName="IN_RESPUESTA_ENVIADA" />
+          <ScalarProperty Name="ID_RESPUESTA_OPERADOR" ColumnName="ID_RESPUESTA_OPERADOR" />
+          <ScalarProperty Name="ID_ESTATUS_TICKET" ColumnName="ID_ESTATUS_TICKET" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="ID_USUARIO_MOVIL" ColumnName="ID_USUARIO_MOVIL" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+          <ScalarProperty Name="TP_ATENCION" ColumnName="TP_ATENCION" />
+          <ScalarProperty Name="TP_NOTIFICACION" ColumnName="TP_NOTIFICACION" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_NOTIFICACION" ColumnName="ID_NOTIFICACION" />
+          <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TICKET_HISTORICO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TICKET_HISTORICO">
+        <MappingFragment StoreEntitySet="TICKET_HISTORICO">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_NOTIFICACION" ColumnName="FE_NOTIFICACION" />
+          <ScalarProperty Name="CD_USUARIO_TRANSFERENCIA" ColumnName="CD_USUARIO_TRANSFERENCIA" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="DE_OBSERVACION_SUPERVISOR" ColumnName="DE_OBSERVACION_SUPERVISOR" />
+          <ScalarProperty Name="DE_OBSERVACION" ColumnName="DE_OBSERVACION" />
+          <ScalarProperty Name="IN_RESPUESTA_ENVIADA" ColumnName="IN_RESPUESTA_ENVIADA" />
+          <ScalarProperty Name="ID_RESPUESTA_OPERADOR" ColumnName="ID_RESPUESTA_OPERADOR" />
+          <ScalarProperty Name="ID_ESTATUS_TICKET" ColumnName="ID_ESTATUS_TICKET" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="ID_USUARIO_MOVIL" ColumnName="ID_USUARIO_MOVIL" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+          <ScalarProperty Name="TP_ATENCION" ColumnName="TP_ATENCION" />
+          <ScalarProperty Name="TP_NOTIFICACION" ColumnName="TP_NOTIFICACION" />
+          <ScalarProperty Name="ID_ORIGEN_NOTIFICACION" ColumnName="ID_ORIGEN_NOTIFICACION" />
+          <ScalarProperty Name="ID_NOTIFICACION" ColumnName="ID_NOTIFICACION" />
+          <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+          <ScalarProperty Name="ID_TICKET_HISTORICO" ColumnName="ID_TICKET_HISTORICO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="FUNC_002_BUSCA_TICKET" FunctionName="IntranetSAIModel.Store.FUNC_002_BUSCA_TICKET">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="IntranetSAIModel.FUNC_002_BUSCA_TICKET_Result">
+          <ScalarProperty Name="ID_TICKET" ColumnName="ID_TICKET" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="NU_DOCUMENTO_IDENTIDAD" ColumnName="NU_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="DE_NOMBRE_CLIENTE" ColumnName="DE_NOMBRE_CLIENTE" />
+          <ScalarProperty Name="DE_APELLIDO_CLIENTE" ColumnName="DE_APELLIDO_CLIENTE" />
+          <ScalarProperty Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" ColumnName="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" />
+          <ScalarProperty Name="CD_TP_NOTIFICACION" ColumnName="CD_TP_NOTIFICACION" />
+          <ScalarProperty Name="DE_TIPO_NOTIFICACION" ColumnName="DE_TIPO_NOTIFICACION" />
+          <ScalarProperty Name="CD_TP_ATENCION" ColumnName="CD_TP_ATENCION" />
+          <ScalarProperty Name="DE_TIPO_ATENCION" ColumnName="DE_TIPO_ATENCION" />
+          <ScalarProperty Name="DE_COLOR_TITULO" ColumnName="DE_COLOR_TITULO" />
+          <ScalarProperty Name="NU_DVR" ColumnName="NU_DVR" />
+          <ScalarProperty Name="NU_SIM" ColumnName="NU_SIM" />
+          <ScalarProperty Name="NM_USUARIO" ColumnName="NM_USUARIO" />
+          <ScalarProperty Name="NM_DISTRIBUIDOR" ColumnName="NM_DISTRIBUIDOR" />
+          <ScalarProperty Name="FE_STATUS" ColumnName="FE_STATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="CD_ESTATUS" ColumnName="CD_ESTATUS" />
+          <ScalarProperty Name="DE_ESTATUS" ColumnName="DE_ESTATUS" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="SEGMENTO_NEGOCIO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.SEGMENTO_NEGOCIO">
+        <MappingFragment StoreEntitySet="SEGMENTO_NEGOCIO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="NM_SEGMENTO_NEGOCIO" ColumnName="NM_SEGMENTO_NEGOCIO" />
+          <ScalarProperty Name="CD_SEGMENTO_NEGOCIO" ColumnName="CD_SEGMENTO_NEGOCIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOCIO_COMERCIAL">
+      <EntityTypeMapping TypeName="IntranetSAIModel.SOCIO_COMERCIAL">
+        <MappingFragment StoreEntitySet="SOCIO_COMERCIAL">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_INACTIVO" ColumnName="FE_INACTIVO" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="CD_SEGMENTO_NEGOCIO" ColumnName="CD_SEGMENTO_NEGOCIO" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+          <ScalarProperty Name="DI_OFICINA" ColumnName="DI_OFICINA" />
+          <ScalarProperty Name="CD_CORREGIMIENTO" ColumnName="CD_CORREGIMIENTO" />
+          <ScalarProperty Name="CD_DISTRITO" ColumnName="CD_DISTRITO" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+          <ScalarProperty Name="DI_EMAIL" ColumnName="DI_EMAIL" />
+          <ScalarProperty Name="NU_TELEFONO_MOVIL" ColumnName="NU_TELEFONO_MOVIL" />
+          <ScalarProperty Name="NU_TELEFONO_FIJO" ColumnName="NU_TELEFONO_FIJO" />
+          <ScalarProperty Name="NM_SOCIO_COMERCIAL" ColumnName="NM_SOCIO_COMERCIAL" />
+          <ScalarProperty Name="CD_SOCIO_COMERCIAL" ColumnName="CD_SOCIO_COMERCIAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CLIENTE">
+      <EntityTypeMapping TypeName="IntranetSAIModel.CLIENTE">
+        <MappingFragment StoreEntitySet="CLIENTE">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_INACTIVO" ColumnName="FE_INACTIVO" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="CD_COMPANIA_SEGURO" ColumnName="CD_COMPANIA_SEGURO" />
+          <ScalarProperty Name="NU_TELEFONO_MOVIL_PERSONA_CONTACTO" ColumnName="NU_TELEFONO_MOVIL_PERSONA_CONTACTO" />
+          <ScalarProperty Name="NM_PERSONA_CONTACTO" ColumnName="NM_PERSONA_CONTACTO" />
+          <ScalarProperty Name="TP_SANGRE" ColumnName="TP_SANGRE" />
+          <ScalarProperty Name="NU_TELEFONO_OFICINA" ColumnName="NU_TELEFONO_OFICINA" />
+          <ScalarProperty Name="DI_COBRO" ColumnName="DI_COBRO" />
+          <ScalarProperty Name="CD_CORREGIMIENTO" ColumnName="CD_CORREGIMIENTO" />
+          <ScalarProperty Name="CD_DISTRITO" ColumnName="CD_DISTRITO" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+          <ScalarProperty Name="FE_NACIMIENTO" ColumnName="FE_NACIMIENTO" />
+          <ScalarProperty Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" ColumnName="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" />
+          <ScalarProperty Name="DE_APELLIDO" ColumnName="DE_APELLIDO" />
+          <ScalarProperty Name="DE_NOMBRE" ColumnName="DE_NOMBRE" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USUARIO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.USUARIO">
+        <MappingFragment StoreEntitySet="USUARIO">
+          <ScalarProperty Name="IN_CORREO_REGISTRO_ENVIADO" ColumnName="IN_CORREO_REGISTRO_ENVIADO" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="IN_USUARIO_BLOQUEADO" ColumnName="IN_USUARIO_BLOQUEADO" />
+          <ScalarProperty Name="IN_USUARIO_INACTIVO" ColumnName="IN_USUARIO_INACTIVO" />
+          <ScalarProperty Name="FE_REGISTRO_MOVIL" ColumnName="FE_REGISTRO_MOVIL" />
+          <ScalarProperty Name="IN_REGISTRO_MOVIL" ColumnName="IN_REGISTRO_MOVIL" />
+          <ScalarProperty Name="NU_TELEFONO_MOVIL" ColumnName="NU_TELEFONO_MOVIL" />
+          <ScalarProperty Name="NU_TELEFONO_FIJO" ColumnName="NU_TELEFONO_FIJO" />
+          <ScalarProperty Name="DI_EMAIL_USUARIO" ColumnName="DI_EMAIL_USUARIO" />
+          <ScalarProperty Name="FE_NACIMIENTO" ColumnName="FE_NACIMIENTO" />
+          <ScalarProperty Name="DE_CONTRASENA" ColumnName="DE_CONTRASENA" />
+          <ScalarProperty Name="DE_NOMBRE_APELLIDO" ColumnName="DE_NOMBRE_APELLIDO" />
+          <ScalarProperty Name="NU_DOCUMENTO_IDENTIDAD" ColumnName="NU_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="TP_DOCUMENTO_IDENTIDAD" ColumnName="TP_DOCUMENTO_IDENTIDAD" />
+          <ScalarProperty Name="NM_USUARIO" ColumnName="NM_USUARIO" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="USUARIO_ROL" TypeName="IntranetSAIModel.USUARIO_ROL" StoreEntitySet="USUARIO_ROL">
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+      </EndProperty>
+      <EndProperty Name="ROL">
+        <ScalarProperty Name="CD_ROL" ColumnName="CD_ROL" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="USUARIO_PADRE" TypeName="IntranetSAIModel.USUARIO_PADRE" StoreEntitySet="USUARIO_PADRE">
+      <EndProperty Name="USUARIO1">
+        <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+      </EndProperty>
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO_PADRE" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="DISPOSITIVO_CLIENTE">
+      <EntityTypeMapping TypeName="IntranetSAIModel.DISPOSITIVO_CLIENTE">
+        <MappingFragment StoreEntitySet="DISPOSITIVO_CLIENTE">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="IN_ADMITE_APERTURA_REMOTA" ColumnName="IN_ADMITE_APERTURA_REMOTA" />
+          <ScalarProperty Name="DE_CONTRASENA_DVR" ColumnName="DE_CONTRASENA_DVR" />
+          <ScalarProperty Name="CD_VEHICULO" ColumnName="CD_VEHICULO" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DISPOSITIVO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.DISPOSITIVO">
+        <MappingFragment StoreEntitySet="DISPOSITIVO">
+          <ScalarProperty Name="IN_ELIMINADO" ColumnName="IN_ELIMINADO" />
+          <ScalarProperty Name="CD_MODELO" ColumnName="CD_MODELO" />
+          <ScalarProperty Name="NU_SIM_GPS" ColumnName="NU_SIM_GPS" />
+          <ScalarProperty Name="NU_DVR" ColumnName="NU_DVR" />
+          <ScalarProperty Name="NU_SERIAL" ColumnName="NU_SERIAL" />
+          <ScalarProperty Name="DE_DISPOSITIVO" ColumnName="DE_DISPOSITIVO" />
+          <ScalarProperty Name="NM_DISPOSITIVO" ColumnName="NM_DISPOSITIVO" />
+          <ScalarProperty Name="ID_DISTRIBUIDOR" ColumnName="ID_DISTRIBUIDOR" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="USUARIO_DISPOSITIVO" TypeName="IntranetSAIModel.USUARIO_DISPOSITIVO" StoreEntitySet="USUARIO_DISPOSITIVO">
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+      </EndProperty>
+      <EndProperty Name="DISPOSITIVO">
+        <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="MENU_SERVICIO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.MENU_SERVICIO">
+        <MappingFragment StoreEntitySet="MENU_SERVICIO">
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="CD_APLICACION" ColumnName="CD_APLICACION" />
+          <ScalarProperty Name="DE_SERVICIO" ColumnName="DE_SERVICIO" />
+          <ScalarProperty Name="NM_SERVICIO" ColumnName="NM_SERVICIO" />
+          <ScalarProperty Name="CD_MENU_SERVICIO" ColumnName="CD_MENU_SERVICIO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="MENU_SERVICIO_USUARIO" TypeName="IntranetSAIModel.MENU_SERVICIO_USUARIO" StoreEntitySet="MENU_SERVICIO_USUARIO">
+      <EndProperty Name="USUARIO">
+        <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+      </EndProperty>
+      <EndProperty Name="MENU_SERVICIO">
+        <ScalarProperty Name="CD_MENU_SERVICIO" ColumnName="CD_MENU_SERVICIO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="SEGMENTO_NEGOCIO_MENU_SERVICIO" TypeName="IntranetSAIModel.SEGMENTO_NEGOCIO_MENU_SERVICIO" StoreEntitySet="SEGMENTO_NEGOCIO_MENU_SERVICIO">
+      <EndProperty Name="SEGMENTO_NEGOCIO">
+        <ScalarProperty Name="CD_SEGMENTO_NEGOCIO" ColumnName="CD_SEGMENTO_NEGOCIO" />
+      </EndProperty>
+      <EndProperty Name="MENU_SERVICIO">
+        <ScalarProperty Name="CD_MENU_SERVICIO" ColumnName="CD_MENU_SERVICIO" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="PLANTILLA_CORREO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.PLANTILLA_CORREO">
+        <MappingFragment StoreEntitySet="PLANTILLA_CORREO">
+          <ScalarProperty Name="DE_CONTENIDO_PLANTILLA" ColumnName="DE_CONTENIDO_PLANTILLA" />
+          <ScalarProperty Name="DE_TITULO_CORREO" ColumnName="DE_TITULO_CORREO" />
+          <ScalarProperty Name="CD_USUARIO" ColumnName="CD_USUARIO" />
+          <ScalarProperty Name="TP_PLANTILLA_CORREO" ColumnName="TP_PLANTILLA_CORREO" />
+          <ScalarProperty Name="NM_PLANTILLA_CORREO" ColumnName="NM_PLANTILLA_CORREO" />
+          <ScalarProperty Name="CD_PLANTILLA_CORREO" ColumnName="CD_PLANTILLA_CORREO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PLANTILLA_CORREO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TIPO_PLANTILLA_CORREO">
+        <MappingFragment StoreEntitySet="TIPO_PLANTILLA_CORREO">
+          <ScalarProperty Name="NM_TIPO_PLANTILLA" ColumnName="NM_TIPO_PLANTILLA" />
+          <ScalarProperty Name="TP_PLANTILLA_CORREO" ColumnName="TP_PLANTILLA_CORREO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARTICULO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.ARTICULO">
+        <MappingFragment StoreEntitySet="ARTICULO">
+          <ScalarProperty Name="FE_CREACION" ColumnName="FE_CREACION" />
+          <ScalarProperty Name="FE_STATUS" ColumnName="FE_STATUS" />
+          <ScalarProperty Name="IN_INACTIVO" ColumnName="IN_INACTIVO" />
+          <ScalarProperty Name="MT_PRECIO_COMPRA" ColumnName="MT_PRECIO_COMPRA" />
+          <ScalarProperty Name="NU_CANTIDAD_DISPONIBLE" ColumnName="NU_CANTIDAD_DISPONIBLE" />
+          <ScalarProperty Name="CD_MODELO" ColumnName="CD_MODELO" />
+          <ScalarProperty Name="DE_ARTICULO" ColumnName="DE_ARTICULO" />
+          <ScalarProperty Name="NM_ARTICULO" ColumnName="NM_ARTICULO" />
+          <ScalarProperty Name="CD_ARTICULO" ColumnName="CD_ARTICULO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CONFIGURACION_KILOMETRAJE">
+      <EntityTypeMapping TypeName="IntranetSAIModel.CONFIGURACION_KILOMETRAJE">
+        <MappingFragment StoreEntitySet="CONFIGURACION_KILOMETRAJE">
+          <ScalarProperty Name="MT_KILOMETRAJE" ColumnName="MT_KILOMETRAJE" />
+          <ScalarProperty Name="CD_MODELO" ColumnName="CD_MODELO" />
+          <ScalarProperty Name="CD_ANO" ColumnName="CD_ANO" />
+          <ScalarProperty Name="CD_TALLER" ColumnName="CD_TALLER" />
+          <ScalarProperty Name="CD_CONFIGURACION_KILOMETRAJE" ColumnName="CD_CONFIGURACION_KILOMETRAJE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OPERACION_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.OPERACION_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="OPERACION_MANTENIMIENTO">
+          <ScalarProperty Name="MT_MINUTO_DURACION_OPERACION" ColumnName="MT_MINUTO_DURACION_OPERACION" />
+          <ScalarProperty Name="NM_OPERACION_MANTENIMIENTO" ColumnName="NM_OPERACION_MANTENIMIENTO" />
+          <ScalarProperty Name="CD_TALLER" ColumnName="CD_TALLER" />
+          <ScalarProperty Name="DE_ALIAS_OPERACION" ColumnName="DE_ALIAS_OPERACION" />
+          <ScalarProperty Name="CD_OPERACION" ColumnName="CD_OPERACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD_MANTENIMIENTO">
+      <EntityTypeMapping TypeName="IntranetSAIModel.SOLICITUD_MANTENIMIENTO">
+        <MappingFragment StoreEntitySet="SOLICITUD_MANTENIMIENTO">
+          <ScalarProperty Name="DE_OBSERVACION" ColumnName="DE_OBSERVACION" />
+          <ScalarProperty Name="ID_DISPOSITIVO" ColumnName="ID_DISPOSITIVO" />
+          <ScalarProperty Name="CD_VEHICULO" ColumnName="CD_VEHICULO" />
+          <ScalarProperty Name="FE_ESTATUS" ColumnName="FE_ESTATUS" />
+          <ScalarProperty Name="DE_ESTATUS_SOLICITUD" ColumnName="DE_ESTATUS_SOLICITUD" />
+          <ScalarProperty Name="FE_SOLICITUD" ColumnName="FE_SOLICITUD" />
+          <ScalarProperty Name="CD_CLIENTE" ColumnName="CD_CLIENTE" />
+          <ScalarProperty Name="CD_USUARIO_SOLICITANTE" ColumnName="CD_USUARIO_SOLICITANTE" />
+          <ScalarProperty Name="CD_CONFIGURACION_KILOMETRAJE" ColumnName="CD_CONFIGURACION_KILOMETRAJE" />
+          <ScalarProperty Name="CD_TALLER" ColumnName="CD_TALLER" />
+          <ScalarProperty Name="CD_SOLICITUD" ColumnName="CD_SOLICITUD" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TALLER">
+      <EntityTypeMapping TypeName="IntranetSAIModel.TALLER">
+        <MappingFragment StoreEntitySet="TALLER">
+          <ScalarProperty Name="CD_SOCIO_COMERCIAL" ColumnName="CD_SOCIO_COMERCIAL" />
+          <ScalarProperty Name="DI_TALLER" ColumnName="DI_TALLER" />
+          <ScalarProperty Name="CD_CORREGIMIENTO" ColumnName="CD_CORREGIMIENTO" />
+          <ScalarProperty Name="CD_DISTRITO" ColumnName="CD_DISTRITO" />
+          <ScalarProperty Name="CD_PROVINCIA" ColumnName="CD_PROVINCIA" />
+          <ScalarProperty Name="CD_PAIS" ColumnName="CD_PAIS" />
+          <ScalarProperty Name="NM_TALLER" ColumnName="NM_TALLER" />
+          <ScalarProperty Name="CD_TALLER" ColumnName="CD_TALLER" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" TypeName="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" StoreEntitySet="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO">
+      <EndProperty Name="OPERACION_MANTENIMIENTO">
+        <ScalarProperty Name="CD_OPERACION" ColumnName="CD_OPERACION" />
+      </EndProperty>
+      <EndProperty Name="CONFIGURACION_KILOMETRAJE">
+        <ScalarProperty Name="CD_CONFIGURACION_KILOMETRAJE" ColumnName="CD_CONFIGURACION_KILOMETRAJE" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

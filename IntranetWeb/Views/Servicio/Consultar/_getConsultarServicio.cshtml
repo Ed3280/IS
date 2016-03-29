@@ -1,0 +1,121 @@
+﻿@model IntranetWeb.ViewModel.Servicio.SolicitudMantenimiento
+
+@{
+    Layout = null;
+    ViewBag.Title = "Consultar solicitud de mantenimiento";
+    int DuracionTotal = 0;
+    TimeSpan span= TimeSpan.FromMinutes(DuracionTotal); 
+}
+<div id="divTabConsultarSolicitudMantenimiento" class="tabbable" data-titulo="@ViewBag.Title">
+    <ul id="ulTabSolicitud-mantenimiento" class="nav nav-tabs tab-space-4">
+        <li id="liDatosGenerales" class="active">
+            <a href="#divBloqueDatosGenerales" data-toggle="tab">@Resources.TituloWidget.DatosGenerales</a>
+        </li>
+        <li id="liOperaciones" >
+            <a href="#divBloqueOperaciones" data-toggle="tab">Operaciones</a>
+        </li> 
+    </ul>
+    <div id="divTabSolicitudMantenimiento" class="tab-content">
+        <div class="tab-pane in active scrollable" id="divBloqueDatosGenerales" data-size="60">
+                
+            <div class="row">
+
+                <div class="form-group  col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.Documento)<br />
+                    @Html.DisplayFor(m => m.Documento, new { Class = "form-control " })
+                </div>
+
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.NombreCliente)<br />
+                    @Html.DisplayFor(m => m.NombreCliente, new { Class = "form-control " })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.TipoMantenimiento)<br />
+                    @Html.DisplayFor(m => m.TipoMantenimiento, new { Class = "form-control " })
+                </div>
+
+                
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.FechaSolicitud)<br />
+                    @Html.DisplayFor(m => m.FechaSolicitud, new { Class = "form-control " })
+                </div>
+
+            </div>
+                  
+            
+            <div class="row">
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                    @Html.LabelBoldFor(m => m.EstatusSolicitud)<br />
+                    @Html.DisplayFor(m => m.EstatusSolicitud, new { Class = "form-control " })
+                </div>
+                
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.FechaEstatus)<br />
+                    @Html.DisplayFor(m => m.FechaEstatus, new { Class = "form-control " })
+                </div>               
+
+            </div>
+            
+            <div class="row">
+                
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                    @Html.LabelBoldFor(m => m.Vehiculo)<br />
+                    @Html.DisplayFor(m => m.Vehiculo, new { Class = "form-control " })
+                </div>
+                
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+                    @Html.LabelBoldFor(m => m.Kilometraje)<br />
+                    @Html.DisplayFor(m => m.Kilometraje, new { Class = "form-control " })
+                </div>
+
+                
+                
+            </div>
+            <div class="row">
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.Dispositivo)<br />
+                    @Html.DisplayFor(m => m.Dispositivo, new { Class = "form-control " })
+                </div>
+                <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.Observacion)<br />
+                    @Html.DisplayFor(m => m.Observacion, new { Class = "form-control " })
+                </div>
+            </div>
+         </div>
+
+        <div class="tab-pane" id="divBloqueOperaciones" >
+            <div class="row">
+                <div class="col-xs-12">
+                    <ol class="dd-list scrollable" data-size="60" >
+                        @foreach (var operacion in Model.Operaciones)
+                        {
+                            <li class="dd-item dd2-item">
+                                <div class="dd2-handle"><i class="normal-icon ace-icon fa fa-check green bigger-130"></i></div>
+                                <div class="dd2-content">
+                                    @Html.Raw(operacion.Nombre)
+                                </div>                                
+                           </li>
+                            DuracionTotal += operacion.Duracion;
+                            span = TimeSpan.FromMinutes(DuracionTotal);
+                        }
+                        </ol>
+                    <div class="col-sm-5 pull-right">
+                        <h4 class="pull-right">
+                            Duración estimada :
+                            <span class="red">@span.ToString(@"hh\:mm") </span>
+                        </h4>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+    </div>
+
+    <div class="space-4"></div>
+    <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+</div>
+
+
+

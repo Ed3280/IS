@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ad3528f8a4b04b529a859a40fa7b61ee" Name="Diagram1" ShowGrid="false" ZoomLevel="74">
+        <EntityTypeShape EntityType="IntranetSAIModel.PARAMETRO_CONFIGURACION" Width="1.5" PointX="0.75" PointY="1" />
+        <EntityTypeShape EntityType="IntranetSAIModel.USUARIO_APLICACION" Width="2" PointX="13.125" PointY="5.25" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TICKET_ESTATUS" Width="1.5" PointX="8.375" PointY="0.875" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_NOTIFICACION" Width="1.5" PointX="5.375" PointY="9" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_ATENCION" Width="1.5" PointX="14.875" PointY="8.875" />
+        <EntityTypeShape EntityType="IntranetSAIModel.RESPUESTA_OPERADOR_GCM" Width="1.5" PointX="10.125" PointY="15.625" />
+        <AssociationConnector Association="IntranetSAIModel.RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION" />
+        <EntityTypeShape EntityType="IntranetSAIModel.LOG_TRANSACCIONES" Width="1.5" PointX="9.375" PointY="19.375" />
+        <EntityTypeShape EntityType="IntranetSAIModel.EMPLEADO" Width="1.5" PointX="17.875" PointY="1.375" />
+        <EntityTypeShape EntityType="IntranetSAIModel.UNIDAD_ADMINISTRATIVA" Width="1.5" PointX="13.375" PointY="2.125" />
+        <AssociationConnector Association="IntranetSAIModel.EMPLEADO_FK_EMPLEADO_SUPERVISOR" />
+        <EntityTypeShape EntityType="IntranetSAIModel.CARGO" Width="1.5" PointX="15.625" PointY="0.75" />
+        <AssociationConnector Association="IntranetSAIModel.CARGO_FK_CARGO_PADRE" />
+        <AssociationConnector Association="IntranetSAIModel.CARGO_FK_UNIDAD_ADMINISTRATIVA" />
+        <AssociationConnector Association="IntranetSAIModel.EMPLEADO_FK_CARGO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_SANGRE" Width="1.5" PointX="3.375" PointY="3.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.APLICACION" Width="1.5" PointX="0.75" PointY="10.125" />
+        <AssociationConnector Association="IntranetSAIModel.FK_APLICACION_APLICACION1" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_APLICACION_FK_APLICACION" />
+        <EntityTypeShape EntityType="IntranetSAIModel.ROL" Width="1.5" PointX="17.875" PointY="6.625" />
+        <AssociationConnector Association="IntranetSAIModel.CARGO_ROL" />
+        <AssociationConnector Association="IntranetSAIModel.ROL_APLICACION" />
+        <EntityTypeShape EntityType="IntranetSAIModel.ORIGEN_NOTIFICACION" Width="1.5" PointX="5.375" PointY="3.875" />
+        <EntityTypeShape EntityType="IntranetSAIModel.SUCURSAL" Width="1.5" PointX="7.375" PointY="4" />
+        <AssociationConnector Association="IntranetSAIModel.EMPLEADO_FK_SUCURSAL" />
+        <EntityTypeShape EntityType="IntranetSAIModel.CORREGIMIENTO" Width="1.5" PointX="4.625" PointY="29.125" />
+        <EntityTypeShape EntityType="IntranetSAIModel.PAIS" Width="1.5" PointX="5.125" PointY="12.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.PROVINCIA" Width="1.5" PointX="2.625" PointY="26.625" />
+        <AssociationConnector Association="IntranetSAIModel.PROVINCIA_FK_PAIS" />
+        <EntityTypeShape EntityType="IntranetSAIModel.DISTRITO" Width="1.5" PointX="18.75" PointY="25" />
+        <AssociationConnector Association="IntranetSAIModel.DISTRITO_FK_PROVINCIA" />
+        <EntityTypeShape EntityType="IntranetSAIModel.COMPANIA_SEGURO" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_CIERRE_VEHICULO" Width="1.5" PointX="3.375" PointY="6.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_COMBUSTIBLE" Width="1.5" PointX="9.375" PointY="6.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_TRANSMISION_VEHICULO" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.KILOMETRAJE_TOTAL" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="IntranetSAIModel.NOTIFICACION_GCM" Width="1.5" PointX="24.625" PointY="1.25" />
+        <EntityTypeShape EntityType="IntranetSAIModel.MARCA" Width="1.5" PointX="25.375" PointY="11.25" />
+        <EntityTypeShape EntityType="IntranetSAIModel.MODELO" Width="1.5" PointX="25.375" PointY="5.375" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_ARTICULO" Width="1.5" PointX="23.125" PointY="5.875" />
+        <EntityTypeShape EntityType="IntranetSAIModel.DISTRIBUIDOR" Width="1.5" PointX="15.625" PointY="15.5" />
+        <EntityTypeShape EntityType="IntranetSAIModel.USUARIO_MOVIL_GCM" Width="1.5" PointX="22.375" PointY="1.125" />
+        <AssociationConnector Association="IntranetSAIModel.NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM" />
+        <AssociationConnector Association="IntranetSAIModel.ARTICULO_MODELO_FK_MARCA" />
+        <AssociationConnector Association="IntranetSAIModel.MODELO_FK_TIPO_ARTICULO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.USUARIO_NOTIFICACION" Width="1.5" PointX="32.125" PointY="11.25" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION" />
+        <EntityTypeShape EntityType="IntranetSAIModel.ANO_VEHICULO" Width="1.5" PointX="25.375" PointY="23.25" />
+        <EntityTypeShape EntityType="IntranetSAIModel.VEHICULO" Width="1.5" PointX="27.625" PointY="8.75" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_ANO_VEHICULO" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_COMPANIA_SEGURO" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_TIPO_CIERRE_VEHICULO" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_TIPO_COMBUSTIBLE" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_TIPO_TRANSMISION_VEHICULO" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_MARCA" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_MODELO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.IMAGEN_NOTIFICACION" Width="1.5" PointX="34.375" PointY="11.375" />
+        <AssociationConnector Association="IntranetSAIModel.IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_DOCUMENTO_IDENTIDAD" Width="1.5" PointX="11.375" PointY="8.875" />
+        <EntityTypeShape EntityType="IntranetSAIModel.NOTIFICACION_SIN_GESTION" Width="1.5" PointX="25" PointY="15" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TICKET" Width="1.5" PointX="28" PointY="1.375" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TICKET_HISTORICO" Width="1.5" PointX="0.75" PointY="3.75" />
+        <AssociationConnector Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_ORIGEN_NOTIFICACION" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_RESPUESTA_OPERADOR_GCM" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_TICKET_ESTATUS" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_TIPO_ATENCION" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_TIPO_NOTIFICACION" />
+        <EntityTypeShape EntityType="IntranetSAIModel.SEGMENTO_NEGOCIO" Width="1.5" PointX="11.375" PointY="12.375" />
+        <EntityTypeShape EntityType="IntranetSAIModel.SOCIO_COMERCIAL" Width="1.5" PointX="22.375" PointY="17.625" />
+        <AssociationConnector Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO" />
+        <AssociationConnector Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_CORREGIMIENTO" />
+        <AssociationConnector Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRIBUIDOR" />
+        <AssociationConnector Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRITO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.CLIENTE" Width="1.5" PointX="22.375" PointY="9.375" />
+        <EntityTypeShape EntityType="IntranetSAIModel.USUARIO" Width="1.375" PointX="20.125" PointY="9.625" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_COMPANIA_SEGURO" />
+        <AssociationConnector Association="IntranetSAIModel.VEHICULO_FK_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.EMEPLEADO_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_NOTIFICACION_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.TICKET_FK_USUARIO_TRANSFERENCIA" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_CORREGIMIENTO" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_DISTRITO" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_PAIS" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_PROVINCIA" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_TIPO_SANGRE" />
+        <AssociationConnector Association="IntranetSAIModel.CLIENTE_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.LOG_TRANSACCIONES_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_APLICACION_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_MOVIL_GCM_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_ROL" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_PADRE" />
+        <EntityTypeShape EntityType="IntranetSAIModel.DISPOSITIVO_CLIENTE" Width="1.5" PointX="29.875" PointY="10.75" />
+        <AssociationConnector Association="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_VEHICULO" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE" />
+        <EntityTypeShape EntityType="IntranetSAIModel.DISPOSITIVO" Width="1.5" PointX="17.875" PointY="15.125" />
+        <AssociationConnector Association="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_DISPOSITIVO" />
+        <AssociationConnector Association="IntranetSAIModel.DISPOSITIVO_FK_DISTRIBUIDOR" />
+        <AssociationConnector Association="IntranetSAIModel.USUARIO_DISPOSITIVO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.MENU_SERVICIO" Width="1.5" PointX="3" PointY="16.25" />
+        <AssociationConnector Association="IntranetSAIModel.MENU_SERVICIO_FK_APLICACION" />
+        <AssociationConnector Association="IntranetSAIModel.MENU_SERVICIO_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.SEGMENTO_NEGOCIO_MENU_SERVICIO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.PLANTILLA_CORREO" Width="1.5" PointX="27.375" PointY="15" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TIPO_PLANTILLA_CORREO" Width="1.5" PointX="25.125" PointY="19.5" />
+        <AssociationConnector Association="IntranetSAIModel.PLANTILLA_CORREO_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.ARTICULO" Width="1.5" PointX="27.625" PointY="18.625" />
+        <AssociationConnector Association="IntranetSAIModel.ANO_VEHICULO_FK_MODELO" />
+        <AssociationConnector Association="IntranetSAIModel.ARTICULO_FK_MODELO" />
+        <EntityTypeShape EntityType="IntranetSAIModel.CONFIGURACION_KILOMETRAJE" Width="1.5" PointX="29.875" PointY="23" />
+        <EntityTypeShape EntityType="IntranetSAIModel.OPERACION_MANTENIMIENTO" Width="1.5" PointX="32.125" PointY="23.25" />
+        <EntityTypeShape EntityType="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Width="1.5" PointX="32.125" PointY="15.5" />
+        <EntityTypeShape EntityType="IntranetSAIModel.TALLER" Width="1.5" PointX="27.625" PointY="22.375" />
+        <AssociationConnector Association="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_MODELO" />
+        <AssociationConnector Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_VEHICULO" />
+        <AssociationConnector Association="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_TALLER" />
+        <AssociationConnector Association="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE" />
+        <AssociationConnector Association="IntranetSAIModel.OPERACION_MANTENIMIENTO_FK_TALLER" />
+        <AssociationConnector Association="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_TALLER" />
+        <AssociationConnector Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_USUARIO" />
+        <AssociationConnector Association="IntranetSAIModel.TALLER_FK_CORREGIMIENTO" />
+        <AssociationConnector Association="IntranetSAIModel.TALLER_FK_DISTRITO" />
+        <AssociationConnector Association="IntranetSAIModel.TALLER_FK_PAIS" />
+        <AssociationConnector Association="IntranetSAIModel.TALLER_FK_PROVINCIA" />
+        <AssociationConnector Association="IntranetSAIModel.TALLER_FK_SOCIO_COMERCIAL" />
+        <AssociationConnector Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE" />
+        <AssociationConnector Association="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

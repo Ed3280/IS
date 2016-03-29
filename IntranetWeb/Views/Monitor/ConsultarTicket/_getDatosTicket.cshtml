@@ -1,0 +1,97 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Monitor.Ticket
+@{
+    ViewBag.Title = "Ticket";
+}
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="glyphicon fa fa-ticket"></i> @ViewBag.Title</h4>
+
+        <div class="widget-toolbar no-border">
+            <!--a href="#" data-action="collapse">
+                <i class="ace-icon fa fa-chevron-up"></i>
+            </a-->
+        </div>
+    </div>
+    <div class="widget-body" id="widgetBodyTicket" data-id="@Model.Id">
+        <div class="widget-main">
+
+            <div class="row">
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Id)<br />
+                    @Html.DisplayFor(m => m.Id, new { Class = "form-control" })
+                </div>
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DescripcionOrigenNotificacion)<br />
+                    @Html.DisplayFor(m => m.DescripcionOrigenNotificacion, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DescripcionEstatus)<br />
+                    @Html.DisplayFor(m => m.DescripcionEstatus, new { Class = "form-control" })
+                </div>
+                
+                 <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.FechaEstatus)<br />
+                    @Html.DisplayFor(m => m.FechaEstatus, new { Class = "form-control" })
+                </div>               
+            
+
+            
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    <strong>@Html.LabelBoldFor(m => m.DescripcionTipoNotificacion)</strong><br />
+                    @Html.DisplayFor(m => m.DescripcionTipoNotificacion, new { Class = "form-control" })
+                </div>
+
+
+                <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    <strong>@Html.LabelBoldFor(m => m.FechaNotificacion)</strong><br />
+                    @Html.DisplayFor(m => m.FechaNotificacion, new { Class = "form-control" })
+                </div>                                
+         
+            
+             <div class="form-group  col-lg-4 col-md-6 col-sm-12 col-xs-12 ">
+                    <strong>@Html.LabelBoldFor(m => m.DescripcionTipoAtencion)</strong><br />
+                    @Html.DisplayFor(m => m.DescripcionTipoAtencion, new { Class = "form-control" })
+             </div>
+
+                <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.MensajeAlClienteSeleccionado) 
+                    @if (!String.IsNullOrWhiteSpace(Model.DescripcionMensajeAlCliente)){
+
+                        if (Model.InMensajeRespuestaEnviado){
+                            <i class="ace-icon fa fa-check-circle green tooltip-info" title="Mensaje Enviado" data-placement="right" data-rel="tooltip"></i>
+                        }
+                        else{
+                            <a href="javascript:void(0);" class="tooltip-info icono-reenviar-gcm" data-placement="right" data-rel="tooltip" title="Reenviar Mensaje" ><i class="ace-icon fa fa-times-circle red"></i> </a> 
+                        }
+                    }
+                    <br />
+                    @Html.DisplayFor(m => m.DescripcionMensajeAlCliente, new { Class = "form-control" })
+                </div>
+
+             <div class="form-group col-lg-4 col-md-6 col-sm-12 col-xs-12">
+                 @Html.LabelBoldFor(m => m.FechaCreacion)<br />
+                 @Html.DisplayFor(m => m.FechaCreacion, new { Class = "form-control" })
+             </div>
+            
+                <div class="form-group col-lg-8 col-md-6 col-sm-12 col-xs-12">
+                    @if (!String.IsNullOrWhiteSpace(Model.NombreUsuarioTransferencia))
+                    {
+                    @Html.LabelBoldFor(m => Model.NombreUsuarioTransferencia, new { @class = "bolder" })<br />
+                    }
+                    @Html.DisplayFor(m => Model.NombreUsuarioTransferencia, new { Class = "form-control" })
+                </div>
+             
+                 
+            <div class="form-group col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                @Html.LabelBoldFor(m => m.Observacion)<br />
+                @Html.DisplayFor(m => m.Observacion, new { Class = "form-control" })
+            </div>           
+
+            </div>
+        </div>
+    </div>
+</div>

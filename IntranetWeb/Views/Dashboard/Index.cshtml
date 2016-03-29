@@ -1,0 +1,28 @@
+﻿@model IntranetWeb.ViewModel.Dashboard.UsuarioDashboard
+
+@{
+    ViewBag.Title = Resources.EtiquetaResource.Bienvenido;
+}
+
+
+<div class="page-header" data-etiqueta-procesando="@Resources.EtiquetaResource.Procesando"><h1>@ViewBag.Title</h1></div>
+<div class="row">
+    <!--Si es empleado se rendean los widget asociados-->
+    @if (Model.EsEmpleado)
+    {
+        Html.RenderAction("_getCumpleano");
+        Html.RenderPartial("Widget/_getDirectorio");
+    }
+
+    @if (Model.aplicaciones.Contains(IntranetWeb.Core.Constante.Aplicacion.VerMonitorAlerta)
+         || Model.aplicaciones.Contains(IntranetWeb.Core.Constante.Aplicacion.VerMonitorAlertaAdmin)) {
+        Html.RenderAction("_getTicketsPorUsuario");
+    }
+
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/flot/chartPie")
+    @Scripts.Render("~/bundles/intranetSAI/Dashboard/dashboard")
+   
+}

@@ -1,0 +1,54 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Kilometraje.KilometrajeTotal
+
+@{
+    ViewBag.Title = "Kilometraje total";
+}
+        <div class="page-header"><h1>@ViewBag.Title</h1></div>
+
+            <div id="divFiltros" class="row">
+                <div class="col-xs-12">
+                    @Html.LabelBoldFor(model => model.UsuarioIdSeleccionado)
+
+                    @Html.DropDownListFor(m => m.UsuarioIdSeleccionado, new SelectList(Model.UsuarioId, "Value", "Text"), "Seleccione "+Html.DisplayNameFor(m => m.UsuarioIdSeleccionado), new { @id = "usuarioId", @class= "select2 form-control" })
+                    </div>
+                </div>
+
+            <div class="space"></div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="table-header">
+                        Kilometraje &nbsp; <i id="iLoadingTablaKilometraje" class='ace-icon fa fa-spinner fa-spin white bigger-125 ' style="display:none"></i>
+                    </div>
+                    <!-- div.table-responsive -->
+                    <!-- div.dataTables_borderWrap -->                    
+                        <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                            <table id="dynamic-table" class="table table-striped table-bordered table-hover dataTable no-footer DTTT_selectable" role="grid" aria-describedby="dynamic-table_info">
+                                <thead>
+                                    <tr role="row">
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Editar Kilometraje Inicial"></th>
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Id Vehículo">Id Distribuidor</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Vehículo">Nombre Distribuidor</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Id Vehículo">Id Vehículo</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Vehículo">Vehículo</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Km Inicial">Km Inicial</th>
+                                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" rowspan="1" colspan="1" aria-label="Km Recorridos">Km Recorridos</th>                                        
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>                    
+                </div>
+             </div>
+            <div id="divLocalizacion" data-url="@Url.Content("~/Scripts/dataTables/localization/"+Resources.ConfiguracionResource.DataTables+ ".json")"></div>
+            <div id="divVehiculoKilometraje" data-url="@Url.Action("getVehiculosKilometraje", "Kilometraje")"></div>
+            <div id="divEditarKilometrajeInicial" data-url="@Url.Action("_editarKilometraje", "Kilometraje")" data-url-editar="@Url.Action("actualizaKilometrajeInicial", "Kilometraje")"></div>
+            @Html.HiddenFor(m => m.IndicadorNoEdicion)
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryTable")
+    @Scripts.Render("~/bundles/select2")  
+    @Scripts.Render("~/bundles/intranetSAI/Kilometraje/verKilometraje")    
+}
+
+@section Styles {
+   @Styles.Render("~/Content/css/select2")
+}

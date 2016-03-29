@@ -1,0 +1,36 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+@{ Layout = null; }
+<div class="row">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(model => model.Direccion.PaisSeleccionado)
+        @Html.DropDownListFor(m => m.Direccion.PaisSeleccionado, new SelectList(Model.Direccion.Pais, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Direccion.PaisSeleccionado)), new { @class = "select2 form-control pais", data_url = Url.Action("getProvincias", "Select") })
+        @Html.ValidationMessageFor(model => model.Direccion.PaisSeleccionado, "", new { @class = "help-block" })
+
+    </div>
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(model => model.Direccion.ProvinciaSeleccionada)
+        @Html.DropDownListFor(m => m.Direccion.ProvinciaSeleccionada, new SelectList(Model.Direccion.Provincia, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Direccion.ProvinciaSeleccionada)), new { @class = "select2 form-control provincia", data_url = Url.Action("getDistritos", "Select") })
+        @Html.ValidationMessageFor(model => model.Direccion.ProvinciaSeleccionada, "", new { @class = "help-block" })
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(model => model.Direccion.MunicipioSeleccionado)
+        @Html.DropDownListFor(m => m.Direccion.MunicipioSeleccionado, new SelectList(Model.Direccion.Municipio, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Direccion.MunicipioSeleccionado)), new { @class = "select2 form-control municipio", data_url = Url.Action("getCorregimientos", "Select") })
+        @Html.ValidationMessageFor(model => model.Direccion.MunicipioSeleccionado, "", new { @class = "help-block" })
+
+    </div>
+
+    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(model => model.Direccion.CorregimientoSeleccionado)
+        @Html.DropDownListFor(m => m.Direccion.CorregimientoSeleccionado, new SelectList(Model.Direccion.Corregimiento, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Direccion.CorregimientoSeleccionado)), new { @class = "select2 form-control corregimiento" })
+        @Html.ValidationMessageFor(model => model.Direccion.CorregimientoSeleccionado, "", new { @class = "help-block" })
+    </div>
+</div>
+<div class="row">
+    <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        @Html.LabelBoldFor(m => m.Direccion.Calle)
+        @Html.TextAreaFor(m => m.Direccion.Calle, new { Class = "form-control", @rows = "10" })
+        @Html.ValidationMessageFor(model => model.Direccion.Calle, "", new { @class = "help-block" })
+    </div>
+</div>

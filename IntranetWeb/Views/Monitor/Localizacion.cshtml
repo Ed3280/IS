@@ -1,0 +1,52 @@
+﻿
+@{
+    ViewBag.Title = Resources.TituloPaginaResource.Localizacion;
+}
+
+
+<div class="page-header" data-etiqueta-procesando="@Resources.EtiquetaResource.Procesando">
+    <h1>@ViewBag.Title</h1>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+    
+        <div class="tabbable">
+            <ul id="ulTabMonitor" class="nav nav-tabs tab-space-4">
+                <li id="liMapa" class="active">
+                    <a href="#divTabMapa" data-toggle="tab">Mapa</a>
+                </li>              
+            </ul>
+
+            <div id="divTabMonitor" class="tab-content">
+                <div class="tab-pane in active" id="divTabMapa">
+                    
+                       
+                         <div id="map_canvas" style="height: 700px"></div>
+
+                        
+                        @{Html.RenderPartial("_getControlMapa", new IntranetWeb.ViewModel.Monitor.Distribuidor { AccionNestedDispositivos = "cargaNestedlUsuarioDispositivos" }); }
+                        @{Html.RenderPartial("_getControlDispositivo", new IntranetWeb.ViewModel.Monitor.LocalizacionDispositivo()); }
+                        @{Html.RenderPartial("_getControlCliente", new IntranetWeb.ViewModel.Monitor.UsuarioMovil()); }
+                    
+                </div>                
+            </div>
+        </div>    
+    </div>
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/google-maps")
+    @Scripts.Render("~/bundles/signalr")
+    @Scripts.Render("~/bundles/nestable")
+    @Scripts.Render("~/bundles/colorbox")
+    @Scripts.Render("~/bundles/intranetSAI/Monitor/localizacion")
+
+    <script src=@Url.Content("~/signalr/hubs")></script>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/css/select2")
+    @Styles.Render("~/Content/css/colorbox")
+}

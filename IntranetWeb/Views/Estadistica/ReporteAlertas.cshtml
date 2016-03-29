@@ -1,0 +1,69 @@
+﻿
+@model IntranetWeb.ViewModel.Estadistica.GestionAlerta
+@using IntranetWeb.Core.Utils
+@{
+    ViewBag.Title = Resources.TituloPaginaResource.ReporteAlertas;
+    ViewBag.Description = "Permite generar reporte de la gestión de alertas";
+}
+
+<div class="page-header"><h1>@ViewBag.Title</h1></div>
+
+@using (Html.BeginForm("GererarExcelAlerta", "Estadistica", FormMethod.Post, new { @Id = "GererarExcelAlertaForm", @class = "form", role = "form" }))
+{
+
+    <fieldset>
+
+        <div class="row">
+            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                @Html.LabelBoldFor(m => m.UsuarioAlertaSeleccionado)
+                @Html.DropDownListFor(m => m.UsuarioAlertaSeleccionado, new SelectList(Model.UsuarioAlerta, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.UsuarioAlertaSeleccionado)), new { @class = "select2 form-control" })
+            </div>
+            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4">
+                @Html.LabelBoldFor(m => m.TipoNotificacionSeleccionada)
+                @Html.DropDownListFor(m => m.TipoNotificacionSeleccionada, new SelectList(Model.TipoNotificacion, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.TipoNotificacionSeleccionada)), new { @class = "select2 form-control" })
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4 input-daterange">
+                @Html.Label(Resources.CampoResource.FechaNotificacion, new { @class = "bolder" })<br />
+                @Html.TextBoxFor(m => m.FechaNotificacionDesde, IntranetWeb.Core.Constante.AppFormat.dateJson)<span> - </span> @Html.TextBoxFor(m => m.FechaNotificacionHasta, IntranetWeb.Core.Constante.AppFormat.dateJson)
+
+            </div>
+
+            <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-4 input-daterange">
+                @Html.Label(Resources.CampoResource.FechaRegistro, new { @class = "bolder" })<br />
+                @Html.TextBoxFor(m => m.FechaRegistroDesde, IntranetWeb.Core.Constante.AppFormat.dateJson)<span> - </span> @Html.TextBoxFor(m => m.FechaRegistroHasta, IntranetWeb.Core.Constante.AppFormat.dateJson)
+            </div>
+
+        </div>
+
+        <div class="form-group block clearfix">
+            <div id="error-summary">
+                @if (ViewData.ModelState.Keys.Any(k => ViewData.ModelState[k].Errors.Count() > 0))
+                {
+                    <div class="alert alert-danger">
+                        <button class="close" data-dismiss="alert"><i class="ace-icon fa fa-times"></i> </button>
+
+                        @Html.ValidationSummary(false, Resources.EtiquetaResource.Atencion)
+                    </div>
+                }
+            </div>
+        </div>
+        <div class=" form-group clearfix">
+            <button type="submit" class="pull-left btn btn-sm btn-success">
+                <span class="bigger-110">@Resources.TituloBotonResource.GenerarReporte</span>
+            </button>
+        </div>
+
+
+    </fieldset>
+}
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/select2")
+    @Scripts.Render("~/bundles/intranetSAI/Estadistica/reporteEstadisticaAlerta")
+}
+
+@section Styles {
+    @Styles.Render("~/Content/css/select2")
+}

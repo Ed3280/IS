@@ -1,0 +1,42 @@
+﻿@model IntranetWeb.ViewModel.Administrador.SocioComercial
+@{ 
+    Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.ConsultarSocioComercial;
+}
+<div id="divTabConsultarSocioComercial" class="tabbable" data-titulo="@ViewBag.Title">
+    <ul id="ulTabSocioComercial" class="nav nav-tabs tab-space-4">
+        <li id="liDatosGenerales" class="active">
+            <a href="#divBloqueDatosGenerales" data-toggle="tab">@Resources.TituloWidget.DatosGenerales</a>
+        </li>
+        <li id="liRoles">
+            <a href="#divServiciosAplicacion" data-toggle="tab">@Resources.TituloWidget.ServiciosAplicacion</a>
+        </li>
+        <li id="liAplicaciones">
+            <a href="#divMenuAplicaciones" data-toggle="tab">@Resources.TituloWidget.MenuAplicaciones</a>
+        </li>
+        <li id="liDispositivos">
+            <a href="#divBloqueDispositivos" data-toggle="tab">@Resources.TituloWidget.Dispositivos</a>
+        </li>
+    </ul>
+    <div id="divTabSocioComercial" class="tab-content">
+        <div class="tab-pane in active scrollable" id="divBloqueDatosGenerales" data-size="60">
+            @{Html.RenderPartial("Consultar/Shared/_getDatosGeneralesSocioComercial", Model);}
+        </div>
+
+        <div class="tab-pane scrollable" id="divServiciosAplicacion" data-size="60">
+            @{Html.RenderPartial("Crear/Shared/_getServiciosAplicacionSocioComercial", Model);}
+        </div>
+
+        <div class="tab-pane scrollable" id="divMenuAplicaciones" data-size="60">
+            @{Html.RenderPartial("../Shared/Configuracion/_getAplicaciones", Model);}
+        </div>
+
+        <div class="tab-pane scrollable" id="divBloqueDispositivos" data-size="60">
+            @{Html.RenderPartial("../Shared/Configuracion/_getDispositivos", Model);}
+        </div>
+    </div>
+
+    <div class="space-4"></div>
+    <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+</div>
+    

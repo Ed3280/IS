@@ -1,0 +1,49 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+@{ Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.DatosAdicionales;
+     }
+
+<div id="divTabEditarDatosAdicionalesCliente" class="tabbable" data-titulo="@ViewBag.Title">
+    <ul id="ulTabClienteAdicional" class="nav nav-tabs tab-space-4">
+        <li id="liSocioComercial" class="active">
+            <a href="#divBloqueSocioComercial" data-toggle="tab">@Resources.TituloWidget.SocioComercial</a>
+        </li>
+        <li id="liAplicaciones">
+            <a href="#divMenuAplicaciones" data-toggle="tab">@Resources.TituloWidget.MenuAplicaciones</a>
+        </li>       
+    </ul>
+
+
+    @using (Ajax.BeginForm("editarDatosAdicionales", "Cliente", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "clienteSAI.submitSuccess(data)" }, new { @Id = "formEditarDatosAdicionalesRegistro", role = "form" }))
+    {
+
+        <div id="divTabAdicionalCliente" class="tab-content">
+            <div class="tab-pane in active scrollable" id="divBloqueSocioComercial" data-size="60">
+                @{Html.RenderPartial("Crear/Shared/_getSocioComercial", Model);}
+            </div>
+                        
+            <div class="tab-pane scrollable" id="divMenuAplicaciones" data-size="60">
+                @{Html.RenderPartial("../Shared/Configuracion/_getAplicaciones", Model);}
+            </div>
+
+        </div>
+
+        <div class="space-4"></div>
+        <div id="divActualizarLoading" class="form-group" style="display:none !important">
+            <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @IntranetWeb.Core.Constante.Mensaje.Etiqueta.Procesando </strong></div>
+        </div>
+            <div class="space-2"></div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" name="submitButton" id="btnGuardar" class="hidden" value="grabar">@Resources.TituloBotonResource.Guardar</button>
+            <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+                    @Html.HiddenFor(m => m.Id)
+                    @Html.HiddenFor(m => m.Consecutivo)                    
+                    @Html.HiddenFor(m => m.TipoDocumentoSeleccionado)
+                    @Html.HiddenFor(m => m.Cedula)
+                    @Html.HiddenFor(m => m.Nombre)
+                    @Html.HiddenFor(m => m.Apellido)
+                    @Html.HiddenFor(m => m.Email)
+     }
+</div>

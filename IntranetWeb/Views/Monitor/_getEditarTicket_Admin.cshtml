@@ -1,0 +1,47 @@
+﻿@model IntranetWeb.ViewModel.Monitor.Ticket
+@{
+    Layout = null;
+
+}
+
+@using (Ajax.BeginForm("ActualizarTicket_Admin", "Monitor", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "monitorSAI.submitSuccess(data)" }, new { @Id = "formActualizarTicket", role = "form" }))
+{
+    <div id="divTabEditarTicket" class="tabbable" data-titulo="@ViewBag.Title">
+
+        <ul id="ulTabTicket" class="nav nav-tabs tab-space-4">
+            <li id="liDatosTicket" class="active">
+                <a href="#divBloqueDatosTicket" data-toggle="tab">@Resources.TituloWidget.Ticket</a>
+            </li>
+            <li id="liBitacora">
+                <a href="#divBloqueBitacora" data-toggle="tab">@Resources.TituloWidget.Bitacora</a>
+            </li>
+            <li id="liHistorico">
+                <a href="#divBloqueHistorico" data-toggle="tab">@Resources.TituloWidget.Historico</a>
+            </li>
+        </ul>
+        <div id="divTabTicket" class="tab-content">
+            <div class="tab-pane in active scrollable" id="divBloqueDatosTicket" data-size="60">
+                @{Html.RenderPartial("EditarTicket/_getDatosTicket_Admin", Model);}
+
+                @{Html.RenderPartial("EditarTicket/_getDatosCliente", Model);}
+            </div>
+            <div class="tab-pane scrollable" id="divBloqueBitacora" data-size="60">
+                @{Html.RenderAction("_getBitacoraTicket", new { Id = Model.Id });}
+            </div>
+            <div class="tab-pane scrollable" id="divBloqueHistorico" data-size="60">
+                @{Html.RenderAction("_getHistoricoTicketsCliente", new { nuSim = Model.Dispositivo.SimCard });}
+            </div>
+
+        </div>
+    </div>
+    <div class="space-2"></div>
+    <div id="divActualizarLoading" class="form-group" style="display:none !important">
+        <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  Procesando ...</strong></div>
+    </div>
+    <div class="space-2"></div>
+    <div class="">
+        <div id="resultUpdate"></div>
+    </div>
+
+    <button type="submit" name="submitButton" id="aceptar" class="hidden" value="aceptar">Aceptar</button>
+                    }

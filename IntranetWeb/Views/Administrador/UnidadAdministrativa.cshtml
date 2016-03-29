@@ -1,0 +1,47 @@
+﻿@model IntranetWeb.ViewModel.Administrador.UnidadAdministrativa
+@{
+    ViewBag.Title = "Unidades Administrativas";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header"><h1>@ViewBag.Title</h1></div>
+<div class="row">
+    <div class="col-xs-12">
+        <div class="table-header">
+            @ViewBag.Title &nbsp;
+            <div class="widget-toolbar">
+                <a href="javascript:void(0);" data-rel="tooltip" data-placement="top" title="@Resources.EtiquetaResource.CrearRegistro" class="tooltip-info icono-crear-registro" data-action="create"> <i id="iCreateTablaPrincipal" class="ace-icon fa fa-plus white"> </i></a>
+            </div>
+        </div>
+        <!-- div.table-responsive -->
+        <!-- div.dataTables_borderWrap -->
+        <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+            <table id="tableUnidadAdministrativa" class="table table-striped table-bordered table-hover dataTable no-footer DTTT_selectable"
+                   data-url="@Url.Action("consultarUnidadAdministrativa")"
+                   data-url-crear="@Url.Action("_getCrearUnidadAdministrativa")"
+                   data-url-editar="@Url.Action("_getEditarUnidadAdministrativa")"
+                   data-url-eliminar="@Url.Action("eliminarUnidadAdministrativa")"
+                   data-url-localization="@Url.Content("~/Scripts/dataTables/localization/"+Resources.ConfiguracionResource.DataTables+ ".json")"
+                   role="grid" aria-describedby="dynamic-table_info">
+                <thead>
+                    <tr role="row">
+                        <th tabindex="0" aria-controls="dynamic-table" data-name="EditarRegistro" rowspan="1" colspan="1" aria-label="Acciones"></th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Id" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Id)">@Html.DisplayNameFor(m => m.Id)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Nombre" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Nombre)">@Html.DisplayNameFor(m => m.Nombre)</th>
+                        <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="FechaCreacion" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.FechaCreacion)">@Html.DisplayNameFor(m => m.FechaCreacion)</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryTable")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/intranetSAI/Administrador/unidadAdministrativa")
+}
+
+
+

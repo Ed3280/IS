@@ -1,0 +1,12 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+@{Layout = null;}
+
+
+<div class="row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.SocioComercialSeleccionados)<br />
+        @Html.ListBoxFor(m => m.SocioComercialSeleccionados, Model.SocioComercialDisponibles, new { @class = "duallistbox socioComercial" })
+        @Html.ValidationMessageFor(m => m.SocioComercialSeleccionados, "", new { @class = "help-block" })
+    </div>
+</div>
+

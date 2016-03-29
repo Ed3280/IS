@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "Mantenimiento inteligente";   
+}
+
+<div class="page-header" >
+    <h1>@ViewBag.Title</h1>
+</div>
+
+<div class="row">
+    <div class="col-xs-12">
+
+        <div class="tabbable">
+            <ul id="ulTabMonitor" class="nav nav-tabs tab-space-4">
+                <li id="liMapa" class="active">
+                    <a href="#divTabMapa" data-toggle="tab">Mapa</a>
+                </li>
+                <li id="liSolicitudesServicio">
+                    <a href="#divTabSolicitudesServicio" data-toggle="tab">Solicitudes</a>
+                </li>
+
+            </ul>
+
+            <div id="divTabMonitor" class="tab-content">
+                <div class="tab-pane in active" id="divTabMapa">
+
+                    <div id="map_canvas" style="height: 700px"></div>
+
+
+                    @{Html.RenderPartial("../Monitor/_getControlMapa", new IntranetWeb.ViewModel.Monitor.Distribuidor { AccionNestedDispositivos = "cargaNestedlUsuarioDispositivos" }); }
+                    @{Html.RenderPartial("../Monitor/_getControlDispositivo", new IntranetWeb.ViewModel.Monitor.LocalizacionDispositivo()); }
+                    @{Html.RenderPartial("../Monitor/_getControlCliente", new IntranetWeb.ViewModel.Monitor.UsuarioMovil()); }
+
+                </div>
+
+                <div class="tab-pane" id="divTabSolicitudesServicio">
+                    @{Html.RenderPartial("_getListadoSolicitudesServicio");}                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryTable")
+    @Scripts.Render("~/bundles/google-maps")
+    @Scripts.Render("~/bundles/signalr")
+    @Scripts.Render("~/bundles/nestable")
+    @Scripts.Render("~/bundles/colorbox")
+    @Scripts.Render("~/bundles/intranetSAI/Monitor/localizacion")
+    @Scripts.Render("~/bundles/intranetSAI/Servicio/mantenimientoInteligente")
+
+
+    <script src=@Url.Content("~/signalr/hubs")></script>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/css/select2")
+    @Styles.Render("~/Content/css/colorbox")
+}

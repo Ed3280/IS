@@ -1,0 +1,34 @@
+﻿@model IntranetWeb.ViewModel.Administrador.Usuario
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.ConsultarUsuario; 
+}
+<div id="divTabConsultarUsuario" class="tabbable" data-titulo="@ViewBag.Title">
+    <ul id="ulTabUsuario" class="nav nav-tabs tab-space-4">
+        <li id="liDatosGenerales" class="active">
+            <a href="#divBloqueDatosGenerales" data-toggle="tab">@Resources.TituloWidget.DatosGenerales</a>
+        </li>
+        <li id="liRoles">
+            <a href="#divBloqueRoles" data-toggle="tab">@Resources.TituloWidget.Roles</a>
+        </li>
+        <li id="liAplicaciones">
+            <a href="#divBloqueAplicaciones" data-toggle="tab">@Resources.TituloWidget.Aplicaciones</a>
+        </li>
+    </ul>
+    
+        <div id="divTabUsuario" class="tab-content">
+            <div class="tab-pane in active scrollable" id="divBloqueDatosGenerales" data-size="60">
+                @{Html.RenderPartial("Consultar/Shared/_getDatosGeneralesUsuarioAdmin", Model);}
+            </div>
+
+            <div class="tab-pane scrollable" id="divBloqueRoles" data-size="60">
+               @{Html.RenderPartial("../Shared/Configuracion/_getRoles", Model);}
+            </div>
+
+            <div class="tab-pane scrollable" id="divBloqueAplicaciones" data-size="60">
+                @{Html.RenderPartial("../Shared/Configuracion/_getAplicaciones", Model);}
+            </div>
+        </div>
+
+        <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+            
+</div>

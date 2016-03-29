@@ -1,0 +1,48 @@
+﻿@model IntranetWeb.ViewModel.Administrador.RespuestaOperadorGCM
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.CrearRespuestaOperadorGCM;
+ }
+
+@using (Ajax.BeginForm("crearRespuestaOperadorGCM", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "respuestaOperadorGCMSAI.submitSuccess(data)" }, new { @Id = "formCrearRespuesta", role = "form" }))
+{
+    <div id="widgetBoxRespuestaGCM" data-titulo="@ViewBag.Title" class="widget-box transparent">
+        <div class="widget-body scrollable" data-size="60">
+            <div class=" widget-main">
+
+                <div class="row">
+                    <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                        @Html.LabelBoldFor(m => m.TipoAtencionSeleccionada)
+                        @Html.DropDownListFor(m => m.TipoAtencionSeleccionada, new SelectList(Model.TipoAtencion, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.TipoAtencionSeleccionada)), new { @class = "select2 form-control" })
+                        @Html.ValidationMessageFor(model => model.TipoAtencionSeleccionada, "", new { @class = "help-block" })
+                    </div>
+                    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        @Html.LabelBoldFor(m => m.InActivo)
+                        @Html.CheckBoxAceFor(m => m.InActivo)
+                        @Html.ValidationMessageFor(model => model.InActivo, "", new { @class = "help-block" })                        
+                    </div>
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelBoldFor(m => m.Titulo)<br />
+                        @Html.TextBoxFor(m => m.Titulo, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "help-block" })
+                    </div>
+
+                    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        @Html.LabelBoldFor(m => m.Contenido)<br />
+                        @Html.TextAreaFor(m => m.Contenido, new { Class = "form-control", @rows = "10" })
+                        @Html.ValidationMessageFor(model => model.Contenido, "", new { @class = "help-block" })
+                    </div>
+                </div>
+                
+            </div>
+            <div class="space-2"></div>
+            <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @IntranetWeb.Core.Constante.Mensaje.Etiqueta.Procesando </strong></div>
+            </div>
+            <div class="space-2"></div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" name="submitButton" id="grabar" class="hidden" value="grabar">@IntranetWeb.Core.Constante.Mensaje.Etiqueta.Guardar</button>
+        </div>
+    </div>
+}

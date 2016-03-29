@@ -1,0 +1,135 @@
+﻿@using IntranetWeb.Core.Utils
+<!DOCTYPE html >
+<html lang="@System.Globalization.CultureInfo.CurrentUICulture.Name">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />  
+
+    <meta name="description" content="Intranet Sai Innovación" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" type="image/x-icon" href="@Url.Content("~/Content/images/icon/logo.ico") " />
+
+    
+    @Styles.Render("~/Content/css/cssIntra")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("Styles", false)
+   
+</head>
+
+<body class="no-skin" data-etiqueta-cargando="@Resources.EtiquetaResource.Cargando"
+                      data-etiqueta-procesando="@Resources.EtiquetaResource.Procesando"
+                      data-etiqueta-advertencia="@Resources.EtiquetaResource.Advertencia"
+                      data-aceptar="@Resources.TituloBotonResource.Aceptar"
+                      data-cerrar="@Resources.TituloBotonResource.Cerrar"
+                      data-cancelar="@Resources.TituloBotonResource.Cancelar"
+                      data-mensaje-logout ="@Resources.AdvertenciaResource.ConfirmarDesloguear"               
+        >
+    <div id="navbar" class="navbar navbar-default">
+      
+        <div class="navbar-container" id="navbar-container">
+            <button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+                
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+
+                <span class="icon-bar"></span>
+            </button>
+            <!--div class="row"-->
+                <div class="navbar-header pull-left">
+                    
+                        <a class="navbar-brand" href="@Url.obtenDashboard()" >
+                                         <!--img src="~/Content/images/banner/logo_connectsai.png" /-->
+                                  <small>
+                                      <!--i class="fa fa-leaf"></i-->
+                                      Sai Innovación
+                                  </small>
+                            
+                        </a>                    
+                </div>
+
+                <div class="navbar-buttons navbar-header pull-right" role="navigation">
+                    <ul class="nav ace-nav">
+                        
+                        
+                        
+                        
+                        <li class="light-blue">
+                            <a data-toggle="dropdown" href="javascript:void(0);" class="dropdown-toggle">
+
+                                <span class="">
+                                    @Resources.EtiquetaResource.Bienvenido, @User.Identity.Name
+                                </span>
+                                <i class="ace-icon fa fa-caret-down"></i>
+
+                            </a>
+
+                            <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                <li>
+                                    <a id="aConfiguracion" href="@Url.Action("Perfil","Configuracion")">
+                                        <i class="ace-icon fa fa-cog"></i>
+                                        @Resources.EtiquetaResource.Configuracion
+                                    </a>
+                                </li>
+
+                                <li class="divider"></li>
+
+                                <li>
+                                    <a id="aLogOut" href="javascript:void(0);" data-url="@Url.Action("LogOut","Auth")">
+                                        <i class="ace-icon fa fa-power-off"></i>
+                                        @Resources.EtiquetaResource.Salir
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            <!--/div-->
+        </div><!-- /.navbar-container -->
+    </div>
+
+    <div class="main-container" id="main-container">
+        
+        <!-- A partir de auí debería armarse el menú lateral-->
+        
+            @{Html.RenderAction("_getMenuLateral", "Auth");}
+        
+        <div class="main-content">
+            <div class="main-content-inner">
+                <div id="divPageContent" class="page-content">
+                    <div class="row">
+                        <div class="col-xs-12">
+
+                            @RenderBody()
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <span class="bigger-120">
+                        <span class="blue bolder">Copyright © 2015. SAI Innovación</span>
+                        
+                    </span>
+              
+                </div>
+            </div>
+        </footer>
+    </div>
+    
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/ace")
+    @Scripts.Render("~/bundles/notify")
+    @Scripts.Render("~/bundles/modal")
+    @Scripts.Render("~/bundles/date-time/datepicker")
+    @Scripts.Render("~/bundles/intranetSAI")     
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

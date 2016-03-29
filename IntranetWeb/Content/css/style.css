@@ -1,0 +1,39 @@
+﻿.logo {
+    padding-left: 10px;
+    padding-right: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+
+
+
+ .validation-summary-valid span {
+            display: none;
+        }
+
+   .validation-summary-errors span {
+         
+            font-weight: bold;
+        }
+
+  .validation-summary-errors li {
+            color: #8C2F31;
+        }
+
+.validation-summary-errors {
+    -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+   
+      color: #b94a48;
+  background-color: #f2dede;
+  border-color: #eed3d7;
+
+}
+
+.twitter-typeahead {
+  width: 100%;
+}
+
+.pointer { cursor: pointer; }

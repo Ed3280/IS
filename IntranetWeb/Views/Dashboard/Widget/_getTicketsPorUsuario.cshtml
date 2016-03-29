@@ -1,0 +1,65 @@
+﻿@{ Layout = null; }
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 widget-container-col">
+    <div id="widgetTicketUsuario" class="widget-box transparent"
+         data-url="@Url.Action("consultarGestionTicket")">
+        <div class="widget-header">
+            <h4 class="widget-title lighter"> <i class="fa fa-pie-chart"></i> @Resources.TituloWidget.GestionTicketUsuario</h4>
+
+            <div class="widget-toolbar no-border">
+                <div class="inline dropdown-hover">
+                    <button data-value="1" class="btn btn-minier btn-primary">
+                       <span class="etiqueta">@Resources.EtiquetaResource.EstaSemana </span> 
+                        <i class="ace-icon fa fa-angle-down icon-on-right bigger-110"></i>
+                    </button>
+
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-125 dropdown-lighter dropdown-close dropdown-caret">
+                        <li class="active">
+                            <a href="javascript:void(0);" data-value="1" class="blue">
+                                <i class="ace-icon fa fa-caret-right bigger-110">&nbsp;</i>
+                                <span class="etiqueta">@Resources.EtiquetaResource.EstaSemana</span> 
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" data-value="2">
+                                <i class="ace-icon fa fa-caret-right bigger-110  invisible">&nbsp;</i>
+                                <span class="etiqueta">@Resources.EtiquetaResource.SemanaPasada</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" data-value="3">
+                                <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                <span class="etiqueta">@Resources.EtiquetaResource.EsteMes</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="javascript:void(0);" data-value="4">
+                                <i class="ace-icon fa fa-caret-right bigger-110 invisible">&nbsp;</i>
+                                <span class="etiqueta">@Resources.EtiquetaResource.MesPasado</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <a href="javascript:void(0);" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+                <a href="javascript:void(0);" data-action="fullscreen">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
+                <a href="javascript:void(0);" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="widget-body">
+           <div class="widget-main">
+               <div id="piechar-ticket-usuario-placeholder" style="width:100%; height:100%;">
+               </div>
+           </div> 
+        </div>
+    </div>
+</div>

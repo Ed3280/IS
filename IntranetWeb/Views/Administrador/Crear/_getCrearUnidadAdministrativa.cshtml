@@ -1,0 +1,37 @@
+﻿@model IntranetWeb.ViewModel.Administrador.UnidadAdministrativa
+@{Layout = null;
+    ViewBag.Title = "Crear unidad administrativa";
+}
+
+@using (Ajax.BeginForm("crearUnidadAdministrativa", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "unidadAdministrativaSAI.submitSuccess(data)" }, new { @Id = "formCrearRegistro", role = "form" }))
+{
+    <div id="widgetBoxCrearRegistro" data-titulo="@ViewBag.Title" class="widget-box transparent">
+        <div class="widget-body scrollable" data-size="60">
+            <div class=" widget-main">
+
+                <div class="row">
+                    <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+                        @Html.LabelBoldFor(m => m.Nombre)
+                        @Html.TextBoxFor(m => m.Nombre, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "help-block" })
+                    </div>                    
+                </div>
+            </div>
+            <div class="space-2"></div>
+            <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @IntranetWeb.Core.Constante.Mensaje.Etiqueta.Procesando </strong></div>
+            </div>
+            <div class="space-2"></div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" name="submitButton" id="grabar" class="hidden" value="grabar">@IntranetWeb.Core.Constante.Mensaje.Etiqueta.Guardar</button>           
+        </div>
+    </div>
+}
+
+
+
+
+
+

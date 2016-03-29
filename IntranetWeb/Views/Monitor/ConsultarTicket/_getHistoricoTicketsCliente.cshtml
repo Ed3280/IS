@@ -1,0 +1,73 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IEnumerable<IntranetWeb.ViewModel.Monitor.Ticket>
+@{Layout  = null;
+    ViewBag.Title = Resources.TituloWidget.Historico;    
+}
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="glyphicon fa fa-history"></i> @ViewBag.Title</h4>
+
+        <div class="widget-toolbar no-border">
+            <!--a href="#" data-action="collapse">
+                <i class="ace-icon fa fa-chevron-up"></i>
+            </a-->
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-main">
+           
+                <div class="row">
+                    <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-header no-footer">
+                        <table id="dynamic-table-ticket-historico"
+                               data-url-localization="@Url.Content("~/Scripts/dataTables/localization/"+Resources.ConfiguracionResource.DataTables+ ".json")"
+                               data-url-consultar="@Url.Action("getDetalleTicketHistorico")"
+                               class="table table-striped table-bordered table-hover dataTable no-footer DTTT_selectable" role="grid" aria-describedby="dynamic-table_info">
+                            <thead>
+                                <tr role="row">
+                                    <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="EditarRegistro" rowspan="1" colspan="1" aria-label="Editar"></th>
+                                    <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Id" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.First().Id)">@Html.DisplayNameFor(m => m.First().Id)</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="DescripcionTipoNotificacion" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.First().DescripcionTipoNotificacion )">@Html.DisplayNameFor(m => m.First().DescripcionTipoNotificacion)</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="NombreUsuarioTicket" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.First().NombreUsuarioTicket)">@Html.DisplayNameFor(m => m.First().NombreUsuarioTicket)</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="FechaEstatus" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.First().FechaEstatus)">@Html.DisplayNameFor(m => m.First().FechaEstatus)</th>
+                                    <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="DescripcionEstatus" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.First().DescripcionEstatus)">@Html.DisplayNameFor(m => m.First().DescripcionEstatus)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (IntranetWeb.ViewModel.Monitor.Ticket tick in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.IconosGestionRegistro(new Dictionary<string, string> { { "data-id-ticket", tick.Id.ToString() } }, true, false, false)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => tick.Id)
+                                        </td>
+                                        <td>
+                                            @Html.Raw(tick.DescripcionTipoNotificacion)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => tick.NombreUsuarioTicket)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => tick.FechaEstatus)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(m => tick.DescripcionEstatus)
+                                        </td>
+                                    </tr>
+
+                                }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+            </div>
+         </div>
+    </div>
+</div>
+
+
+

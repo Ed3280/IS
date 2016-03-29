@@ -1,0 +1,460 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Activo" xml:space="preserve">
+    <value>Active</value>
+    <comment>Campo activo</comment>
+  </data>
+  <data name="Ano" xml:space="preserve">
+    <value>Year</value>
+    <comment>Campo año</comment>
+  </data>
+  <data name="Apellido" xml:space="preserve">
+    <value>Last name</value>
+    <comment>Campo apellido</comment>
+  </data>
+  <data name="AperturaRemota" xml:space="preserve">
+    <value>Remote opening supported</value>
+    <comment>Admite apertura remota</comment>
+  </data>
+  <data name="Bloqueado" xml:space="preserve">
+    <value>Blocked</value>
+    <comment>Campo bloqueado</comment>
+  </data>
+  <data name="Calle" xml:space="preserve">
+    <value>Comunity / Street / House</value>
+    <comment>Campo para comunidad, calle o casa</comment>
+  </data>
+  <data name="CargoPadre" xml:space="preserve">
+    <value>Father position</value>
+    <comment>Campo nombre cargo padre</comment>
+  </data>
+  <data name="Cedula" xml:space="preserve">
+    <value>Doument id</value>
+    <comment>Campo cédula o pasaporte</comment>
+  </data>
+  <data name="ClienteRegistradoMovil" xml:space="preserve">
+    <value>Client registred (mobile)</value>
+    <comment>Campo cliente registrado en aplicación móvil</comment>
+  </data>
+  <data name="Color" xml:space="preserve">
+    <value>Color</value>
+    <comment>Campo color</comment>
+  </data>
+  <data name="CompaniaSeguro" xml:space="preserve">
+    <value>Insurance company</value>
+    <comment>Campo nombre de la compañía de seguros</comment>
+  </data>
+  <data name="Contrasena" xml:space="preserve">
+    <value>Password</value>
+    <comment>Campo contraseña</comment>
+  </data>
+  <data name="ContrasenaDVR" xml:space="preserve">
+    <value>DVR Password</value>
+    <comment>Campo contraseña DVR</comment>
+  </data>
+  <data name="Corregimiento" xml:space="preserve">
+    <value>Township</value>
+    <comment>Campo para corregimiento</comment>
+  </data>
+  <data name="Descripcion" xml:space="preserve">
+    <value>Description</value>
+    <comment>Campo genérico de descripción</comment>
+  </data>
+  <data name="DescripcionCargo" xml:space="preserve">
+    <value>Position description</value>
+    <comment>Descripción del Cargo</comment>
+  </data>
+  <data name="Dispositivo" xml:space="preserve">
+    <value>Device</value>
+    <comment>Campo dispositivo</comment>
+  </data>
+  <data name="Distribuidor" xml:space="preserve">
+    <value>Dealer</value>
+    <comment>Nombre del distribuidor</comment>
+  </data>
+  <data name="DistribuidorPlataforma" xml:space="preserve">
+    <value>Platform dealer</value>
+    <comment>Campo de distribuidor de la plataforma china</comment>
+  </data>
+  <data name="Distrito" xml:space="preserve">
+    <value>District</value>
+    <comment>Campo para distrito</comment>
+  </data>
+  <data name="Documento" xml:space="preserve">
+    <value>Document ID</value>
+    <comment>Campo número de documento</comment>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+    <comment>Campo dirección de correo</comment>
+  </data>
+  <data name="Empleado" xml:space="preserve">
+    <value>Employee</value>
+    <comment>Campo indicador empleado</comment>
+  </data>
+  <data name="Estatus" xml:space="preserve">
+    <value>Status</value>
+    <comment>Cmpo de descripción de estatus</comment>
+  </data>
+  <data name="Extension" xml:space="preserve">
+    <value>Extension</value>
+    <comment>Número de extensión</comment>
+  </data>
+  <data name="FechaApertura" xml:space="preserve">
+    <value>Taken date</value>
+    <comment>Fecha de apertura de un registro</comment>
+  </data>
+  <data name="FechaCreacion" xml:space="preserve">
+    <value>Creation date</value>
+    <comment>Campo fecha de creación</comment>
+  </data>
+  <data name="FechaEstatus" xml:space="preserve">
+    <value>Status date</value>
+    <comment>Campo fecha de estatus</comment>
+  </data>
+  <data name="FechaNacimiento" xml:space="preserve">
+    <value>Birthday</value>
+    <comment>Campo fecha nacimiento</comment>
+  </data>
+  <data name="FechaNotificacion" xml:space="preserve">
+    <value>Notification date</value>
+    <comment>Fecha notificación</comment>
+  </data>
+  <data name="FechaRegistro" xml:space="preserve">
+    <value>Record date</value>
+    <comment>Fecha de registro</comment>
+  </data>
+  <data name="GBHostSpot" xml:space="preserve">
+    <value>Host GB</value>
+    <comment>GB del host</comment>
+  </data>
+  <data name="HoraNotificacion" xml:space="preserve">
+    <value>Notification hour</value>
+    <comment>Campo hora de notificación</comment>
+  </data>
+  <data name="HoraRegistro" xml:space="preserve">
+    <value>Record hour</value>
+    <comment>Campo hora de registro</comment>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>Id</value>
+    <comment>Campo Id</comment>
+  </data>
+  <data name="IndicadorEnviarInvitacion" xml:space="preserve">
+    <value>Send sign in invitation</value>
+    <comment>Campo de envío de invitación de registro</comment>
+  </data>
+  <data name="IndicadorEstaActivo" xml:space="preserve">
+    <value>Is active?</value>
+    <comment>Campo indicador de si está activo</comment>
+  </data>
+  <data name="IndicadorEstaRegistrado" xml:space="preserve">
+    <value>Is registred?</value>
+    <comment>Campo indicador de si está registrado</comment>
+  </data>
+  <data name="KilometrajeInicial" xml:space="preserve">
+    <value>Initial mileage</value>
+    <comment>Campo kilometraje inicial</comment>
+  </data>
+  <data name="KilometrajeTotal" xml:space="preserve">
+    <value>Total mileage</value>
+    <comment>Kilometraje total</comment>
+  </data>
+  <data name="ListaRol" xml:space="preserve">
+    <value>Role</value>
+    <comment>Campo para el nombre del rol</comment>
+  </data>
+  <data name="ListaServiciosApp" xml:space="preserve">
+    <value>Mobile app services</value>
+    <comment>Campo servicios aplicación móvil</comment>
+  </data>
+  <data name="LocalizacionBotonSOS" xml:space="preserve">
+    <value>SOS button location</value>
+    <comment>Ubcación del botón de sos</comment>
+  </data>
+  <data name="Marca" xml:space="preserve">
+    <value>Mark</value>
+    <comment>Campo marca</comment>
+  </data>
+  <data name="Modelo" xml:space="preserve">
+    <value>Model</value>
+    <comment>Campo modelo</comment>
+  </data>
+  <data name="Nombre" xml:space="preserve">
+    <value>Name</value>
+    <comment>Campo nombre</comment>
+  </data>
+  <data name="NombreApellido" xml:space="preserve">
+    <value>Full name</value>
+    <comment>Campo nombre y apellido </comment>
+  </data>
+  <data name="NombreAplicacion" xml:space="preserve">
+    <value>Application</value>
+    <comment>Campo nombre aplicacion</comment>
+  </data>
+  <data name="NombreCargo" xml:space="preserve">
+    <value>Charge</value>
+    <comment>Campo nombre cargo</comment>
+  </data>
+  <data name="NombreDispositivo" xml:space="preserve">
+    <value>Device name</value>
+    <comment>Nombre sdel dispositivo</comment>
+  </data>
+  <data name="NombreUnidadAdministrativa" xml:space="preserve">
+    <value>Administrative unit</value>
+    <comment>Campo nombre unidad administrativa</comment>
+  </data>
+  <data name="NombreUsuario" xml:space="preserve">
+    <value>Username</value>
+    <comment>Campo nombre de usuario</comment>
+  </data>
+  <data name="NombreUsuarioCorreo" xml:space="preserve">
+    <value>Username or email</value>
+    <comment>Campo nombre de usurio o dirección de correo</comment>
+  </data>
+  <data name="NombreUsuarioLogin" xml:space="preserve">
+    <value>Type your username or email</value>
+    <comment>Campo introduzca su nombre de usuario</comment>
+  </data>
+  <data name="NumeroChasis" xml:space="preserve">
+    <value>Chassis number</value>
+    <comment>Campo número de chasis</comment>
+  </data>
+  <data name="NumeroDVR" xml:space="preserve">
+    <value>DVR number</value>
+    <comment>Número de dvr</comment>
+  </data>
+  <data name="NumeroMovil" xml:space="preserve">
+    <value>Mobile</value>
+    <comment>Campo número de teléfono celular</comment>
+  </data>
+  <data name="NumeroPlaca" xml:space="preserve">
+    <value>License plate</value>
+    <comment>Campo número de placa</comment>
+  </data>
+  <data name="NumeroTelefonoFijo" xml:space="preserve">
+    <value>Phone</value>
+    <comment>Campo número de teléfono fijo</comment>
+  </data>
+  <data name="NumeroTelefonoOficina" xml:space="preserve">
+    <value>Office phone number</value>
+    <comment>Campo número de teléfono de oficina</comment>
+  </data>
+  <data name="NumeroTelefonoPersonaContacto" xml:space="preserve">
+    <value>Contact person phone number</value>
+    <comment>Campo número de teléfono de la persona de contacto</comment>
+  </data>
+  <data name="NumeroTicket" xml:space="preserve">
+    <value>Ticket number</value>
+    <comment>Número de ticket</comment>
+  </data>
+  <data name="Pais" xml:space="preserve">
+    <value>Country</value>
+    <comment>Campo para país</comment>
+  </data>
+  <data name="PersonaContacto" xml:space="preserve">
+    <value>Contact person name</value>
+    <comment>Campo nombre de persona de contacto</comment>
+  </data>
+  <data name="Provincia" xml:space="preserve">
+    <value>State</value>
+    <comment>Campo para estado</comment>
+  </data>
+  <data name="RepetirContrasena" xml:space="preserve">
+    <value>Retype password</value>
+    <comment>Campo repetir contraseña</comment>
+  </data>
+  <data name="Rol" xml:space="preserve">
+    <value>Role</value>
+    <comment>Campo de nombre de rol</comment>
+  </data>
+  <data name="SegmentoNegocio" xml:space="preserve">
+    <value>Business segment</value>
+    <comment>Segmento de negocio</comment>
+  </data>
+  <data name="Serial" xml:space="preserve">
+    <value>Serial</value>
+    <comment>Campo serial</comment>
+  </data>
+  <data name="Sims" xml:space="preserve">
+    <value>Sims</value>
+    <comment>Campo sims</comment>
+  </data>
+  <data name="SocioComercial" xml:space="preserve">
+    <value>Business partner</value>
+    <comment>Cmpo socio comercial</comment>
+  </data>
+  <data name="TarjetaSim" xml:space="preserve">
+    <value>Sim card</value>
+    <comment>Número del sim card</comment>
+  </data>
+  <data name="TipoApagadoRemoto" xml:space="preserve">
+    <value>Remote off type</value>
+    <comment>Tipo de apagado remoto</comment>
+  </data>
+  <data name="TipoCaso" xml:space="preserve">
+    <value>Case type</value>
+    <comment>Tipo de caso</comment>
+  </data>
+  <data name="TipoCierre" xml:space="preserve">
+    <value>Close type</value>
+    <comment>Campo tipo de cierre</comment>
+  </data>
+  <data name="TipoCombustible" xml:space="preserve">
+    <value>Fuel type</value>
+    <comment>Campo tipo de combustible</comment>
+  </data>
+  <data name="TipoDocumento" xml:space="preserve">
+    <value>Document type</value>
+    <comment>Campo tipo de doumento</comment>
+  </data>
+  <data name="TipoNotificacion" xml:space="preserve">
+    <value>Notification type</value>
+    <comment>Tipo de notificación</comment>
+  </data>
+  <data name="TipoSangre" xml:space="preserve">
+    <value>Blood type</value>
+    <comment>Campo tipo de sangre</comment>
+  </data>
+  <data name="TipoTransmision" xml:space="preserve">
+    <value>Transmission type</value>
+    <comment>Campo tipo de transmisión</comment>
+  </data>
+  <data name="UsuarioAlerta" xml:space="preserve">
+    <value>User alert</value>
+    <comment>Campo usuario de alerta</comment>
+  </data>
+  <data name="UsuarioTicket" xml:space="preserve">
+    <value>User ticket</value>
+    <comment>Usuario del ticket</comment>
+  </data>
+  <data name="Vehiculo" xml:space="preserve">
+    <value>Vehicle</value>
+    <comment>Campo vehículo</comment>
+  </data>
+  <data name="VigenciaPoliza" xml:space="preserve">
+    <value>Insurance policy validity</value>
+    <comment>Campo vigencia de la póliza</comment>
+  </data>
+  <data name="Vin" xml:space="preserve">
+    <value>VIN</value>
+    <comment>Campo VIN</comment>
+  </data>
+</root>

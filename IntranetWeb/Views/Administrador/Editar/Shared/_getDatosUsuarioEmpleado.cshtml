@@ -1,0 +1,72 @@
+﻿
+@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Administrador.Usuario
+@{  Layout = null;
+    ViewBag.Title = "Datos del empleado";
+    ViewBag.Description = "Administración de los datos del empleado";
+}
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="fa fa-suitcase"></i> @ViewBag.Title</h4>
+        <div class="widget-toolbar no-border">
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class=" widget-main">
+            <div class="row">
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.UnidadAdministrativaSeleccionada)
+                    @Html.DropDownListFor(m => m.DatosEmpleado.UnidadAdministrativaSeleccionada, new SelectList(Model.DatosEmpleado.UnidadAdministrativa, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.DatosEmpleado.UnidadAdministrativaSeleccionada)), new { @class = "select2 form-control unidadAdministrativa", @data_url = Url.Action("getCargo", "Select") })
+                    @Html.ValidationMessageFor(m => m.DatosEmpleado.UnidadAdministrativaSeleccionada, "", new { @class = "help-block" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.CargoSeleccionado)
+                    @Html.DropDownListFor(m => m.DatosEmpleado.CargoSeleccionado, new SelectList(Model.DatosEmpleado.Cargo, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.DatosEmpleado.CargoSeleccionado)), new { @class = "select2 form-control cargo", @data_url = Url.Action("getSupervisor", "Select") })
+                    @Html.ValidationMessageFor(m => m.DatosEmpleado.CargoSeleccionado, "", new { @class = "help-block" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.SupervisorSeleccionado)
+                    @Html.DropDownListFor(m => m.DatosEmpleado.SupervisorSeleccionado, new SelectList(Model.DatosEmpleado.Supervisor, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.DatosEmpleado.SupervisorSeleccionado)), new { @class = "select2 form-control supervisor" })
+                    @Html.ValidationMessageFor(m => m.DatosEmpleado.SupervisorSeleccionado, "", new { @class = "help-block" })
+                </div>
+
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.SucursalSeleccionada)
+                    @Html.DropDownListFor(m => m.DatosEmpleado.SucursalSeleccionada, new SelectList(Model.DatosEmpleado.Sucursal, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.DatosEmpleado.SucursalSeleccionada)), new { @class = "select2 form-control" })
+                    @Html.ValidationMessageFor(model => model.DatosEmpleado.SucursalSeleccionada, "", new { @class = "help-block" })
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.Extension)
+                    @Html.TextBoxFor(m => m.DatosEmpleado.Extension, new { Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.DatosEmpleado.Extension, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.Email)
+                    @Html.TextBoxFor(m => m.DatosEmpleado.Email, new { Class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.DatosEmpleado.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DatosEmpleado.FechaIngreso)
+                    @Html.TextBoxFor(m => m.DatosEmpleado.FechaIngreso, IntranetWeb.Core.Constante.AppFormat.date, new { Class = "form-control date-picker" })
+                    @Html.ValidationMessageFor(model => model.DatosEmpleado.FechaIngreso, "", new { @class = "text-danger" })
+                </div>               
+            </div>
+            @Html.HiddenFor(m => m.DatosEmpleado.Id)
+
+        </div>
+    </div>
+</div>

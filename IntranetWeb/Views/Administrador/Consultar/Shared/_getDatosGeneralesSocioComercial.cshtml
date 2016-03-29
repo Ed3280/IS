@@ -1,0 +1,125 @@
+﻿
+@model IntranetWeb.ViewModel.Administrador.SocioComercial
+
+@{Layout = null;}
+
+<div class="row">
+
+    <div class="form-group  col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.SegmentoNegocioSeleccionado)<br />
+        @Html.DisplayFor(m => m.DescripcionSegmentoNegocio, new { Class = "form-control " })
+    </div>
+
+    <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.DistribuidorSeleccionado)<br />
+        @Html.DisplayFor(m => m.DescripcionDistribuidor, new { Class = "form-control " })
+    </div>
+</div>
+<div class="row">
+    <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.NombreUsuario)<br />
+        @Html.DisplayFor(m => m.NombreUsuario, new { Class = "form-control " })
+    </div>
+
+    <div class="form-group   col-xs-12 col-sm-6 col-md-6 col-lg-6 ">
+        @Html.LabelBoldFor(m => m.Documento)<br />
+        @Html.DisplayFor(m => m.Documento, new { Class = "form-control " })
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="form-group  col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
+        @Html.LabelBoldFor(m => m.Nombre)<br />
+        @Html.DisplayFor(m => m.Nombre, new { Class = "form-control" })        
+    </div>
+
+</div>
+
+<div class="row">
+    <div class="form-group  col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.Email)<br />
+        @Html.DisplayFor(m => m.Email, new { Class = "form-control" })        
+    </div>
+
+    <div class="form-group  col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.IndicadorActivo)
+        @if (Model.IndicadorCorreoRegistroEnviado)
+        {
+            <i class="ace-icon fa fa-check-circle green tooltip-info" title="@Resources.EtiquetaResource.CorreoRegistroEnviado" data-placement="right" data-rel="tooltip"></i>
+        }
+        else
+        {
+            <a href="javascript:void(0);" class="tooltip-info icono-reenviar-correo-registro" data-placement="right" data-id-socio="@Model.Id" data-rel="tooltip" title="@Resources.EtiquetaResource.ReenviarCorreoRegistro"><i class="ace-icon fa fa-times-circle red"></i> </a>
+        }
+        
+        <br />
+        @Html.DisplayFor(m => m.DescripcionEstatus, new { Class = "form-control" })        
+    </div>
+
+</div>
+
+<div class="row">
+
+    <div class="form-group  col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.TelefonoFijo)<br />
+        @Html.DisplayFor(m => m.TelefonoFijo, new { Class = "form-control" })
+    </div>
+
+    <div class="form-group  col-xs-12 col-sm-6 col-md-6 col-lg-6">
+        @Html.LabelBoldFor(m => m.TelefonoMovil)<br />
+        @Html.DisplayFor(m => m.TelefonoMovil, new { Class = "form-control" })        
+    </div>
+</div>
+
+<!--widget datos Dirección -->
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="fa fa-map-marker"></i> @Resources.TituloWidget.Direccion</h4>
+        <div class="widget-toolbar no-border"></div>
+    </div>
+    <div class="widget-body">
+        <div class="widget-main">
+            <div class="row">
+                <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.PaisSeleccionado) <br />
+                    @Html.DisplayFor(m => m.DescripcionPais, new {Class = "form-control" })
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.ProvinciaSeleccionada)<br />
+                    @Html.DisplayFor(m => m.DescripcionProvincia, new { Class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.DistritoSeleccionado)<br />
+                    @Html.DisplayFor(m => m.DescripcionDistrito, new { Class = "form-control" })
+
+                </div>
+
+                <div class="form-group col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                    @Html.LabelBoldFor(m => m.CorregimientoSeleccionado)<br />
+                    @Html.DisplayFor(m => m.DescripcionCorregimiento, new { Class = "form-control" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+                    @Html.LabelBoldFor(m => m.Calle)<br />
+                    @Html.DisplayFor(m => m.Calle, new { @class = "form-control" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.HiddenFor(m => Model.Id)
+@Html.HiddenFor(m => m.TipoDocumentoSeleccionado)
+@Html.HiddenFor(m => m.NumeroDocumento)
+@Html.HiddenFor(m => m.FechaCreacion)
+@Html.HiddenFor(m => m.DistribuidorSeleccionado)
+@Html.HiddenFor(m => m.SegmentoNegocioSeleccionado)

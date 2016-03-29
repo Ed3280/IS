@@ -1,0 +1,61 @@
+﻿@model IntranetWeb.ViewModel.Administrador.LogTransacciones
+@{ 
+    Layout = null;
+    ViewBag.Title = "Registro Log";}
+
+
+<div class="widget-box transparent">
+   
+    <div class="widget-body scrollable" data-size="60">
+        <div class=" widget-main">
+
+            <div class="row">
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.Id)<br />
+                    @Html.DisplayFor(m => m.Id, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.NombreUsuario)<br />
+                    @Html.DisplayFor(m => m.NombreUsuario, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.FechaOperacion)<br />
+                    @Html.DisplayFor(m => m.FechaOperacion, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Controlador)<br />
+                    @Html.DisplayFor(m => m.Controlador, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Accion)<br />
+                    @Html.DisplayFor(m => m.Accion, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Url)<br />
+                    @Html.DisplayFor(m => m.Url, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DescripcionNivel)<br />
+                    @Html.DisplayFor(m => m.DescripcionNivel, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Mensaje)<br />
+                    @Html.DisplayFor(m => m.Mensaje, new { Class = "form-control" })
+                </div>
+
+                <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Excepcion)<br />
+                    @Html.DisplayFor(m => m.Excepcion, new { Class = "form-control" })
+                </div>
+
+            </div>            
+        </div>
+    </div>
+</div>

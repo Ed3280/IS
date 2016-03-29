@@ -1,0 +1,61 @@
+﻿@model IntranetWeb.ViewModel.Administrador.UsuarioAdmin
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.CrearUsuario;
+}
+
+  <div id="wizadCrearRegistro"  data-titulo="@ViewBag.Title"  >
+            <ul class="steps">
+                <li data-step="1" class="active">
+                    <span class="step">1</span>
+                    <span class="title">@Resources.TituloWidget.DatosGenerales</span>
+                </li>
+
+                <li data-step="2">
+                    <span class="step">2</span>
+                    <span class="title">@Resources.TituloWidget.Roles</span>
+                </li>
+
+                <li data-step="3">
+                    <span class="step">3</span>
+                    <span class="title">@Resources.TituloWidget.Aplicaciones</span>
+                </li>
+            </ul>
+            <hr/>
+            @using (Ajax.BeginForm("crearUsuarioAdmin", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "usuarioAdminSAI.submitSuccess(data)" }, new { @Id = "formCrearRegistro", role = "form" }))
+            {
+                <div class="step-content" id="step-container">
+                    <!--Paso Datos Generales-->
+                    <div class="step-pane active scrollable" id="divBloqueDatosGenerales" data-step="1" data-size="60">                        
+                        @{Html.RenderPartial("Crear/Shared/_getDatosGeneralesUsuarioAdmin", Model);}
+                    </div>
+                    <!-- Paso Roles-->
+                    <div class="step-pane scrollable" id="divBloqueRoles" data-step="2" data-size="60">
+                        @{Html.RenderPartial("../Shared/Configuracion/_getRoles", Model);}
+                    </div>
+                    <!-- Paso Aplicaciones-->
+                    <div class="step-pane scrollable" id="divBloqueAplicaciones" data-step="3" data-size="60">
+                        @{Html.RenderPartial("../Shared/Configuracion/_getAplicaciones", Model);}
+                    </div>
+                                     
+                    <div class="space-2"></div>
+                    <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                        <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @Resources.EtiquetaResource.Procesando </strong></div>
+                    </div>
+                    <div class="">
+                        <div id="resultUpdate"></div>
+                    </div>
+                    <button type="submit" class="hidden" name="submitButton" id="grabar" value="grabar">@Resources.TituloBotonResource.Guardar</button>
+
+                </div>
+            }    
+                   
+        </div>
+        <div class="wizard-actions">
+            <button id="btnAnterior" class="btn-prev btn btn-sm hidden">
+                <i class="ace-icon fa fa-arrow-left "></i> @Resources.TituloBotonResource.Anterior
+            </button>
+            <button id="btnSiguiente" class="btn-next btn btn-sm btn-success hidden" data-last="Culminar">
+                @Resources.TituloBotonResource.Siguiente <i class="ace-icon fa fa-arrow-right icon-on-right"></i>
+            </button>
+        </div>
+    <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>

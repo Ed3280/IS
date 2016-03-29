@@ -1,0 +1,12 @@
+﻿@model IntranetWeb.ViewModel.Interface.IModeloMonitorDispositivo
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @Html.LabelBold("DispositivosSeleccionados")<br />
+        @Html.ListBoxFor(m => m.DispositivosSeleccionados, Model.DispositivosDisponibles, new { @class = "duallistbox dispositivo"  , size = "10" })
+        @Html.ValidationMessage("DispositivosSeleccionados", "", new { @class = "help-block" })
+    </div>
+</div>

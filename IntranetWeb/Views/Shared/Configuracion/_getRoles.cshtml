@@ -1,0 +1,15 @@
+﻿@model IntranetWeb.ViewModel.Interface.IModeloRol
+@{
+    Layout = null;
+}
+
+<div class="row">
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">        
+        
+        @Html.LabelBold("RolesSeleccionados", null)<br />
+        @Html.ListBoxFor(m => m.RolesSeleccionados, Model.RolesDisponibles, new { @class = "duallistbox roles", size = "10" })
+        @Html.ValidationMessage("RolesSeleccionados", "", new { @class = "help-block" })
+    </div>
+</div>
+
+

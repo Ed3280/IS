@@ -1,0 +1,138 @@
+﻿@model IList<IntranetWeb.ViewModel.Administrador.Cargo>
+@{
+    Layout = null;
+}
+
+@helper getIconos(int Id)
+{
+    <div class="hidden-sm hidden-xs action-buttons">
+        <a class="tooltip-success" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EditarRegistro" href="javascript:void(0);">
+            <span class="green">
+                <i class="ace-icon fa fa-pencil-square-o bigger-120 icono-editar" data-id="@Id"></i>
+            </span>
+        </a>
+
+        <a class="tooltip-error" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EliminarRegistro" href="javascript:void(0);">
+            <span class="red">
+                <i class="ace-icon fa fa-trash-o bigger-120 icono-eliminar" data-id="@Id"></i>
+            </span>
+        </a>
+    </div>
+
+    <div class="hidden-md hidden-lg">
+        <div class="inline pos-rel">
+            <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown" data-position="auto">
+                <i class="ace-icon fa fa-caret-down icon-only bigger-120"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close">
+                <li>
+                    <a href="javascript:void(0);" class="tooltip-success" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EditarRegistro ">
+                        <span class="green">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-120 icono-editar" data-id="@Id"></i>
+                        </span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="javascript:void(0);" class="tooltip-error" data-rel="tooltip" data-placement="left" title="@Resources.EtiquetaResource.EliminarRegistro ">
+                        <span class="red">
+                            <i class="ace-icon fa fa-trash-o bigger-120 icono-eliminar" data-id="@Id"></i>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+}
+
+@helper getCargos(int? cdCargoPadre)
+        {
+
+var opciones = (from x in Model
+                where x.CargoPadreSeleccionado == cdCargoPadre
+                orderby x.Nombre
+                select x);
+
+int indice;
+
+foreach (var cargo in opciones)
+{
+
+    indice = Model.ToList().IndexOf(cargo);
+
+    var hijos = (from x in Model
+                 where x.CargoPadreSeleccionado == cargo.Id
+                 select x);
+
+
+    if (hijos.Count() == 0)
+    {
+            <li class="dd-item dd2-item" data-indice="@indice" data-id="@Model[indice].Id">
+
+                @if (cdCargoPadre != null)
+                {
+                    <div class="dd2-handle popover-info" data-rel="popover" data-placement="right" title="@Model[indice].NombreUnidadAdministrativa" data-content="@Model[indice].DescripcionCargo">@(@Html.Raw("<i class=\"normal-icon ace-icon fa fa-user blue bigger-130\"></i> <i class=\"drag-icon ace-icon fa fa-arrows bigger-125\"></i>")) </div>
+                    <div class="dd2-content">
+                        @Html.Raw(Model[indice].Nombre)
+                        <div class="pull-right">
+                            <!-- Se escriben los iconos de opciones sobre el cargo-->
+                            @getIconos(Model[indice].Id)
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class=" dd2-handle popover-info" data-rel="popover" data-placement="right" title="@Model[indice].NombreUnidadAdministrativa" data-content="@Model[indice].DescripcionCargo">@(@Html.Raw("<i class=\"normal-icon ace-icon fa fa-users blue bigger-130\"></i> <i class=\"drag-icon ace-icon fa fa-arrows bigger-125\"></i>"))  </div>
+                    <div class="dd2-content">
+                        @Html.Raw(Model[indice].Nombre)
+                        <div class="pull-right">
+                            <!-- Se escriben los iconos de opciones sobre el cargo-->
+                            @getIconos(Model[indice].Id)
+                        </div>
+                    </div>
+                }
+                @Html.HiddenFor(m => Model[indice].Id)
+            </li>
+    }
+    else
+    {
+
+            <li class="dd-item dd2-item" data-indice="@indice" data-id="@Model[indice].Id">
+                <div class="dd2-handle popover-info" data-rel="popover" data-placement="right" title="@Model[indice].NombreUnidadAdministrativa" data-content="@Model[indice].DescripcionCargo">@(@Html.Raw("<i class=\"normal-icon ace-icon fa fa-users blue bigger-130\"></i> <i class=\"drag-icon ace-icon fa fa-arrows bigger-125\"></i>")) </div>
+                <div class="dd2-content">
+                    @Html.Raw(Model[indice].Nombre)
+                    <div class="pull-right">
+                        <!-- Se escriben los iconoes de opciones sobre el cargo-->
+                        @getIconos(Model[indice].Id)
+                    </div>
+                </div>
+
+                @Html.Raw("<ol class=\"dd-list\">")
+
+                @getCargos(cargo.Id)
+
+                @Html.Raw("</ol>")
+                @Html.HiddenFor(m => Model[indice].Id)
+            </li>
+    }
+}
+}
+
+<div class="space-2"></div>
+<div class="row">
+    <div class="col-xs-12">
+        <div id="ddCargos">
+
+            @if (Model.Count() == 0)
+            {
+                @Html.escribirMensajeAdvertencia("<i class=\"fa fa-exclamation-triangle\"></i> " + Resources.AdvertenciaResource.CargosVacio, false)
+            }
+            else
+            {
+                <ol class="dd-list">
+                    @getCargos(null)
+                </ol>
+            }
+        </div>
+    </div>
+</div>

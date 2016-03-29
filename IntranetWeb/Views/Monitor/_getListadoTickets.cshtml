@@ -1,0 +1,88 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Monitor.Ticket
+@{
+    Layout = null;
+}
+
+    <div class="widget-box transparent collapsed" id="widgetFiltroConsulta">
+        <div class="widget-header">
+            <h4 class="widget-title lighter"><i class="glyphicon fa fa-ticket"></i> @Resources.TituloWidget.Ticket</h4>
+            <div class="widget-toolbar no-border">
+                <a href="javascript:void(0);"  data-action="collapse" title="@Resources.EtiquetaResource.MostrarOcultarFiltro" >
+                     <i class="ace-icon fa fa-chevron-down"></i>
+                </a>
+            </div>
+        </div>
+        <div class="widget-body" >
+            <div class="widget-main">
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-sm-6 input-daterange">
+                        @Html.Label("Fecha Estatus", new { @class = "bolder" })<br>
+                        <input type="text" name="FechaBusquedaDesde" id="FechaBusquedaDesde" value="@Model.FechaBusquedaDesde.ToString(IntranetWeb.Core.Constante.AppFormat.dateJson)" /> <span> - </span> <input type="text" name="FechaBusquedaHasta" id="FechaBusquedaHasta" value="@Model.FechaBusquedaHasta.ToString( IntranetWeb.Core.Constante.AppFormat.dateJson)" />
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-6 col-sm-6">
+                        @Html.LabelBoldFor(m => m.DescripcionTipoAtencion)
+                        @Html.DropDownListFor(m => m.TipoAtencionSeleccionada, new SelectList(Model.TipoAtencion, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.DescripcionTipoAtencion)), new { @class = "select2 form-control" })
+                    </div>
+                </div>
+                <div class="row">
+                    @if (Model.ActionConsultar == "_getConsultarTicket_Admin")
+            {
+                        <div class="form-group col-xs-12 col-sm-6 col-md-6 col-sm-6">
+                            @Html.LabelBoldFor(m => m.UsuarioTicketSeleccionado)
+                            @Html.DropDownListFor(m => m.UsuarioTicketSeleccionado, new SelectList(Model.UsuarioTicket, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.UsuarioTicketSeleccionado)), new { @class = "select2 form-control" })
+                        </div>
+                    }
+                    else
+                    {
+                        <input type="hidden" name="UsuarioTicketSeleccionado" id="UsuarioTicketSeleccionado" value="@Model.UsuarioTicketSeleccionado" />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row scrollable" data-size="60">
+        <div class="col-xs-12">
+
+            <div class="table-header">
+                &nbsp;<div class="widget-toolbar">
+                    <a href="javascript:void(0);"  title="Nuevo Ticket" class="icono-crear-ticket" data-action="create"> <i id="iCreateTablaTicket" class="ace-icon fa fa-plus white"> </i></a>
+                    <a href="javascript:void(0);"  title="Refrescar"   data-action="reload"> <i id="iReloadTablaTicket" class="ace-icon fa fa-refresh white"> </i></a>
+                </div>
+            </div>
+            <div id="dynamic-table_wrapper" class="dataTables_wrapper form-inline no-footer">
+                <table id="dynamic-table-ticket"
+                       data-url-localization="@Url.Content("~/Scripts/dataTables/localization/"+Resources.ConfiguracionResource.DataTables+ ".json")"
+                       data-url="@Url.Action(Model.ActionListar)"
+                       data-url-consultar="@Url.Action(Model.ActionConsultar)"
+                       data-url-editar="@Url.Action(Model.ActionEditar)"
+                       data-url-crear="@Url.Action(Model.ActionCrear)"
+                       class="table table-striped table-bordered table-hover dataTable no-footer DTTT_selectable" role="grid" aria-describedby="dynamic-table_info">
+                    <thead>
+                        <tr role="row">
+                            <th   tabindex="0" aria-controls="dynamic-table" data-name="EditarRegistro" rowspan="1" colspan="1" aria-label="Editar"></th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Id" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Id)">@Html.DisplayNameFor(m => m.Id)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Cliente.NumeroDocumento" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Cliente.NumeroDocumento)">@Html.DisplayNameFor(m => m.Cliente.NumeroDocumento)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Cliente.NombreCompleto" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Cliente.NombreCompleto)">@Html.DisplayNameFor(m => m.Cliente.NombreCompleto)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="DescripcionTipoNotificacion" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.DescripcionTipoNotificacion )">@Html.DisplayNameFor(m => m.DescripcionTipoNotificacion)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Dispositivo.DVR" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Dispositivo.DVR)">@Html.DisplayNameFor(m => m.Dispositivo.DVR)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Dispositivo.SimCard" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Dispositivo.SimCard)">@Html.DisplayNameFor(m => m.Dispositivo.SimCard)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="Distribuidor.Nombre" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.Distribuidor.Nombre)">@Html.DisplayNameFor(m => m.Distribuidor.Nombre)</th>
+
+                            @if (Model.ActionListar == "getTickets_Admin")
+                            {
+                                <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="NombreUsuarioTicket" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.NombreUsuarioTicket)">@Html.DisplayNameFor(m => m.NombreUsuarioTicket)</th>
+                            }
+
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="FechaEstatus" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.FechaEstatus)">@Html.DisplayNameFor(m => m.FechaEstatus)</th>
+                            <th class="sorting" tabindex="0" aria-controls="dynamic-table" data-name="DescripcionEstatus" rowspan="1" colspan="1" aria-label="@Html.DisplayNameFor(m => m.DescripcionEstatus)">@Html.DisplayNameFor(m => m.DescripcionEstatus)</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+    </div>
+
+

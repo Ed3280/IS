@@ -1,0 +1,256 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="CargoNoExiste" xml:space="preserve">
+    <value>Position doesn't exists</value>
+    <comment>Mensaje de error cuando un cargo no existe</comment>
+  </data>
+  <data name="CargoPadreNoActualizable" xml:space="preserve">
+    <value>Position's father can not be updated because there is personnel with this position: {0}</value>
+    <comment>Actualización del campo padre en la estructura de cargos</comment>
+  </data>
+  <data name="CargoPadreNoActualizableReasignarSupervisor" xml:space="preserve">
+    <value>Position's father can not be updated bucause exists more than one posible new supervisor than can be reasigne to the employees on this position</value>
+    <comment>Actualización de un cargo padre de un cargo</comment>
+  </data>
+  <data name="ContrasenaInvalida" xml:space="preserve">
+    <value>Password is not valid or user is inactive. Please verify</value>
+    <comment>Contraseña inválida</comment>
+  </data>
+  <data name="ContrasenaNoCoincide" xml:space="preserve">
+    <value>Passwords doesn't match. Please verify</value>
+    <comment>Contraseñas no coinciden</comment>
+  </data>
+  <data name="ControllerContextNoCreable" xml:space="preserve">
+    <value>Can't create Controller Context if no active HttpContext instance is available</value>
+    <comment>Creación de un context para un controlador</comment>
+  </data>
+  <data name="CorreoRegistroNoEnviado" xml:space="preserve">
+    <value>Registration mail couldn't be send</value>
+    <comment>El correo de registro no pudo ser enviado</comment>
+  </data>
+  <data name="CorreoUsuarioExistente" xml:space="preserve">
+    <value>Email is already used</value>
+    <comment>Correo de usuario ya se encuentra en uso</comment>
+  </data>
+  <data name="Error100" xml:space="preserve">
+    <value>Error processing request. (100)</value>
+    <comment>Ocurrio un error procesando un petición</comment>
+  </data>
+  <data name="FalloActulizarPerfil" xml:space="preserve">
+    <value>There was an error updating profile. Contact sytem administrator</value>
+    <comment>Actualización del perfil de usuario</comment>
+  </data>
+  <data name="FalloEnvioContrasena" xml:space="preserve">
+    <value>Password could not be send</value>
+    <comment>Fallo envio de contraseña</comment>
+  </data>
+  <data name="FormatoContrasenaInvalida" xml:space="preserve">
+    <value>Password's must be between 6 and 20 characters long, must contain al least one digit, an alphanumeric character and a special character (@#$%*)</value>
+    <comment>Valida el formato de la contraseña</comment>
+  </data>
+  <data name="FormatoEmailInvalido" xml:space="preserve">
+    <value>Email is not valid</value>
+    <comment>Validación del formato del correo</comment>
+  </data>
+  <data name="FormatoFechaNacimientoInvalido" xml:space="preserve">
+    <value>Birthday has an invalid format</value>
+    <comment>Fecha de nacimiento inválida</comment>
+  </data>
+  <data name="FormatoNombreUsuarioInvalido" xml:space="preserve">
+    <value>The username must not have spaces, only the special characters "." and "_" are admitted and a length between 5 and 50</value>
+    <comment>ormato del nombre de usuario no cumple con el estándar</comment>
+  </data>
+  <data name="FormatoTenefonoFijoInvalido" xml:space="preserve">
+    <value>Put a valid phone number</value>
+    <comment>Vlidación del formato del número de teléfono fijo</comment>
+  </data>
+  <data name="NombreUsuarioExistente" xml:space="preserve">
+    <value>Username is already used</value>
+    <comment>Nombre de usuario ya se encuentra en uso</comment>
+  </data>
+  <data name="NombreUsuarioInvalido" xml:space="preserve">
+    <value>Username is not valid</value>
+    <comment>Nombre de usuario no cumple con los requisitos</comment>
+  </data>
+  <data name="NumeroDeDocumentoClienteEnUso" xml:space="preserve">
+    <value>There is another client with the same document id</value>
+    <comment>Validación del tipo de documento del cliente</comment>
+  </data>
+  <data name="NumeroDeDocumentoEmpleadoEnUso" xml:space="preserve">
+    <value>There is another employee with the same document id</value>
+    <comment>Error cuando hay otro empleado con el mismo número de documentno</comment>
+  </data>
+  <data name="NumeroDeDocumentoEnUso" xml:space="preserve">
+    <value>There is another user with the same document number</value>
+    <comment>Número de documento repetido</comment>
+  </data>
+  <data name="NumeroDeDocumentoProveedorEnUso" xml:space="preserve">
+    <value>There is another provider with the same document id</value>
+    <comment>Validación del tipo de documento del proveedor</comment>
+  </data>
+  <data name="NumeroDeDocumentoSocioComercialEnUso" xml:space="preserve">
+    <value>There is another business partner with the same document id</value>
+    <comment>Validación del tipo de documento del socio comercial</comment>
+  </data>
+  <data name="NumeroDocumentoInvalido" xml:space="preserve">
+    <value>Document ID is not valid</value>
+    <comment>Valida que el número de documento no esté siendo usado por otro usuario</comment>
+  </data>
+  <data name="RegistroConFK" xml:space="preserve">
+    <value>Record has foreing key with another table. (Relation "{0}")</value>
+    <comment>Cuando ocurrre un error de FK con otra tabla</comment>
+  </data>
+  <data name="RegistroNoActualizado" xml:space="preserve">
+    <value>Record couln't be updated- Try again later</value>
+    <comment>Actualización de un registro</comment>
+  </data>
+  <data name="RegistroNoEliminado" xml:space="preserve">
+    <value>Record couldn't be deleted. Try again later please</value>
+    <comment>Mensaje cuando un registro no pudo ser eliminado</comment>
+  </data>
+  <data name="SupervisorObligatorio" xml:space="preserve">
+    <value>Supervisor is required</value>
+    <comment>Validación de si el supervisor es obligatorio</comment>
+  </data>
+  <data name="TelefonoFijoInvalido" xml:space="preserve">
+    <value>Phone number is not valid</value>
+    <comment>Valida el teléfono fijo</comment>
+  </data>
+  <data name="TelefonoMovilInvalido" xml:space="preserve">
+    <value>Put a valid mobile number</value>
+    <comment>Valida el formato del teléfono móvil</comment>
+  </data>
+  <data name="UsuarioActivoNoActualizable" xml:space="preserve">
+    <value>User can not be inactive because it have the following personnel in charge: {0}</value>
+    <comment>Validación de no poder inactivar usuario mientras tenga personal bajo su cargo</comment>
+  </data>
+  <data name="UsuarioInvalidoInactivo" xml:space="preserve">
+    <value>User invalid or inactive</value>
+    <comment>Usuario es inválido o está inactivo</comment>
+  </data>
+  <data name="UsuarioNuevoCargoNoActualizable" xml:space="preserve">
+    <value>User's position can not be updated because it has personnel under his charge. Please reassign the following employees supervisor: {0}</value>
+    <comment>Actualización del cargo a un empleado</comment>
+  </data>
+  <data name="VinEnUso" xml:space="preserve">
+    <value>Vin number belongs to another vehicle</value>
+    <comment>El número de vin se encuentra en uso por otor vehículo</comment>
+  </data>
+</root>

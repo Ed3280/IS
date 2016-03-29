@@ -1,0 +1,111 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+@{ Layout = null; }
+
+<div class="accordion-style1 panel-group" id="accordionDispositivos">
+    @for (int i = 0; i < Model.Dispositivos.Count(); i++){
+        <div class="panel @(i==0?"panel-default":"")">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse_@(Model.Dispositivos[i].Id)_@(Model.Dispositivos[i].Imei)">
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <strong>
+                                    <i data-icon-show="ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down" class="bigger-110 ace-icon fa fa-angle-right"></i>
+                                   @Model.Dispositivos[i].Id: @Model.Dispositivos[i].NombreDispositivo
+                                   
+                                   
+
+                                </strong>
+                            </div>
+
+                            <div class="col-xs-4">
+                                <strong>
+                                    @if (!String.IsNullOrWhiteSpace(Model.Dispositivos[i].Vin))
+                                    {
+
+                                        <i class="fa fa-car"> VIN: @Model.Dispositivos[i].Vin</i>
+                                    }
+                                </strong>
+                            </div>
+
+                            <div class="col-xs-5 text-right">
+                                <strong class="@(Model.Dispositivos[i].IndicadorEstaActivo?"green":"red")">
+                                    @(Model.Dispositivos[i].IndicadorEstaActivo?Html.Raw("Activo"): Html.Raw("Inactivo") )
+                                </strong>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse_@(Model.Dispositivos[i].Id)_@(Model.Dispositivos[i].Imei)" class="panel-collapse collapse">
+            <div class="panel-body">                
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                           @Html.LabelBoldFor(m => m.Dispositivos[i].Imei)
+                           @Html.TextBoxFor(m=> m.Dispositivos[i].Imei,new { Class = "form-control" , @readonly = "readonly" }) 
+                           @Html.ValidationMessageFor(m => m.Dispositivos[i].Imei, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Dispositivos[i].TarjetaSim)
+                            @Html.TextBoxFor(m => m.Dispositivos[i].TarjetaSim, new { @Readonly = "true", Class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.Dispositivos[i].TarjetaSim, "", new { @class = "help-block" })
+                        </div>
+                        
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4">
+                            @Html.LabelBoldFor(m => m.Dispositivos[i].NumeroDVR)
+                            @Html.TextBoxFor(m => m.Dispositivos[i].NumeroDVR, new { Class = "form-control digits",@readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.Dispositivos[i].NumeroDVR, "", new { @class = "help-block" })
+                        </div>
+
+                                            
+                    </div>
+
+                  <div class="row"> 
+                      <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                          @Html.LabelBoldFor(m => m.Dispositivos[i].ContrasenaDVR)
+                          @Html.TextBoxFor(m => m.Dispositivos[i].ContrasenaDVR, new { Class = "form-control" })
+                          @Html.ValidationMessageFor(m => m.Dispositivos[i].ContrasenaDVR, "", new { @class = "help-block" })
+                      </div> 
+                        
+                      <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                          @Html.LabelBoldFor(m => m.Dispositivos[i].VehiculosSeleccionado)
+                          @Html.DropDownListFor(m => m.Dispositivos[i].VehiculosSeleccionado, new SelectList(Model.Dispositivos[i].Vehiculos, "Value", "Text", Model.Dispositivos[i].VehiculosSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.Dispositivos[i].VehiculosSeleccionado)), new { @class = "select2 form-control vehiculo" })
+                          @Html.ValidationMessageFor(model => model.Dispositivos[i].VehiculosSeleccionado, "", new { @class = "help-block" })
+
+
+                       </div>
+                      
+                      <div class="form-group col-xs-12 col-sm-12 col-md-4">
+                          @Html.LabelBoldFor(m => m.Dispositivos[i].KilometrajeInicial)
+                          @Html.TextBoxFor(m => m.Dispositivos[i].KilometrajeInicial, new { Class = "form-control digits" })
+                          @Html.ValidationMessageFor(m => m.Dispositivos[i].KilometrajeInicial, "", new { @class = "help-block" })
+                      </div> 
+                    </div>
+                    
+                <div class="row">                   
+                    
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                        @Html.LabelBoldFor(m => m.Dispositivos[i].IndicadorAperturaRemota)
+                        @Html.CheckBoxAceFor(m => m.Dispositivos[i].IndicadorAperturaRemota)
+                        @Html.ValidationMessageFor(m => m.Dispositivos[i].IndicadorAperturaRemota, "", new { @class = "help-block" })
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-6 col-md-4">
+                        @Html.LabelBoldFor(m => m.Dispositivos[i].FechaRegistro)
+                        @Html.TextBoxFor(m => m.Dispositivos[i].FechaRegistro, IntranetWeb.Core.Constante.AppFormat.date , new { @readonly = "readonly", Class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Dispositivos[i].FechaRegistro, "", new { @class = "help-block" })
+                    </div>
+
+                </div>
+
+                @Html.HiddenFor(m => m.Dispositivos[i].Id)
+                    
+             </div>
+            </div>
+        </div>        
+    }
+</div>
+
+

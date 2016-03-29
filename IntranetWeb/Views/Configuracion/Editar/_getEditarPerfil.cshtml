@@ -1,0 +1,36 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Configuracion.Perfil
+@{Layout = null;}
+
+
+
+
+@using (Ajax.BeginForm("actualizarPerfil", "Configuracion", null, new AjaxOptions { HttpMethod = "post", OnSuccess = "configuracionSAI.submitSuccess(data)", LoadingElementId = "divActualizarPerfilLoading" }, new { id = "formUpdatePerfil", role = "form" }))
+{
+
+       <div >
+           
+           @{Html.RenderPartial("Editar/_getEditarUsuario", Model);}
+                        
+          
+           @if (Model.Empleado != null)
+           {
+               Html.RenderPartial("Editar/_getEditarEmpleado", Model);
+           }
+            <div id="divActualizarPerfilLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @Resources.EtiquetaResource.Procesando</strong></div>
+            </div>
+
+            <div class="">
+                <div id="divUpdatePerfilTarget"></div>
+            </div>
+
+
+            <div class="clearfix">
+                <button type="submit" class="pull-left btn btn-sm btn-success">
+                    <span class="bigger-110">@Resources.TituloBotonResource.ActualizarPerfil</span>
+                </button>
+            </div>
+        </div>         
+}
+

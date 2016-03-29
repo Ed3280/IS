@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Abierto" xml:space="preserve">
+    <value>Abierto</value>
+  </data>
+  <data name="Advertencia" xml:space="preserve">
+    <value>Advertencia</value>
+  </data>
+  <data name="Ampliar" xml:space="preserve">
+    <value>Ampliar</value>
+  </data>
+  <data name="Asginar" xml:space="preserve">
+    <value>Asignada</value>
+  </data>
+  <data name="Atencion" xml:space="preserve">
+    <value>Atención:</value>
+  </data>
+  <data name="Atendido" xml:space="preserve">
+    <value>Atendido</value>
+  </data>
+  <data name="Bienvenido" xml:space="preserve">
+    <value>Bienvenido</value>
+  </data>
+  <data name="Cargando" xml:space="preserve">
+    <value>Cargando ...</value>
+  </data>
+  <data name="CargandoRoles" xml:space="preserve">
+    <value>Cargando roles de usuario ...</value>
+  </data>
+  <data name="Configuracion" xml:space="preserve">
+    <value>Configuración</value>
+  </data>
+  <data name="ConsultarRegistro" xml:space="preserve">
+    <value>Consultar</value>
+  </data>
+  <data name="CorreoRegistroEnviado" xml:space="preserve">
+    <value>Correo de registro enviado</value>
+  </data>
+  <data name="CrearRegistro" xml:space="preserve">
+    <value>Crear</value>
+  </data>
+  <data name="Descartado" xml:space="preserve">
+    <value>Descartado</value>
+  </data>
+  <data name="Detenido" xml:space="preserve">
+    <value>Detenido</value>
+  </data>
+  <data name="EditarRegistro" xml:space="preserve">
+    <value>Editar</value>
+  </data>
+  <data name="EliminarRegistro" xml:space="preserve">
+    <value>Eliminar</value>
+  </data>
+  <data name="EnMovimiento" xml:space="preserve">
+    <value>En movimiento</value>
+  </data>
+  <data name="EnviandoCorreo" xml:space="preserve">
+    <value>Enviando correo ...</value>
+  </data>
+  <data name="EstaSemana" xml:space="preserve">
+    <value>Esta semana</value>
+  </data>
+  <data name="EsteMes" xml:space="preserve">
+    <value>Este mes</value>
+  </data>
+  <data name="FueraDeLinea" xml:space="preserve">
+    <value>Fuera de línea</value>
+  </data>
+  <data name="GenerarExcel" xml:space="preserve">
+    <value>Generar Excel</value>
+  </data>
+  <data name="Hoy" xml:space="preserve">
+    <value>Hoy</value>
+  </data>
+  <data name="IngreseBusqueda" xml:space="preserve">
+    <value>Ingrese su búsqueda</value>
+  </data>
+  <data name="MesPasado" xml:space="preserve">
+    <value>Mes pasado</value>
+  </data>
+  <data name="MostrarOcultarFiltro" xml:space="preserve">
+    <value>Mostrar/ocultar filtros</value>
+  </data>
+  <data name="OlvideContrasena" xml:space="preserve">
+    <value>Olvidé mi contraseña</value>
+  </data>
+  <data name="OpcionActiva" xml:space="preserve">
+    <value>Opción Activa</value>
+  </data>
+  <data name="Procesando" xml:space="preserve">
+    <value>Procesando ...</value>
+  </data>
+  <data name="ReenviarCorreoRegistro" xml:space="preserve">
+    <value>Reenviar correo de registro</value>
+  </data>
+  <data name="Salir" xml:space="preserve">
+    <value>Salir</value>
+  </data>
+  <data name="SemanaPasada" xml:space="preserve">
+    <value>Semana pasada</value>
+  </data>
+  <data name="SinAlertasPendientes" xml:space="preserve">
+    <value>No hay alertas pendientes</value>
+  </data>
+  <data name="Transferido" xml:space="preserve">
+    <value>Transferido</value>
+  </data>
+  <data name="VolverAlLogin" xml:space="preserve">
+    <value>Volver al login</value>
+  </data>
+</root>

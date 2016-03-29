@@ -1,0 +1,15 @@
+﻿@model IntranetWeb.ViewModel.Administrador.SocioComercial
+@{
+    Layout = null;
+}
+
+
+<div class="row">
+
+    <div class="form-group col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.ServiciosAppSeleccionados)<br />
+        @Html.ListBoxFor(m => m.ServiciosAppSeleccionados, Model.ServiciosAppDisponibles, new { @class = "duallistbox serviciosAppMovil" })
+        @Html.ValidationMessageFor(m => m.ServiciosAppSeleccionados, "", new { @class = "help-block" })
+    </div>
+
+</div>

@@ -1,0 +1,47 @@
+﻿@model  IntranetWeb.ViewModel.Monitor.NuevoTicket
+@using IntranetWeb.Core.Utils
+@{
+    ViewBag.Title = "Ticket";
+    Layout = null;
+}
+
+<div class="widget-box transparent" style="overflow:visible">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="glyphicon fa fa-ticket"></i> @ViewBag.Title</h4>
+
+        <div class="widget-toolbar no-border">
+            
+        </div>
+    </div>
+    <div class="widget-body" >
+        <div class="widget-main">
+            
+            <div class="row">
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.ClienteSeleccionado)
+                    @Html.DropDownListFor(m => m.ClienteSeleccionado, new SelectList(Model.Cliente, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.ClienteSeleccionado)), new { @class = "select2 form-control clienteSelect", data_url = Url.Action("getDispositivos", "Select") })
+                    @Html.ValidationMessageFor(model => model.ClienteSeleccionado, "", new { @class = "help-block" })
+                </div>
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.DispositivoSeleccionado)
+                    @Html.DropDownListFor(m => m.DispositivoSeleccionado, new SelectList(Model.Dispositivo, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.DispositivoSeleccionado)), new { @class = "select2 form-control dispositivoSelect" })
+                    @Html.ValidationMessageFor(model => model.DispositivoSeleccionado, "", new { @class = "help-block" })
+                </div>
+            
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.OrigenNotificacionSeleccionado)
+                    @Html.DropDownListFor(m => m.OrigenNotificacionSeleccionado, new SelectList(Model.OrigenNotificacion, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.OrigenNotificacionSeleccionado)), new { @class = "select2 form-control" })
+                    @Html.ValidationMessageFor(model => model.OrigenNotificacionSeleccionado, "", new { @class = "help-block" })
+                </div>
+
+
+                <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+                    @Html.LabelBoldFor(m => m.FechaNotificacion)
+                    @Html.TextBoxFor(m => m.FechaNotificacion, IntranetWeb.Core.Constante.AppFormat.dateHour,new { Class = "form-control date-time-picker" })
+                    @Html.ValidationMessageFor(model => model.FechaNotificacion, "", new { @class = "help-block" })
+                </div>
+            </div>
+       </div>
+    </div>
+</div>

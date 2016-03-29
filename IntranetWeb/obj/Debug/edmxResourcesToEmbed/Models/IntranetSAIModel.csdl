@@ -1,0 +1,2420 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="IntranetSAIModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="IntranetSAIEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PARAMETRO_CONFIGURACION" EntityType="IntranetSAIModel.PARAMETRO_CONFIGURACION" />
+    <FunctionImport Name="PROC_001_ES_VALIDA_CADENA_ENCRIPTADA">
+      <Parameter Name="P_CONTRASENA_USUARIO" Mode="In" Type="Binary" />
+      <Parameter Name="P_CONTRASENA_ESCRITA" Mode="In" Type="String" />
+      <Parameter Name="P_KEY_CLAVE" Mode="In" Type="String" />
+      <Parameter Name="P_SALIDA" Mode="InOut" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_002_OBTENER_CONTRASENA">
+      <Parameter Name="P_CONTRASENA_USUARIO" Mode="In" Type="Binary" />
+      <Parameter Name="P_SALIDA" Mode="InOut" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="PROC_003_OBTENER_CADENA_ENCRIPTADA">
+      <Parameter Name="P_KEY_CLAVE" Mode="In" Type="String" />
+      <Parameter Name="P_CADENA_A_ENCRIPTAR" Mode="In" Type="String" />
+      <Parameter Name="P_SALIDA" Mode="InOut" Type="Binary" />
+    </FunctionImport>
+    <EntitySet Name="USUARIO_APLICACION" EntityType="IntranetSAIModel.USUARIO_APLICACION" />
+    <EntitySet Name="TICKET_ESTATUS" EntityType="IntranetSAIModel.TICKET_ESTATUS" />
+    <EntitySet Name="TIPO_NOTIFICACION" EntityType="IntranetSAIModel.TIPO_NOTIFICACION" />
+    <EntitySet Name="TIPO_ATENCION" EntityType="IntranetSAIModel.TIPO_ATENCION" />
+    <EntitySet Name="RESPUESTA_OPERADOR_GCM" EntityType="IntranetSAIModel.RESPUESTA_OPERADOR_GCM" />
+    <AssociationSet Name="RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION" Association="IntranetSAIModel.RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION">
+      <End Role="TIPO_ATENCION" EntitySet="TIPO_ATENCION" />
+      <End Role="RESPUESTA_OPERADOR_GCM" EntitySet="RESPUESTA_OPERADOR_GCM" />
+    </AssociationSet>
+    <EntitySet Name="LOG_TRANSACCIONES" EntityType="IntranetSAIModel.LOG_TRANSACCIONES" />
+    <EntitySet Name="EMPLEADO" EntityType="IntranetSAIModel.EMPLEADO" />
+    <EntitySet Name="UNIDAD_ADMINISTRATIVA" EntityType="IntranetSAIModel.UNIDAD_ADMINISTRATIVA" />
+    <AssociationSet Name="EMPLEADO_FK_EMPLEADO_SUPERVISOR" Association="IntranetSAIModel.EMPLEADO_FK_EMPLEADO_SUPERVISOR">
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+      <End Role="EMPLEADO1" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <EntitySet Name="CARGO" EntityType="IntranetSAIModel.CARGO" />
+    <AssociationSet Name="CARGO_FK_CARGO_PADRE" Association="IntranetSAIModel.CARGO_FK_CARGO_PADRE">
+      <End Role="CARGO" EntitySet="CARGO" />
+      <End Role="CARGO1" EntitySet="CARGO" />
+    </AssociationSet>
+    <AssociationSet Name="CARGO_FK_UNIDAD_ADMINISTRATIVA" Association="IntranetSAIModel.CARGO_FK_UNIDAD_ADMINISTRATIVA">
+      <End Role="UNIDAD_ADMINISTRATIVA" EntitySet="UNIDAD_ADMINISTRATIVA" />
+      <End Role="CARGO" EntitySet="CARGO" />
+    </AssociationSet>
+    <AssociationSet Name="EMPLEADO_FK_CARGO" Association="IntranetSAIModel.EMPLEADO_FK_CARGO">
+      <End Role="CARGO" EntitySet="CARGO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <EntitySet Name="TIPO_SANGRE" EntityType="IntranetSAIModel.TIPO_SANGRE" />
+    <EntitySet Name="APLICACION" EntityType="IntranetSAIModel.APLICACION" />
+    <AssociationSet Name="FK_APLICACION_APLICACION1" Association="IntranetSAIModel.FK_APLICACION_APLICACION1">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="APLICACION1" EntitySet="APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_APLICACION_FK_APLICACION" Association="IntranetSAIModel.USUARIO_APLICACION_FK_APLICACION">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="USUARIO_APLICACION" EntitySet="USUARIO_APLICACION" />
+    </AssociationSet>
+    <EntitySet Name="ROL" EntityType="IntranetSAIModel.ROL" />
+    <AssociationSet Name="CARGO_ROL" Association="IntranetSAIModel.CARGO_ROL">
+      <End Role="CARGO" EntitySet="CARGO" />
+      <End Role="ROL" EntitySet="ROL" />
+    </AssociationSet>
+    <AssociationSet Name="ROL_APLICACION" Association="IntranetSAIModel.ROL_APLICACION">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="ROL" EntitySet="ROL" />
+    </AssociationSet>
+    <EntitySet Name="ORIGEN_NOTIFICACION" EntityType="IntranetSAIModel.ORIGEN_NOTIFICACION" />
+    <EntitySet Name="SUCURSAL" EntityType="IntranetSAIModel.SUCURSAL" />
+    <AssociationSet Name="EMPLEADO_FK_SUCURSAL" Association="IntranetSAIModel.EMPLEADO_FK_SUCURSAL">
+      <End Role="SUCURSAL" EntitySet="SUCURSAL" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <EntitySet Name="CORREGIMIENTO" EntityType="IntranetSAIModel.CORREGIMIENTO" />
+    <EntitySet Name="PAIS" EntityType="IntranetSAIModel.PAIS" />
+    <EntitySet Name="PROVINCIA" EntityType="IntranetSAIModel.PROVINCIA" />
+    <AssociationSet Name="PROVINCIA_FK_PAIS" Association="IntranetSAIModel.PROVINCIA_FK_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+    </AssociationSet>
+    <EntitySet Name="DISTRITO" EntityType="IntranetSAIModel.DISTRITO" />
+    <AssociationSet Name="DISTRITO_FK_PROVINCIA" Association="IntranetSAIModel.DISTRITO_FK_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+    </AssociationSet>
+    <EntitySet Name="PROVEEDOR" EntityType="IntranetSAIModel.PROVEEDOR" />
+    <AssociationSet Name="PROVEEDOR_FK_CORREGIMIENTO" Association="IntranetSAIModel.PROVEEDOR_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+    </AssociationSet>
+    <AssociationSet Name="PROVEEDOR_FK_DISTRITO" Association="IntranetSAIModel.PROVEEDOR_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+    </AssociationSet>
+    <EntitySet Name="COMPANIA_SEGURO" EntityType="IntranetSAIModel.COMPANIA_SEGURO" />
+    <EntitySet Name="TIPO_CIERRE_VEHICULO" EntityType="IntranetSAIModel.TIPO_CIERRE_VEHICULO" />
+    <EntitySet Name="TIPO_COMBUSTIBLE" EntityType="IntranetSAIModel.TIPO_COMBUSTIBLE" />
+    <EntitySet Name="TIPO_TRANSMISION_VEHICULO" EntityType="IntranetSAIModel.TIPO_TRANSMISION_VEHICULO" />
+    <EntitySet Name="KILOMETRAJE_TOTAL" EntityType="IntranetSAIModel.KILOMETRAJE_TOTAL" />
+    <EntitySet Name="NOTIFICACION_GCM" EntityType="IntranetSAIModel.NOTIFICACION_GCM" />
+    <EntitySet Name="MARCA" EntityType="IntranetSAIModel.MARCA" />
+    <EntitySet Name="MODELO" EntityType="IntranetSAIModel.MODELO" />
+    <EntitySet Name="TIPO_ARTICULO" EntityType="IntranetSAIModel.TIPO_ARTICULO" />
+    <EntitySet Name="DISTRIBUIDOR" EntityType="IntranetSAIModel.DISTRIBUIDOR" />
+    <EntitySet Name="USUARIO_MOVIL_GCM" EntityType="IntranetSAIModel.USUARIO_MOVIL_GCM" />
+    <AssociationSet Name="NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM" Association="IntranetSAIModel.NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM">
+      <End Role="USUARIO_MOVIL_GCM" EntitySet="USUARIO_MOVIL_GCM" />
+      <End Role="NOTIFICACION_GCM" EntitySet="NOTIFICACION_GCM" />
+    </AssociationSet>
+    <AssociationSet Name="ARTICULO_MODELO_FK_MARCA" Association="IntranetSAIModel.ARTICULO_MODELO_FK_MARCA">
+      <End Role="MARCA" EntitySet="MARCA" />
+      <End Role="MODELO" EntitySet="MODELO" />
+    </AssociationSet>
+    <AssociationSet Name="MODELO_FK_TIPO_ARTICULO" Association="IntranetSAIModel.MODELO_FK_TIPO_ARTICULO">
+      <End Role="TIPO_ARTICULO" EntitySet="TIPO_ARTICULO" />
+      <End Role="MODELO" EntitySet="MODELO" />
+    </AssociationSet>
+    <EntitySet Name="USUARIO_NOTIFICACION" EntityType="IntranetSAIModel.USUARIO_NOTIFICACION" />
+    <AssociationSet Name="USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION" Association="IntranetSAIModel.USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION">
+      <End Role="TIPO_NOTIFICACION" EntitySet="TIPO_NOTIFICACION" />
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+    </AssociationSet>
+    <EntitySet Name="ANO_VEHICULO" EntityType="IntranetSAIModel.ANO_VEHICULO" />
+    <EntitySet Name="VEHICULO" EntityType="IntranetSAIModel.VEHICULO" />
+    <AssociationSet Name="VEHICULO_FK_ANO_VEHICULO" Association="IntranetSAIModel.VEHICULO_FK_ANO_VEHICULO">
+      <End Role="ANO_VEHICULO" EntitySet="ANO_VEHICULO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_COMPANIA_SEGURO" Association="IntranetSAIModel.VEHICULO_FK_COMPANIA_SEGURO">
+      <End Role="COMPANIA_SEGURO" EntitySet="COMPANIA_SEGURO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_TIPO_CIERRE_VEHICULO" Association="IntranetSAIModel.VEHICULO_FK_TIPO_CIERRE_VEHICULO">
+      <End Role="TIPO_CIERRE_VEHICULO" EntitySet="TIPO_CIERRE_VEHICULO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_TIPO_COMBUSTIBLE" Association="IntranetSAIModel.VEHICULO_FK_TIPO_COMBUSTIBLE">
+      <End Role="TIPO_COMBUSTIBLE" EntitySet="TIPO_COMBUSTIBLE" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_TIPO_TRANSMISION_VEHICULO" Association="IntranetSAIModel.VEHICULO_FK_TIPO_TRANSMISION_VEHICULO">
+      <End Role="TIPO_TRANSMISION_VEHICULO" EntitySet="TIPO_TRANSMISION_VEHICULO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_MARCA" Association="IntranetSAIModel.VEHICULO_FK_MARCA">
+      <End Role="MARCA" EntitySet="MARCA" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_MODELO" Association="IntranetSAIModel.VEHICULO_FK_MODELO">
+      <End Role="MODELO" EntitySet="MODELO" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <EntitySet Name="IMAGEN_NOTIFICACION" EntityType="IntranetSAIModel.IMAGEN_NOTIFICACION" />
+    <AssociationSet Name="IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION" Association="IntranetSAIModel.IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION">
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+      <End Role="IMAGEN_NOTIFICACION" EntitySet="IMAGEN_NOTIFICACION" />
+    </AssociationSet>
+    <FunctionImport Name="FUNC_003_BUSCA_GESTION_ALERTAS" IsComposable="true" ReturnType="Collection(IntranetSAIModel.FUNC_003_BUSCA_GESTION_ALERTAS_Result)">
+      <Parameter Name="P_CD_USUARIO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TP_NOTIFICACION" Mode="In" Type="Int32" />
+      <Parameter Name="P_FE_NOTIFICACION_DESDE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_FE_NOTIFICACION_HASTA" Mode="In" Type="DateTime" />
+      <Parameter Name="P_FE_CREACION_DESDE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_FE_CREACION_HASTA" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="TIPO_DOCUMENTO_IDENTIDAD" EntityType="IntranetSAIModel.TIPO_DOCUMENTO_IDENTIDAD" />
+    <AssociationSet Name="PROVEEDOR_FK_TIPO_DOCUMENTO" Association="IntranetSAIModel.PROVEEDOR_FK_TIPO_DOCUMENTO">
+      <End Role="TIPO_DOCUMENTO_IDENTIDAD" EntitySet="TIPO_DOCUMENTO_IDENTIDAD" />
+      <End Role="PROVEEDOR" EntitySet="PROVEEDOR" />
+    </AssociationSet>
+    <FunctionImport Name="FUNC_001_BUSCA_ALERTAS" IsComposable="true" ReturnType="Collection(IntranetSAIModel.FUNC_001_BUSCA_ALERTAS_Result)" />
+    <FunctionImport Name="FUNC_001_BUSCA_CLIENTES" IsComposable="true" ReturnType="Collection(IntranetSAIModel.FUNC_001_BUSCA_CLIENTES_Result)" />
+    <EntitySet Name="NOTIFICACION_SIN_GESTION" EntityType="IntranetSAIModel.NOTIFICACION_SIN_GESTION" />
+    <EntitySet Name="TICKET" EntityType="IntranetSAIModel.TICKET" />
+    <EntitySet Name="TICKET_HISTORICO" EntityType="IntranetSAIModel.TICKET_HISTORICO" />
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION" Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION">
+      <End Role="TIPO_NOTIFICACION" EntitySet="TIPO_NOTIFICACION" />
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_ORIGEN_NOTIFICACION" Association="IntranetSAIModel.TICKET_FK_ORIGEN_NOTIFICACION">
+      <End Role="ORIGEN_NOTIFICACION" EntitySet="ORIGEN_NOTIFICACION" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_RESPUESTA_OPERADOR_GCM" Association="IntranetSAIModel.TICKET_FK_RESPUESTA_OPERADOR_GCM">
+      <End Role="RESPUESTA_OPERADOR_GCM" EntitySet="RESPUESTA_OPERADOR_GCM" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_TICKET_ESTATUS" Association="IntranetSAIModel.TICKET_FK_TICKET_ESTATUS">
+      <End Role="TICKET_ESTATUS" EntitySet="TICKET_ESTATUS" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_TIPO_ATENCION" Association="IntranetSAIModel.TICKET_FK_TIPO_ATENCION">
+      <End Role="TIPO_ATENCION" EntitySet="TIPO_ATENCION" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_TIPO_NOTIFICACION" Association="IntranetSAIModel.TICKET_FK_TIPO_NOTIFICACION">
+      <End Role="TIPO_NOTIFICACION" EntitySet="TIPO_NOTIFICACION" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <FunctionImport Name="FUNC_002_BUSCA_TICKET" IsComposable="true" ReturnType="Collection(IntranetSAIModel.FUNC_002_BUSCA_TICKET_Result)">
+      <Parameter Name="P_CD_USUARIO" Mode="In" Type="Int32" />
+      <Parameter Name="P_TP_ATENCION" Mode="In" Type="Int32" />
+      <Parameter Name="P_NU_SIM_GPS" Mode="In" Type="String" />
+      <Parameter Name="P_FE_DESDE" Mode="In" Type="DateTime" />
+      <Parameter Name="P_FE_HASTA" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <EntitySet Name="SEGMENTO_NEGOCIO" EntityType="IntranetSAIModel.SEGMENTO_NEGOCIO" />
+    <EntitySet Name="SOCIO_COMERCIAL" EntityType="IntranetSAIModel.SOCIO_COMERCIAL" />
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO" Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO">
+      <End Role="SEGMENTO_NEGOCIO" EntitySet="SEGMENTO_NEGOCIO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_CORREGIMIENTO" Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_DISTRIBUIDOR" Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRIBUIDOR">
+      <End Role="DISTRIBUIDOR" EntitySet="DISTRIBUIDOR" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_DISTRITO" Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <EntitySet Name="CLIENTE" EntityType="IntranetSAIModel.CLIENTE" />
+    <EntitySet Name="USUARIO" EntityType="IntranetSAIModel.USUARIO" />
+    <AssociationSet Name="CLIENTE_FK_COMPANIA_SEGURO" Association="IntranetSAIModel.CLIENTE_FK_COMPANIA_SEGURO">
+      <End Role="COMPANIA_SEGURO" EntitySet="COMPANIA_SEGURO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="VEHICULO_FK_CLIENTE" Association="IntranetSAIModel.VEHICULO_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="EMEPLEADO_FK_USUARIO" Association="IntranetSAIModel.EMEPLEADO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="EMPLEADO" EntitySet="EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_NOTIFICACION_FK_USUARIO" Association="IntranetSAIModel.USUARIO_NOTIFICACION_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_FK_CLIENTE" Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_FK_USUARIO" Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_CLIENTE" Association="IntranetSAIModel.TICKET_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_USUARIO" Association="IntranetSAIModel.TICKET_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="TICKET_FK_USUARIO_TRANSFERENCIA" Association="IntranetSAIModel.TICKET_FK_USUARIO_TRANSFERENCIA">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="TICKET" EntitySet="TICKET" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_CORREGIMIENTO" Association="IntranetSAIModel.CLIENTE_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_DISTRITO" Association="IntranetSAIModel.CLIENTE_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_PAIS" Association="IntranetSAIModel.CLIENTE_FK_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_PROVINCIA" Association="IntranetSAIModel.CLIENTE_FK_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_TIPO_SANGRE" Association="IntranetSAIModel.CLIENTE_FK_TIPO_SANGRE">
+      <End Role="TIPO_SANGRE" EntitySet="TIPO_SANGRE" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="CLIENTE_FK_USUARIO" Association="IntranetSAIModel.CLIENTE_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="SOCIO_COMERCIAL_FK_USUARIO" Association="IntranetSAIModel.SOCIO_COMERCIAL_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+    </AssociationSet>
+    <AssociationSet Name="LOG_TRANSACCIONES_FK_USUARIO" Association="IntranetSAIModel.LOG_TRANSACCIONES_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="LOG_TRANSACCIONES" EntitySet="LOG_TRANSACCIONES" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_APLICACION_FK_USUARIO" Association="IntranetSAIModel.USUARIO_APLICACION_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_APLICACION" EntitySet="USUARIO_APLICACION" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD" Association="IntranetSAIModel.USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD">
+      <End Role="TIPO_DOCUMENTO_IDENTIDAD" EntitySet="TIPO_DOCUMENTO_IDENTIDAD" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_MOVIL_GCM_FK_USUARIO" Association="IntranetSAIModel.USUARIO_MOVIL_GCM_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO_MOVIL_GCM" EntitySet="USUARIO_MOVIL_GCM" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_ROL" Association="IntranetSAIModel.USUARIO_ROL">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_PADRE" Association="IntranetSAIModel.USUARIO_PADRE">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="USUARIO1" EntitySet="USUARIO" />
+    </AssociationSet>
+    <EntitySet Name="DISPOSITIVO_CLIENTE" EntityType="IntranetSAIModel.DISPOSITIVO_CLIENTE" />
+    <AssociationSet Name="DISPOSITIVO_CLIENTE_FK_CLIENTE" Association="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="DISPOSITIVO_CLIENTE_FK_VEHICULO" Association="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_VEHICULO">
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE" Association="IntranetSAIModel.USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE">
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+      <End Role="USUARIO_NOTIFICACION" EntitySet="USUARIO_NOTIFICACION" />
+    </AssociationSet>
+    <EntitySet Name="DISPOSITIVO" EntityType="IntranetSAIModel.DISPOSITIVO" />
+    <AssociationSet Name="DISPOSITIVO_CLIENTE_FK_DISPOSITIVO" Association="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_DISPOSITIVO">
+      <End Role="DISPOSITIVO" EntitySet="DISPOSITIVO" />
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="DISPOSITIVO_FK_DISTRIBUIDOR" Association="IntranetSAIModel.DISPOSITIVO_FK_DISTRIBUIDOR">
+      <End Role="DISTRIBUIDOR" EntitySet="DISTRIBUIDOR" />
+      <End Role="DISPOSITIVO" EntitySet="DISPOSITIVO" />
+    </AssociationSet>
+    <AssociationSet Name="USUARIO_DISPOSITIVO" Association="IntranetSAIModel.USUARIO_DISPOSITIVO">
+      <End Role="DISPOSITIVO" EntitySet="DISPOSITIVO" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <EntitySet Name="MENU_SERVICIO" EntityType="IntranetSAIModel.MENU_SERVICIO" />
+    <AssociationSet Name="MENU_SERVICIO_FK_APLICACION" Association="IntranetSAIModel.MENU_SERVICIO_FK_APLICACION">
+      <End Role="APLICACION" EntitySet="APLICACION" />
+      <End Role="MENU_SERVICIO" EntitySet="MENU_SERVICIO" />
+    </AssociationSet>
+    <AssociationSet Name="MENU_SERVICIO_USUARIO" Association="IntranetSAIModel.MENU_SERVICIO_USUARIO">
+      <End Role="MENU_SERVICIO" EntitySet="MENU_SERVICIO" />
+      <End Role="USUARIO" EntitySet="USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="SEGMENTO_NEGOCIO_MENU_SERVICIO" Association="IntranetSAIModel.SEGMENTO_NEGOCIO_MENU_SERVICIO">
+      <End Role="MENU_SERVICIO" EntitySet="MENU_SERVICIO" />
+      <End Role="SEGMENTO_NEGOCIO" EntitySet="SEGMENTO_NEGOCIO" />
+    </AssociationSet>
+    <EntitySet Name="PLANTILLA_CORREO" EntityType="IntranetSAIModel.PLANTILLA_CORREO" />
+    <EntitySet Name="TIPO_PLANTILLA_CORREO" EntityType="IntranetSAIModel.TIPO_PLANTILLA_CORREO" />
+    <AssociationSet Name="PLANTILLA_CORREO_FK_USUARIO" Association="IntranetSAIModel.PLANTILLA_CORREO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="PLANTILLA_CORREO" EntitySet="PLANTILLA_CORREO" />
+    </AssociationSet>
+    <AssociationSet Name="PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO" Association="IntranetSAIModel.PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO">
+      <End Role="TIPO_PLANTILLA_CORREO" EntitySet="TIPO_PLANTILLA_CORREO" />
+      <End Role="PLANTILLA_CORREO" EntitySet="PLANTILLA_CORREO" />
+    </AssociationSet>
+    <EntitySet Name="ARTICULO" EntityType="IntranetSAIModel.ARTICULO" />
+    <AssociationSet Name="ANO_VEHICULO_FK_MODELO" Association="IntranetSAIModel.ANO_VEHICULO_FK_MODELO">
+      <End Role="MODELO" EntitySet="MODELO" />
+      <End Role="ANO_VEHICULO" EntitySet="ANO_VEHICULO" />
+    </AssociationSet>
+    <AssociationSet Name="ARTICULO_FK_MODELO" Association="IntranetSAIModel.ARTICULO_FK_MODELO">
+      <End Role="MODELO" EntitySet="MODELO" />
+      <End Role="ARTICULO" EntitySet="ARTICULO" />
+    </AssociationSet>
+    <EntitySet Name="CONFIGURACION_KILOMETRAJE" EntityType="IntranetSAIModel.CONFIGURACION_KILOMETRAJE" />
+    <EntitySet Name="OPERACION_MANTENIMIENTO" EntityType="IntranetSAIModel.OPERACION_MANTENIMIENTO" />
+    <EntitySet Name="SOLICITUD_MANTENIMIENTO" EntityType="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" />
+    <EntitySet Name="TALLER" EntityType="IntranetSAIModel.TALLER" />
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_FK_MODELO" Association="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_MODELO">
+      <End Role="ANO_VEHICULO" EntitySet="ANO_VEHICULO" />
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE" Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE">
+      <End Role="DISPOSITIVO_CLIENTE" EntitySet="DISPOSITIVO_CLIENTE" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_VEHICULO" Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_VEHICULO">
+      <End Role="VEHICULO" EntitySet="VEHICULO" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_FK_TALLER" Association="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_TALLER">
+      <End Role="TALLER" EntitySet="TALLER" />
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE" Association="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE">
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="OPERACION_MANTENIMIENTO_FK_TALLER" Association="IntranetSAIModel.OPERACION_MANTENIMIENTO_FK_TALLER">
+      <End Role="TALLER" EntitySet="TALLER" />
+      <End Role="OPERACION_MANTENIMIENTO" EntitySet="OPERACION_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIENTO_FK_TALLER" Association="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_TALLER">
+      <End Role="TALLER" EntitySet="TALLER" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_CLIENTE" Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_CLIENTE">
+      <End Role="CLIENTE" EntitySet="CLIENTE" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_MANTENIMIETO_FK_USUARIO" Association="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_USUARIO">
+      <End Role="USUARIO" EntitySet="USUARIO" />
+      <End Role="SOLICITUD_MANTENIMIENTO" EntitySet="SOLICITUD_MANTENIMIENTO" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_CORREGIMIENTO" Association="IntranetSAIModel.TALLER_FK_CORREGIMIENTO">
+      <End Role="CORREGIMIENTO" EntitySet="CORREGIMIENTO" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_DISTRITO" Association="IntranetSAIModel.TALLER_FK_DISTRITO">
+      <End Role="DISTRITO" EntitySet="DISTRITO" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_PAIS" Association="IntranetSAIModel.TALLER_FK_PAIS">
+      <End Role="PAIS" EntitySet="PAIS" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_PROVINCIA" Association="IntranetSAIModel.TALLER_FK_PROVINCIA">
+      <End Role="PROVINCIA" EntitySet="PROVINCIA" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="TALLER_FK_SOCIO_COMERCIAL" Association="IntranetSAIModel.TALLER_FK_SOCIO_COMERCIAL">
+      <End Role="SOCIO_COMERCIAL" EntitySet="SOCIO_COMERCIAL" />
+      <End Role="TALLER" EntitySet="TALLER" />
+    </AssociationSet>
+    <AssociationSet Name="NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE" Association="IntranetSAIModel.NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE">
+      <End Role="NOTIFICACION_SIN_GESTION" EntitySet="NOTIFICACION_SIN_GESTION" />
+      <End Role="NOTIFICACION_SIN_GESTION1" EntitySet="NOTIFICACION_SIN_GESTION" />
+    </AssociationSet>
+    <AssociationSet Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" Association="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO">
+      <End Role="CONFIGURACION_KILOMETRAJE" EntitySet="CONFIGURACION_KILOMETRAJE" />
+      <End Role="OPERACION_MANTENIMIENTO" EntitySet="OPERACION_MANTENIMIENTO" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="PARAMETRO_CONFIGURACION">
+    <Key>
+      <PropertyRef Name="CD_CONFIGURACION" />
+      <PropertyRef Name="NM_PARAMETRO" />
+    </Key>
+    <Property Name="CD_CONFIGURACION" Type="String" Nullable="false" MaxLength="80" FixedLength="false" Unicode="true" />
+    <Property Name="NM_PARAMETRO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DE_CONFIGURACION" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DE_USO_CONFIGURACION" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="USUARIO_APLICACION">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+      <PropertyRef Name="CD_APLICACION" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="CD_APLICACION" Type="Int32" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="APLICACION" Relationship="IntranetSAIModel.USUARIO_APLICACION_FK_APLICACION" FromRole="USUARIO_APLICACION" ToRole="APLICACION" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.USUARIO_APLICACION_FK_USUARIO" FromRole="USUARIO_APLICACION" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="TICKET_ESTATUS">
+    <Key>
+      <PropertyRef Name="ID_ESTATUS_TICKET" />
+    </Key>
+    <Property Name="ID_ESTATUS_TICKET" Type="Int32" Nullable="false" />
+    <Property Name="DE_ESTATUS" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_TICKET_ESTATUS" FromRole="TICKET_ESTATUS" ToRole="TICKET" />
+  </EntityType>
+  <EntityType Name="TIPO_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="TP_NOTIFICACION" />
+    </Key>
+    <Property Name="TP_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="DE_TIPO_NOTIFICACION" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CD_PRIORIDAD" Type="Int32" Nullable="false" />
+    <Property Name="DE_COLOR_TITULO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DE_COLOR_BODY" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DE_COLOR_LABEL" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO_NOTIFICACION" Relationship="IntranetSAIModel.USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION" FromRole="TIPO_NOTIFICACION" ToRole="USUARIO_NOTIFICACION" />
+    <NavigationProperty Name="NOTIFICACION_SIN_GESTION" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION" FromRole="TIPO_NOTIFICACION" ToRole="NOTIFICACION_SIN_GESTION" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_TIPO_NOTIFICACION" FromRole="TIPO_NOTIFICACION" ToRole="TICKET" />
+  </EntityType>
+  <EntityType Name="TIPO_ATENCION">
+    <Key>
+      <PropertyRef Name="TP_ATENCION" />
+    </Key>
+    <Property Name="TP_ATENCION" Type="Int32" Nullable="false" />
+    <Property Name="DE_TIPO_ATENCION" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="RESPUESTA_OPERADOR_GCM" Relationship="IntranetSAIModel.RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION" FromRole="TIPO_ATENCION" ToRole="RESPUESTA_OPERADOR_GCM" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_TIPO_ATENCION" FromRole="TIPO_ATENCION" ToRole="TICKET" />
+  </EntityType>
+  <EntityType Name="RESPUESTA_OPERADOR_GCM">
+    <Key>
+      <PropertyRef Name="ID_RESPUESTA_OPERADOR" />
+    </Key>
+    <Property Name="ID_RESPUESTA_OPERADOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TP_ATENCION" Type="Int32" Nullable="false" />
+    <Property Name="DE_TITULO" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
+    <Property Name="DE_CONTENIDO" Type="String" Nullable="false" MaxLength="160" FixedLength="false" Unicode="true" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TIPO_ATENCION" Relationship="IntranetSAIModel.RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION" FromRole="RESPUESTA_OPERADOR_GCM" ToRole="TIPO_ATENCION" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_RESPUESTA_OPERADOR_GCM" FromRole="RESPUESTA_OPERADOR_GCM" ToRole="TICKET" />
+  </EntityType>
+  <Association Name="RESPUESTA_OPERADOR_GCM_FK_TIPO_ATENCION">
+    <End Type="IntranetSAIModel.TIPO_ATENCION" Role="TIPO_ATENCION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.RESPUESTA_OPERADOR_GCM" Role="RESPUESTA_OPERADOR_GCM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_ATENCION">
+        <PropertyRef Name="TP_ATENCION" />
+      </Principal>
+      <Dependent Role="RESPUESTA_OPERADOR_GCM">
+        <PropertyRef Name="TP_ATENCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="LOG_TRANSACCIONES">
+    <Key>
+      <PropertyRef Name="ID_LOG" />
+    </Key>
+    <Property Name="ID_LOG" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="FE_OPERACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="NM_THREAD" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="DI_IP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NM_CONTROLLER" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NM_ACTION" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="NM_URL" Type="String" MaxLength="2500" FixedLength="false" Unicode="false" />
+    <Property Name="NM_LEVEL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NM_LOGGER" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="DE_MESSAGE" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="false" />
+    <Property Name="DE_EXCEPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.LOG_TRANSACCIONES_FK_USUARIO" FromRole="LOG_TRANSACCIONES" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="EMPLEADO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="CD_USUARIO_SUPERVISOR" Type="Int32" />
+    <Property Name="CD_SUCURSAL" Type="Int32" Nullable="false" />
+    <Property Name="CD_CARGO" Type="Int32" Nullable="false" />
+    <Property Name="NU_EXTENSION" Type="Int32" />
+    <Property Name="DI_CORREO" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Name="FE_INGRESO" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FE_RETIRO" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="EMPLEADO1" Relationship="IntranetSAIModel.EMPLEADO_FK_EMPLEADO_SUPERVISOR" FromRole="EMPLEADO" ToRole="EMPLEADO1" />
+    <NavigationProperty Name="EMPLEADO2" Relationship="IntranetSAIModel.EMPLEADO_FK_EMPLEADO_SUPERVISOR" FromRole="EMPLEADO1" ToRole="EMPLEADO" />
+    <NavigationProperty Name="CARGO" Relationship="IntranetSAIModel.EMPLEADO_FK_CARGO" FromRole="EMPLEADO" ToRole="CARGO" />
+    <NavigationProperty Name="SUCURSAL" Relationship="IntranetSAIModel.EMPLEADO_FK_SUCURSAL" FromRole="EMPLEADO" ToRole="SUCURSAL" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.EMEPLEADO_FK_USUARIO" FromRole="EMPLEADO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="UNIDAD_ADMINISTRATIVA">
+    <Key>
+      <PropertyRef Name="CD_UNIDAD_ADMINISTRATIVA" />
+    </Key>
+    <Property Name="CD_UNIDAD_ADMINISTRATIVA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_UNIDAD_ADMINISTRATIVA" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CARGO" Relationship="IntranetSAIModel.CARGO_FK_UNIDAD_ADMINISTRATIVA" FromRole="UNIDAD_ADMINISTRATIVA" ToRole="CARGO" />
+  </EntityType>
+  <Association Name="EMPLEADO_FK_EMPLEADO_SUPERVISOR">
+    <End Type="IntranetSAIModel.EMPLEADO" Role="EMPLEADO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.EMPLEADO" Role="EMPLEADO1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EMPLEADO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="EMPLEADO1">
+        <PropertyRef Name="CD_USUARIO_SUPERVISOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CARGO">
+    <Key>
+      <PropertyRef Name="CD_CARGO" />
+    </Key>
+    <Property Name="CD_CARGO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_UNIDAD_ADMINISTRATIVA" Type="Int32" Nullable="false" />
+    <Property Name="NM_CARGO" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DE_CARGO" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="CD_CARGO_PADRE" Type="Int32" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CARGO1" Relationship="IntranetSAIModel.CARGO_FK_CARGO_PADRE" FromRole="CARGO" ToRole="CARGO1" />
+    <NavigationProperty Name="CARGO2" Relationship="IntranetSAIModel.CARGO_FK_CARGO_PADRE" FromRole="CARGO1" ToRole="CARGO" />
+    <NavigationProperty Name="UNIDAD_ADMINISTRATIVA" Relationship="IntranetSAIModel.CARGO_FK_UNIDAD_ADMINISTRATIVA" FromRole="CARGO" ToRole="UNIDAD_ADMINISTRATIVA" />
+    <NavigationProperty Name="EMPLEADO" Relationship="IntranetSAIModel.EMPLEADO_FK_CARGO" FromRole="CARGO" ToRole="EMPLEADO" />
+    <NavigationProperty Name="ROL" Relationship="IntranetSAIModel.CARGO_ROL" FromRole="CARGO" ToRole="ROL" />
+  </EntityType>
+  <Association Name="CARGO_FK_CARGO_PADRE">
+    <End Type="IntranetSAIModel.CARGO" Role="CARGO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CARGO" Role="CARGO1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGO">
+        <PropertyRef Name="CD_CARGO" />
+      </Principal>
+      <Dependent Role="CARGO1">
+        <PropertyRef Name="CD_CARGO_PADRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CARGO_FK_UNIDAD_ADMINISTRATIVA">
+    <End Type="IntranetSAIModel.UNIDAD_ADMINISTRATIVA" Role="UNIDAD_ADMINISTRATIVA" Multiplicity="1" />
+    <End Type="IntranetSAIModel.CARGO" Role="CARGO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UNIDAD_ADMINISTRATIVA">
+        <PropertyRef Name="CD_UNIDAD_ADMINISTRATIVA" />
+      </Principal>
+      <Dependent Role="CARGO">
+        <PropertyRef Name="CD_UNIDAD_ADMINISTRATIVA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMPLEADO_FK_CARGO">
+    <End Type="IntranetSAIModel.CARGO" Role="CARGO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CARGO">
+        <PropertyRef Name="CD_CARGO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="CD_CARGO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="TIPO_SANGRE">
+    <Key>
+      <PropertyRef Name="TP_SANGRE" />
+    </Key>
+    <Property Name="TP_SANGRE" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NM_TIPO_SANGRE" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_TIPO_SANGRE" FromRole="TIPO_SANGRE" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="APLICACION">
+    <Key>
+      <PropertyRef Name="CD_APLICACION" />
+    </Key>
+    <Property Name="CD_APLICACION" Type="Int32" Nullable="false" />
+    <Property Name="NM_APLICACION" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DE_APLICACION" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+    <Property Name="NM_CONTROLADOR" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NM_ACCION" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DE_PARAMETROS" Type="String" MaxLength="700" FixedLength="false" Unicode="true" />
+    <Property Name="DE_ALIAS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_APLICACION_PADRE" Type="Int32" />
+    <Property Name="IN_APLICACION_INACTIVA" Type="Boolean" Nullable="false" />
+    <Property Name="IN_ASIGNABLE" Type="Boolean" Nullable="false" />
+    <Property Name="NM_ICONO_MENU" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NM_ICONO_ACCESO_RAPIDO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IN_ES_DASHBOARD" Type="Boolean" Nullable="false" />
+    <Property Name="IN_ES_PERFIL_USUARIO" Type="Boolean" Nullable="false" />
+    <Property Name="NU_ORDEN" Type="Int32" Nullable="false" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="APLICACION1" Relationship="IntranetSAIModel.FK_APLICACION_APLICACION1" FromRole="APLICACION" ToRole="APLICACION1" />
+    <NavigationProperty Name="APLICACION2" Relationship="IntranetSAIModel.FK_APLICACION_APLICACION1" FromRole="APLICACION1" ToRole="APLICACION" />
+    <NavigationProperty Name="USUARIO_APLICACION" Relationship="IntranetSAIModel.USUARIO_APLICACION_FK_APLICACION" FromRole="APLICACION" ToRole="USUARIO_APLICACION" />
+    <NavigationProperty Name="ROL" Relationship="IntranetSAIModel.ROL_APLICACION" FromRole="APLICACION" ToRole="ROL" />
+    <NavigationProperty Name="MENU_SERVICIO" Relationship="IntranetSAIModel.MENU_SERVICIO_FK_APLICACION" FromRole="APLICACION" ToRole="MENU_SERVICIO" />
+  </EntityType>
+  <Association Name="FK_APLICACION_APLICACION1">
+    <End Type="IntranetSAIModel.APLICACION" Role="APLICACION" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.APLICACION" Role="APLICACION1" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="APLICACION1">
+        <PropertyRef Name="CD_APLICACION_PADRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_APLICACION_FK_APLICACION">
+    <End Type="IntranetSAIModel.APLICACION" Role="APLICACION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.USUARIO_APLICACION" Role="USUARIO_APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="USUARIO_APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="CD_ROL" />
+    </Key>
+    <Property Name="CD_ROL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_ROL" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DE_ROL" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IN_ROL_ACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CARGO" Relationship="IntranetSAIModel.CARGO_ROL" FromRole="ROL" ToRole="CARGO" />
+    <NavigationProperty Name="APLICACION" Relationship="IntranetSAIModel.ROL_APLICACION" FromRole="ROL" ToRole="APLICACION" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.USUARIO_ROL" FromRole="ROL" ToRole="USUARIO" />
+  </EntityType>
+  <Association Name="CARGO_ROL">
+    <End Type="IntranetSAIModel.CARGO" Role="CARGO" Multiplicity="*" />
+    <End Type="IntranetSAIModel.ROL" Role="ROL" Multiplicity="*" />
+  </Association>
+  <Association Name="ROL_APLICACION">
+    <End Type="IntranetSAIModel.APLICACION" Role="APLICACION" Multiplicity="*" />
+    <End Type="IntranetSAIModel.ROL" Role="ROL" Multiplicity="*" />
+  </Association>
+  <EntityType Name="ORIGEN_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="DE_ORIGEN_NOTIFICACION" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="IN_GENERA_ALERTA" Type="Boolean" Nullable="false" />
+    <Property Name="DE_ICONO" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_ORIGEN_NOTIFICACION" FromRole="ORIGEN_NOTIFICACION" ToRole="TICKET" />
+  </EntityType>
+  <EntityType Name="SUCURSAL">
+    <Key>
+      <PropertyRef Name="CD_SUCURSAL" />
+    </Key>
+    <Property Name="CD_SUCURSAL" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_SUCURSAL" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="DE_SUCURSAL" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO" Type="Int32" />
+    <Property Name="IN_INACTIVA" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="EMPLEADO" Relationship="IntranetSAIModel.EMPLEADO_FK_SUCURSAL" FromRole="SUCURSAL" ToRole="EMPLEADO" />
+  </EntityType>
+  <Association Name="EMPLEADO_FK_SUCURSAL">
+    <End Type="IntranetSAIModel.SUCURSAL" Role="SUCURSAL" Multiplicity="1" />
+    <End Type="IntranetSAIModel.EMPLEADO" Role="EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SUCURSAL">
+        <PropertyRef Name="CD_SUCURSAL" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="CD_SUCURSAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CORREGIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+      <PropertyRef Name="CD_PROVINCIA" />
+      <PropertyRef Name="CD_DISTRITO" />
+      <PropertyRef Name="CD_CORREGIMIENTO" />
+    </Key>
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="Int32" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="Int32" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="Int32" Nullable="false" />
+    <Property Name="NM_CORREGIMIENTO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PROVEEDOR" Relationship="IntranetSAIModel.PROVEEDOR_FK_CORREGIMIENTO" FromRole="CORREGIMIENTO" ToRole="PROVEEDOR" />
+    <NavigationProperty Name="SOCIO_COMERCIAL" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_CORREGIMIENTO" FromRole="CORREGIMIENTO" ToRole="SOCIO_COMERCIAL" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_CORREGIMIENTO" FromRole="CORREGIMIENTO" ToRole="CLIENTE" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.TALLER_FK_CORREGIMIENTO" FromRole="CORREGIMIENTO" ToRole="TALLER" />
+  </EntityType>
+  <EntityType Name="PAIS">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+    </Key>
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="NM_PAIS" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PROVINCIA" Relationship="IntranetSAIModel.PROVINCIA_FK_PAIS" FromRole="PAIS" ToRole="PROVINCIA" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_PAIS" FromRole="PAIS" ToRole="CLIENTE" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.TALLER_FK_PAIS" FromRole="PAIS" ToRole="TALLER" />
+  </EntityType>
+  <EntityType Name="PROVINCIA">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+      <PropertyRef Name="CD_PROVINCIA" />
+    </Key>
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="Int32" Nullable="false" />
+    <Property Name="NM_PROVINCIA" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PAIS" Relationship="IntranetSAIModel.PROVINCIA_FK_PAIS" FromRole="PROVINCIA" ToRole="PAIS" />
+    <NavigationProperty Name="DISTRITO" Relationship="IntranetSAIModel.DISTRITO_FK_PROVINCIA" FromRole="PROVINCIA" ToRole="DISTRITO" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_PROVINCIA" FromRole="PROVINCIA" ToRole="CLIENTE" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.TALLER_FK_PROVINCIA" FromRole="PROVINCIA" ToRole="TALLER" />
+  </EntityType>
+  <Association Name="PROVINCIA_FK_PAIS">
+    <End Type="IntranetSAIModel.PAIS" Role="PAIS" Multiplicity="1" />
+    <End Type="IntranetSAIModel.PROVINCIA" Role="PROVINCIA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="CD_PAIS" />
+      </Principal>
+      <Dependent Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DISTRITO">
+    <Key>
+      <PropertyRef Name="CD_PAIS" />
+      <PropertyRef Name="CD_PROVINCIA" />
+      <PropertyRef Name="CD_DISTRITO" />
+    </Key>
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="Int32" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="Int32" Nullable="false" />
+    <Property Name="NM_DISTRITO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="PROVINCIA" Relationship="IntranetSAIModel.DISTRITO_FK_PROVINCIA" FromRole="DISTRITO" ToRole="PROVINCIA" />
+    <NavigationProperty Name="PROVEEDOR" Relationship="IntranetSAIModel.PROVEEDOR_FK_DISTRITO" FromRole="DISTRITO" ToRole="PROVEEDOR" />
+    <NavigationProperty Name="SOCIO_COMERCIAL" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRITO" FromRole="DISTRITO" ToRole="SOCIO_COMERCIAL" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_DISTRITO" FromRole="DISTRITO" ToRole="CLIENTE" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.TALLER_FK_DISTRITO" FromRole="DISTRITO" ToRole="TALLER" />
+  </EntityType>
+  <Association Name="DISTRITO_FK_PROVINCIA">
+    <End Type="IntranetSAIModel.PROVINCIA" Role="PROVINCIA" Multiplicity="1" />
+    <End Type="IntranetSAIModel.DISTRITO" Role="DISTRITO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Principal>
+      <Dependent Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="PROVEEDOR">
+    <Key>
+      <PropertyRef Name="CD_PROVEEDOR" />
+    </Key>
+    <Property Name="CD_PROVEEDOR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_PROVEEDOR" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO_FIJO" Type="Int32" />
+    <Property Name="NU_TELEFONO_MOVIL" Type="Int32" />
+    <Property Name="DI_EMAIL" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="Int32" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="Int32" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="Int32" />
+    <Property Name="DI_OFICINA" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CORREGIMIENTO" Relationship="IntranetSAIModel.PROVEEDOR_FK_CORREGIMIENTO" FromRole="PROVEEDOR" ToRole="CORREGIMIENTO" />
+    <NavigationProperty Name="DISTRITO" Relationship="IntranetSAIModel.PROVEEDOR_FK_DISTRITO" FromRole="PROVEEDOR" ToRole="DISTRITO" />
+    <NavigationProperty Name="TIPO_DOCUMENTO_IDENTIDAD" Relationship="IntranetSAIModel.PROVEEDOR_FK_TIPO_DOCUMENTO" FromRole="PROVEEDOR" ToRole="TIPO_DOCUMENTO_IDENTIDAD" />
+  </EntityType>
+  <Association Name="PROVEEDOR_FK_CORREGIMIENTO">
+    <End Type="IntranetSAIModel.CORREGIMIENTO" Role="CORREGIMIENTO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="PROVEEDOR">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PROVEEDOR_FK_DISTRITO">
+    <End Type="IntranetSAIModel.DISTRITO" Role="DISTRITO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="PROVEEDOR">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="COMPANIA_SEGURO">
+    <Key>
+      <PropertyRef Name="CD_COMPANIA_SEGURO" />
+    </Key>
+    <Property Name="CD_COMPANIA_SEGURO" Type="Int32" Nullable="false" />
+    <Property Name="NM_COMPANIA_SEGURO" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO_FIJO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="DI_COMPANIA_SEGURO" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_COMPANIA_SEGURO" FromRole="COMPANIA_SEGURO" ToRole="VEHICULO" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_COMPANIA_SEGURO" FromRole="COMPANIA_SEGURO" ToRole="CLIENTE" />
+  </EntityType>
+  <EntityType Name="TIPO_CIERRE_VEHICULO">
+    <Key>
+      <PropertyRef Name="TP_CIERRE_VEHICULO" />
+    </Key>
+    <Property Name="TP_CIERRE_VEHICULO" Type="Int32" Nullable="false" />
+    <Property Name="NM_TIPO_CIERRE_VEHICULO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_TIPO_CIERRE_VEHICULO" FromRole="TIPO_CIERRE_VEHICULO" ToRole="VEHICULO" />
+  </EntityType>
+  <EntityType Name="TIPO_COMBUSTIBLE">
+    <Key>
+      <PropertyRef Name="TP_COMBUSTIBLE" />
+    </Key>
+    <Property Name="TP_COMBUSTIBLE" Type="Int32" Nullable="false" />
+    <Property Name="NM_TIPO_COMBUSTIBLE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_TIPO_COMBUSTIBLE" FromRole="TIPO_COMBUSTIBLE" ToRole="VEHICULO" />
+  </EntityType>
+  <EntityType Name="TIPO_TRANSMISION_VEHICULO">
+    <Key>
+      <PropertyRef Name="TP_TRANSMISION_VEHICULO" />
+    </Key>
+    <Property Name="TP_TRANSMISION_VEHICULO" Type="Int32" Nullable="false" />
+    <Property Name="NM_TRANSMISION_VEHICULO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_TIPO_TRANSMISION_VEHICULO" FromRole="TIPO_TRANSMISION_VEHICULO" ToRole="VEHICULO" />
+  </EntityType>
+  <EntityType Name="KILOMETRAJE_TOTAL">
+    <Key>
+      <PropertyRef Name="UserID" />
+      <PropertyRef Name="DeviceID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" />
+    <Property Name="DeviceID" Type="Int32" Nullable="false" />
+    <Property Name="MontoKilometrajeInicial" Type="Double" Nullable="false" />
+    <Property Name="MontoKilometrajeDispositivo" Type="Double" Nullable="false" />
+    <Property Name="MontoKilometrajeTotal" Type="Double" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+  </EntityType>
+  <EntityType Name="NOTIFICACION_GCM">
+    <Key>
+      <PropertyRef Name="CD_NOTIFICACION_GCM" />
+    </Key>
+    <Property Name="CD_NOTIFICACION_GCM" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_USUARIO_GCM" Type="Int32" Nullable="false" />
+    <Property Name="DE_MENSAJE" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FE_ENVIO_MENSAJE" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IN_ENVIADO" Type="Boolean" Nullable="false" />
+    <Property Name="DE_RESPUESTA_MENSAJE_GCM" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FE_MENSAJE_RESPUESTA_GCM" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="USUARIO_MOVIL_GCM" Relationship="IntranetSAIModel.NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM" FromRole="NOTIFICACION_GCM" ToRole="USUARIO_MOVIL_GCM" />
+  </EntityType>
+  <EntityType Name="MARCA">
+    <Key>
+      <PropertyRef Name="CD_MARCA" />
+    </Key>
+    <Property Name="CD_MARCA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_MARCA" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="MODELO" Relationship="IntranetSAIModel.ARTICULO_MODELO_FK_MARCA" FromRole="MARCA" ToRole="MODELO" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_MARCA" FromRole="MARCA" ToRole="VEHICULO" />
+  </EntityType>
+  <EntityType Name="MODELO">
+    <Key>
+      <PropertyRef Name="CD_MODELO" />
+    </Key>
+    <Property Name="CD_MODELO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_MODELO" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="CD_TIPO_ARTICULO" Type="Int32" Nullable="false" />
+    <Property Name="CD_MARCA" Type="Int32" Nullable="false" />
+    <Property Name="CD_UNIDAD_MEDIDA" Type="Int32" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_STATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="MARCA" Relationship="IntranetSAIModel.ARTICULO_MODELO_FK_MARCA" FromRole="MODELO" ToRole="MARCA" />
+    <NavigationProperty Name="TIPO_ARTICULO" Relationship="IntranetSAIModel.MODELO_FK_TIPO_ARTICULO" FromRole="MODELO" ToRole="TIPO_ARTICULO" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_MODELO" FromRole="MODELO" ToRole="VEHICULO" />
+    <NavigationProperty Name="ANO_VEHICULO" Relationship="IntranetSAIModel.ANO_VEHICULO_FK_MODELO" FromRole="MODELO" ToRole="ANO_VEHICULO" />
+    <NavigationProperty Name="ARTICULO" Relationship="IntranetSAIModel.ARTICULO_FK_MODELO" FromRole="MODELO" ToRole="ARTICULO" />
+  </EntityType>
+  <EntityType Name="TIPO_ARTICULO">
+    <Key>
+      <PropertyRef Name="CD_TIPO_ARTICULO" />
+    </Key>
+    <Property Name="CD_TIPO_ARTICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_TIPO_ARTICULO" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="MODELO" Relationship="IntranetSAIModel.MODELO_FK_TIPO_ARTICULO" FromRole="TIPO_ARTICULO" ToRole="MODELO" />
+  </EntityType>
+  <EntityType Name="DISTRIBUIDOR">
+    <Key>
+      <PropertyRef Name="ID_DISTRIBUIDOR" />
+    </Key>
+    <Property Name="ID_DISTRIBUIDOR" Type="Int32" Nullable="false" />
+    <Property Name="NM_DISTRIBUIDOR" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="NM_USUARIO" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="DE_CONTRASENA" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+    <Property Name="IN_ELIMINADO" Type="Boolean" Nullable="false" />
+    <Property Name="ID_DISTRIBUIDOR_PADRE" Type="Int32" />
+    <NavigationProperty Name="SOCIO_COMERCIAL" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRIBUIDOR" FromRole="DISTRIBUIDOR" ToRole="SOCIO_COMERCIAL" />
+    <NavigationProperty Name="DISPOSITIVO" Relationship="IntranetSAIModel.DISPOSITIVO_FK_DISTRIBUIDOR" FromRole="DISTRIBUIDOR" ToRole="DISPOSITIVO" />
+  </EntityType>
+  <EntityType Name="USUARIO_MOVIL_GCM">
+    <Key>
+      <PropertyRef Name="CD_USUARIO_GCM" />
+    </Key>
+    <Property Name="CD_USUARIO_GCM" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_GCM" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="NM_SO_VERSION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IN_ACTIVO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="NOTIFICACION_GCM" Relationship="IntranetSAIModel.NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM" FromRole="USUARIO_MOVIL_GCM" ToRole="NOTIFICACION_GCM" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.USUARIO_MOVIL_GCM_FK_USUARIO" FromRole="USUARIO_MOVIL_GCM" ToRole="USUARIO" />
+  </EntityType>
+  <Association Name="NOTIFICACION_GCM_FK_USUARIO_MOVIL_GCM">
+    <End Type="IntranetSAIModel.USUARIO_MOVIL_GCM" Role="USUARIO_MOVIL_GCM" Multiplicity="1" />
+    <End Type="IntranetSAIModel.NOTIFICACION_GCM" Role="NOTIFICACION_GCM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO_MOVIL_GCM">
+        <PropertyRef Name="CD_USUARIO_GCM" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_GCM">
+        <PropertyRef Name="CD_USUARIO_GCM" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ARTICULO_MODELO_FK_MARCA">
+    <End Type="IntranetSAIModel.MARCA" Role="MARCA" Multiplicity="1" />
+    <End Type="IntranetSAIModel.MODELO" Role="MODELO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARCA">
+        <PropertyRef Name="CD_MARCA" />
+      </Principal>
+      <Dependent Role="MODELO">
+        <PropertyRef Name="CD_MARCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MODELO_FK_TIPO_ARTICULO">
+    <End Type="IntranetSAIModel.TIPO_ARTICULO" Role="TIPO_ARTICULO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.MODELO" Role="MODELO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_ARTICULO">
+        <PropertyRef Name="CD_TIPO_ARTICULO" />
+      </Principal>
+      <Dependent Role="MODELO">
+        <PropertyRef Name="CD_TIPO_ARTICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="USUARIO_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="ID_NOTFICACION" />
+      <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_NOTFICACION" Type="Int32" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="Int32" />
+    <Property Name="TP_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IN_GESTIONADA" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="TIPO_NOTIFICACION" Relationship="IntranetSAIModel.USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION" FromRole="USUARIO_NOTIFICACION" ToRole="TIPO_NOTIFICACION" />
+    <NavigationProperty Name="IMAGEN_NOTIFICACION" Relationship="IntranetSAIModel.IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION" FromRole="USUARIO_NOTIFICACION" ToRole="IMAGEN_NOTIFICACION" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.USUARIO_NOTIFICACION_FK_USUARIO" FromRole="USUARIO_NOTIFICACION" ToRole="USUARIO" />
+    <NavigationProperty Name="DISPOSITIVO_CLIENTE" Relationship="IntranetSAIModel.USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE" FromRole="USUARIO_NOTIFICACION" ToRole="DISPOSITIVO_CLIENTE" />
+  </EntityType>
+  <Association Name="USUARIO_NOTIFICACION_FK_TIPO_NOTIFICACION">
+    <End Type="IntranetSAIModel.TIPO_NOTIFICACION" Role="TIPO_NOTIFICACION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.USUARIO_NOTIFICACION" Role="USUARIO_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ANO_VEHICULO">
+    <Key>
+      <PropertyRef Name="CD_ANO" />
+      <PropertyRef Name="CD_MODELO" />
+    </Key>
+    <Property Name="CD_ANO" Type="Int32" Nullable="false" />
+    <Property Name="CD_MODELO" Type="Int32" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_ANO_VEHICULO" FromRole="ANO_VEHICULO" ToRole="VEHICULO" />
+    <NavigationProperty Name="MODELO" Relationship="IntranetSAIModel.ANO_VEHICULO_FK_MODELO" FromRole="ANO_VEHICULO" ToRole="MODELO" />
+    <NavigationProperty Name="CONFIGURACION_KILOMETRAJE" Relationship="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_MODELO" FromRole="ANO_VEHICULO" ToRole="CONFIGURACION_KILOMETRAJE" />
+  </EntityType>
+  <EntityType Name="VEHICULO">
+    <Key>
+      <PropertyRef Name="CD_VEHICULO" />
+    </Key>
+    <Property Name="CD_VEHICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_CLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="NU_VIN" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="NU_PLACA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_MARCA" Type="Int32" />
+    <Property Name="CD_MODELO" Type="Int32" />
+    <Property Name="NM_COLOR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_ANO" Type="Int32" />
+    <Property Name="TP_COMBUSTIBLE" Type="Int32" />
+    <Property Name="TP_CIERRE_VEHICULO" Type="Int32" />
+    <Property Name="TP_TRANSMISION_VEHICULO" Type="Int32" />
+    <Property Name="CD_COMPANIA_SEGURO" Type="Int32" />
+    <Property Name="FE_SEGURO_VIGENCIA_HASTA" Type="DateTime" Precision="0" />
+    <NavigationProperty Name="ANO_VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_ANO_VEHICULO" FromRole="VEHICULO" ToRole="ANO_VEHICULO" />
+    <NavigationProperty Name="COMPANIA_SEGURO" Relationship="IntranetSAIModel.VEHICULO_FK_COMPANIA_SEGURO" FromRole="VEHICULO" ToRole="COMPANIA_SEGURO" />
+    <NavigationProperty Name="TIPO_CIERRE_VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_TIPO_CIERRE_VEHICULO" FromRole="VEHICULO" ToRole="TIPO_CIERRE_VEHICULO" />
+    <NavigationProperty Name="TIPO_COMBUSTIBLE" Relationship="IntranetSAIModel.VEHICULO_FK_TIPO_COMBUSTIBLE" FromRole="VEHICULO" ToRole="TIPO_COMBUSTIBLE" />
+    <NavigationProperty Name="TIPO_TRANSMISION_VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_TIPO_TRANSMISION_VEHICULO" FromRole="VEHICULO" ToRole="TIPO_TRANSMISION_VEHICULO" />
+    <NavigationProperty Name="MARCA" Relationship="IntranetSAIModel.VEHICULO_FK_MARCA" FromRole="VEHICULO" ToRole="MARCA" />
+    <NavigationProperty Name="MODELO" Relationship="IntranetSAIModel.VEHICULO_FK_MODELO" FromRole="VEHICULO" ToRole="MODELO" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.VEHICULO_FK_CLIENTE" FromRole="VEHICULO" ToRole="CLIENTE" />
+    <NavigationProperty Name="DISPOSITIVO_CLIENTE" Relationship="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_VEHICULO" FromRole="VEHICULO" ToRole="DISPOSITIVO_CLIENTE" />
+    <NavigationProperty Name="SOLICITUD_MANTENIMIENTO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_VEHICULO" FromRole="VEHICULO" ToRole="SOLICITUD_MANTENIMIENTO" />
+  </EntityType>
+  <Association Name="VEHICULO_FK_ANO_VEHICULO">
+    <End Type="IntranetSAIModel.ANO_VEHICULO" Role="ANO_VEHICULO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANO_VEHICULO">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_COMPANIA_SEGURO">
+    <End Type="IntranetSAIModel.COMPANIA_SEGURO" Role="COMPANIA_SEGURO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANIA_SEGURO">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_TIPO_CIERRE_VEHICULO">
+    <End Type="IntranetSAIModel.TIPO_CIERRE_VEHICULO" Role="TIPO_CIERRE_VEHICULO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_CIERRE_VEHICULO">
+        <PropertyRef Name="TP_CIERRE_VEHICULO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="TP_CIERRE_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_TIPO_COMBUSTIBLE">
+    <End Type="IntranetSAIModel.TIPO_COMBUSTIBLE" Role="TIPO_COMBUSTIBLE" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_COMBUSTIBLE">
+        <PropertyRef Name="TP_COMBUSTIBLE" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="TP_COMBUSTIBLE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_TIPO_TRANSMISION_VEHICULO">
+    <End Type="IntranetSAIModel.TIPO_TRANSMISION_VEHICULO" Role="TIPO_TRANSMISION_VEHICULO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_TRANSMISION_VEHICULO">
+        <PropertyRef Name="TP_TRANSMISION_VEHICULO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="TP_TRANSMISION_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_MARCA">
+    <End Type="IntranetSAIModel.MARCA" Role="MARCA" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MARCA">
+        <PropertyRef Name="CD_MARCA" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_MARCA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_MODELO">
+    <End Type="IntranetSAIModel.MODELO" Role="MODELO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODELO">
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="IMAGEN_NOTIFICACION">
+    <Key>
+      <PropertyRef Name="CD_IMAGEN_NOTIFCACION" />
+    </Key>
+    <Property Name="CD_IMAGEN_NOTIFCACION" Type="Int64" Nullable="false" />
+    <Property Name="ID_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="NU_LATITUD" Type="Double" />
+    <Property Name="NU_LONGITUD" Type="Double" />
+    <Property Name="DE_LOCALIZACION" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="DE_LOCALIZACION_IMAGEN" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="NM_IMAGEN" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="NM_EXTENSION_IMAGEN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="USUARIO_NOTIFICACION" Relationship="IntranetSAIModel.IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION" FromRole="IMAGEN_NOTIFICACION" ToRole="USUARIO_NOTIFICACION" />
+    <Property Name="DE_IMAGEN" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <Association Name="IMAGEN_NOTIFICACION_FK_USUARIO_NOTIFICACION">
+    <End Type="IntranetSAIModel.USUARIO_NOTIFICACION" Role="USUARIO_NOTIFICACION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.IMAGEN_NOTIFICACION" Role="IMAGEN_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="ID_NOTFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="IMAGEN_NOTIFICACION">
+        <PropertyRef Name="ID_NOTIFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="FUNC_003_BUSCA_GESTION_ALERTAS_Result">
+    <Property Type="Int32" Name="ID_NOTIFICACION" Nullable="false" />
+    <Property Type="Int32" Name="ID_ORIGEN_NOTIFICACION" Nullable="true" />
+    <Property Type="Int32" Name="ID_TICKET" Nullable="true" />
+    <Property Type="Int32" Name="CD_CLIENTE" Nullable="true" />
+    <Property Type="String" Name="TP_DOCUMENTO_IDENTIDAD" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="NU_DOCUMENTO_IDENTIDAD" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Nullable="true" MaxLength="510" />
+    <Property Type="Int32" Name="CD_TP_NOTIFICACION" Nullable="false" />
+    <Property Type="String" Name="DE_TIPO_NOTIFICACION" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="NU_DVR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NU_SIM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NM_USUARIO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NM_DISTRIBUIDOR" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="FE_NOTIFICACION" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FE_CREACION" Nullable="false" Precision="23" />
+  </ComplexType>
+  <EntityType Name="TIPO_DOCUMENTO_IDENTIDAD">
+    <Key>
+      <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+    </Key>
+    <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NM_TIPO_DOCUMENTO" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="IN_JURIDICO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="PROVEEDOR" Relationship="IntranetSAIModel.PROVEEDOR_FK_TIPO_DOCUMENTO" FromRole="TIPO_DOCUMENTO_IDENTIDAD" ToRole="PROVEEDOR" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD" FromRole="TIPO_DOCUMENTO_IDENTIDAD" ToRole="USUARIO" />
+  </EntityType>
+  <Association Name="PROVEEDOR_FK_TIPO_DOCUMENTO">
+    <End Type="IntranetSAIModel.TIPO_DOCUMENTO_IDENTIDAD" Role="TIPO_DOCUMENTO_IDENTIDAD" Multiplicity="1" />
+    <End Type="IntranetSAIModel.PROVEEDOR" Role="PROVEEDOR" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_DOCUMENTO_IDENTIDAD">
+        <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+      </Principal>
+      <Dependent Role="PROVEEDOR">
+        <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="FUNC_001_BUSCA_ALERTAS_Result">
+    <Property Type="Int32" Name="ID_NOTIFICACION" Nullable="false" />
+    <Property Type="Int32" Name="ID_ORIGEN_NOTIFICACION" Nullable="false" />
+    <Property Type="String" Name="DE_ORIGEN_NOTIFICACION" Nullable="false" MaxLength="250" />
+    <Property Type="String" Name="DE_ICONO" Nullable="true" MaxLength="200" />
+    <Property Type="Int32" Name="TP_NOTIFICACION" Nullable="false" />
+    <Property Type="String" Name="DE_TIPO_NOTIFICACION" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="CD_PRIORIDAD_NOTIFICACION" Nullable="false" />
+    <Property Type="String" Name="DE_COLOR_TITULO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="DE_COLOR_BODY" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="ID_DISTRIBUIDOR" Nullable="false" />
+    <Property Type="String" Name="NM_DISTRIBUIDOR" Nullable="false" MaxLength="255" />
+    <Property Type="Int32" Name="ID_DISPOSITIVO" Nullable="false" />
+    <Property Type="String" Name="NM_DISPOSITIVO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NU_DVR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DE_DISPOSITIVO" Nullable="true" MaxLength="500" />
+    <Property Type="Int32" Name="CD_CLIENTE" Nullable="true" />
+    <Property Type="String" Name="TP_DOCUMENTO_IDENTIDAD" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="NU_DOCUMENTO_IDENTIDAD" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Nullable="true" MaxLength="100" />
+    <Property Type="Int32" Name="NU_TELEFONO_MOVIL" Nullable="true" />
+    <Property Type="String" Name="NU_VIN" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NU_SIM_GPS" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DE_COLOR_ETIQUETA" Nullable="true" MaxLength="100" />
+    <Property Type="Boolean" Name="IN_LOCALIZACION" Nullable="false" />
+    <Property Type="Double" Name="NU_LATITUD" Nullable="true" />
+    <Property Type="Double" Name="NU_LONGITUD" Nullable="true" />
+    <Property Type="String" Name="NM_IMAGEN" Nullable="true" MaxLength="200" />
+    <Property Type="String" Name="NM_EXTENSION_IMAGEN" Nullable="true" MaxLength="50" />
+    <Property Type="Binary" Name="DE_CONTENIDO_IMAGEN" Nullable="true" />
+    <Property Type="DateTime" Name="FE_NOTIFICACION" Nullable="false" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="FUNC_001_BUSCA_CLIENTES_Result">
+    <Property Type="Int32" Name="CD_CLIENTE" Nullable="false" />
+    <Property Type="String" Name="TP_DOCUMENTO_IDENTIDAD" Nullable="false" MaxLength="3" />
+    <Property Type="String" Name="NU_DOCUMENTO_IDENTIDAD" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Nullable="false" MaxLength="510" />
+    <Property Type="String" Name="EMAIL" Nullable="true" MaxLength="320" />
+    <Property Type="Boolean" Name="IN_USUARIO_INACTIVO" Nullable="false" />
+    <Property Type="Boolean" Name="IN_REGISTRO_MOVIL" Nullable="false" />
+    <Property Type="Int32" Name="NU_MOVIL" Nullable="true" />
+    <Property Type="String" Name="SIMS_CARDS" Nullable="true" MaxLength="1200" />
+  </ComplexType>
+  <EntityType Name="NOTIFICACION_SIN_GESTION">
+    <Key>
+      <PropertyRef Name="ID_NOTIFICACION" />
+      <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+    </Key>
+    <Property Name="ID_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="TP_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="FE_NOTIFICACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="ID_DISTRIBUIDOR" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="Int32" Nullable="false" />
+    <Property Name="CD_CLIENTE" Type="Int32" />
+    <Property Name="ID_USUARIO_MOVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="TIPO_NOTIFICACION" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION" FromRole="NOTIFICACION_SIN_GESTION" ToRole="TIPO_NOTIFICACION" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_CLIENTE" FromRole="NOTIFICACION_SIN_GESTION" ToRole="CLIENTE" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_USUARIO" FromRole="NOTIFICACION_SIN_GESTION" ToRole="USUARIO" />
+    <NavigationProperty Name="NOTIFICACION_SIN_GESTION1" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE" FromRole="NOTIFICACION_SIN_GESTION" ToRole="NOTIFICACION_SIN_GESTION1" />
+    <NavigationProperty Name="NOTIFICACION_SIN_GESTION2" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE" FromRole="NOTIFICACION_SIN_GESTION1" ToRole="NOTIFICACION_SIN_GESTION" />
+  </EntityType>
+  <EntityType Name="TICKET">
+    <Key>
+      <PropertyRef Name="ID_TICKET" />
+    </Key>
+    <Property Name="ID_TICKET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="TP_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="TP_ATENCION" Type="Int32" />
+    <Property Name="ID_DISTRIBUIDOR" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO_MOVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_CLIENTE" Type="Int32" />
+    <Property Name="ID_ESTATUS_TICKET" Type="Int32" Nullable="false" />
+    <Property Name="ID_RESPUESTA_OPERADOR" Type="Int32" />
+    <Property Name="IN_RESPUESTA_ENVIADA" Type="Boolean" Nullable="false" />
+    <Property Name="DE_OBSERVACION" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="DE_OBSERVACION_SUPERVISOR" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="CD_USUARIO_TRANSFERENCIA" Type="Int32" />
+    <Property Name="FE_NOTIFICACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="ORIGEN_NOTIFICACION" Relationship="IntranetSAIModel.TICKET_FK_ORIGEN_NOTIFICACION" FromRole="TICKET" ToRole="ORIGEN_NOTIFICACION" />
+    <NavigationProperty Name="RESPUESTA_OPERADOR_GCM" Relationship="IntranetSAIModel.TICKET_FK_RESPUESTA_OPERADOR_GCM" FromRole="TICKET" ToRole="RESPUESTA_OPERADOR_GCM" />
+    <NavigationProperty Name="TICKET_ESTATUS" Relationship="IntranetSAIModel.TICKET_FK_TICKET_ESTATUS" FromRole="TICKET" ToRole="TICKET_ESTATUS" />
+    <NavigationProperty Name="TIPO_ATENCION" Relationship="IntranetSAIModel.TICKET_FK_TIPO_ATENCION" FromRole="TICKET" ToRole="TIPO_ATENCION" />
+    <NavigationProperty Name="TIPO_NOTIFICACION" Relationship="IntranetSAIModel.TICKET_FK_TIPO_NOTIFICACION" FromRole="TICKET" ToRole="TIPO_NOTIFICACION" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.TICKET_FK_CLIENTE" FromRole="TICKET" ToRole="CLIENTE" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.TICKET_FK_USUARIO" FromRole="TICKET" ToRole="USUARIO" />
+    <NavigationProperty Name="USUARIO1" Relationship="IntranetSAIModel.TICKET_FK_USUARIO_TRANSFERENCIA" FromRole="TICKET" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="TICKET_HISTORICO">
+    <Key>
+      <PropertyRef Name="ID_TICKET_HISTORICO" />
+    </Key>
+    <Property Name="ID_TICKET_HISTORICO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TICKET" Type="Int32" Nullable="false" />
+    <Property Name="ID_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="ID_ORIGEN_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="TP_NOTIFICACION" Type="Int32" Nullable="false" />
+    <Property Name="TP_ATENCION" Type="Int32" />
+    <Property Name="ID_DISTRIBUIDOR" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="Int32" Nullable="false" />
+    <Property Name="ID_USUARIO_MOVIL" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_CLIENTE" Type="Int32" />
+    <Property Name="ID_ESTATUS_TICKET" Type="Int32" Nullable="false" />
+    <Property Name="ID_RESPUESTA_OPERADOR" Type="Int32" />
+    <Property Name="IN_RESPUESTA_ENVIADA" Type="Boolean" Nullable="false" />
+    <Property Name="DE_OBSERVACION" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="DE_OBSERVACION_SUPERVISOR" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="CD_USUARIO_TRANSFERENCIA" Type="Int32" />
+    <Property Name="FE_NOTIFICACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <Association Name="NOTIFICACION_SIN_GESTION_FK_TIPO_NOTIFICACION">
+    <End Type="IntranetSAIModel.TIPO_NOTIFICACION" Role="TIPO_NOTIFICACION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.NOTIFICACION_SIN_GESTION" Role="NOTIFICACION_SIN_GESTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_ORIGEN_NOTIFICACION">
+    <End Type="IntranetSAIModel.ORIGEN_NOTIFICACION" Role="ORIGEN_NOTIFICACION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ORIGEN_NOTIFICACION">
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_RESPUESTA_OPERADOR_GCM">
+    <End Type="IntranetSAIModel.RESPUESTA_OPERADOR_GCM" Role="RESPUESTA_OPERADOR_GCM" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RESPUESTA_OPERADOR_GCM">
+        <PropertyRef Name="ID_RESPUESTA_OPERADOR" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="ID_RESPUESTA_OPERADOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_TICKET_ESTATUS">
+    <End Type="IntranetSAIModel.TICKET_ESTATUS" Role="TICKET_ESTATUS" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TICKET_ESTATUS">
+        <PropertyRef Name="ID_ESTATUS_TICKET" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="ID_ESTATUS_TICKET" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_TIPO_ATENCION">
+    <End Type="IntranetSAIModel.TIPO_ATENCION" Role="TIPO_ATENCION" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_ATENCION">
+        <PropertyRef Name="TP_ATENCION" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="TP_ATENCION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_TIPO_NOTIFICACION">
+    <End Type="IntranetSAIModel.TIPO_NOTIFICACION" Role="TIPO_NOTIFICACION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_NOTIFICACION">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="TP_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <ComplexType Name="FUNC_002_BUSCA_TICKET_Result">
+    <Property Type="Int32" Name="ID_TICKET" Nullable="false" />
+    <Property Type="Int32" Name="CD_CLIENTE" Nullable="true" />
+    <Property Type="String" Name="TP_DOCUMENTO_IDENTIDAD" Nullable="true" MaxLength="3" />
+    <Property Type="String" Name="NU_DOCUMENTO_IDENTIDAD" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="DE_NOMBRE_CLIENTE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DE_APELLIDO_CLIENTE" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Nullable="true" MaxLength="510" />
+    <Property Type="Int32" Name="CD_TP_NOTIFICACION" Nullable="false" />
+    <Property Type="String" Name="DE_TIPO_NOTIFICACION" Nullable="false" MaxLength="250" />
+    <Property Type="Int32" Name="CD_TP_ATENCION" Nullable="true" />
+    <Property Type="String" Name="DE_TIPO_ATENCION" Nullable="true" MaxLength="250" />
+    <Property Type="String" Name="DE_COLOR_TITULO" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="NU_DVR" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NU_SIM" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NM_USUARIO" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NM_DISTRIBUIDOR" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="FE_STATUS" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="FE_CREACION" Nullable="false" Precision="23" />
+    <Property Type="Int32" Name="CD_ESTATUS" Nullable="true" />
+    <Property Type="String" Name="DE_ESTATUS" Nullable="false" MaxLength="250" />
+  </ComplexType>
+  <EntityType Name="SEGMENTO_NEGOCIO">
+    <Key>
+      <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+    </Key>
+    <Property Name="CD_SEGMENTO_NEGOCIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_SEGMENTO_NEGOCIO" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SOCIO_COMERCIAL" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO" FromRole="SEGMENTO_NEGOCIO" ToRole="SOCIO_COMERCIAL" />
+    <NavigationProperty Name="MENU_SERVICIO" Relationship="IntranetSAIModel.SEGMENTO_NEGOCIO_MENU_SERVICIO" FromRole="SEGMENTO_NEGOCIO" ToRole="MENU_SERVICIO" />
+  </EntityType>
+  <EntityType Name="SOCIO_COMERCIAL">
+    <Key>
+      <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+    </Key>
+    <Property Name="CD_SOCIO_COMERCIAL" Type="Int32" Nullable="false" />
+    <Property Name="NM_SOCIO_COMERCIAL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO_FIJO" Type="Int32" />
+    <Property Name="NU_TELEFONO_MOVIL" Type="Int32" />
+    <Property Name="DI_EMAIL" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="Int32" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="Int32" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="Int32" />
+    <Property Name="DI_OFICINA" Type="String" Nullable="false" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="ID_DISTRIBUIDOR" Type="Int32" />
+    <Property Name="CD_SEGMENTO_NEGOCIO" Type="Int32" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_INACTIVO" Type="DateTime" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="SEGMENTO_NEGOCIO" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO" FromRole="SOCIO_COMERCIAL" ToRole="SEGMENTO_NEGOCIO" />
+    <NavigationProperty Name="CORREGIMIENTO" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_CORREGIMIENTO" FromRole="SOCIO_COMERCIAL" ToRole="CORREGIMIENTO" />
+    <NavigationProperty Name="DISTRIBUIDOR" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRIBUIDOR" FromRole="SOCIO_COMERCIAL" ToRole="DISTRIBUIDOR" />
+    <NavigationProperty Name="DISTRITO" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_DISTRITO" FromRole="SOCIO_COMERCIAL" ToRole="DISTRITO" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_USUARIO" FromRole="SOCIO_COMERCIAL" ToRole="USUARIO" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.TALLER_FK_SOCIO_COMERCIAL" FromRole="SOCIO_COMERCIAL" ToRole="TALLER" />
+  </EntityType>
+  <Association Name="SOCIO_COMERCIAL_FK_SEGMENTO_NEGOCIO">
+    <End Type="IntranetSAIModel.SEGMENTO_NEGOCIO" Role="SEGMENTO_NEGOCIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOCIO_COMERCIAL" Role="SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SEGMENTO_NEGOCIO">
+        <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_SEGMENTO_NEGOCIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_CORREGIMIENTO">
+    <End Type="IntranetSAIModel.CORREGIMIENTO" Role="CORREGIMIENTO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.SOCIO_COMERCIAL" Role="SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_DISTRIBUIDOR">
+    <End Type="IntranetSAIModel.DISTRIBUIDOR" Role="DISTRIBUIDOR" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.SOCIO_COMERCIAL" Role="SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDOR">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_DISTRITO">
+    <End Type="IntranetSAIModel.DISTRITO" Role="DISTRITO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOCIO_COMERCIAL" Role="SOCIO_COMERCIAL" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CLIENTE">
+    <Key>
+      <PropertyRef Name="CD_CLIENTE" />
+    </Key>
+    <Property Name="CD_CLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="DE_NOMBRE" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DE_APELLIDO" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DE_NOMBRE_APELLIDO_RAZON_SOCIAL" Type="String" Nullable="false" MaxLength="510" FixedLength="false" Unicode="true" />
+    <Property Name="FE_NACIMIENTO" Type="DateTime" Precision="0" />
+    <Property Name="CD_PAIS" Type="Int32" />
+    <Property Name="CD_PROVINCIA" Type="Int32" />
+    <Property Name="CD_DISTRITO" Type="Int32" />
+    <Property Name="CD_CORREGIMIENTO" Type="Int32" />
+    <Property Name="DI_COBRO" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO_OFICINA" Type="Int32" />
+    <Property Name="TP_SANGRE" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NM_PERSONA_CONTACTO" Type="String" MaxLength="510" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO_MOVIL_PERSONA_CONTACTO" Type="Int32" />
+    <Property Name="CD_COMPANIA_SEGURO" Type="Int32" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_INACTIVO" Type="DateTime" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="COMPANIA_SEGURO" Relationship="IntranetSAIModel.CLIENTE_FK_COMPANIA_SEGURO" FromRole="CLIENTE" ToRole="COMPANIA_SEGURO" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.VEHICULO_FK_CLIENTE" FromRole="CLIENTE" ToRole="VEHICULO" />
+    <NavigationProperty Name="NOTIFICACION_SIN_GESTION" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_CLIENTE" FromRole="CLIENTE" ToRole="NOTIFICACION_SIN_GESTION" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_CLIENTE" FromRole="CLIENTE" ToRole="TICKET" />
+    <NavigationProperty Name="CORREGIMIENTO" Relationship="IntranetSAIModel.CLIENTE_FK_CORREGIMIENTO" FromRole="CLIENTE" ToRole="CORREGIMIENTO" />
+    <NavigationProperty Name="DISTRITO" Relationship="IntranetSAIModel.CLIENTE_FK_DISTRITO" FromRole="CLIENTE" ToRole="DISTRITO" />
+    <NavigationProperty Name="PAIS" Relationship="IntranetSAIModel.CLIENTE_FK_PAIS" FromRole="CLIENTE" ToRole="PAIS" />
+    <NavigationProperty Name="PROVINCIA" Relationship="IntranetSAIModel.CLIENTE_FK_PROVINCIA" FromRole="CLIENTE" ToRole="PROVINCIA" />
+    <NavigationProperty Name="TIPO_SANGRE" Relationship="IntranetSAIModel.CLIENTE_FK_TIPO_SANGRE" FromRole="CLIENTE" ToRole="TIPO_SANGRE" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.CLIENTE_FK_USUARIO" FromRole="CLIENTE" ToRole="USUARIO" />
+    <NavigationProperty Name="DISPOSITIVO_CLIENTE" Relationship="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_CLIENTE" FromRole="CLIENTE" ToRole="DISPOSITIVO_CLIENTE" />
+    <NavigationProperty Name="SOLICITUD_MANTENIMIENTO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_CLIENTE" FromRole="CLIENTE" ToRole="SOLICITUD_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="USUARIO">
+    <Key>
+      <PropertyRef Name="CD_USUARIO" />
+    </Key>
+    <Property Name="CD_USUARIO" Type="Int32" Nullable="false" />
+    <Property Name="NM_USUARIO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TP_DOCUMENTO_IDENTIDAD" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+    <Property Name="NU_DOCUMENTO_IDENTIDAD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DE_NOMBRE_APELLIDO" Type="String" Nullable="false" MaxLength="310" FixedLength="false" Unicode="true" />
+    <Property Name="DE_CONTRASENA" Type="Binary" Nullable="false" MaxLength="128" FixedLength="false" />
+    <Property Name="FE_NACIMIENTO" Type="DateTime" Precision="0" />
+    <Property Name="DI_EMAIL_USUARIO" Type="String" Nullable="false" MaxLength="320" FixedLength="false" Unicode="true" />
+    <Property Name="NU_TELEFONO_FIJO" Type="Int32" />
+    <Property Name="NU_TELEFONO_MOVIL" Type="Int32" />
+    <Property Name="IN_REGISTRO_MOVIL" Type="Boolean" Nullable="false" />
+    <Property Name="FE_REGISTRO_MOVIL" Type="DateTime" Precision="3" />
+    <Property Name="IN_USUARIO_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="IN_USUARIO_BLOQUEADO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="EMPLEADO" Relationship="IntranetSAIModel.EMEPLEADO_FK_USUARIO" FromRole="USUARIO" ToRole="EMPLEADO" />
+    <NavigationProperty Name="USUARIO_NOTIFICACION" Relationship="IntranetSAIModel.USUARIO_NOTIFICACION_FK_USUARIO" FromRole="USUARIO" ToRole="USUARIO_NOTIFICACION" />
+    <NavigationProperty Name="NOTIFICACION_SIN_GESTION" Relationship="IntranetSAIModel.NOTIFICACION_SIN_GESTION_FK_USUARIO" FromRole="USUARIO" ToRole="NOTIFICACION_SIN_GESTION" />
+    <NavigationProperty Name="TICKET" Relationship="IntranetSAIModel.TICKET_FK_USUARIO" FromRole="USUARIO" ToRole="TICKET" />
+    <NavigationProperty Name="TICKET1" Relationship="IntranetSAIModel.TICKET_FK_USUARIO_TRANSFERENCIA" FromRole="USUARIO" ToRole="TICKET" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.CLIENTE_FK_USUARIO" FromRole="USUARIO" ToRole="CLIENTE" />
+    <NavigationProperty Name="SOCIO_COMERCIAL" Relationship="IntranetSAIModel.SOCIO_COMERCIAL_FK_USUARIO" FromRole="USUARIO" ToRole="SOCIO_COMERCIAL" />
+    <NavigationProperty Name="LOG_TRANSACCIONES" Relationship="IntranetSAIModel.LOG_TRANSACCIONES_FK_USUARIO" FromRole="USUARIO" ToRole="LOG_TRANSACCIONES" />
+    <NavigationProperty Name="USUARIO_APLICACION" Relationship="IntranetSAIModel.USUARIO_APLICACION_FK_USUARIO" FromRole="USUARIO" ToRole="USUARIO_APLICACION" />
+    <NavigationProperty Name="TIPO_DOCUMENTO_IDENTIDAD" Relationship="IntranetSAIModel.USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD" FromRole="USUARIO" ToRole="TIPO_DOCUMENTO_IDENTIDAD" />
+    <NavigationProperty Name="USUARIO_MOVIL_GCM" Relationship="IntranetSAIModel.USUARIO_MOVIL_GCM_FK_USUARIO" FromRole="USUARIO" ToRole="USUARIO_MOVIL_GCM" />
+    <NavigationProperty Name="ROL" Relationship="IntranetSAIModel.USUARIO_ROL" FromRole="USUARIO" ToRole="ROL" />
+    <NavigationProperty Name="USUARIO1" Relationship="IntranetSAIModel.USUARIO_PADRE" FromRole="USUARIO" ToRole="USUARIO1" />
+    <NavigationProperty Name="USUARIO2" Relationship="IntranetSAIModel.USUARIO_PADRE" FromRole="USUARIO1" ToRole="USUARIO" />
+    <NavigationProperty Name="DISPOSITIVO" Relationship="IntranetSAIModel.USUARIO_DISPOSITIVO" FromRole="USUARIO" ToRole="DISPOSITIVO" />
+    <NavigationProperty Name="MENU_SERVICIO" Relationship="IntranetSAIModel.MENU_SERVICIO_USUARIO" FromRole="USUARIO" ToRole="MENU_SERVICIO" />
+    <NavigationProperty Name="PLANTILLA_CORREO" Relationship="IntranetSAIModel.PLANTILLA_CORREO_FK_USUARIO" FromRole="USUARIO" ToRole="PLANTILLA_CORREO" />
+    <Property Name="IN_CORREO_REGISTRO_ENVIADO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="SOLICITUD_MANTENIMIENTO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_USUARIO" FromRole="USUARIO" ToRole="SOLICITUD_MANTENIMIENTO" />
+  </EntityType>
+  <Association Name="CLIENTE_FK_COMPANIA_SEGURO">
+    <End Type="IntranetSAIModel.COMPANIA_SEGURO" Role="COMPANIA_SEGURO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COMPANIA_SEGURO">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_COMPANIA_SEGURO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="VEHICULO_FK_CLIENTE">
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="VEHICULO">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="EMEPLEADO_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.EMPLEADO" Role="EMPLEADO" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="EMPLEADO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_NOTIFICACION_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.USUARIO_NOTIFICACION" Role="USUARIO_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_SIN_GESTION_FK_CLIENTE">
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.NOTIFICACION_SIN_GESTION" Role="NOTIFICACION_SIN_GESTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_SIN_GESTION_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.NOTIFICACION_SIN_GESTION" Role="NOTIFICACION_SIN_GESTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_CLIENTE">
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TICKET_FK_USUARIO_TRANSFERENCIA">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.TICKET" Role="TICKET" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="TICKET">
+        <PropertyRef Name="CD_USUARIO_TRANSFERENCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_CORREGIMIENTO">
+    <End Type="IntranetSAIModel.CORREGIMIENTO" Role="CORREGIMIENTO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_DISTRITO">
+    <End Type="IntranetSAIModel.DISTRITO" Role="DISTRITO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_PAIS">
+    <End Type="IntranetSAIModel.PAIS" Role="PAIS" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="CD_PAIS" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_PROVINCIA">
+    <End Type="IntranetSAIModel.PROVINCIA" Role="PROVINCIA" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_TIPO_SANGRE">
+    <End Type="IntranetSAIModel.TIPO_SANGRE" Role="TIPO_SANGRE" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_SANGRE">
+        <PropertyRef Name="TP_SANGRE" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="TP_SANGRE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CLIENTE_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOCIO_COMERCIAL_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOCIO_COMERCIAL" Role="SOCIO_COMERCIAL" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LOG_TRANSACCIONES_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.LOG_TRANSACCIONES" Role="LOG_TRANSACCIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="LOG_TRANSACCIONES">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_APLICACION_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.USUARIO_APLICACION" Role="USUARIO_APLICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_APLICACION">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_FK_TIPO_DOCUMENTO_IDENTIDAD">
+    <End Type="IntranetSAIModel.TIPO_DOCUMENTO_IDENTIDAD" Role="TIPO_DOCUMENTO_IDENTIDAD" Multiplicity="1" />
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_DOCUMENTO_IDENTIDAD">
+        <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+      </Principal>
+      <Dependent Role="USUARIO">
+        <PropertyRef Name="TP_DOCUMENTO_IDENTIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_MOVIL_GCM_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.USUARIO_MOVIL_GCM" Role="USUARIO_MOVIL_GCM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="USUARIO_MOVIL_GCM">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_ROL">
+    <End Type="IntranetSAIModel.ROL" Role="ROL" Multiplicity="*" />
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+  </Association>
+  <Association Name="USUARIO_PADRE">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO1" Multiplicity="*" />
+  </Association>
+  <EntityType Name="DISPOSITIVO_CLIENTE">
+    <Key>
+      <PropertyRef Name="ID_DISPOSITIVO" />
+    </Key>
+    <Property Name="ID_DISPOSITIVO" Type="Int32" Nullable="false" />
+    <Property Name="CD_CLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="CD_VEHICULO" Type="Int32" />
+    <Property Name="DE_CONTRASENA_DVR" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="IN_ADMITE_APERTURA_REMOTA" Type="Boolean" Nullable="false" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_CLIENTE" FromRole="DISPOSITIVO_CLIENTE" ToRole="CLIENTE" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_VEHICULO" FromRole="DISPOSITIVO_CLIENTE" ToRole="VEHICULO" />
+    <NavigationProperty Name="USUARIO_NOTIFICACION" Relationship="IntranetSAIModel.USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE" FromRole="DISPOSITIVO_CLIENTE" ToRole="USUARIO_NOTIFICACION" />
+    <NavigationProperty Name="DISPOSITIVO" Relationship="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_DISPOSITIVO" FromRole="DISPOSITIVO_CLIENTE" ToRole="DISPOSITIVO" />
+    <NavigationProperty Name="SOLICITUD_MANTENIMIENTO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE" FromRole="DISPOSITIVO_CLIENTE" ToRole="SOLICITUD_MANTENIMIENTO" />
+  </EntityType>
+  <Association Name="DISPOSITIVO_CLIENTE_FK_CLIENTE">
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+    <End Type="IntranetSAIModel.DISPOSITIVO_CLIENTE" Role="DISPOSITIVO_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISPOSITIVO_CLIENTE_FK_VEHICULO">
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.DISPOSITIVO_CLIENTE" Role="DISPOSITIVO_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEHICULO">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_NOTIFICACION_FK_DISPOSITIVO_CLIENTE">
+    <End Type="IntranetSAIModel.DISPOSITIVO_CLIENTE" Role="DISPOSITIVO_CLIENTE" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.USUARIO_NOTIFICACION" Role="USUARIO_NOTIFICACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="USUARIO_NOTIFICACION">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DISPOSITIVO">
+    <Key>
+      <PropertyRef Name="ID_DISPOSITIVO" />
+    </Key>
+    <Property Name="ID_DISPOSITIVO" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISTRIBUIDOR" Type="Int32" Nullable="false" />
+    <Property Name="NM_DISPOSITIVO" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DE_DISPOSITIVO" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="NU_SERIAL" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="NU_DVR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NU_SIM_GPS" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CD_MODELO" Type="Int32" />
+    <Property Name="IN_ELIMINADO" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="DISPOSITIVO_CLIENTE" Relationship="IntranetSAIModel.DISPOSITIVO_CLIENTE_FK_DISPOSITIVO" FromRole="DISPOSITIVO" ToRole="DISPOSITIVO_CLIENTE" />
+    <NavigationProperty Name="DISTRIBUIDOR" Relationship="IntranetSAIModel.DISPOSITIVO_FK_DISTRIBUIDOR" FromRole="DISPOSITIVO" ToRole="DISTRIBUIDOR" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.USUARIO_DISPOSITIVO" FromRole="DISPOSITIVO" ToRole="USUARIO" />
+  </EntityType>
+  <Association Name="DISPOSITIVO_CLIENTE_FK_DISPOSITIVO">
+    <End Type="IntranetSAIModel.DISPOSITIVO" Role="DISPOSITIVO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.DISPOSITIVO_CLIENTE" Role="DISPOSITIVO_CLIENTE" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DISPOSITIVO_FK_DISTRIBUIDOR">
+    <End Type="IntranetSAIModel.DISTRIBUIDOR" Role="DISTRIBUIDOR" Multiplicity="1" />
+    <End Type="IntranetSAIModel.DISPOSITIVO" Role="DISPOSITIVO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRIBUIDOR">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Principal>
+      <Dependent Role="DISPOSITIVO">
+        <PropertyRef Name="ID_DISTRIBUIDOR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="USUARIO_DISPOSITIVO">
+    <End Type="IntranetSAIModel.DISPOSITIVO" Role="DISPOSITIVO" Multiplicity="*" />
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+  </Association>
+  <EntityType Name="MENU_SERVICIO">
+    <Key>
+      <PropertyRef Name="CD_MENU_SERVICIO" />
+    </Key>
+    <Property Name="CD_MENU_SERVICIO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_SERVICIO" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="DE_SERVICIO" Type="String" MaxLength="600" FixedLength="false" Unicode="true" />
+    <Property Name="CD_APLICACION" Type="Int32" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_CREACION" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="APLICACION" Relationship="IntranetSAIModel.MENU_SERVICIO_FK_APLICACION" FromRole="MENU_SERVICIO" ToRole="APLICACION" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.MENU_SERVICIO_USUARIO" FromRole="MENU_SERVICIO" ToRole="USUARIO" />
+    <NavigationProperty Name="SEGMENTO_NEGOCIO" Relationship="IntranetSAIModel.SEGMENTO_NEGOCIO_MENU_SERVICIO" FromRole="MENU_SERVICIO" ToRole="SEGMENTO_NEGOCIO" />
+  </EntityType>
+  <Association Name="MENU_SERVICIO_FK_APLICACION">
+    <End Type="IntranetSAIModel.APLICACION" Role="APLICACION" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.MENU_SERVICIO" Role="MENU_SERVICIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="APLICACION">
+        <PropertyRef Name="CD_APLICACION" />
+      </Principal>
+      <Dependent Role="MENU_SERVICIO">
+        <PropertyRef Name="CD_APLICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MENU_SERVICIO_USUARIO">
+    <End Type="IntranetSAIModel.MENU_SERVICIO" Role="MENU_SERVICIO" Multiplicity="*" />
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="*" />
+  </Association>
+  <Association Name="SEGMENTO_NEGOCIO_MENU_SERVICIO">
+    <End Type="IntranetSAIModel.MENU_SERVICIO" Role="MENU_SERVICIO" Multiplicity="*" />
+    <End Type="IntranetSAIModel.SEGMENTO_NEGOCIO" Role="SEGMENTO_NEGOCIO" Multiplicity="*" />
+  </Association>
+  <EntityType Name="PLANTILLA_CORREO">
+    <Key>
+      <PropertyRef Name="CD_PLANTILLA_CORREO" />
+    </Key>
+    <Property Name="CD_PLANTILLA_CORREO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_PLANTILLA_CORREO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="TP_PLANTILLA_CORREO" Type="Int32" Nullable="false" />
+    <Property Name="CD_USUARIO" Type="Int32" />
+    <Property Name="DE_TITULO_CORREO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="DE_CONTENIDO_PLANTILLA" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.PLANTILLA_CORREO_FK_USUARIO" FromRole="PLANTILLA_CORREO" ToRole="USUARIO" />
+    <NavigationProperty Name="TIPO_PLANTILLA_CORREO" Relationship="IntranetSAIModel.PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO" FromRole="PLANTILLA_CORREO" ToRole="TIPO_PLANTILLA_CORREO" />
+  </EntityType>
+  <EntityType Name="TIPO_PLANTILLA_CORREO">
+    <Key>
+      <PropertyRef Name="TP_PLANTILLA_CORREO" />
+    </Key>
+    <Property Name="TP_PLANTILLA_CORREO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_TIPO_PLANTILLA" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PLANTILLA_CORREO" Relationship="IntranetSAIModel.PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO" FromRole="TIPO_PLANTILLA_CORREO" ToRole="PLANTILLA_CORREO" />
+  </EntityType>
+  <Association Name="PLANTILLA_CORREO_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.PLANTILLA_CORREO" Role="PLANTILLA_CORREO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="PLANTILLA_CORREO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PLANTILLA_CORREO_FK_TIPO_PLANTILLA_CORREO">
+    <End Type="IntranetSAIModel.TIPO_PLANTILLA_CORREO" Role="TIPO_PLANTILLA_CORREO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.PLANTILLA_CORREO" Role="PLANTILLA_CORREO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PLANTILLA_CORREO">
+        <PropertyRef Name="TP_PLANTILLA_CORREO" />
+      </Principal>
+      <Dependent Role="PLANTILLA_CORREO">
+        <PropertyRef Name="TP_PLANTILLA_CORREO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="ARTICULO">
+    <Key>
+      <PropertyRef Name="CD_ARTICULO" />
+    </Key>
+    <Property Name="CD_ARTICULO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_ARTICULO" Type="String" Nullable="false" MaxLength="600" FixedLength="false" Unicode="true" />
+    <Property Name="DE_ARTICULO" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="CD_MODELO" Type="Int32" Nullable="false" />
+    <Property Name="NU_CANTIDAD_DISPONIBLE" Type="Int64" Nullable="false" />
+    <Property Name="MT_PRECIO_COMPRA" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+    <Property Name="IN_INACTIVO" Type="Boolean" Nullable="false" />
+    <Property Name="FE_STATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="FE_CREACION" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="MODELO" Relationship="IntranetSAIModel.ARTICULO_FK_MODELO" FromRole="ARTICULO" ToRole="MODELO" />
+  </EntityType>
+  <Association Name="ANO_VEHICULO_FK_MODELO">
+    <End Type="IntranetSAIModel.MODELO" Role="MODELO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.ANO_VEHICULO" Role="ANO_VEHICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODELO">
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="ANO_VEHICULO">
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ARTICULO_FK_MODELO">
+    <End Type="IntranetSAIModel.MODELO" Role="MODELO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.ARTICULO" Role="ARTICULO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MODELO">
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="ARTICULO">
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="CONFIGURACION_KILOMETRAJE">
+    <Key>
+      <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+    </Key>
+    <Property Name="CD_CONFIGURACION_KILOMETRAJE" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_TALLER" Type="Int32" Nullable="false" />
+    <Property Name="CD_ANO" Type="Int32" Nullable="false" />
+    <Property Name="CD_MODELO" Type="Int32" Nullable="false" />
+    <Property Name="MT_KILOMETRAJE" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ANO_VEHICULO" Relationship="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_MODELO" FromRole="CONFIGURACION_KILOMETRAJE" ToRole="ANO_VEHICULO" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_TALLER" FromRole="CONFIGURACION_KILOMETRAJE" ToRole="TALLER" />
+    <NavigationProperty Name="SOLICITUD_MANTENIMIENTO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE" FromRole="CONFIGURACION_KILOMETRAJE" ToRole="SOLICITUD_MANTENIMIENTO" />
+    <NavigationProperty Name="OPERACION_MANTENIMIENTO" Relationship="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" FromRole="CONFIGURACION_KILOMETRAJE" ToRole="OPERACION_MANTENIMIENTO" />
+  </EntityType>
+  <EntityType Name="OPERACION_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_OPERACION" />
+    </Key>
+    <Property Name="CD_OPERACION" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DE_ALIAS_OPERACION" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CD_TALLER" Type="Int32" Nullable="false" />
+    <Property Name="NM_OPERACION_MANTENIMIENTO" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="MT_MINUTO_DURACION_OPERACION" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.OPERACION_MANTENIMIENTO_FK_TALLER" FromRole="OPERACION_MANTENIMIENTO" ToRole="TALLER" />
+    <NavigationProperty Name="CONFIGURACION_KILOMETRAJE" Relationship="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO" FromRole="OPERACION_MANTENIMIENTO" ToRole="CONFIGURACION_KILOMETRAJE" />
+  </EntityType>
+  <EntityType Name="SOLICITUD_MANTENIMIENTO">
+    <Key>
+      <PropertyRef Name="CD_SOLICITUD" />
+    </Key>
+    <Property Name="CD_SOLICITUD" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CD_TALLER" Type="Int32" Nullable="false" />
+    <Property Name="CD_CONFIGURACION_KILOMETRAJE" Type="Int32" Nullable="false" />
+    <Property Name="CD_USUARIO_SOLICITANTE" Type="Int32" Nullable="false" />
+    <Property Name="CD_CLIENTE" Type="Int32" Nullable="false" />
+    <Property Name="FE_SOLICITUD" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DE_ESTATUS_SOLICITUD" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FE_ESTATUS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="CD_VEHICULO" Type="Int32" Nullable="false" />
+    <Property Name="ID_DISPOSITIVO" Type="Int32" />
+    <Property Name="DE_OBSERVACION" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="DISPOSITIVO_CLIENTE" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE" FromRole="SOLICITUD_MANTENIMIENTO" ToRole="DISPOSITIVO_CLIENTE" />
+    <NavigationProperty Name="VEHICULO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_VEHICULO" FromRole="SOLICITUD_MANTENIMIENTO" ToRole="VEHICULO" />
+    <NavigationProperty Name="CONFIGURACION_KILOMETRAJE" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE" FromRole="SOLICITUD_MANTENIMIENTO" ToRole="CONFIGURACION_KILOMETRAJE" />
+    <NavigationProperty Name="TALLER" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_TALLER" FromRole="SOLICITUD_MANTENIMIENTO" ToRole="TALLER" />
+    <NavigationProperty Name="CLIENTE" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_CLIENTE" FromRole="SOLICITUD_MANTENIMIENTO" ToRole="CLIENTE" />
+    <NavigationProperty Name="USUARIO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIETO_FK_USUARIO" FromRole="SOLICITUD_MANTENIMIENTO" ToRole="USUARIO" />
+  </EntityType>
+  <EntityType Name="TALLER">
+    <Key>
+      <PropertyRef Name="CD_TALLER" />
+    </Key>
+    <Property Name="CD_TALLER" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NM_TALLER" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="CD_PAIS" Type="Int32" Nullable="false" />
+    <Property Name="CD_PROVINCIA" Type="Int32" Nullable="false" />
+    <Property Name="CD_DISTRITO" Type="Int32" Nullable="false" />
+    <Property Name="CD_CORREGIMIENTO" Type="Int32" />
+    <Property Name="DI_TALLER" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CD_SOCIO_COMERCIAL" Type="Int32" />
+    <NavigationProperty Name="CONFIGURACION_KILOMETRAJE" Relationship="IntranetSAIModel.CONFIGURACION_KILOMETRAJE_FK_TALLER" FromRole="TALLER" ToRole="CONFIGURACION_KILOMETRAJE" />
+    <NavigationProperty Name="OPERACION_MANTENIMIENTO" Relationship="IntranetSAIModel.OPERACION_MANTENIMIENTO_FK_TALLER" FromRole="TALLER" ToRole="OPERACION_MANTENIMIENTO" />
+    <NavigationProperty Name="SOLICITUD_MANTENIMIENTO" Relationship="IntranetSAIModel.SOLICITUD_MANTENIMIENTO_FK_TALLER" FromRole="TALLER" ToRole="SOLICITUD_MANTENIMIENTO" />
+    <NavigationProperty Name="CORREGIMIENTO" Relationship="IntranetSAIModel.TALLER_FK_CORREGIMIENTO" FromRole="TALLER" ToRole="CORREGIMIENTO" />
+    <NavigationProperty Name="DISTRITO" Relationship="IntranetSAIModel.TALLER_FK_DISTRITO" FromRole="TALLER" ToRole="DISTRITO" />
+    <NavigationProperty Name="PAIS" Relationship="IntranetSAIModel.TALLER_FK_PAIS" FromRole="TALLER" ToRole="PAIS" />
+    <NavigationProperty Name="PROVINCIA" Relationship="IntranetSAIModel.TALLER_FK_PROVINCIA" FromRole="TALLER" ToRole="PROVINCIA" />
+    <NavigationProperty Name="SOCIO_COMERCIAL" Relationship="IntranetSAIModel.TALLER_FK_SOCIO_COMERCIAL" FromRole="TALLER" ToRole="SOCIO_COMERCIAL" />
+  </EntityType>
+  <Association Name="CONFIGURACION_KILOMETRAJE_FK_MODELO">
+    <End Type="IntranetSAIModel.ANO_VEHICULO" Role="ANO_VEHICULO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.CONFIGURACION_KILOMETRAJE" Role="CONFIGURACION_KILOMETRAJE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ANO_VEHICULO">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_ANO" />
+        <PropertyRef Name="CD_MODELO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_DISPOSITIVO_CLIENTE">
+    <End Type="IntranetSAIModel.DISPOSITIVO_CLIENTE" Role="DISPOSITIVO_CLIENTE" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Role="SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISPOSITIVO_CLIENTE">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="ID_DISPOSITIVO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_VEHICULO">
+    <End Type="IntranetSAIModel.VEHICULO" Role="VEHICULO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Role="SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VEHICULO">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_VEHICULO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONFIGURACION_KILOMETRAJE_FK_TALLER">
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="1" />
+    <End Type="IntranetSAIModel.CONFIGURACION_KILOMETRAJE" Role="CONFIGURACION_KILOMETRAJE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TALLER">
+        <PropertyRef Name="CD_TALLER" />
+      </Principal>
+      <Dependent Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_TALLER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIENTO_FK_CONFIGURACION_KILOMETRAJE">
+    <End Type="IntranetSAIModel.CONFIGURACION_KILOMETRAJE" Role="CONFIGURACION_KILOMETRAJE" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Role="SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CONFIGURACION_KILOMETRAJE">
+        <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_CONFIGURACION_KILOMETRAJE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OPERACION_MANTENIMIENTO_FK_TALLER">
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="1" />
+    <End Type="IntranetSAIModel.OPERACION_MANTENIMIENTO" Role="OPERACION_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TALLER">
+        <PropertyRef Name="CD_TALLER" />
+      </Principal>
+      <Dependent Role="OPERACION_MANTENIMIENTO">
+        <PropertyRef Name="CD_TALLER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIENTO_FK_TALLER">
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Role="SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TALLER">
+        <PropertyRef Name="CD_TALLER" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_TALLER" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_CLIENTE">
+    <End Type="IntranetSAIModel.CLIENTE" Role="CLIENTE" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Role="SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CLIENTE">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_CLIENTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_MANTENIMIETO_FK_USUARIO">
+    <End Type="IntranetSAIModel.USUARIO" Role="USUARIO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.SOLICITUD_MANTENIMIENTO" Role="SOLICITUD_MANTENIMIENTO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USUARIO">
+        <PropertyRef Name="CD_USUARIO" />
+      </Principal>
+      <Dependent Role="SOLICITUD_MANTENIMIENTO">
+        <PropertyRef Name="CD_USUARIO_SOLICITANTE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_CORREGIMIENTO">
+    <End Type="IntranetSAIModel.CORREGIMIENTO" Role="CORREGIMIENTO" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CORREGIMIENTO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+        <PropertyRef Name="CD_CORREGIMIENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_DISTRITO">
+    <End Type="IntranetSAIModel.DISTRITO" Role="DISTRITO" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DISTRITO">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+        <PropertyRef Name="CD_DISTRITO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_PAIS">
+    <End Type="IntranetSAIModel.PAIS" Role="PAIS" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PAIS">
+        <PropertyRef Name="CD_PAIS" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_PROVINCIA">
+    <End Type="IntranetSAIModel.PROVINCIA" Role="PROVINCIA" Multiplicity="1" />
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PROVINCIA">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_PAIS" />
+        <PropertyRef Name="CD_PROVINCIA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TALLER_FK_SOCIO_COMERCIAL">
+    <End Type="IntranetSAIModel.SOCIO_COMERCIAL" Role="SOCIO_COMERCIAL" Multiplicity="0..1" />
+    <End Type="IntranetSAIModel.TALLER" Role="TALLER" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOCIO_COMERCIAL">
+        <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+      </Principal>
+      <Dependent Role="TALLER">
+        <PropertyRef Name="CD_SOCIO_COMERCIAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="NOTIFICACION_SIN_GESTION_NOTIFICACION_FK_CLIENTE">
+    <End Type="IntranetSAIModel.NOTIFICACION_SIN_GESTION" Role="NOTIFICACION_SIN_GESTION" Multiplicity="1" />
+    <End Type="IntranetSAIModel.NOTIFICACION_SIN_GESTION" Role="NOTIFICACION_SIN_GESTION1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="NOTIFICACION_SIN_GESTION">
+        <PropertyRef Name="ID_NOTIFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Principal>
+      <Dependent Role="NOTIFICACION_SIN_GESTION1">
+        <PropertyRef Name="ID_NOTIFICACION" />
+        <PropertyRef Name="ID_ORIGEN_NOTIFICACION" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CONFIGURACION_KILOMETRAJE_OPERACION_MANTENIMIENTO">
+    <End Type="IntranetSAIModel.CONFIGURACION_KILOMETRAJE" Role="CONFIGURACION_KILOMETRAJE" Multiplicity="*" />
+    <End Type="IntranetSAIModel.OPERACION_MANTENIMIENTO" Role="OPERACION_MANTENIMIENTO" Multiplicity="*" />
+  </Association>
+</Schema>

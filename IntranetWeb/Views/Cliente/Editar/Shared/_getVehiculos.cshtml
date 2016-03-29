@@ -1,0 +1,108 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+
+@{Layout = null;}
+
+<div class="accordion-style1 panel-group" id="accordionVehiculos">
+    @for (int i = 0; i < Model.Vehiculos.Count(); i++)
+    {
+        <div class="panel @(i==0?"panel-default":"")">
+            <div class="panel-heading">
+                <div class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapse_@(Model.Vehiculos[i].Id)_@(Model.Vehiculos[i].Vin)">
+                        <div class="row">
+                            <div class="col-xs-8">
+                                <strong>
+                                    <i data-icon-show="ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down" class="bigger-110 ace-icon fa fa-angle-right"></i>
+                                    @Model.Vehiculos[i].Vin: @Model.Vehiculos[i].DescripcionMarca  @Model.Vehiculos[i].DescripcionModelo  @Model.Vehiculos[i].AnoSeleccionado
+                                </strong>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div id="collapse_@(Model.Vehiculos[i].Id)_@(Model.Vehiculos[i].Vin)" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].Vin)
+                            @Html.TextBoxFor(m => m.Vehiculos[i].Vin, new { Class = "form-control", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.Vehiculos[i].Vin, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].NumeroPlaca)
+                            @Html.TextBoxFor(m => m.Vehiculos[i].NumeroPlaca, new {Class = "form-control"})
+                            @Html.ValidationMessageFor(m => m.Vehiculos[i].NumeroPlaca, "", new { @class = "help-block" })
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].Marca)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].MarcaSeleccionada, new SelectList(Model.Vehiculos[i].Marca, "Value", "Text", Model.Vehiculos[i].MarcaSeleccionada), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].MarcaSeleccionada)), new { @class = "select2 form-control marca", data_url = Url.Action("getModelos", "Select") })
+                            @Html.ValidationMessageFor(m => m.Vehiculos[i].MarcaSeleccionada, "", new { @class = "help-block" })
+                        </div>
+                        </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].Modelo)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].ModeloSeleccionado, new SelectList(Model.Vehiculos[i].Modelo, "Value", "Text", Model.Vehiculos[i].ModeloSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].ModeloSeleccionado)), new { @class = "select2 form-control modelo", data_url = Url.Action("getAnos", "Select") })
+                            @Html.ValidationMessageFor(m => m.Vehiculos[i].Modelo, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].Color)
+                            @Html.TextBoxFor(m => m.Vehiculos[i].Color, new { Class = "form-control" })
+                             @Html.ValidationMessageFor(m => m.Vehiculos[i].Color, "", new { @class = "help-block" })
+                        </div>
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].AnoSeleccionado)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].AnoSeleccionado, new SelectList(Model.Vehiculos[i].Ano, "Value", "Text", Model.Vehiculos[i].AnoSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].AnoSeleccionado)), new { @class = "select2 form-control ano" })
+                            @Html.ValidationMessageFor(model => model.Vehiculos[i].AnoSeleccionado, "", new { @class = "help-block" })
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].CompaniaSeguroSeleccionada)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].CompaniaSeguroSeleccionada, new SelectList(Model.CompaniaSeguro, "Value", "Text", Model.Vehiculos[i].CompaniaSeguroSeleccionada), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].CompaniaSeguroSeleccionada)), new { @class = "select2 form-control" })
+                            @Html.ValidationMessageFor(model => model.Vehiculos[i].CompaniaSeguroSeleccionada, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].TipoTransmisionSeleccionada)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].TipoTransmisionSeleccionada, new SelectList(Model.Vehiculos[i].TipoTransmision, "Value", "Text", Model.Vehiculos[i].TipoTransmisionSeleccionada), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].TipoTransmisionSeleccionada)), new { @class = "select2 form-control" })
+                            @Html.ValidationMessageFor(model => model.Vehiculos[i].TipoTransmisionSeleccionada, "", new { @class = "help-block" })
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-12 col-md-4 ">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].TipoCierreSeleccionado)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].TipoCierreSeleccionado, new SelectList(Model.Vehiculos[i].TipoCierre, "Value", "Text", Model.Vehiculos[i].TipoCierreSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].TipoCierreSeleccionado)), new { @class = "select2 form-control" })
+                            @Html.ValidationMessageFor(model => model.Vehiculos[i].TipoCierreSeleccionado, "", new { @class = "help-block" })
+                            
+                        </div>
+</div>
+                    <div class="row">
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 ">
+                            
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].TipoCombustibleSeleccionado)
+                            @Html.DropDownListFor(m => m.Vehiculos[i].TipoCombustibleSeleccionado, new SelectList(Model.Vehiculos[i].TipoCombustible, "Value", "Text", Model.Vehiculos[i].TipoCombustibleSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.Vehiculos[i].TipoCombustibleSeleccionado)), new { @class = "select2 form-control" })
+                            @Html.ValidationMessageFor(model => model.Vehiculos[i].TipoCombustibleSeleccionado, "", new { @class = "help-block" })
+
+                        </div>
+
+                        <div class="form-group col-xs-12 col-sm-6 col-md-4 .col-md-offset-4">
+                            @Html.LabelBoldFor(m => m.Vehiculos[i].VigenciaPoliza)
+                            @Html.TextBoxFor(m => m.Vehiculos[i].VigenciaPoliza, IntranetWeb.Core.Constante.AppFormat.date, new { Class = "form-control date-picker" })
+                            @Html.ValidationMessageFor(m => m.Vehiculos[i].VigenciaPoliza, "", new { @class = "help-block" })
+                        </div>
+                       
+                    </div>
+
+                    @Html.HiddenFor(m => m.Vehiculos[i].Id)
+                    @Html.HiddenFor(m => m.Vehiculos[i].Vin)
+
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+

@@ -1,0 +1,48 @@
+﻿
+@{
+    ViewBag.Title = Resources.TituloPaginaResource.MonitorAlerta;
+}
+
+    @{Html.RenderPartial("_getTitulo"); }
+
+
+    
+        
+
+        @{Html.RenderAction("_obtenAlertas");}
+        
+        @{Html.RenderPartial("_getTabsMonitor",new IntranetWeb.ViewModel.Monitor.Ticket{   ActionConsultar            = "_getConsultarTicket"
+                                                                                          ,ActionEditar               = "_getEditarTicket"
+                                                                                          ,ActionListar               = "getTickets"
+                                                                                          ,ActionCrear                = "_getCrearTicket"
+
+            });
+        }
+                     
+    
+    
+
+<div id="divAlertas" data-url="@Url.Action("_actualizaAlertas")" data-url-atender="@Url.Action("crearTicket", "Monitor")"></div>
+
+
+@section scripts {
+@Scripts.Render("~/bundles/jqueryTable")
+@Scripts.Render("~/bundles/select2")
+@Scripts.Render("~/bundles/jqueryval")
+@Scripts.Render("~/bundles/google-maps")
+@Scripts.Render("~/bundles/signalr")
+@Scripts.Render("~/bundles/nestable")
+@Scripts.Render("~/bundles/colorbox")
+@Scripts.Render("~/bundles/intranetSAI/Monitor/monitor")
+
+<script src=@Url.Content("~/signalr/hubs")></script>
+}
+
+@section Styles {
+    @Styles.Render("~/Content/css/select2")
+    @Styles.Render("~/Content/css/colorbox")
+    
+}
+
+
+

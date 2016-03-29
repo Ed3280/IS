@@ -1,0 +1,26 @@
+﻿@model IntranetWeb.ViewModel.Monitor.NuevoTicket
+@{
+    Layout = null;
+
+}
+
+@using (Ajax.BeginForm("CrearTicketPorUsuario", "Monitor", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divCrearLoading", AllowCache = false, OnSuccess = "monitorSAI.submitSuccessCrear(data)" }, new { @Id = "formCrearTicket", role = "form" }))
+{
+    <div class="row scrollable" data-size="60">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            @{Html.RenderPartial("CrearTicket/_getFormularioTicket", Model);}
+        </div>
+
+    </div>
+    <div class="space-2"></div>
+    <div id="divCrearLoading" class="form-group" style="display:none !important">
+        <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  Procesando ...</strong></div>
+    </div>
+    <div class="space-2"></div>
+    <div class="">
+        <div id="resultUpdate"></div>
+    </div>
+
+    <button type="submit" name="submitButton" id="aceptar" class="hidden" value="aceptar">Aceptar</button>
+
+}

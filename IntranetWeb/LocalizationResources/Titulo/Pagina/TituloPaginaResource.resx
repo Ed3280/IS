@@ -1,0 +1,272 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AlertasAgentes" xml:space="preserve">
+    <value>Agent alerts</value>
+    <comment>Título del excel de gestión de alertas por agente</comment>
+  </data>
+  <data name="AsociarDispositivo" xml:space="preserve">
+    <value>Asociate device</value>
+    <comment>Título de la página para asociar un dispositivo</comment>
+  </data>
+  <data name="AsociarVehiculo" xml:space="preserve">
+    <value>Asociate vehicle</value>
+    <comment>Título de la página para asociar un vehículo</comment>
+  </data>
+  <data name="Cargo" xml:space="preserve">
+    <value>Positions</value>
+    <comment>Título de la página de administración de cargos</comment>
+  </data>
+  <data name="Cliente" xml:space="preserve">
+    <value>Client</value>
+    <comment>Título para la página de administración de clientes</comment>
+  </data>
+  <data name="ConsultarEmpleado" xml:space="preserve">
+    <value>Check employee</value>
+    <comment>Título de la página de empleado</comment>
+  </data>
+  <data name="ConsultarNotificacion" xml:space="preserve">
+    <value>Check notification</value>
+    <comment>Página para la consulta de la notificación</comment>
+  </data>
+  <data name="ConsultarProveedor" xml:space="preserve">
+    <value>Check provider</value>
+    <comment>Página para consulta de los datos del proveedor</comment>
+  </data>
+  <data name="ConsultarSocioComercial" xml:space="preserve">
+    <value>Check business partner</value>
+    <comment>Página para consulta de los datos del socio comercial</comment>
+  </data>
+  <data name="ConsultarTicket" xml:space="preserve">
+    <value>Check ticket</value>
+    <comment>Página de consulta de detalle de un ticket</comment>
+  </data>
+  <data name="ConsultarUsuario" xml:space="preserve">
+    <value>Check user</value>
+    <comment>Página para consulta de los datos del usuario</comment>
+  </data>
+  <data name="CrearCargo" xml:space="preserve">
+    <value>Create position</value>
+    <comment>Título para la página de creación de cargos</comment>
+  </data>
+  <data name="CrearCliente" xml:space="preserve">
+    <value>Create client</value>
+    <comment>Página para crear un cliente</comment>
+  </data>
+  <data name="CrearProveedor" xml:space="preserve">
+    <value>Create provider</value>
+    <comment>Título de la página de creación de proveedores</comment>
+  </data>
+  <data name="CrearRespuestaOperadorGCM" xml:space="preserve">
+    <value>Create GCM operator answer</value>
+    <comment>Página de creación de respuesta GCM</comment>
+  </data>
+  <data name="CrearRol" xml:space="preserve">
+    <value>Create role</value>
+    <comment>Título de la página de creación de rol</comment>
+  </data>
+  <data name="CrearSocioComercial" xml:space="preserve">
+    <value>Create business partner</value>
+    <comment>Título de la página de creación de socios comerciales </comment>
+  </data>
+  <data name="CrearUsuario" xml:space="preserve">
+    <value>Create user</value>
+    <comment>Página para crear un usuario</comment>
+  </data>
+  <data name="DarBajaEmpleado" xml:space="preserve">
+    <value>Terminate employee relationship</value>
+    <comment>Título para la página de dar de baja a empleado</comment>
+  </data>
+  <data name="DatosAdicionales" xml:space="preserve">
+    <value>Additional information</value>
+    <comment>ítulo para editar la información adicional del cliente</comment>
+  </data>
+  <data name="EditarCargo" xml:space="preserve">
+    <value>Edit position</value>
+    <comment>Título de la página de edición de cargos</comment>
+  </data>
+  <data name="EditarEmpleado" xml:space="preserve">
+    <value>Edit employee</value>
+    <comment>Título de la página de administración de empleados</comment>
+  </data>
+  <data name="EditarProveedor" xml:space="preserve">
+    <value>Edit provider</value>
+    <comment>Título de la página para editar proveedor</comment>
+  </data>
+  <data name="EditarRol" xml:space="preserve">
+    <value>Edit role</value>
+    <comment>Título de la página de editar rol</comment>
+  </data>
+  <data name="EditarSocioComercial" xml:space="preserve">
+    <value>Edit business partner</value>
+    <comment>Título de la página para editar socio comercial</comment>
+  </data>
+  <data name="EditarUsuario" xml:space="preserve">
+    <value>Edit user</value>
+    <comment>Título de la página para editar usuario</comment>
+  </data>
+  <data name="Empleado" xml:space="preserve">
+    <value>Employee</value>
+    <comment>Título de la página de administración de empleados</comment>
+  </data>
+  <data name="Localizacion" xml:space="preserve">
+    <value>Location</value>
+    <comment>Título de la página de localización</comment>
+  </data>
+  <data name="MonitorAlerta" xml:space="preserve">
+    <value>Monitor</value>
+    <comment>Título de la página de monitor</comment>
+  </data>
+  <data name="MonitorAlertaAdmin" xml:space="preserve">
+    <value>Monitor's administrator</value>
+    <comment>Título de la página de administrador de monitor y alertas </comment>
+  </data>
+  <data name="PerfilUsuario" xml:space="preserve">
+    <value>Perfil de usuario</value>
+    <comment>Título de la página de perfil de usuario</comment>
+  </data>
+  <data name="Proveedor" xml:space="preserve">
+    <value>Provider</value>
+    <comment>Título de la página de administración de proveedores</comment>
+  </data>
+  <data name="ReporteAlertas" xml:space="preserve">
+    <value>Alert report</value>
+    <comment>Título de la página de reporte de alertas</comment>
+  </data>
+  <data name="ReporteTickets" xml:space="preserve">
+    <value>Tickets report</value>
+    <comment>Título de la página de reporte de tickets</comment>
+  </data>
+  <data name="Rol" xml:space="preserve">
+    <value>Role</value>
+    <comment>Título de la página de administración de roles</comment>
+  </data>
+  <data name="SocioComercial" xml:space="preserve">
+    <value>Business partner</value>
+    <comment>Título de la página de administración de socios comerciales</comment>
+  </data>
+  <data name="Usuario" xml:space="preserve">
+    <value>User</value>
+    <comment>Título de la página de administración de usuario</comment>
+  </data>
+  <data name="UsuarioAdmin" xml:space="preserve">
+    <value>User (Admin)</value>
+    <comment>Título de la página de administración de usuario (control admin)</comment>
+  </data>
+</root>

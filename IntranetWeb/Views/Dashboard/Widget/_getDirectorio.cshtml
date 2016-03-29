@@ -1,0 +1,37 @@
+﻿@{ Layout = null; }
+
+<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 widget-container-col">
+    <div id="widgetDirectorio" class="widget-box transparent"
+         data-url="@Url.Action("consultarDirectorio")"
+         >
+        <div class="widget-header">
+            <h4 class="widget-title lighter"> <i class="fa fa-book"></i> @Resources.TituloWidget.Directorio</h4>
+
+            <div class="widget-toolbar no-border">
+                <a href="javascript:void(0);" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+                <a href="javascript:void(0);" data-action="fullscreen">
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
+                <a href="javascript:void(0);" data-action="close">
+                    <i class="ace-icon fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="widget-body">
+            <div class="space-4"></div>
+            <div class="input-group">
+                <input type="text" id="txtQueryDirectorio" class="form-control search-query" placeholder="@Resources.EtiquetaResource.IngreseBusqueda">
+                <span class="input-group-btn">
+                    <button id="btnBuscarDirectorio" type="button" class="btn btn-inverse btn-white">
+                        <span class="ace-icon fa fa-search icon-on-right bigger-110"></span>
+                        @Resources.TituloBotonResource.Buscar
+                    </button>
+                </span>
+            </div>
+            <div id="divResultDirectorio">
+            </div>   
+        </div>        
+    </div>
+</div>

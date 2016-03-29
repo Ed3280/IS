@@ -1,0 +1,69 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Administrador.EmpleadoBaja
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.DarBajaEmpleado;
+}
+<div id="divTabEditarUsuario" class="tabbable" data-titulo          ="@ViewBag.Title" 
+                                               data-confirm-baja    ="@Resources.AdvertenciaResource.ConfirmarDarBaja" >
+
+    @using (Ajax.BeginForm("darBajaEmpleado", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "empleadoSAI.submitSuccess(data)" }, new { @Id = "formBajaRegistro", role = "form" }))
+    {
+        <div class="scrollable" id="divBloqueDatosGenerales" data-size="60">
+       
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.NombreUsuario)<br />
+                    @Html.DisplayFor(m => m.NombreUsuario, new { Class = "form-control" })
+
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.NombreApellido)<br />
+                    @Html.DisplayFor(m => m.NombreApellido, new { Class = "form-control" })                    
+                </div>               
+            </div>
+             
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.UnidadAdministrativa)<br />
+                    @Html.DisplayFor(m => m.UnidadAdministrativa, new { Class = "form-control" })
+
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Cargo)<br />
+                    @Html.DisplayFor(m => m.Cargo, new { Class = "form-control" })
+                </div>
+
+            </div>
+                
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                  @Html.LabelBoldFor(m => m.FechaRetiro)
+                @Html.TextBoxFor(m => m.FechaRetiro, IntranetWeb.Core.Constante.AppFormat.date, new { Class = "form-control date-picker" })
+                @Html.ValidationMessageFor(m => m.FechaRetiro, "", new { @class = "text-danger" })
+                </div>
+                @if (Model.IndicadorRequiereReeemplazo){
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.SupervisorReemplazoSeleccionado)
+                    @Html.DropDownListFor(m => m.SupervisorReemplazoSeleccionado, new SelectList(Model.SupervisorReemplazo, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione +" " + Html.DisplayNameFor(m => m.SupervisorReemplazoSeleccionado)), new { @class = "select2 form-control" })
+                    @Html.ValidationMessageFor(m => m.SupervisorReemplazoSeleccionado, "", new { @class = "help-block" })
+                </div>
+                }
+            </div>
+            @Html.HiddenFor(m => m.IndicadorRequiereReeemplazo)
+            @Html.HiddenFor(m => m.Id)
+        </div>
+
+        <div class="space-4"></div>
+        <div id="divActualizarLoading" class="form-group" style="display:none !important">
+            <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  @Resources.EtiquetaResource.Procesando</strong></div>
+        </div>
+        <div class="">
+            <div id="resultUpdate"></div>
+        </div>
+        <button type="submit" class="hidden" name="submitButton" id="grabar" value="grabar">@Resources.TituloBotonResource.Guardar</button>
+        <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+
+    }
+</div>

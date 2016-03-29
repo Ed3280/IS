@@ -1,0 +1,9 @@
+2015-10-19T16:30:03.5685422Z - 12352 - Warn - Exception cleaning temporary files
+2015-10-19T16:30:03.5775495Z - 12352 - Warn - 
+2015-10-19T16:30:03.5775495Z - 12352 - Warn - No se puede encontrar una parte de la ruta de acceso 'C:\Proyectos\IntranetSAI\IntranetWeb\App_Data\51Degrees'.
+2015-10-19T16:30:03.5795500Z - 12352 - Warn -    en System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   en System.IO.FileSystemEnumerableIterator`1.CommonInit()
+   en System.IO.FileSystemEnumerableIterator`1..ctor(String path, String originalUserPath, String searchPattern, SearchOption searchOption, SearchResultHandler`1 resultHandler, Boolean checkHost)
+   en System.IO.DirectoryInfo.InternalGetFiles(String searchPattern, SearchOption searchOption)
+   en System.IO.DirectoryInfo.GetFiles()
+   en FiftyOne.Foundation.Mobile.Detection.WebProvider.CleanTemporaryFiles()

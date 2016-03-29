@@ -1,0 +1,116 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Vehiculo
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.AsociarVehiculo;
+}
+
+<div class="widget-box transparent" data-titulo="@ViewBag.Title" id="divWidgetBoxAsociarVehiculo">
+    @using (Ajax.BeginForm("crearVehiculoCliente", "Cliente", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "clienteSAI.submitSuccess(data)" }, new { @Id = "formCrearVehiculoCliente", role = "form" }))
+    {
+
+
+        <div class="widget-body" >
+            <div class="widget-main scrollable" data-size="60">
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.Vin)                        
+                            <div class="pos-rel">
+                                @Html.TextBoxFor(m => m.Vin, new { Class = "form-control text-uppercase typeahead scrollable vin_vehiculo", data_url = Url.Action("getSugerenciaVinAsignables", "Select") })
+                                @Html.ValidationMessageFor(m => m.Vin, "", new { @class = "help-block" })
+                            </div>                       
+                       </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.NumeroPlaca)
+                        @Html.TextBoxFor(m => m.NumeroPlaca, new { Class = "form-control text-uppercase" })
+                        @Html.ValidationMessageFor(m => m.NumeroPlaca, "", new { @class = "help-block" })
+                    </div>                    
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.Marca)
+                        @Html.DropDownListFor(m => m.MarcaSeleccionada, new SelectList(Model.Marca, "Value", "Text", Model.MarcaSeleccionada), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.MarcaSeleccionada)), new { @class = "select2 form-control marca", data_url = Url.Action("getModelos", "Select") })
+                        @Html.ValidationMessageFor(m => m.MarcaSeleccionada, "", new { @class = "help-block" })
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.Modelo)
+                        @Html.DropDownListFor(m => m.ModeloSeleccionado, new SelectList(Model.Modelo, "Value", "Text", Model.ModeloSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.ModeloSeleccionado)), new { @class = "select2 form-control modelo", data_url = Url.Action("getAnos", "Select") })
+                        @Html.ValidationMessageFor(m => m.Modelo, "", new { @class = "help-block" })
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.Color)
+                        @Html.TextBoxFor(m => m.Color, new { Class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.Color, "", new { @class = "help-block" })
+                    </div>
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.AnoSeleccionado)
+                        @Html.DropDownListFor(m => m.AnoSeleccionado, new SelectList(Model.Ano, "Value", "Text", Model.AnoSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.AnoSeleccionado)), new { @class = "select2 form-control ano" })
+                        @Html.ValidationMessageFor(model => model.AnoSeleccionado, "", new { @class = "help-block" })
+                    </div>                    
+                </div>
+
+                <div class="row">
+                    
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.CompaniaSeguroSeleccionada)
+                        @Html.DropDownListFor(m => m.CompaniaSeguroSeleccionada, new SelectList(Model.CompaniaSeguro, "Value", "Text", Model.CompaniaSeguroSeleccionada), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.CompaniaSeguroSeleccionada)), new { @class = "select2 form-control" })
+                        @Html.ValidationMessageFor(model => model.CompaniaSeguroSeleccionada, "", new { @class = "help-block" })
+                    </div>
+                    
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.TipoTransmisionSeleccionada)
+                        @Html.DropDownListFor(m => m.TipoTransmisionSeleccionada, new SelectList(Model.TipoTransmision, "Value", "Text", Model.TipoTransmisionSeleccionada), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.TipoTransmisionSeleccionada)), new { @class = "select2 form-control" })
+                        @Html.ValidationMessageFor(model => model.TipoTransmisionSeleccionada, "", new { @class = "help-block" })
+                    </div>
+
+                    
+                </div>
+
+                <div class="row">
+                    
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.TipoCierreSeleccionado)
+                        @Html.DropDownListFor(m => m.TipoCierreSeleccionado, new SelectList(Model.TipoCierre, "Value", "Text", Model.TipoCierreSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.TipoCierreSeleccionado)), new { @class = "select2 form-control" })
+                        @Html.ValidationMessageFor(model => model.TipoCierreSeleccionado, "", new { @class = "help-block" })
+
+                    </div>
+
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.TipoCombustibleSeleccionado)
+                        @Html.DropDownListFor(m => m.TipoCombustibleSeleccionado, new SelectList(Model.TipoCombustible, "Value", "Text", Model.TipoCombustibleSeleccionado), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.TipoCombustibleSeleccionado)), new { @class = "select2 form-control" })
+                        @Html.ValidationMessageFor(model => model.TipoCombustibleSeleccionado, "", new { @class = "help-block" })
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="form-group col-xs-12 col-sm-12 col-md-6 col-lg-6 ">
+                        @Html.LabelBoldFor(m => m.VigenciaPoliza)
+                        @Html.TextBoxFor(m => m.VigenciaPoliza, IntranetWeb.Core.Constante.AppFormat.date, new { Class = "form-control date-picker" })
+                        @Html.ValidationMessageFor(m => m.VigenciaPoliza, "", new { @class = "help-block" })
+                    </div>
+                </div>
+
+                @Html.HiddenFor(m => m.IdCliente)             
+
+            
+
+
+            </div>
+            <div class="space-2"></div>
+            <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @IntranetWeb.Core.Constante.Mensaje.Etiqueta.Procesando </strong></div>
+            </div>
+            <div class="space-2"></div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" name="submitButton" id="btnGuardar" class="hidden" value="grabar">@IntranetWeb.Core.Constante.Mensaje.Etiqueta.Guardar</button>
+            <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+        </div>
+
+    }
+</div>

@@ -1,0 +1,154 @@
+﻿@model IntranetWeb.ViewModel.Cliente.Cliente
+@{ Layout = null; }
+<div class="tab-pane" data-id-cliente="@Model.Id"
+      id="tabCliente_@Model.Id"
+     >
+    @using (Ajax.BeginForm("actualizarCliente", "Cliente", null, new AjaxOptions { HttpMethod = "Post", UpdateTargetId = "resultUpdate_" + Model.Id, LoadingElementId = "divActualizarLoading_" + Model.Id, AllowCache = false, OnSuccess = "clienteSAI.submitSuccess(data)" }, new { @Id = "formActualizarCliente_" + Model.Id, role = "form" }))
+    {
+        <!--div class="scrollable" data-size="64"-->
+
+            <!--Widgets -->
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+                <!--widget datos generales -->
+                <div class="widget-box transparent"  id="divWidgetClienteDatosGenerales">
+                    <div class="widget-header">
+
+                        <h4 class="widget-title lighter"><i class="glyphicon glyphicon-user"></i> @Resources.TituloWidget.DatosGenerales</h4>
+
+                        <div class="widget-toolbar no-border">
+                            <a href="javascript:void(0);" data-rel="tooltip" data-placement="top"
+                               title="@Resources.EtiquetaResource.EditarRegistro"
+                               class="tooltip-info icono-editar-registro"
+                               data-action="create">
+                                <i id="iCreateVehiculoWidget" class="ace-icon fa fa-pencil-square-o bigger-120"> </i>
+                            </a>
+
+                            <a href="javascript:void(0);" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+
+                            <a href="javascript:void(0);" data-action="fullscreen">
+                                <i class="ace-icon fa fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            @{Html.RenderAction("_getDatosBasicos", new { cliente = Model });}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+                <!--widget datos Dirección -->
+                <div class="widget-box transparent">
+                    <div class="widget-header">
+
+                        <h4 class="widget-title lighter"><i class="fa fa-map-marker"></i> @Resources.TituloWidget.Direccion</h4>
+
+                        <div class="widget-toolbar no-border">
+                            <a href="javascript:void(0);" data-action="collapse">
+                                <i class="ace-icon fa fa-chevron-up"></i>
+                            </a>
+
+                            <a href="javascript:void(0);" data-action="fullscreen">
+                                <i class="ace-icon fa fa-expand"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="widget-body">
+                        <div class="widget-main">
+                            @{Html.RenderAction("_getDireccion", new { cliente = Model });}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+                    <div class="widget-box transparent" id="divWidgetClienteVehiculo">
+                        <div class="widget-header">
+                            <h4 class="widget-title lighter"><i class="fa fa-car"></i> @Resources.TituloWidget.Vehiculo</h4>
+                            <div class="widget-toolbar no-border">
+                                <a href="javascript:void(0);" data-rel="tooltip" data-placement="top"
+                                   title="@Resources.EtiquetaResource.CrearRegistro"
+                                   class="tooltip-info icono-crear-registro"
+                                   data-action="create">
+                                    <i id="iCreateVehiculoWidget" class="ace-icon fa fa-plus"> </i>
+                                </a>
+
+                                <a href="javascript:void(0);" data-action="collapse">
+                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                </a>
+                                <a href="javascript:void(0);" data-action="fullscreen">
+                                    <i class="ace-icon fa fa-expand"></i>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                @{Html.RenderAction("_getVehiculos", new { cliente = Model });}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                 <div class="col-xs-12 col-sm-12 col-md-6  col-lg-6">
+                    <div class="widget-box transparent" id="divWidgetClienteDispositivo">
+                        <div class="widget-header">
+
+                            <h4 class="widget-title lighter"><i class="fa fa-signal"></i> @Resources.TituloWidget.Dispositivos</h4>
+
+                            <div class="widget-toolbar no-border">
+                                <a href="javascript:void(0);" data-rel="tooltip" data-placement="top" 
+                                   title="@Resources.EtiquetaResource.CrearRegistro" 
+                                   class="tooltip-info icono-crear-registro" 
+                                   data-action="create"> 
+                                <i id="iCreateDispositivoWidget" class="ace-icon fa fa-plus"> </i></a>
+                                
+                                <a href="javascript:void(0);" data-action="collapse">
+                                    <i class="ace-icon fa fa-chevron-up"></i>
+                                </a>
+                                <a href="javascript:void(0);" data-action="fullscreen">
+                                    <i class="ace-icon fa fa-expand"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                @{Html.RenderAction("_getDispositivos", new { cliente = Model });}
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            
+            <div class="space-2"></div>
+            <div id="divActualizarLoading_@Model.Id" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  @Resources.EtiquetaResource.Procesando</strong></div>
+            </div>
+
+            <div class="">
+                <div id="resultUpdate_@Model.Id"></div>
+            </div>
+
+
+            <div class="clearfix">
+                <button type="submit" class="pull-left btn btn-sm btn-success">
+                    <span class="bigger-110">@Resources.TituloBotonResource.ActualizarCliente</span>
+                </button>
+            </div>
+
+            @Html.HiddenFor(m => m.Id)
+            @Html.HiddenFor(m => m.Consecutivo)
+            @Html.HiddenFor(m => m.Agencia)
+            @Html.HiddenFor(m => m.TipoDocumentoSeleccionado)
+            @Html.HiddenFor(m => m.Cedula)
+            @Html.HiddenFor(m => m.Email)
+       }
+</div>
+
+
+

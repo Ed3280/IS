@@ -1,0 +1,34 @@
+﻿@model IntranetWeb.ViewModel.Monitor.Ticket
+@{Layout = null; }
+
+<div id="divColTabs" class="col-xs-12 col-sm-12 col-md-9 col-lg-9">
+    <div class="tabbable">
+        <ul id="ulTabMonitor" class="nav nav-tabs tab-space-4">
+            <li id="liMapa" class="active">
+                <a href="#divTabMapa" data-toggle="tab">Mapa</a>
+            </li>
+            <li id="liTicket" class="">
+                <a href="#divTabTicket" data-toggle="tab">Tickets</a>
+            </li>            
+        </ul>
+
+        <div id="divTabMonitor" class="tab-content">
+
+	    <div class="tab-pane in active" id="divTabMapa">
+                    <div id="map_canvas" style="height: 700px"></div>
+                    @{Html.RenderPartial("_getControlMapa", new IntranetWeb.ViewModel.Monitor.Distribuidor {AccionNestedDispositivos = "_getNestedlDispositivos" }); }
+                    @{Html.RenderPartial("_getControlDispositivo", new IntranetWeb.ViewModel.Monitor.LocalizacionDispositivo()); }
+                    @{Html.RenderPartial("_getControlCliente", new IntranetWeb.ViewModel.Monitor.UsuarioMovil()); }
+
+            </div>
+            <div class="tab-pane" id="divTabTicket" data-url-gcm="@Url.Action("enviarMensajeGCM")">
+                @{Html.RenderAction("_getListadoTickets", Model); }
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+

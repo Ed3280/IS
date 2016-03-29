@@ -1,0 +1,42 @@
+﻿
+@model IntranetWeb.ViewModel.Monitor.ArbolDispositivo
+@{Layout = "";}
+<div class="dd dd-draghandle col-xs-12" id="divNestableMapControl">
+    <ol class="dd-list">
+    
+                @foreach (IntranetWeb.ViewModel.Monitor.NodoDistribuidor distribuidor in Model.Distribuidores)
+                {
+                    <li class="dd-item dd2-item dd2ItemDistribuidor" data-id="@distribuidor.Distribuidor.Id">
+                        <div class="dd2-handle">
+                            <i class="normal-icon ace-icon fa fa-user blue bigger-130"></i>
+                            <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                        </div>
+
+                        <div class="dd2-content">@distribuidor.Distribuidor.Nombre</div>
+                        <ol class="dd-list">
+                          @foreach (IntranetWeb.ViewModel.Monitor.Dispositivo dispositivo in distribuidor.DispositivosAsociados)
+                          {
+
+                            <li class="dd-item dd2-item dd2ItemDispositivo" data-nombre="@(!String.IsNullOrWhiteSpace(dispositivo.Nombre)?dispositivo.Nombre.ToUpper():"")" data-id="@dispositivo.Id">
+                                <div class="dd2-handle">
+                                    <i id="iconoMapaDispWid_@dispositivo.Id" class="normal-icon bigger-130 ace-icon @Html.getIconoDispositivo(dispositivo.Icono)"></i>
+                                    <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                                    
+                                   
+                                </div>
+                                    <div class="dd2-content">
+                                        @dispositivo.Nombre
+                                        <div class="pull-right action-buttons">
+                                         <a class="red tooltip-info icono-ubicar" data-rel="tooltip" data-placement="left" title="Ubicar"  href="javascript:void(0);">
+                                            <i class="bigger-130 ace-icon fa fa-map-marker"></i>
+                                         </a>
+                                        </div>
+                                    </div>
+                               
+                            </li>
+                          }
+                        </ol>
+                    </li>
+                }
+        </ol>
+    </div>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "Obten Alertas";
+    Layout = null;
+}
+<div id="divColAlertas" class="col-xs-12 col-sm-12 col-md-3  col-lg-3 widget-container-col">
+    <div id="widgetAlerta"  data-mensaje-confirmar-eliminar="@Resources.AdvertenciaResource.EliminarNotificacion"
+                            data-url-consultar-notificacion="@Url.Action("_getConsultarNotificacion")" 
+                            data-url-eliminar-notificacion="@Url.Action("eliminarNotificacion")"
+                            
+          class="widget-box widget-color-blue2">
+        <div class="widget-header">
+            <h6 class="widget-title"><i class="glyphicon glyphicon-bell"></i> @Resources.TituloWidget.Alertas</h6>&nbsp;<i id="iLoadingWidgetAlertas" class='ace-icon fa fa-spinner fa-spin white bigger-125 ' style="display:none"></i>
+
+            <div class="widget-toolbar">
+                <a href="javascript:void(0)" data-rel="tooltip" data-placement="top" class="tooltip-info" title="Activar/Desactivar Sonido" data-action="sound">
+                    <i id="iSonidoAlertas" class="ace-icon fa fa-volume-up white"></i>
+                </a>
+
+                <a href="javascript:void(0);" data-rel="tooltip" data-placement="top" class="tooltip-info" title="Recargar" data-action="reload">
+                    <i id="widgetAlertaRefresh" class="ace-icon fa fa-refresh"></i>
+                </a>
+
+                <a href="javascript:void(0);" data-rel="tooltip" data-placement="top" class="tooltip-info" title="Expandir/Contraer" data-action="collapse">
+                    <i class="ace-icon fa fa-chevron-up"></i>
+                </a>
+
+                <a href="javascript:void(0);" data-action="fullscreen" data-rel="tooltip" data-placement="top" class="tooltip-info orange2" title="Maximizar/Minimizar" >
+                    <i class="ace-icon fa fa-expand"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="widget-body">
+            <div class="widget-main padding-4 scrollable" data-size="66">
+            @{Html.RenderAction("_actualizaAlertas");}
+            </div>
+        </div>
+    </div>
+</div>
+

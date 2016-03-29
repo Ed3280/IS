@@ -1,0 +1,55 @@
+﻿@model IEnumerable<IntranetWeb.ViewModel.Dashboard.Directorio.Empleado>
+@{Layout = null;}
+
+<div class="accordion-style1 panel-group scrollable" data-size="35" id="accordionDirectorio">
+   @if (Model.Count() > 0)
+   {
+    foreach (var Empleado in Model)
+    {
+        <div class="space-4"></div>
+        <div class="panel">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordionDirectorio" href="#collapse_@Empleado.Id">
+                        <i data-icon-show="ace-icon fa fa-angle-right" data-icon-hide="ace-icon fa fa-angle-down" class="bigger-110 ace-icon fa fa-angle-right"></i>
+                       @Html.DisplayFor(m => Empleado.Nombre) - @Html.DisplayFor(m => Empleado.UnidadAdministrativa)
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse_@Empleado.Id" class="panel-collapse collapse">
+                <div class="panel-body">
+                      <div class="profile-user-info profile-user-info-striped">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.Cargo) + "") </div>
+                                <div class="profile-info-value bolder">@Html.DisplayFor(m => Empleado.Cargo)</div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.Extension) + "") </div>
+                                <div class="profile-info-value bolder">@Html.DisplayFor(m => Empleado.Extension)</div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.NumeroMovil) + "") </div>
+                                <div class="profile-info-value bolder">@Html.DisplayFor(m => Empleado.NumeroMovil)</div>
+                            </div>
+
+
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">@HttpUtility.HtmlDecode(Html.DisplayNameFor(m => m.Correo) + "") </div>
+                                <div class="profile-info-value bolder">@Html.DisplayFor(m => Empleado.Correo)</div>
+                            </div>
+                        </div>                    
+                </div>
+            </div>
+        </div>
+       }
+   }
+   else
+   {
+    <div class="space-4"></div>
+    @Html.escribirMensajeAdvertencia(Resources.AdvertenciaResource.SinResultado,true);
+   }
+</div>

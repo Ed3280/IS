@@ -1,0 +1,58 @@
+﻿@model IntranetWeb.ViewModel.Administrador.Usuario
+@{Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.EditarUsuario;
+}
+
+<div id="divTabEditarUsuario" class="tabbable" data-titulo="@ViewBag.Title">
+    <ul id="ulTabUsuario" class="nav nav-tabs tab-space-4">
+        <li id="liDatosGenerales" class="active">
+            <a href="#divBloqueDatosGenerales" data-toggle="tab">@Resources.TituloWidget.DatosGenerales</a>
+        </li>
+        <li id="liAplicaciones">
+            <a href="#divBloqueAplicaciones" data-toggle="tab">@Resources.TituloWidget.Aplicaciones</a>
+        </li>
+        <li id="liRoles">
+            <a href="#divBloqueDispositivos" data-toggle="tab">@Resources.TituloWidget.Dispositivos</a>
+        </li>
+
+    </ul>
+    
+    @using (Ajax.BeginForm("editarUsuario", "Administrador", null, new AjaxOptions { HttpMethod = "Post", LoadingElementId = "divActualizarLoading", AllowCache = false, OnSuccess = "usuarioSAI.submitSuccess(data)" }, new { @Id = "formEditarRegistro", role = "form" }))
+    {
+        <div  id="divTabUsuario" class="tab-content" data-url-consultar-usuario="@Url.Action("consultarDatosUsuarioInterno")"
+                                                     data-url-cargar-aplicaciones="@Url.Action("_getAplicacionesUsuarioInterno")">
+            <!--Paso Datos Generales-->
+            <div class="tab-pane in active scrollable" id="divBloqueDatosGenerales" data-size="60">
+                @{Html.RenderPartial("Editar/Shared/_getDatosGeneralesUsuario", Model);}
+            </div>
+            <!-- Paso Roles-->
+            <div class="tab-pane scrollable" id="divBloqueAplicaciones" data-size="60">
+                @{Html.RenderPartial("../Shared/Configuracion/_getAplicaciones", Model);}
+            </div>
+            <!-- Paso Aplicaciones-->
+            <div class="tab-pane scrollable" id="divBloqueDispositivos" data-size="60">
+                @{Html.RenderPartial("../Shared/Configuracion/_getDispositivos", Model);}
+            </div>
+
+            <div class="space-2"></div>
+            <div id="divActualizarLoading" class="form-group" style="display:none !important">
+                <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong> @Resources.EtiquetaResource.Procesando </strong></div>
+            </div>
+            <div class="">
+                <div id="resultUpdate"></div>
+            </div>
+            <button type="submit" class="hidden" name="submitButton" id="grabar" value="grabar">@Resources.TituloBotonResource.Guardar</button>
+
+        </div>
+
+        <div class="space-4"></div>
+        <div id="divActualizarLoading" class="form-group" style="display:none !important">
+            <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  @Resources.EtiquetaResource.Procesando</strong></div>
+        </div>
+        <div class="">
+            <div id="resultUpdate"></div>
+        </div>
+        <button type="submit" class="hidden" name="submitButton" id="grabar" value="grabar">@Resources.TituloBotonResource.Guardar</button>
+        <button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>
+    }
+</div>

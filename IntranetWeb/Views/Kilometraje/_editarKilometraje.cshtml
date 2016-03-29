@@ -1,0 +1,14 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Kilometraje.Vehiculo
+
+
+<div class="row">
+    
+    <div class="col-xs-12">
+        @Html.LabelBoldFor(model => model.DistanciaInicial)
+        @Html.TextBoxFor(model => model.DistanciaInicial, new { Id="kilometrajeInicial" , Class = "form-control" }  )
+    </div>
+
+      @Html.HiddenFor(model => model.IdUsuario)      
+      @Html.HiddenFor(model => model.IdVehiculo)
+</div>

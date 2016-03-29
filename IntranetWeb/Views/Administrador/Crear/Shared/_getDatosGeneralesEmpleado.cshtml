@@ -1,0 +1,140 @@
+﻿@model IntranetWeb.ViewModel.Administrador.Empleado
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.TipoDocumentoSeleccionado)
+        @Html.DropDownListFor(m => m.TipoDocumentoSeleccionado, new SelectList(Model.TipoDocumento, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.TipoDocumentoSeleccionado)), new { @class = "select2 form-control" })
+        @Html.ValidationMessageFor(model => model.TipoDocumentoSeleccionado, "", new { @class = "help-block" })
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.NumeroDocumento)<br />
+        @Html.TextBoxFor(m => m.NumeroDocumento, new { Class = "form-control text-uppercase" })
+        @Html.ValidationMessageFor(model => model.NumeroDocumento, "", new { @class = "help-block" })
+    </div>
+</div>
+
+<div class="row">
+    
+   
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.NombreApellido)<br />
+        @Html.TextBoxFor(m => m.NombreApellido, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.NombreApellido, "", new { @class = "help-block" })
+    </div>
+    
+    <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 ">
+        @Html.LabelBoldFor(m => m.NombreUsuario)
+        @Html.TextBoxFor(m => m.NombreUsuario, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.NombreUsuario, "", new { @class = "help-block" })
+    </div>
+</div>
+
+
+<div class="row bloqueContrasena">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.ContrasenaNueva)<br />
+        @Html.PasswordFor(m => m.ContrasenaNueva, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.ContrasenaNueva, "", new { @class = "help-block" })
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.RepetirContrasena)<br />
+        @Html.PasswordFor(m => m.RepetirContrasena, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.RepetirContrasena, "", new { @class = "help-block" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.FechaNacimiento)<br />
+        @Html.TextBoxFor(m => m.FechaNacimiento, new { Class = "form-control date-picker" })
+        @Html.ValidationMessageFor(model => model.FechaNacimiento, "", new { @class = "help-block" })
+    </div>
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.Email)<br />
+        @Html.TextBoxFor(m => m.Email, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "help-block" })
+    </div>
+</div>
+
+<div class="row">
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.TelefonoFijo)<br />
+        @Html.TextBoxFor(m => m.TelefonoFijo, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TelefonoFijo, "", new { @class = "help-block" })
+    </div>
+
+    <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+        @Html.LabelBoldFor(m => m.TelefonoMovil)<br />
+        @Html.TextBoxFor(m => m.TelefonoMovil, new { Class = "form-control" })
+        @Html.ValidationMessageFor(model => model.TelefonoMovil, "", new { @class = "help-block" })
+    </div>
+</div>
+
+<div class="widget-box transparent">
+    <div class="widget-header">
+
+        <h4 class="widget-title lighter"><i class="fa fa-suitcase"></i> @Resources.TituloWidget.DatosEmpleado</h4>
+        <div class="widget-toolbar no-border">
+        </div>
+    </div>
+    <div class="widget-body">
+        <div class=" widget-main">
+            <div class="row">
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.UnidadAdministrativaSeleccionada)
+                    @Html.DropDownListFor(m => m.UnidadAdministrativaSeleccionada, new SelectList(Model.UnidadAdministrativa, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.UnidadAdministrativaSeleccionada)), new { @class = "select2 form-control unidadAdministrativa", @data_url = Url.Action("getCargo", "Select") })
+                    @Html.ValidationMessageFor(m => m.UnidadAdministrativaSeleccionada, "", new { @class = "help-block" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.CargoSeleccionado)
+                    @Html.DropDownListFor(m => m.CargoSeleccionado, new SelectList(Model.Cargo, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.CargoSeleccionado)), new { @class = "select2 form-control cargo", @data_url = Url.Action("getSupervisor", "Select"), data_url_roles = Url.Action("getRolesEmpleado", "Select") })
+                    @Html.ValidationMessageFor(m => m.CargoSeleccionado, "", new { @class = "help-block" })
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.SupervisorSeleccionado)
+                    @Html.DropDownListFor(m => m.SupervisorSeleccionado, new SelectList(Model.Supervisor, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.SupervisorSeleccionado)), new { @class = "select2 form-control supervisor" })
+                    @Html.ValidationMessageFor(m => m.SupervisorSeleccionado, "", new { @class = "help-block" })
+                </div>
+
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.SucursalSeleccionada)
+                    @Html.DropDownListFor(m => m.SucursalSeleccionada, new SelectList(Model.Sucursal, "Value", "Text"), HttpUtility.HtmlDecode(Resources.DescripcionResource.Seleccione + " " + Html.DisplayNameFor(m => m.SucursalSeleccionada)), new { @class = "select2 form-control" })
+                    @Html.ValidationMessageFor(model => model.SucursalSeleccionada, "", new { @class = "help-block" })
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.Extension)
+                    @Html.TextBoxFor(m => m.Extension, new { Class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Extension, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.EmailCompania)
+                    @Html.TextBoxFor(m => m.EmailCompania, new { Class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.EmailCompania, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                    @Html.LabelBoldFor(m => m.FechaIngreso)
+                    @Html.TextBoxFor(m => m.FechaIngreso, IntranetWeb.Core.Constante.AppFormat.date, new { Class = "form-control date-picker" })
+                    @Html.ValidationMessageFor(model => model.FechaIngreso, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.HiddenFor(m => m.Id)
+@Html.HiddenFor(m => m.IndicadorActivo)
+
+
+

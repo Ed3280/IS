@@ -1,0 +1,32 @@
+﻿@model IntranetWeb.ViewModel.Monitor.Ticket
+@{
+    Layout = null;
+    ViewBag.Title = Resources.TituloPaginaResource.ConsultarNotificacion;
+}
+
+<div id="divTabConsultarNotificacion" class="tabbable" data-titulo="@ViewBag.Title">
+
+    <ul id="ulTabNotificacion" class="nav nav-tabs tab-space-4">
+        <li id="liDatosCliente" class="active">
+            <a href="#divBloqueDatosCliente" data-toggle="tab">@Resources.TituloWidget.DatosGenerales</a>
+        </li>
+
+        <li id="liHistorico">
+            <a href="#divBloqueHistorico" data-toggle="tab">@Resources.TituloWidget.Historico</a>
+        </li>
+    </ul>
+
+    <div id="divTabTicket" class="tab-content">
+        <div class="tab-pane in active scrollable" id="divBloqueDatosCliente" data-size="60">
+            @{Html.RenderPartial("ConsultarTicket/_getDatosCliente", Model);}
+        </div>
+
+        <div class="tab-pane scrollable" id="divBloqueHistorico" data-size="60">
+            @{Html.RenderAction("_getHistoricoTicketsCliente", new { nuSim = Model.Dispositivo.SimCard });}
+        </div>
+
+    </div>
+    
+</div>
+
+<button type="button" class="hidden" name="cerrar" id="cerrar" value="cerrar">@Resources.TituloBotonResource.Cerrar</button>

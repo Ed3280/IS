@@ -1,0 +1,43 @@
+﻿@using IntranetWeb.Core.Utils;
+@model IntranetWeb.ViewModel.Configuracion.CambioContrasena
+@{Layout = null;}
+@using (Ajax.BeginForm("cambiarContrasena", "Configuracion", null, new AjaxOptions { HttpMethod = "post", LoadingElementId = "divCambiarContrasenaLoading", UpdateTargetId = "divCambiarContrasenaTarget" }, new { id = "formCambiarContrasena", role = "form" }))
+{
+
+    <div class="scrollable" data-size="590">
+        <div class="row">
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @Html.LabelBoldFor(m => m.ContrasenaActual)
+                @Html.PasswordFor(m => m.ContrasenaActual, new { Class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContrasenaActual, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                @Html.LabelBoldFor(m => m.ContrasenaNueva)
+                @Html.PasswordFor(m => m.ContrasenaNueva, new {  Class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContrasenaNueva, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group col-xs-12 col-sm-12col-md-12 col-lg-12">
+                @Html.LabelBoldFor(m => m.RepetirContrasena)
+                @Html.PasswordFor(m => m.RepetirContrasena, new {  Class = "form-control" })
+                @Html.ValidationMessageFor(model => model.RepetirContrasena, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(m => m.Id)
+        <div id="divCambiarContrasenaLoading" class="form-group" style="display:none !important">
+            <div class="blue"> <i class="ace-icon fa fa-spinner fa-spin blue bigger-125 "></i> <strong>  Procesando ...</strong></div>
+        </div>
+
+        <div class="">
+            <div id="divCambiarContrasenaTarget"></div>
+        </div>
+
+
+        <div class="clearfix">
+            <button type="submit" class="pull-left btn btn-sm btn-success">
+                <span class="bigger-110">Cambiar Contraseña</span>
+            </button>
+        </div>
+    </div>
+}
+
